@@ -1,0 +1,515 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>PyQt | MyBlog</title><meta name="keywords" content="python开发"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="PyQt"><meta name="application-name" content="PyQt"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="PyQt"><meta property="og:url" content="http://example.com/2025/07/21/PyQt/index.html"><meta property="og:site_name" content="MyBlog"><meta property="og:description" content="PyQt通过阅读本文，您可以大致了解 GUI，PyQt6 开发相关的操作和基础知识 首先需要在本地pip install pyqt6安装对应的 Python 库，并且在后续的开发过程中import PyQt6等库 基础代码风格以下是一个最基础的 PyQt6 创建空窗口的代码示例： 123456789"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="http://example.com/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A217.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://example.com/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A217.jpg"><meta name="description" content="PyQt通过阅读本文，您可以大致了解 GUI，PyQt6 开发相关的操作和基础知识 首先需要在本地pip install pyqt6安装对应的 Python 库，并且在后续的开发过程中import PyQt6等库 基础代码风格以下是一个最基础的 PyQt6 创建空窗口的代码示例： 123456789"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/07/21/PyQt/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: MyBlog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'MyBlog',
+  title: 'PyQt',
+  postAI: '',
+  pageFillDescription: 'PyQt, 基础代码风格, 代码架构, 常用布局方式, 标签和文本框, 布局的嵌套, 按钮, 页面优化技巧, 页面大小设计, 占比设计, 设置按钮大小, 设置页边距, 控制文本或部件对齐, 实例, 控件, button 控件通过阅读本文您可以大致了解开发相关的操作和基础知识首先需要在本地安装对应的库并且在后续的开发过程中等库基础代码风格以下是一个最基础的创建空窗口的代码示例创建应用程序每个应用必须有且仅有一个实例创建名为的窗口该窗口将作为主窗口存在通过变量设置窗口名称显示窗口执行应用这段代码所展现的流程我们在后面的开发中会频繁使用从创建应用程序到创建主窗口向主窗口中添加各种控件调用主窗口显示最后启动应用程序执行因此我们考虑用面向对象的思想对这段代码进行封装封装成一个主窗口类供后续使用代码起始部分代码结束部分其中用来设置主窗口名称参数用来接收来自命令行的参数确保程序可以通过命令行来执行其中用来表示实例化对象在本例中我们可以理解当通过方法实例化一个变量时所代表的就是这个实例化对象在类内如果不加关键字则表示为局部变量而添加关键字则表示为实例变量这一点在后续开发中我们会继续用到代码架构常用布局方式中有三种常见的布局我们通过它们的组合可以设计出不同的页面架构水平布局通过进行设置垂直布局通过进行设置栅格布局通过进行设置我们最终所定义出的各个部件以及各个子布局的设计最后都要由主布局设计调用方法才能加入到整体布局中最终由主窗口执行表示把整体布局作为主窗口的布局使用创建一个水平布局作为整体布局设计创建两垂直布局作为子布局设计将两个子布局加入到整体布局中设置当前整体布局为主窗口的布局方式在上面这段代码中我们设置了一个水平布局作为整体布局两个垂直布局的子布局依次加入到水平布局中会按照等距水平的方式进行排列标签和文本框假设我们要实现一个形如用户登录界面的窗口在窗口中需要给出用户名和密码的字段进行提示同时要给出用户输入用户名和密码的框体此时我们就要用到标签和文本编辑他们分别可以通过中的和方法来实现注意此时的标签和文本编辑框都可以看做是组件组件在设置以后只有通过加入到某个布局并且最终加入到整体布局并以后才能被展示出来定义标签组件和文本框组件定义布局并且把组件加入布局将当前布局应用到主窗口并展示在上面这段代码中我们向水平布局中依次加入了和这两个组件不同于把子布局加入到整体布局中的向整体布局中加入组件可以使用方法实现布局的嵌套假设我们想实现一个用户登录界面也就是分别有两行两列第一行是用户名输入提示用户名输入位置第二行是密码输入提示密码输入位置我们就需要嵌套布局来实现我们可以先按行处理定义两个水平布局分别维护用户名信息和密码信息再定义一个垂直布局作为整体布局把两个水平布局作为子布局加入即可用户登录界面布局设计组件设计用户名密码组件加入子布局子布局加入整体布局应用整体布局到主窗口代码结束按钮在我们刚刚设计的登录界面中我们还想要有一个供用户点击确认的按钮对于按钮部件我们在中可以通过方法来实现登录页面优化技巧通过上面的知识我们只能设计出一个很粗糙的页面还需要对整个页面的布局进行若干优化页面大小设计如果我们想设置我们的页面的长宽或者固定页面的大小比例可以通过方法或者方法实现二者的区别在于前者只是设置窗口的初始化大小后续用户可以通过拖拽窗口边缘进行手动调整窗口大小而后者会完全禁止用户调整窗口大小把窗口限定在像素占比设计假设我们在一个水平布局中分别加入了三个部件现在这三个部件是等距分布的如果我们希望他们按照一定的比例大小分配空间可以通过设置参数实现该参数表示控件在布局中的空间分配比例它决定了当窗口大小改变时各个控件如何伸缩以适应可用空间标签占份空间输入框占份空间直接在或方法中当做有名参数直接设置即可上面的代码表示在这个水平布局中占一份空间占份空间设置按钮大小可以通过等方法设置按钮的固定宽度与之相类似的还有下面的函数方法设置窗口宽度和高度都固定设置按钮固定宽度设置按钮固定高度设置按钮最大小宽度和高度设置按钮最大小宽度设置按钮最大小高度其中固定布局参数在设定以后该维度的布局不会随窗口的扩大与缩小而变化会始终保持固定的参数设置页边距可以通过方法分别设置上下左右四个方向的页边距控制文本或部件对齐如果我们在布局中想设置某个组件文本甚至是子布局具有某些对齐性质可以通过方法或者参数实现具体的实现有两种书写形式如下标签文本居中显示使用方法居中文本按钮部件在布局中对齐使用参数除去表示水平居中对齐参数之外中还支持其他很多控制位置的参数这些参数都存放在库中调用时需要通过具体对齐方式来实现水平对齐选项标志值描述左对齐右对齐水平居中两端对齐垂直对齐选项标志值描述顶部对齐底部对齐垂直居中基线对齐文本常用组合选项组合标志等效写法描述完全居中左上对齐右下对齐实例在基础布局的基础上加上上面的布局优化技巧我们就实现了一个相对完善的用户登录界面完整代码如下调用父类的初始化方法代码开始登录验证垂直布局定义用户名和用户名定义密码和密码定义登录按钮登录添加到布局代码结束创建应用执行应用控件在中控件是构建用户界面的基本元素可以理解为可视化程序中的各种零件先前介绍的就属于按钮控件接下来我们考虑引入更多控件来丰富我们的布局同时为空间触发功能来实现和用户的交互控件控件就是常见的按钮控件用户可以通过点击按钮实现某些功能该控件可以通过方法来实现第一个按钮第二个按钮这里需要注意有前缀而没有表示两者作用域不同在整个类中都可用而则仅在当前的方法中初始化使用如果我们需要再类的其他方法中访问该按钮如绑定事件修改文本等则需要用的方式实现信号与槽如果我们想为按钮添加和用户交互的功能比如用户点击按钮时用户按下按钮的阶段用户松开按钮时我们可以通过信号和槽实现相关的功能按钮可选中可切换注意在中我们的按钮被按下后有两种情况一种是按下后松开鼠标按钮扔保持被按下的状态一种是按下后松开鼠标按钮立刻回弹默认情况前者每次点击按钮都会发射信号后者每次点击按钮只会发射信号可以通过设置函数控制两种状态切换设置按钮为可选中可切换状态设置按钮为普通按钮按下后自动弹起只有选项设置为的按钮才可以添加信号和槽信号和槽可以用来捕获按钮状态的变化比如用户按下按钮的瞬间我们可以捕获这个操作并且通过这个操作关联某个函数对用户的操作做出反应信号和槽每个按钮都有以下几个状态可以通过方法把它们与特定的函数联系起来当触发某个状态时就会执行相应的函数按钮被点击按钮被压下按钮被松开按钮状态发生切换',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-07-21 16:16:55',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">MyBlog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/python-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">python & 机器学习<sup>5</sup></a><a href="/tags/python%E5%BC%80%E5%8F%91/" style="font-size: 1.05rem;">python开发<sup>2</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 1.05rem;">数学建模<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>8</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">17</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/python%E5%BC%80%E5%8F%91/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>python开发</span></a></span></div></div><h1 class="post-title" itemprop="name headline">PyQt</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-07-21T00:03:13.000Z" title="发表于 2025-07-21 08:03:13">2025-07-21</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-07-21T08:16:55.265Z" title="更新于 2025-07-21 16:16:55">2025-07-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A217.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/07/21/PyQt/"><header><a href="/tags/python%E5%BC%80%E5%8F%91/" tabindex="-1" itemprop="url">python开发</a><h1 id="CrawlerTitle" itemprop="name headline">PyQt</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2025-07-21T00:03:13.000Z" title="发表于 2025-07-21 08:03:13">2025-07-21</time><time itemprop="dateCreated datePublished" datetime="2025-07-21T08:16:55.265Z" title="更新于 2025-07-21 16:16:55">2025-07-21</time></header><h1 id="PyQt"><a href="#PyQt" class="headerlink" title="PyQt"></a><strong>PyQt</strong></h1><p>通过阅读本文，您可以大致了解 GUI，PyQt6 开发相关的操作和基础知识</p>
+<p>首先需要在本地<code>pip install pyqt6</code>安装对应的 Python 库，并且在后续的开发过程中<code>import PyQt6等库</code></p>
+<h2 id="基础代码风格"><a href="#基础代码风格" class="headerlink" title="基础代码风格"></a><strong>基础代码风格</strong></h2><p>以下是一个最基础的 PyQt6 创建空窗口的代码示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QApplication, QWidget</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建应用程序，每个 PyQt6 应用必须有且仅有一个 QApplication 实例</span></span><br><span class="line">app = QApplication([])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建名为 hello world 的窗口，该窗口将作为主窗口存在，通过 windowTitle 变量设置窗口名称</span></span><br><span class="line">w = QWidget(windowTitle = <span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示窗口</span></span><br><span class="line">w.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行应用</span></span><br><span class="line">app.<span class="built_in">exec</span>()</span><br></pre></td></tr></table></figure>
+
+<p>这段代码所展现的流程我们在后面的开发中会频繁使用，从创建应用程序，到创建主窗口（向主窗口中添加各种控件），调用主窗口显示，最后启动应用程序执行，因此我们考虑用<strong>面向对象</strong>的思想对这段代码进行封装，封装成一个<strong>主窗口类</strong>供后续使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QApplication, QWidget</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MainWindow</span>(<span class="title class_ inherited__">Widget</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">    <span class="built_in">super</span>().__init__(*args, **kwargs)</span><br><span class="line">    <span class="comment"># 代码起始部分</span></span><br><span class="line">    <span class="variable language_">self</span>.setWindowTitle(<span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line">    <span class="comment"># 代码结束部分</span></span><br><span class="line">    <span class="variable language_">self</span>.show()</span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">  app = QApplication(sys.srgv)</span><br><span class="line">  w = MainWindow()</span><br><span class="line">  sys.exit(app.<span class="built_in">exec</span>())</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>setWindowTitle(&quot;&quot;)</code>用来设置主窗口名称，<code>sys.argv</code>参数用来接收来自命令行的参数，确保程序可以通过命令行来执行</p>
+<p>其中<code>self</code>用来表示实例化对象，在本例中，我们可以理解当通过<code>MainWindow()</code>方法实例化一个变量 w 时，<code>self</code>所代表的就是这个实例化对象 w，在类内如果不加 self 关键字则表示为<strong>局部变量</strong>，而添加 self 关键字则表示为<strong>实例变量</strong>，这一点在后续开发中我们会继续用到</p>
+<h2 id="代码架构"><a href="#代码架构" class="headerlink" title="代码架构"></a><strong>代码架构</strong></h2><h3 id="常用布局方式"><a href="#常用布局方式" class="headerlink" title="常用布局方式"></a><strong>常用布局方式</strong></h3><p>PyQt 中有三种常见的布局，我们通过它们的组合可以设计出不同的页面架构</p>
+<p>水平布局：<code>horizontal_Layout</code>，通过<code>QHBoxLayout()</code>进行设置</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%B0%B4%E5%B9%B3.png" alt="image-20250718160247319"></p>
+<p>垂直布局：<code>vertical_Layout</code>，通过<code>QVBoxLayout()</code>进行设置</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E5%9E%82%E7%9B%B4.png"></p>
+<p>栅格布局：<code>grid_Layout</code>，通过<code>QGBoxLayout()</code>进行设置</p>
+<p>我们最终所定义出的各个部件，以及各个子布局的设计，最后都要由主布局设计调用<code>addLayout()</code>方法才能加入到整体布局中，最终由主窗口执行<code>setLayout()</code>表示把整体布局作为主窗口的布局使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个水平布局，作为整体布局设计</span></span><br><span class="line">layout = QHBoxLayout()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建两垂直布局，作为子布局设计</span></span><br><span class="line">layout1 = QVBoxLayout()</span><br><span class="line">layout2 = QVBoxLayout()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将两个子布局加入到整体布局中</span></span><br><span class="line">layout.addLayout(layout1)</span><br><span class="line">layout.addLayout(layout2)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置当前整体布局为主窗口的布局方式</span></span><br><span class="line"><span class="variable language_">self</span>.setLayout(layout)</span><br><span class="line"><span class="variable language_">self</span>.show()</span><br></pre></td></tr></table></figure>
+
+<p>在上面这段代码中，我们设置了一个水平布局作为整体布局，两个垂直布局的子布局依次加入到水平布局中，会按照<strong>等距水平</strong>的方式进行排列</p>
+<h3 id="标签和文本框"><a href="#标签和文本框" class="headerlink" title="标签和文本框"></a><strong>标签和文本框</strong></h3><p>假设我们要实现一个形如<strong>用户登录界面</strong>的窗口，在窗口中需要给出用户名和密码的字段进行提示，同时要给出用户输入用户名和密码的框体，此时我们就要用到<code>label</code>（标签）和<code>line_edit</code>（文本编辑），他们分别可以通过 PyQt6 中的<code>QLabel()</code>和<code>QLineEdit()</code>方法来实现</p>
+<p>注意此时的标签和文本编辑框都可以看做是<strong>组件</strong>，组件在设置以后，只有通过<code>addWidget()</code>加入到某个<strong>布局</strong>，并且最终加入到整体布局并 setLayout 以后，才能被展示出来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义标签组件和文本框组件</span></span><br><span class="line">label = QLabel(<span class="string">&quot;what can I say&quot;</span>)</span><br><span class="line">edit = QLineEdit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义布局并且把组件加入布局</span></span><br><span class="line">layout = QHBoxLayout()</span><br><span class="line">layout.addWidget(label)</span><br><span class="line">layout.addWidget(label)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将当前布局应用到主窗口并展示</span></span><br><span class="line"><span class="variable language_">self</span>.setLayot(layout)</span><br><span class="line"><span class="variable language_">self</span>.show()</span><br></pre></td></tr></table></figure>
+
+<p>在上面这段代码中，我们向水平布局中依次加入了 label 和 edit 这两个组件，不同于把子布局加入到整体布局中的<code>addLayout()</code>，向整体布局中加入组件可以使用<code>addWidget()</code>方法实现</p>
+<h3 id="布局的嵌套"><a href="#布局的嵌套" class="headerlink" title="布局的嵌套"></a><strong>布局的嵌套</strong></h3><p>假设我们想实现一个<strong>用户登录界面</strong>，也就是分别有两行两列，第一行是用户名输入提示，用户名输入位置，第二行是密码输入提示，密码输入位置，我们就需要<strong>嵌套布局</strong>来实现</p>
+<p>我们可以先按行处理，定义两个水平布局，分别维护用户名信息和密码信息，再定义一个垂直布局作为整体布局，把两个水平布局作为子布局加入即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">self</span>.setWindowTitle(<span class="string">&quot;用户登录界面&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 布局设计</span></span><br><span class="line">layout = QVBoxLayout()</span><br><span class="line">username_input = QHBoxLayout()</span><br><span class="line">password_input = QHBoxLayout()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 组件设计</span></span><br><span class="line">username_label = QLabel(<span class="string">&quot;用户名&quot;</span>)</span><br><span class="line">password_label = QLabel(<span class="string">&quot;密码&quot;</span>)</span><br><span class="line">username_edit = QLineEdit()</span><br><span class="line">password_edit = QLineEdit()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 组件加入子布局</span></span><br><span class="line">username_input.addWidget(username_label)</span><br><span class="line">username_input.addWidget(username_edit)</span><br><span class="line">password_input.addWidget(password_label)</span><br><span class="line">password_input.addWidget(password_edit)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 子布局加入整体布局</span></span><br><span class="line">layout.addLayout(username_input)</span><br><span class="line">layout.addLayout(password_input)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 应用整体布局到主窗口</span></span><br><span class="line"><span class="variable language_">self</span>.setLayout(layout)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 代码结束</span></span><br><span class="line"><span class="variable language_">self</span>.show()</span><br></pre></td></tr></table></figure>
+
+<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a><strong>按钮</strong></h3><p>在我们刚刚设计的登录界面中，我们还想要有一个供用户点击<strong>确认</strong>的按钮，对于按钮部件<code>button</code>，我们在 PyQt 中可以通过<code>QPushButton()</code>方法来实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">button = QPushButton(<span class="string">&quot;登录&quot;</span>)</span><br><span class="line">layout.addWidget(button)</span><br></pre></td></tr></table></figure>
+
+<h2 id="页面优化技巧"><a href="#页面优化技巧" class="headerlink" title="页面优化技巧"></a><strong>页面优化技巧</strong></h2><p>通过上面的知识，我们只能设计出一个很粗糙的页面，还需要对整个页面的布局进行若干优化</p>
+<h3 id="页面大小设计"><a href="#页面大小设计" class="headerlink" title="页面大小设计"></a><strong>页面大小设计</strong></h3><p>如果我们想设置我们的页面的长宽，或者固定页面的大小比例，可以通过<code>resize()</code>方法或者<code>setFixedSize()</code>方法实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">self</span>.resize(<span class="number">400</span>, <span class="number">300</span>)</span><br><span class="line"><span class="variable language_">self</span>.setFixedSize(<span class="number">400</span>, <span class="number">300</span>)</span><br></pre></td></tr></table></figure>
+
+<p>二者的区别在于，前者只是设置窗口的初始化大小，后续用户可以通过拖拽窗口边缘进行手动调整窗口大小，而后者会完全禁止用户调整窗口大小，把窗口限定在 400 × 300 像素</p>
+<h3 id="占比设计"><a href="#占比设计" class="headerlink" title="占比设计"></a><strong>占比设计</strong></h3><p>假设我们在一个水平布局 layout 中分别加入了三个部件 widget1，widget2，widget3，现在这三个部件是<strong>等距分布</strong>的，如果我们希望他们按照一定的比例大小分配空间，可以通过设置<code>stretch</code>参数实现</p>
+<p>该参数表示<strong>控件在布局中的空间分配比例</strong>，它决定了当窗口大小改变时，各个控件如何伸缩以适应可用空间</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username_input.addWidget(username_label, stretch=<span class="number">1</span>)  <span class="comment"># 标签占1份空间</span></span><br><span class="line">username_input.addWidget(username_edit, stretch=<span class="number">4</span>)   <span class="comment"># 输入框占4份空间</span></span><br></pre></td></tr></table></figure>
+
+<p>直接在<code>addwidget()</code>或<code>addLayout()</code>方法中当做有名参数直接设置即可，上面的代码表示，在 username_input 这个水平布局中，username_label 占一份空间，username_edit 占 4 份空间</p>
+<h3 id="设置按钮大小"><a href="#设置按钮大小" class="headerlink" title="设置按钮大小"></a><strong>设置按钮大小</strong></h3><p>可以通过<code>setFixedWidth()</code>等方法设置按钮的固定宽度，与之相类似的还有下面的函数方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置窗口宽度和高度都固定</span></span><br><span class="line">setFixedSize(QSize, size) / setFixedSize(w, h)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置按钮固定宽度</span></span><br><span class="line">setFixedHeight(height)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置按钮固定高度</span></span><br><span class="line">setFixedWidth(width)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置按钮最大 / 小宽度和高度</span></span><br><span class="line">setMinimumSize(QSize, size) / setMinimumSize(w, h)</span><br><span class="line">setMaximumSize(QSize, size) / setMaximumSize(w, h)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置按钮最大 / 小宽度</span></span><br><span class="line">setMinimumWidth(minw)</span><br><span class="line">setMaximumWidth(maxw)</span><br><span class="line"><span class="comment"># 设置按钮最大 / 小高度</span></span><br><span class="line">setMinimumHeight(minh)</span><br><span class="line">setMaximumHeight(maxh)</span><br></pre></td></tr></table></figure>
+
+<p>其中固定布局参数在设定以后，该维度的布局不会随窗口的扩大与缩小而变化，会始终保持固定的参数</p>
+<h3 id="设置页边距"><a href="#设置页边距" class="headerlink" title="设置页边距"></a><strong>设置页边距</strong></h3><p>可以通过<code>setContentMargins()</code>方法，分别设置上下左右四个方向的页边距</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">layout.setContentsMargins(<span class="number">50</span>, <span class="number">20</span>, <span class="number">50</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="控制文本或部件对齐"><a href="#控制文本或部件对齐" class="headerlink" title="控制文本或部件对齐"></a><strong>控制文本或部件对齐</strong></h3><p>如果我们在布局中，想设置某个组件、文本甚至是子布局具有某些对齐性质，可以通过<code>setAlignment()</code>方法或者<code>alignment</code>参数实现，具体的实现有两种书写形式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 标签文本居中显示，使用 setAlignment() 方法</span></span><br><span class="line">label = QLabel(<span class="string">&quot;居中文本&quot;</span>)</span><br><span class="line">label.setAlignment(QtCore.Qt.AlignmentFlag.AlignHCenter)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按钮部件在布局中对齐，使用 Alignment 参数</span></span><br><span class="line">layout.addWidget(button, alignment=QtCore.Qt.AlignmentFlag.AlignHCenter)</span><br></pre></td></tr></table></figure>
+
+<p>除去 AlignHCnter 表示水平居中对齐参数之外，PyQt 中还支持其他很多控制位置的参数，这些参数都存放在<code>QtCore</code>库中，调用时需要通过<code>QtCore.Qt.AlignmentFlag.具体对齐方式</code>来实现：</p>
+<p>水平对齐选项：</p>
+<table>
+<thead>
+<tr>
+<th align="left">标志</th>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>AlignLeft</code></td>
+<td align="left">0x0001</td>
+<td align="left">左对齐</td>
+</tr>
+<tr>
+<td align="left"><code>AlignRight</code></td>
+<td align="left">0x0002</td>
+<td align="left">右对齐</td>
+</tr>
+<tr>
+<td align="left"><code>AlignHCenter</code></td>
+<td align="left">0x0004</td>
+<td align="left">水平居中</td>
+</tr>
+<tr>
+<td align="left"><code>AlignJustify</code></td>
+<td align="left">0x0008</td>
+<td align="left">两端对齐</td>
+</tr>
+</tbody></table>
+<p>垂直对齐选项：</p>
+<table>
+<thead>
+<tr>
+<th align="left">标志</th>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>AlignTop</code></td>
+<td align="left">0x0020</td>
+<td align="left">顶部对齐</td>
+</tr>
+<tr>
+<td align="left"><code>AlignBottom</code></td>
+<td align="left">0x0040</td>
+<td align="left">底部对齐</td>
+</tr>
+<tr>
+<td align="left"><code>AlignVCenter</code></td>
+<td align="left">0x0080</td>
+<td align="left">垂直居中</td>
+</tr>
+<tr>
+<td align="left"><code>AlignBaseline</code></td>
+<td align="left">0x0100</td>
+<td align="left">基线对齐（文本）</td>
+</tr>
+</tbody></table>
+<p>常用组合选项：</p>
+<table>
+<thead>
+<tr>
+<th align="left">组合标志</th>
+<th align="left">等效写法</th>
+<th align="left">描述</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>AlignCenter</code></td>
+<td align="left">&#96;AlignHCenter</td>
+<td align="left">AlignVCenter&#96;</td>
+<td>完全居中</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">&#96;AlignLeft</td>
+<td align="left">AlignTop&#96;</td>
+<td>左上对齐</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">&#96;AlignRight</td>
+<td align="left">AlignBottom&#96;</td>
+<td>右下对齐</td>
+</tr>
+</tbody></table>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a><strong>实例</strong></h3><p>在基础布局的基础上，加上上面的布局优化技巧，我们就实现了一个相对完善的用户登录界面，完整代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyQt6.QtWidgets <span class="keyword">import</span> QApplication, QWidget,QHBoxLayout, QVBoxLayout, QLabel, QLineEdit, QPushButton</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt6 <span class="keyword">import</span> QtCore</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MainWindow</span>(<span class="title class_ inherited__">QWidget</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, *args, **kwargs</span>):</span><br><span class="line">        <span class="comment"># 调用父类的初始化方法</span></span><br><span class="line">        <span class="built_in">super</span>().__init__(*args, **kwargs)</span><br><span class="line">        <span class="comment"># 代码开始</span></span><br><span class="line">        <span class="variable language_">self</span>.setWindowTitle(<span class="string">&quot;登录验证&quot;</span>)</span><br><span class="line">        <span class="comment"># self.resize(400, 300)</span></span><br><span class="line">        <span class="variable language_">self</span>.setFixedSize(<span class="number">400</span>, <span class="number">300</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 垂直布局</span></span><br><span class="line">        layout = QVBoxLayout()</span><br><span class="line">        username_input = QHBoxLayout()</span><br><span class="line">        password_input = QHBoxLayout()</span><br><span class="line">        button_input = QHBoxLayout()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 定义用户名 label 和 edit</span></span><br><span class="line">        username_label = QLabel(<span class="string">&quot;用户名&quot;</span>)</span><br><span class="line">        username_edit = QLineEdit()</span><br><span class="line">        username_input.addWidget(username_label, stretch=<span class="number">1</span>)</span><br><span class="line">        username_input.addWidget(username_edit, stretch=<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 定义密码 label 和 edit</span></span><br><span class="line">        password_label = QLabel(<span class="string">&quot;密码&quot;</span>)</span><br><span class="line">        password_edit = QLineEdit()</span><br><span class="line">        password_input.addWidget(password_label, stretch=<span class="number">1</span>)</span><br><span class="line">        password_input.addWidget(password_edit, stretch=<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 定义登录按钮</span></span><br><span class="line">        login_button = QPushButton(<span class="string">&quot;登录&quot;</span>)</span><br><span class="line">        login_button.setFixedWidth(<span class="number">200</span>)</span><br><span class="line">        button_input.addWidget(login_button, alignment=QtCore.Qt.AlignmentFlag.AlignHCenter)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 添加到布局</span></span><br><span class="line">        layout.addLayout(username_input)</span><br><span class="line">        layout.addLayout(password_input)</span><br><span class="line">        layout.addLayout(button_input)</span><br><span class="line">        layout.setContentsMargins(<span class="number">50</span>, <span class="number">20</span>, <span class="number">50</span>, <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">self</span>.setLayout(layout)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 代码结束</span></span><br><span class="line">        <span class="variable language_">self</span>.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建应用</span></span><br><span class="line">    app = QApplication(sys.argv)</span><br><span class="line">    w = MainWindow()</span><br><span class="line">    <span class="comment"># 执行应用</span></span><br><span class="line">    sys.exit(app.<span class="built_in">exec</span>())</span><br></pre></td></tr></table></figure>
+
+<h2 id="控件"><a href="#控件" class="headerlink" title="控件"></a><strong>控件</strong></h2><p>在 PyQt 中，控件（Widget）是构建用户界面的基本元素，可以理解为可视化程序中的各种”零件”，先前介绍的<code>button</code>就属于按钮控件，接下来我们考虑引入<strong>更多控件</strong>来丰富我们的布局，同时为空间<strong>触发功能</strong>，来实现和用户的交互</p>
+<h3 id="button-控件"><a href="#button-控件" class="headerlink" title="button 控件"></a><strong>button 控件</strong></h3><p><code>button</code>控件就是常见的按钮控件，用户可以通过点击按钮实现某些功能，该控件可以通过<code>QPushButton()</code>方法来实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">self</span>.button1 = QPushButton(<span class="string">&quot;第一个按钮&quot;</span>)</span><br><span class="line">button2 = QPushButton(<span class="string">&quot;第二个按钮&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意，button1 有 self 前缀，而 button2 没有，表示两者<strong>作用域</strong>不同，button1 在整个类中都可用，而 button2 则仅在当前的方法中（<code>__init__</code>初始化）使用，如果我们需要再类的其他方法中访问该按钮，如绑定事件，修改文本等，则需要用 self.button1 的方式实现</p>
+<p><strong>信号与槽</strong></p>
+<p>如果我们想为按钮添加和用户交互的功能，比如用户点击按钮时，用户按下按钮的阶段，用户松开按钮时，我们可以通过<strong>信号和槽</strong>实现相关的功能</p>
+<p><strong>按钮可选中 &#x2F; 可切换</strong></p>
+<p>注意在 PyQt 中，我们的按钮被按下后有两种情况，一种是按下后松开鼠标，按钮扔保持被按下的状态，一种是按下后松开鼠标，按钮立刻回弹（默认情况），前者每次点击按钮都会发射<code>toggled</code>信号，后者每次点击按钮只会发射<code>clickd</code>信号，可以通过设置<code>setCheckable()</code>函数控制两种状态切换</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置按钮为可选中 / 可切换状态</span></span><br><span class="line">button.setCheckable(<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置按钮为普通按钮，按下后自动弹起</span></span><br><span class="line">button.setCheckable(<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>只有<code>setCheckable()</code>选项设置为 True 的按钮才可以添加<strong>信号和槽</strong>，信号和槽可以用来捕获按钮状态的变化，比如用户按下按钮的瞬间，我们可以捕获这个操作，并且通过这个操作关联<strong>某个函数</strong>，对用户的操作做出反应</p>
+<p><strong>信号和槽</strong></p>
+<p>每个按钮都有以下几个状态，可以通过<code>connect()</code>方法把它们与特定的函数联系起来，当触发某个状态时，就会执行相应的函数：</p>
+<ol>
+<li>clicked：按钮被点击</li>
+<li>pressed：按钮被压下</li>
+<li>released：按钮被松开</li>
+<li>toggled：按钮状态发生切换</li>
+</ol>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/07/21/PyQt/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/07/21/PyQt/')">PyQt</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/07/21/PyQt/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=PyQt&amp;url=http://example.com/2025/07/21/PyQt/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A217.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">MyBlog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/python%E5%BC%80%E5%8F%91/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>python开发<span class="tagsPageCount">2</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A218.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/07/20/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A217.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">数学建模</div></div></a></div><div class="next-post pull-right"><a href="/2025/07/21/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A218.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">背包问题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/07/18/GUI-DAY1/" title="GUI-DAY1"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A213.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-18</div><div class="title">GUI-DAY1</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PyQt"><span class="toc-number">1.</span> <span class="toc-text">PyQt</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC"><span class="toc-number">1.1.</span> <span class="toc-text">基础代码风格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%9E%B6%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">代码架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">常用布局方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E5%92%8C%E6%96%87%E6%9C%AC%E6%A1%86"><span class="toc-number">1.2.2.</span> <span class="toc-text">标签和文本框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B1%80%E7%9A%84%E5%B5%8C%E5%A5%97"><span class="toc-number">1.2.3.</span> <span class="toc-text">布局的嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E9%92%AE"><span class="toc-number">1.2.4.</span> <span class="toc-text">按钮</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E4%BC%98%E5%8C%96%E6%8A%80%E5%B7%A7"><span class="toc-number">1.3.</span> <span class="toc-text">页面优化技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%A4%A7%E5%B0%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.1.</span> <span class="toc-text">页面大小设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%A0%E6%AF%94%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.3.2.</span> <span class="toc-text">占比设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%8C%89%E9%92%AE%E5%A4%A7%E5%B0%8F"><span class="toc-number">1.3.3.</span> <span class="toc-text">设置按钮大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%A1%B5%E8%BE%B9%E8%B7%9D"><span class="toc-number">1.3.4.</span> <span class="toc-text">设置页边距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%96%87%E6%9C%AC%E6%88%96%E9%83%A8%E4%BB%B6%E5%AF%B9%E9%BD%90"><span class="toc-number">1.3.5.</span> <span class="toc-text">控制文本或部件对齐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.3.6.</span> <span class="toc-text">实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">控件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#button-%E6%8E%A7%E4%BB%B6"><span class="toc-number">1.4.1.</span> <span class="toc-text">button 控件</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/21/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" title="背包问题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A218.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="背包问题"/></a><div class="content"><a class="title" href="/2025/07/21/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/" title="背包问题">背包问题</a><time datetime="2025-07-21T08:12:34.000Z" title="发表于 2025-07-21 16:12:34">2025-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/21/PyQt/" title="PyQt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A217.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PyQt"/></a><div class="content"><a class="title" href="/2025/07/21/PyQt/" title="PyQt">PyQt</a><time datetime="2025-07-21T00:03:13.000Z" title="发表于 2025-07-21 08:03:13">2025-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/20/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" title="数学建模"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A217.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数学建模"/></a><div class="content"><a class="title" href="/2025/07/20/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" title="数学建模">数学建模</a><time datetime="2025-07-20T10:27:42.000Z" title="发表于 2025-07-20 18:27:42">2025-07-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/19/AI%E5%BA%94%E7%94%A8%E4%B8%8E%E5%BC%80%E5%8F%91/" title="AI应用与开发"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A216.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AI应用与开发"/></a><div class="content"><a class="title" href="/2025/07/19/AI%E5%BA%94%E7%94%A8%E4%B8%8E%E5%BC%80%E5%8F%91/" title="AI应用与开发">AI应用与开发</a><time datetime="2025-07-19T13:37:05.000Z" title="发表于 2025-07-19 21:37:05">2025-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/18/KMP%E7%AE%97%E6%B3%951/" title="KMP算法(下)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A213.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="KMP算法(下)"/></a><div class="content"><a class="title" href="/2025/07/18/KMP%E7%AE%97%E6%B3%951/" title="KMP算法(下)">KMP算法(下)</a><time datetime="2025-07-18T12:16:56.000Z" title="发表于 2025-07-18 20:16:56">2025-07-18</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/python-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">python & 机器学习<sup>5</sup></a><a href="/tags/python%E5%BC%80%E5%8F%91/" style="font-size: 0.88rem;">python开发<sup>2</sup></a><a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 0.88rem;">数学建模<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>8</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
