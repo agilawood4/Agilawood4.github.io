@@ -1,0 +1,527 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>数据处理 | MyBlog</title><meta name="keywords" content="Python与机器学习"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="数据处理"><meta name="application-name" content="数据处理"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="数据处理"><meta property="og:url" content="http://example.com/2025/08/11/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/index.html"><meta property="og:site_name" content="MyBlog"><meta property="og:description" content="数据处理通过阅读本文，您可以大致了解 Pytorch 中和数据处理有关的内容，包括数据加载，图像处理等知识 数据集常见组织形式在目前的学习阶段，我们的模型所进行的一般都是监督学习（数据有标签），而有标签的数据集一般有以下两种组织方式：  不同类别的数据存放在不同文件夹内，文件夹名称就是对应数据的类别"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="http://example.com/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A246.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://example.com/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A246.jpg"><meta name="description" content="数据处理通过阅读本文，您可以大致了解 Pytorch 中和数据处理有关的内容，包括数据加载，图像处理等知识 数据集常见组织形式在目前的学习阶段，我们的模型所进行的一般都是监督学习（数据有标签），而有标签的数据集一般有以下两种组织方式：  不同类别的数据存放在不同文件夹内，文件夹名称就是对应数据的类别"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/08/11/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: MyBlog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'MyBlog',
+  title: '数据处理',
+  postAI: '',
+  pageFillDescription: '数据处理, 数据集常见组织形式, 数据的加载, __init__(), __getitem__(), __len__(), 实际测试, 代码实现, TensorBoard, add_scalar(), close(), 图像展示, add_image(), 代码实现, transforms, ToTensor(), ToPILImage(), Normalize(), resize(), Compose(), 代码实现, 官方数据集使用, 数据集加载, 数据集访问, 代码实现, dataloader, Dataloader 实例化, 数据记载与获取, 代码实现数据处理通过阅读本文您可以大致了解中和数据处理有关的内容包括数据加载图像处理等知识数据集常见组织形式在目前的学习阶段我们的模型所进行的一般都是监督学习数据有标签而有标签的数据集一般有以下两种组织方式不同类别的数据存放在不同文件夹内文件夹名称就是对应数据的类别所有数据都存放在同一个文件夹内但是额外准备标签文件夹该文件夹中为每个数据存一个文件记录这个数据的类别其中每一个文件都会有一个与它名称相同的标记文件的组织方式的组织方式数据的加载在中我们可以通过继承库实现我们自己的数据集加载类在继承的过程中我们需要根据自己加载的数据集特点重写原库的以下三个方法自定义数据加载类的初始化方法自定义从数据加载类中获取目标数据的方法自定义获取目标数据集大小的方法我们自定义的数据加载类需要完成的两个基本功能即为帮助我们获取目标数据集中的元素通常以列表形式返回获取目标数据集的大小待加载的有多少个数据我们定义的类结构一般如下在加载自定义数据集时我们需要把待加载的数据集存在我们电脑本地因此我们需要给出待加载数据集在电脑中存放的地址路径这里可以是相对路径也可以是绝对路径其中相对路径以路径习惯组织绝对路径以路径习惯组织机器学习代码示例数据集数据集其中路径中的在中是转义字符需要手动修改成而路径则不需要修改此外我们还需要传入对应数据集的标签用于表示在模型训练阶段我们那当前加载的是什么类别的数据集因此我们的方法可以如下设计这里我们的数据组织方式是数据集路径标签具体数据的形式也就是类型的数据组织形式其中用于指向数据集地址路径用于表明在当前数据集下到底取哪一个标签分类调用方法把这两段路径进行拼接即可得到对应标签类别的数据集的完整地址这里之所以使用方法而不是简单的字符串拼接是因为方法能够按照路径的方式进行拼接自动处理兼容和路径完成和的正确处理等功能得到合法的路径这样中就存放了我们当前要加载的数据集的正确路径我们最后调用方法该方法用于遍历并且返回其入参目录下所有子文件的地址以列表形式返回并且存入到中换言之也就是待加载数据集目录下的所有数据的相对地址会以列表的形式存入这个变量中供我们后续调用注意这里存的是相对地址比如我们当前数据集的路径为每一个数据相对于数据库的路径为我们存的就是单独的不会存上级目录该方法用于实现从我们已经加载好的数据集中获取某个数据也就是从上文我们维护的中获取数据因为此时数据以列表的形式进行组织我们可以通过下标索引的方式从列表中取出某个位置的数据的地址注意是相对地址存入中接下来我们考虑拼接出这个数据的绝对地址这个数据完整的地址来源于三部分数据集本身的地址数据集内某个类别的相对地址某个具体数据的相对地址我们使用把这三者按顺序拼接即可得到一张图片的完整路径最后我们通过库中的库提供的方法通过传入的路径得到对应的对象这个对象可以通过调用方法进行显示返回这个对象和它对应的标签即可该函数用于获取数据集的大小当前数据集所有数据的相对地址都已经以列表形式加载到中我们只需要获取列表长度即可得到数据集的大小实际测试接下来我们通过实例化的方式初始化两个自定义的数据加载类这里我们使用的是土堆老师所提供的蚂蚁和蜜蜂数据集对应数据集可以从网盘链接文件蚂蚁蜜蜂数据集中获取我们分别以和作为标签加载这两个数据集这里他们所处的数据集地址相同只是分类标签不同机器学习代码示例数据集蚂蚁数据集蜜蜂数据集需要注意的是原有类中的方法是支持直接对实例化对象下标索引访问的也就是以下两种方法是等价的有时候为了简便我们会直接用实例化对象名索引的形式进行访问我们实现的方法继承自类自然也支持该功能由此我们即可获得蚂蚁数据集中的第张照片通过类自带的方法我们可以展示这张图片的内容最后中的数据集是可以进行相加的相加的结果就是对两个数据集内容的拼接这里我们继承实现的也支持这样的拼接操作新数据集的大小为蚂蚁数据集和蜜蜂数据集大小的总和数据顺序为蚂蚁在前蜜蜂在后内部顺序和原顺序不变代码实现对应这部分完整的源码文件已上传至网盘文件是提供的一个可视化工具包具体来说就是展示用户在模型训练过程中生成一个窗口展示模型的某种性能或观测目标的变化过程可以显示不同训练步骤下模型的情况提高用户的开发效率要想使用使用我们需要引入类中的模块接下来我们通过类初始化一个实例化变量在初始化时我们需要传入我们要创建的的名称以字符串的形式传入通过上述代码我们就创建了一个名为的实例化变量对应会在当前目录下生成一个名为的文件我们用所绘制的全部图表最终都会存储在这个文件之下如果我们想使用上面的实例变量进行简单的图像绘制我们可以通过调用方法来实现该函数记录一个标量数据点用于在中绘制曲线其接收以下几个参数待绘制图像的名称轴的元素轴的元素比如我们通过下面的代码即可绘制的图像其中我们通过外层循环控制描写个坐标点用于构成图像我们通过调用变量的方法确保所有数据写入日志文件必须要在图像绘制完成后调用这个方法否则相当于我们绘制的图像没有保存图像展示我们通过在上述文件夹下生成的可视化图表是不能直接展示的需要在终端中执行下面的命令行才能展示这里是我们上面中所传入的值表示所存储的文件位置该代码运行结果会生成一个本地地址我们通过访问这个网址即可看到对应的图像化界面如果我们修改中的参数绘制新的图表有可能新图标和旧图表会重叠导致不可视此时我们可以通过先清除文件夹中的所有内容或者直接删除文件夹然后重新执行代码运行新的来实现新图像的绘制我们通过调用方法向某个中加入一张或多张图片该函数本身支持的图片元素入参需要是数组或者张量的形式如果我们的图片本身不是这两种形式需要进行预先的转换我们通过导入的图片本身就是形式不需要额外的转化而通过的模块导入的图片则是类型非数组需要通过显式调用方法转化为的格式首先我们进行图片引入和格式转换机器学习代码示例数据集这里还是使用绝对路径的形式然后通过函数把图片的路径转换成类型的实例化对象进而转化成类型的实例化对象该函数接收以下几个参数绘制的图表的名称要展示的图片传入或者类型的图片元素当前这张图片展示在训练的哪一步用于动态展示多张图片展示训练过程中的变化指定数组的维度顺序一般设为表示三个维度分别为图片的高度宽度通道这样我们就在中加入了一张图片其中如果我们想在训练的不同过程中加入不同的图片可以通过设置不同的值来实现代码实现对应这部分完整的源码文件已上传至网盘文件是中用于图像预处理和数据增强的核心模块该模块提供了一系列可组合的图像变换操作能够将原始图像转换为适合神经网络训练的格式使用时需要从中引入模块该方法用于把类型或者类型的图像统一转化为类型的图像在使用时需要先实例化对应的转换器再进行使用实例化转换器对象有时候为了方便我们也可以把上述两句代码压缩成一句在转化为类型后我们就可以把对应的图片传入中进行展示对应上面我们使用的方法该方法用于把类型的图像反向转化回类型的图像功能与用法和相类似该方法用于对图像张量进行标准化归一化处理也是深度学习中预处理的常见操作也需要先初始化出对应的转换器再进行操作该方法支持两组参数每组参数为第一个列表分别表示归一化以后各个通道的均值和标准差每个列表的三个值分别表示图像的高度宽度和通道值这里均值和标准差均设为是一种常见的对称标准化方式会将输入张量的范围从映射到输出的图像仍然是类型且形状仍然是和原本形状一致该方法用于对图像进行尺寸调整使用过程中也要先创造一个图像尺寸调整器该方法可以接受一个或两个参数如果只有一个参数把图像长边和短边中的短边缩放到该值长边按比例调整如果有两个参数则把调整为调整为向转换器对象中传入的图片要求是图像或者数组返回值类型保持不变仍然是图像或者数组该方法用于生成一个由多个转换器对象组成的集合可以把多个变换操作等组合成一个顺序执行的管道传入一个由转换器组成的列表返回的也是一个转换器对象接下来我们用转换器对图像进行处理时会先对其进行缩放再转化为张量类型接收一张或类型的图片返回类型的图片代码实现对应这部分完整的源码文件已上传至网盘文件官方数据集使用除了自己手动下载数据集并定义之外我们也可以直接下载官方现成的数据集他们都集合再库中数据集加载我们可以直接从的模块中下载我们想要的数据集在加载过程中一般需要设置下面几个参数表示下载的数据集在本地存放的路径设置为时表示加载训练集时表示加载测试集对图片进行预处理的格式支持一个列表具体用法与相同传入一个转换器对象构成的列表即可设置为时如果本地路径下没有数据集则会自动从官网进行下载我们以数据集的加载作为示例该数据集包含个类别猫狗飞机等的张彩色图像每类张这里我们在加载数据集的过程中分别加载训练和测试集并且对每一张图片都标准化再转化为张量存在当前目录下的文件夹内数据集访问官方数据集在下载到本地以后也是一个类型的对象我们可以用上面自定义数据集同样的方式进行访问也就是可以通过数据集名下标索引的方式直接访问我们把训练集中的前张图片在中进行展示如下图所示可以通过滑动进度条选择到不同的图片表示不同的训练进程代码实现对应这部分完整的源码文件已上传至网盘文件上面我们通过自定义或下载的方式得到了目标的数据集但是此时只支持我们通过下标索引的方式进行访问而则支持更加灵活的访问方式实例化在数据加载过程中一般接受以下几个常见的参数待加载的数据集只需要传入我们自定义或下载的数据集的实例化对象即可单次加载的数据条数也就是一次取几个数据一起加载设置为的时候表示对加载的数据进行乱序使得每次加载得到的数据顺序都不同设置为时每次加载的数据顺序是相同的默认为表示只用一个主进程进行加载如果数据总量和不整除的时候如果设置为则舍弃最后余下的数据设置为则不舍弃比如个数据那么最后会余下个数据值得注意的是在系统下如果报错可以尝试强制设置进行修复需要从库中导包数据集下载数据集加载这里我们选择一组加载个数据组间进行打乱不选择多线程同时不保留余量数据进行加载加载结果会返回到一个的实例化对象中这里我们命名为数据记载与获取和相比前者一次性获取个数据而后者每次只获取一个数据同时不再支持通过下标索引的方式只能通过的方式每次取出一个进行访问比如上面我们设置则我们分别执行下面的代码其输出分别如下如图所示每次加载会一次性加载出个数据数据的不变比如上例中我们就一次性得到张形状为的图片记入中而中则对应存储着张图片各自对应的标记类别我们可以把中的图片在中进行展示这里我们不再是一次取出一张而是一次取出一组因此我们要使用中的方法该方法是方法针对于的版本我们只需要把原方法中参数改成入参即可也就是一个的列表其余参数不变生成的展示如下代码实现对应这部分完整的源码文件已上传至网盘文件',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-08-15 12:02:53',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">MyBlog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>18</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>19</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">15</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url">Python与机器学习</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Python与机器学习</span></a></span></div></div><h1 class="post-title" itemprop="name headline">数据处理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-08-11T07:49:28.000Z" title="发表于 2025-08-11 15:49:28">2025-08-11</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-08-15T04:02:53.347Z" title="更新于 2025-08-15 12:02:53">2025-08-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A246.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/08/11/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"><header><a class="post-meta-categories" href="/categories/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url">Python与机器学习</a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" tabindex="-1" itemprop="url">Python与机器学习</a><h1 id="CrawlerTitle" itemprop="name headline">数据处理</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2025-08-11T07:49:28.000Z" title="发表于 2025-08-11 15:49:28">2025-08-11</time><time itemprop="dateCreated datePublished" datetime="2025-08-15T04:02:53.347Z" title="更新于 2025-08-15 12:02:53">2025-08-15</time></header><h1 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a><strong>数据处理</strong></h1><p>通过阅读本文，您可以大致了解 Pytorch 中和数据处理有关的内容，包括数据加载，图像处理等知识</p>
+<h2 id="数据集常见组织形式"><a href="#数据集常见组织形式" class="headerlink" title="数据集常见组织形式"></a><strong>数据集常见组织形式</strong></h2><p>在目前的学习阶段，我们的模型所进行的一般都是监督学习（数据有标签），而有标签的数据集一般有以下两种组织方式：</p>
+<ol>
+<li>不同类别的数据存放在不同文件夹内，文件夹名称就是对应数据的类别</li>
+<li>所有数据都存放在同一个文件夹（data）内，但是额外准备标签文件夹（label），该文件夹中为每个数据存一个 txt 文件，记录这个数据的类别，其中每一个 data 文件都会有一个与它名称相同的 txt 标记文件</li>
+</ol>
+<p>（1）的组织方式：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F1.png" alt="image-20250811232716910"></p>
+<p>（2）的组织方式：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F2.png" alt="image-20250811232759912"></p>
+<h2 id="数据的加载"><a href="#数据的加载" class="headerlink" title="数据的加载"></a><strong>数据的加载</strong></h2><p>在 Pytorch 中，我们可以通过继承 Dataset 库，实现我们自己的数据集加载类，在继承的过程中，我们需要根据自己加载的数据集特点，重写原 Dataset 库的以下三个方法：</p>
+<ol>
+<li><code>__init__()</code>：自定义数据加载类的初始化方法</li>
+<li><code>__getitem__()</code>：自定义从数据加载类中获取目标数据的方法</li>
+<li><code>__len__()</code>：自定义获取目标数据集大小的方法</li>
+</ol>
+<p>我们自定义的数据加载类需要完成的两个基本功能即为：帮助我们获取目标数据集中的元素（通常以列表形式返回），获取目标数据集的大小（待加载的有多少个数据），我们定义的<code>myData</code>类结构一般如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">myData</span>(<span class="title class_ inherited__">Dataset</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, ...</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="init"><a href="#init" class="headerlink" title="__init__()"></a><strong><code>__init__()</code></strong></h3><p>在加载自定义数据集时，我们需要把待加载的数据集存在我们电脑本地，因此我们需要给出待加载数据集在电脑中存放的地址路径<code>root_dir</code>，这里可以是相对路径也可以是绝对路径，其中相对路径以 Linux 路径习惯组织，绝对路径以 Windows 路径习惯组织：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E:\\机器学习\\代码示例\\数据集\\hymenoptera_data\\hymenoptera_data\\train</span><br><span class="line">数据集/hymenoptera_data/hymenoptera_data/train</span><br></pre></td></tr></table></figure>
+
+<p>其中 Windows 路径中的<code>/</code>在 Python 中是转义字符，需要手动修改成<code>//</code>，而 Linux 路径则不需要修改</p>
+<p>此外，我们还需要传入对应数据集的标签<code>label_dir</code>，用于表示在模型训练阶段，我们那当前加载的是什么类别的数据集，因此我们的<code>__init__()</code>方法可以如下设计：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, root_dir, label_dir</span>):</span><br><span class="line">  <span class="variable language_">self</span>.root_dir = root_dir</span><br><span class="line">  <span class="variable language_">self</span>.label_dir = label_dir</span><br><span class="line">  <span class="variable language_">self</span>.path = os.path.join(<span class="variable language_">self</span>.root_dir, <span class="variable language_">self</span>.label_dir)</span><br><span class="line">  <span class="variable language_">self</span>.img_path = os.listdir(<span class="variable language_">self</span>.path)</span><br></pre></td></tr></table></figure>
+
+<p>这里我们的数据组织方式是：数据集路径 + 标签 + 具体数据的形式，也就是（1）类型的数据组织形式，其中 root_dir 用于指向数据集地址路径，label_dir 用于表明在当前数据集下到底取哪一个标签分类，调用<code>os.path.join()</code>方法把这两段路径进行拼接，即可得到对应标签类别的数据集的完整地址</p>
+<p>这里之所以使用 join() 方法而不是简单的字符串拼接，是因为 join() 方法能够按照路径的方式进行拼接，自动处理兼容 Windows 和 Linux 路径，完成 &#x2F; 和 \ 的正确处理等功能，得到合法的路径</p>
+<p>这样<code>self.path</code>中就存放了我们当前要加载的数据集的正确路径，我们最后调用<code>os.listdir()</code>方法，该方法用于遍历并且返回其入参目录下所有子文件的地址，以<strong>列表</strong>形式返回，并且存入到<code>self.img_path</code>中，换言之，也就是待加载数据集目录下的所有数据的<strong>相对地址</strong>，会以列表的形式存入<code>self.img_path</code>这个变量中，供我们后续调用</p>
+<p>注意这里存的是相对地址，比如我们当前数据集的路径为：A &#x2F;&#x2F; B &#x2F;&#x2F;，每一个数据相对于数据库的路径为 C D … ，我们存的就是单独的 C D …，不会存上级目录</p>
+<h3 id="getitem"><a href="#getitem" class="headerlink" title="__getitem__()"></a><strong><code>__getitem__()</code></strong></h3><p>该方法用于实现从我们已经加载好的数据集中获取某个数据，也就是从上文我们维护的<code>self.img_path</code>中获取数据，因为此时数据以<strong>列表</strong>的形式进行组织，我们可以通过下标索引的方式，从列表中取出某个位置的数据的地址（注意是相对地址），存入<code>img_name</code>中</p>
+<p>接下来我们考虑拼接出这个数据的绝对地址，这个数据完整的地址来源于三部分：数据集本身的地址（<code>self.root_dir</code>），数据集内某个类别的相对地址（<code>self.label_dir</code>），某个具体数据的相对地址（<code>img_name</code>），我们使用<code>os.path.join()</code>把这三者按顺序<strong>拼接</strong>，即可得到一张图片的完整路径</p>
+<p>最后我们通过 PIL 库中的 Image 库提供的<code>Image.open()</code>方法，通过传入 img 的路径，得到对应的 img 对象（这个 img 对象可以通过调用<code>img.show()</code>方法进行显示），返回这个 img 对象和它对应的标签即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__getitem__</span>(<span class="params">self, idx</span>):</span><br><span class="line">  img_name = <span class="variable language_">self</span>.img_path[idx]</span><br><span class="line">  img_item_path = os.path.join(<span class="variable language_">self</span>.root_dir, <span class="variable language_">self</span>.label_dir, img_name)</span><br><span class="line">  img = Image.<span class="built_in">open</span>(img_item_path)</span><br><span class="line">  label = <span class="variable language_">self</span>.label_dir</span><br><span class="line">  <span class="keyword">return</span> img, label</span><br></pre></td></tr></table></figure>
+
+<h3 id="len"><a href="#len" class="headerlink" title="__len__()"></a><strong><code>__len__()</code></strong></h3><p>该函数用于获取数据集的大小，当前数据集所有数据的相对地址都已经以列表形式加载到<code>self.img_path</code>中，我们只需要获取<strong>列表长度</strong>，即可得到数据集的大小</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">len</span>(<span class="variable language_">self</span>.img_path)</span><br></pre></td></tr></table></figure>
+
+<h3 id="实际测试"><a href="#实际测试" class="headerlink" title="实际测试"></a><strong>实际测试</strong></h3><p>接下来我们通过实例化的方式，初始化两个自定义的数据加载类，这里我们使用的是土堆老师所提供的蚂蚁和蜜蜂数据集，对应数据集可以从网盘链接文件：<code>蚂蚁蜜蜂数据集</code>中获取，我们分别以 ants 和 bee 作为标签，加载这两个数据集：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里他们所处的数据集地址相同，只是分类标签不同</span></span><br><span class="line">root_dir = <span class="string">&quot;E:\\机器学习\\代码示例\\数据集\\hymenoptera_data\\hymenoptera_data\\train&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 蚂蚁数据集</span></span><br><span class="line">ants_label_dir = <span class="string">&quot;ants&quot;</span></span><br><span class="line">ants_dataset = myData(root_dir, ants_label_dir)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 蜜蜂数据集</span></span><br><span class="line">bees_label_dir = <span class="string">&quot;bees&quot;</span></span><br><span class="line">bees_dataset = myData(root_dir, bees_label_dir)</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，原有 Dataset 类中的<code>__getitem__()</code>方法是支持直接对实例化对象<strong>下标索引</strong>访问的，也就是以下两种方法是等价的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img, label = myData.__getitem__(idx)</span><br><span class="line">img, label = myData[idx]</span><br></pre></td></tr></table></figure>
+
+<p>有时候为了简便，我们会直接用实例化对象名 + [] + 索引的形式进行访问，我们实现的方法继承自 Dataset 类，自然也支持该功能</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">img, label = ants_dataset[<span class="number">0</span>]</span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
+
+<p>由此我们即可获得蚂蚁数据集中的第 0 张照片，通过 Image 类自带的<code>show()</code>方法，我们可以展示这张图片的内容</p>
+<p>最后，Dataset 中的数据集是可以进行相加的，相加的结果就是对两个数据集内容的拼接，这里我们继承实现的 myData 也支持这样的拼接操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_dataset = ants_dataset + bees_dataset</span><br></pre></td></tr></table></figure>
+
+<p>新数据集的大小为蚂蚁数据集和蜜蜂数据集大小的总和，数据顺序为蚂蚁在前，蜜蜂在后，内部顺序和原顺序不变</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h3><p>对应这部分完整的源码文件已上传至网盘文件：<code>read_data.ipynb</code></p>
+<h2 id="TensorBoard"><a href="#TensorBoard" class="headerlink" title="TensorBoard"></a><strong>TensorBoard</strong></h2><p>TensorBoard 是 TensorFlow 提供的一个可视化工具包，具体来说就是展示用户在模型训练过程中，生成一个窗口，展示模型的某种性能或观测目标的变化过程，可以显示不同训练步骤（step）下模型的情况，提高用户的开发效率</p>
+<p>要想使用使用 TensorBoard，我们需要引入 tensorboardX 类中的<code>SummaryWriter</code>模块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorboardX <span class="keyword">import</span> SummaryWriter</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们通过<code>SummaryWriter</code>类，初始化一个实例化变量<code>writer</code>，在初始化时我们需要传入我们要创建的 TensorBoard 的名称，以字符串的形式传入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer = SummaryWriter(<span class="string">&quot;logs&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>通过上述代码，我们就创建了一个名为 logs 的实例化 TensorBoard 变量，对应会在当前目录下生成一个名为<strong>logs</strong>的文件，我们用 writer 所绘制的全部图表最终都会存储在这个文件之下</p>
+<h3 id="add-scalar"><a href="#add-scalar" class="headerlink" title="add_scalar()"></a><strong><code>add_scalar()</code></strong></h3><p>如果我们想使用上面的 writer 实例变量进行简单的图像绘制，我们可以通过调用<code>add_scalar()</code>方法来实现，该函数记录一个标量（<code>scalar</code>）数据点，用于在 TensorBoard 中绘制曲线，其接收以下几个参数：</p>
+<ol>
+<li>tag：待绘制图像的名称</li>
+<li>scalar_value：y 轴的元素</li>
+<li>global_step：x 轴的元素</li>
+</ol>
+<p>比如我们通过下面的代码，即可绘制 y &#x3D; 2x 的图像，其中我们通过外层 for 循环控制描写 n &#x3D; 100 个坐标点，用于构成图像：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">writer = SummaryWriter(<span class="string">&quot;logs&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">100</span>):</span><br><span class="line">	writer.add_scalar(tag=<span class="string">&quot;y=2x&quot;</span>, scalar_value=<span class="number">2</span>*i, global_step=i)</span><br></pre></td></tr></table></figure>
+
+<h3 id="close"><a href="#close" class="headerlink" title="close()"></a><strong><code>close()</code></strong></h3><p>我们通过调用 writer 变量的<code>close()</code>方法，确保所有数据写入日志文件，必须要在图像绘制完成后调用这个方法，否则相当于我们绘制的图像没有保存</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="图像展示"><a href="#图像展示" class="headerlink" title="图像展示"></a><strong>图像展示</strong></h3><p>我们通过 writer 在上述 logs 文件夹下生成的 TensorBoard 可视化图表是不能直接展示的，需要在终端中执行下面的命令行才能展示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir=logs</span><br></pre></td></tr></table></figure>
+
+<p>这里 logs 是我们上面<code>writer = SummaryWriter(name)</code>中所传入的 name 值，表示 TensorBoard 所存储的文件位置，该代码运行结果会生成一个本地地址</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:<span class="number">6006</span>/</span><br></pre></td></tr></table></figure>
+
+<p>我们通过访问这个网址即可看到对应的图像化界面</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/tensorBoard.png" alt="image-20250814220335300"></p>
+<p>如果我们修改<code>add_scalar()</code>中的参数，绘制新的图表，有可能新图标和旧图表会重叠导致不可视，此时我们可以通过先清除 logs 文件夹中的所有内容，或者直接删除 logs 文件夹，然后重新执行代码运行新的<code>add_scalar()</code>来实现新图像的绘制</p>
+<h3 id="add-image"><a href="#add-image" class="headerlink" title="add_image()"></a><strong><code>add_image()</code></strong></h3><p>我们通过调用<code>add_image()</code>方法向某个 TensorBoard 中加入一张或多张图片，该函数本身支持的图片元素入参需要是 numpy 数组或者 tensor 张量的形式，如果我们的图片本身不是这两种形式，需要进行<strong>预先</strong>的转换</p>
+<p>我们通过 cv2 导入的图片本身就是<code>numpy.ndarray</code>形式，不需要额外的转化，而通过 PIL 的 Image 模块导入的图片则是<code>PIL.Image.Image</code>类型（非 Numpy 数组），需要通过显式调用<code>np.array()</code>方法转化为（H，W，C）的格式</p>
+<p>首先我们进行图片引入和格式转换</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">image_path = <span class="string">&quot;E:\\机器学习\\代码示例\\数据集\\dataset\\train\\ants_image\\0013035.jpg&quot;</span></span><br><span class="line">img_PIL = Image.<span class="built_in">open</span>(image_path)</span><br><span class="line">img_array = np.array(img_PIL)</span><br></pre></td></tr></table></figure>
+
+<p>这里还是使用绝对路径的形式，然后通过<code>Image.open()</code>函数把图片的路径转换成 Image 类型的实例化对象，进而转化成 numpy 类型的实例化对象</p>
+<p>该函数<code>add_image()</code>接收以下几个参数：</p>
+<ol>
+<li>tag：绘制的图表的名称</li>
+<li>img_tensor：要展示的图片，传入 tensor 或者 numpy 类型的图片元素</li>
+<li>global_step：当前这张图片展示在训练的哪一步（用于动态展示多张图片，展示训练过程中的变化）</li>
+<li>dataformats：指定数组的维度顺序，一般设为 <strong>Height，Width，Channel</strong>（表示三个维度分别为图片的高度，宽度，通道）</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">writer.add_image(tag=<span class="string">&quot;test&quot;</span>, img_tensor=img_array, global_step=<span class="number">1</span>, dataformats=<span class="string">&#x27;HWC&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就在 writer 中加入了一张图片，其中如果我们想在训练的不同过程中（step）加入不同的图片，可以通过设置不同的 step 值来实现</p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h3><p>对应这部分完整的源码文件已上传至网盘文件：<code>tensor_board.ipynb</code></p>
+<h2 id="transforms"><a href="#transforms" class="headerlink" title="transforms"></a><strong>transforms</strong></h2><p><code>torchvision.transforms</code> 是 PyTorch 中用于<strong>图像预处理和数据增强</strong>的核心模块，该模块提供了一系列可组合的图像变换操作，能够将原始图像转换为适合神经网络训练的格式，使用时需要从 torchvision 中引入 transforms 模块</p>
+<h3 id="ToTensor"><a href="#ToTensor" class="headerlink" title="ToTensor()"></a><strong><code>ToTensor()</code></strong></h3><p>该方法用于把 Image 类型或者 Numpy 类型的图像统一转化为 Tensor 类型的图像，在使用时需要先实例化对应的转换器再进行使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">img_path = <span class="string">&quot;&quot;</span></span><br><span class="line">img = Image.<span class="built_in">open</span>(img_path)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化 tensor_trans 转换器对象</span></span><br><span class="line">tensor_trans = transforms.ToTensor()</span><br><span class="line">tensor_img = tensor_trans(img)</span><br></pre></td></tr></table></figure>
+
+<p>有时候为了方便我们也可以把上述两句代码压缩成一句<code>transforms.ToTensor()(img)</code>，在转化为 tensor 类型后，我们就可以把对应的图片传入 TensorBoard 中进行展示（对应上面我们使用的<code>np.array()</code>方法）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">writer.add_image(<span class="string">&quot;ToTensor&quot;</span>, img_tensor)</span><br><span class="line">writer.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="ToPILImage"><a href="#ToPILImage" class="headerlink" title="ToPILImage()"></a><strong><code>ToPILImage()</code></strong></h3><p>该方法用于把 tensor 类型的图像反向转化回 PIL.Imgae 类型的图像，功能与用法和 ToTensor 相类似</p>
+<h3 id="Normalize"><a href="#Normalize" class="headerlink" title="Normalize()"></a><strong><code>Normalize()</code></strong></h3><p>该方法用于对图像张量进行<strong>标准化</strong>（归一化）处理，也是深度学习中预处理的常见操作，也需要先初始化出对应的转换器再进行操作</p>
+<p>该方法支持两组参数，每组参数为第一个列表，分别表示归一化以后各个通道的<strong>均值</strong>（mean）和<strong>标准差</strong>（std），每个列表的三个值分别表示图像的高度，宽度和通道值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">trans_norm = transforms.Normalize([<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>], [<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>])</span><br><span class="line">img_norm = trans_norm(img_tensor)</span><br></pre></td></tr></table></figure>
+
+<p>这里均值和标准差均设为 0.5，是一种常见的对称标准化方式，会将输入张量的范围从 [0, 1] 映射到 [-1, 1]，输出的图像仍然是 Tensor 类型，且形状仍然是（C，H，W）和原本形状一致</p>
+<h3 id="resize"><a href="#resize" class="headerlink" title="resize()"></a><strong><code>resize()</code></strong></h3><p>该方法用于对图像进行<strong>尺寸调整</strong>，使用过程中也要先创造一个图像尺寸调整器，该方法可以接受一个或两个参数：</p>
+<ol>
+<li>如果只有一个参数：把图像长边和短边中的<strong>短边</strong>缩放到该值，长边按比例调整</li>
+<li>如果有两个参数 [a, b]：则把 height 调整为 a，width 调整为 b</li>
+</ol>
+<p>向转换器对象中传入的图片要求是 PIL 图像或者 Numpy 数组，返回值类型保持不变，仍然是 PIL 图像或者 Numpy 数组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">trans_resize = transforms.Resize([<span class="number">512</span>, <span class="number">512</span>])</span><br><span class="line">img_resize = trans_resize(img)</span><br><span class="line">img_resize = trans_totensor(img_resize)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Compose"><a href="#Compose" class="headerlink" title="Compose()"></a><strong><code>Compose()</code></strong></h3><p>该方法用于生成一个由多个<strong>转换器</strong>对象组成的集合，可以把多个变换操作（tensor_trans，norm_trans 等）组合成一个顺序执行的管道，传入一个由转换器组成的<strong>列表</strong>，返回的也是一个转换器对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">trans_resize = transforms.resize(<span class="number">512</span>)</span><br><span class="line">trans_totensor = transforms.ToTensor()</span><br><span class="line">trans_compose = transforms.Compose([trans_resize, trans_totensor])</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们用 trans_compose 转换器对图像进行处理时，会先对其进行缩放，再转化为张量类型，接收一张 PIL.Image 或 Numpy 类型的图片，返回 Tensor 类型的图片</p>
+<h3 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h3><p>对应这部分完整的源码文件已上传至网盘文件：<code>transforms.ipynb</code></p>
+<h2 id="官方数据集使用"><a href="#官方数据集使用" class="headerlink" title="官方数据集使用"></a><strong>官方数据集使用</strong></h2><p>除了自己手动下载数据集并定义<code>Dataset</code>之外，我们也可以直接下载官方现成的数据集，他们都集合再 Pytorch 库<code>torchvision</code>中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torchvision.datasets</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据集加载"><a href="#数据集加载" class="headerlink" title="数据集加载"></a><strong>数据集加载</strong></h3><p>我们可以直接从 torchvision 的 datasets 模块中下载我们想要的数据集，在加载过程中一般需要设置下面几个参数：</p>
+<ol>
+<li>root：表示下载的数据集在本地存放的路径</li>
+<li>train：设置为 True 时表示加载训练集，False 时表示加载测试集</li>
+<li>transform：对图片进行预处理的格式，支持一个列表，具体用法与 Compose 相同，传入一个转换器对象构成的列表即可</li>
+<li>download：设置为 True 时，如果本地 root 路径下没有数据集，则会自动从官网进行下载</li>
+</ol>
+<p>我们以<code>CIFAR10</code>数据集的加载作为示例，该数据集包含 10 个类别（猫，狗，飞机等）的 60000 张彩色图像，每类 6,000 张：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">trans = transforms.Compose(</span><br><span class="line">  [</span><br><span class="line">    transforms.Normalize([<span class="number">0.1</span>,<span class="number">0.5</span>,<span class="number">0.5</span>], [<span class="number">0.5</span>,<span class="number">0.5</span>,<span class="number">0.5</span>]),</span><br><span class="line">    transforms.ToTensor()</span><br><span class="line">  ]</span><br><span class="line">)</span><br><span class="line">train_set = torchvision.datasets.CIFAR10(root=<span class="string">&quot;./dataset&quot;</span>, train=<span class="literal">True</span>, transform=trans, download=<span class="literal">True</span>)</span><br><span class="line">train_set = torchvision.datasets.CIFAR10(root=<span class="string">&quot;./dataset&quot;</span>, train=<span class="literal">False</span>, transform=trans, download=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这里我们在加载数据集的过程中，分别加载训练和测试集，并且对每一张图片都标准化再转化为张量，存在当前目录下的<code>dataset</code>文件夹内</p>
+<h3 id="数据集访问"><a href="#数据集访问" class="headerlink" title="数据集访问"></a><strong>数据集访问</strong></h3><p>官方数据集在下载到本地以后，也是一个 Datasets 类型的对象，我们可以用上面自定义数据集同样的方式进行访问，也就是可以通过数据集名+下标索引的方式直接访问</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">writer = SummaryWriter(<span class="string">&quot;logs&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">10</span>):</span><br><span class="line">  img, target = train_set[i]</span><br><span class="line">  writer.add_image(<span class="string">&quot;test&quot;</span>, img, i)</span><br><span class="line">writer.close()</span><br></pre></td></tr></table></figure>
+
+<p>我们把训练集中的前 10 张图片在 TensorBoard 中进行展示，如下图所示，可以通过滑动进度条选择 0 到 9 不同的图片，表示不同的训练进程</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E5%AE%98%E6%96%B9.png" alt="image-20250815094605026"></p>
+<h3 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h3><p>对应这部分完整的源码文件已上传至网盘文件：<code>torchvision_datasets.ipynb</code></p>
+<h2 id="dataloader"><a href="#dataloader" class="headerlink" title="dataloader"></a><strong>dataloader</strong></h2><p>上面我们通过自定义或下载的方式，得到了目标的 dataset（数据集），但是此时只支持我们通过下标索引的方式进行访问，而 dataloader 则支持更加灵活的访问方式</p>
+<h3 id="Dataloader-实例化"><a href="#Dataloader-实例化" class="headerlink" title="Dataloader 实例化"></a><strong>Dataloader 实例化</strong></h3><p>在数据加载过程中，dataloader 一般接受以下几个常见的参数：</p>
+<ol>
+<li>dataset：待加载的数据集，只需要传入我们自定义或下载的数据集的实例化对象即可</li>
+<li>batch_size：单次加载的数据条数（也就是一次取几个数据一起加载）</li>
+<li>shuffle：设置为 True 的时候表示对加载的数据进行乱序，使得每次加载得到的数据顺序都不同，设置为 False 时每次加载的数据顺序是相同的</li>
+<li>num_workers：默认为 0，表示只用一个主进程进行加载</li>
+<li>drop_last：如果数据总量和 batch_size 不整除的时候，如果设置为 True 则舍弃最后余下的数据，设置为 False 则不舍弃（比如 100 个数据，batch_size&#x3D;33，那么最后会余下 1 个数据）</li>
+</ol>
+<p>值得注意的是，在 Windows 系统下，如果 dataloader 报错，可以尝试强制设置<code>num_workers=0</code>进行修复</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DataLoader 需要从 data 库中导包</span></span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> DataLoader</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据集下载</span></span><br><span class="line">test_data = torchvision.datasets.CIFAR10(root=<span class="string">&quot;./dataset&quot;</span>, train=<span class="literal">False</span>, transform=transforms.ToTensor(), download=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据集加载</span></span><br><span class="line">test_loader = DataLoader(dataset=test_data, batch_size=<span class="number">64</span>, shuffle=<span class="literal">True</span>, num_workers=<span class="number">0</span>, drop_last=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这里我们选择一组加载 64 个数据，组间进行打乱，不选择多线程，同时不保留余量数据进行加载，加载结果会返回到一个 DataLoader 的实例化对象中，这里我们命名为 <code>test_loader</code></p>
+<h3 id="数据记载与获取"><a href="#数据记载与获取" class="headerlink" title="数据记载与获取"></a><strong>数据记载与获取</strong></h3><p>DataLoader 和 Dataset 相比，前者一次性获取 batch_size 个数据，而后者每次只获取一个数据，同时 DataLoader 不再支持通过下标索引的方式，只能通过<code>for data in data_loader:</code>的方式，每次取出一个 data 进行访问</p>
+<p>比如上面我们设置 batch_size&#x3D;64，则我们分别执行下面的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">image, tag = test_data[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(image.shape)</span><br><span class="line"><span class="built_in">print</span>(tag)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> test_loader:</span><br><span class="line">  imgs, tags = data</span><br><span class="line">  <span class="built_in">print</span>(imgs.shape)</span><br><span class="line">  <span class="built_in">print</span>(tags)</span><br></pre></td></tr></table></figure>
+
+<p>其输出分别如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test_data</span></span><br><span class="line">torch.Size([<span class="number">3</span>, <span class="number">32</span>, <span class="number">32</span>])</span><br><span class="line"><span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># test_loader</span></span><br><span class="line">torch.Size([<span class="number">64</span>, <span class="number">3</span>, <span class="number">32</span>, <span class="number">32</span>])</span><br><span class="line">tensor([<span class="number">8</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">4</span>,</span><br><span class="line">        <span class="number">2</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">0</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>,</span><br><span class="line">        <span class="number">8</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">8</span>])</span><br></pre></td></tr></table></figure>
+
+<p>如图所示，data_loader 每次加载会一次性加载出 batch_szie 个数据，数据的 H W C 不变，比如上例中我们就一次性得到 64 张形状为 [3, 32, 32] 的图片，记入 imgs 中，而 tags 中则对应存储着 64 张图片各自对应的标记类别</p>
+<p>我们可以把 data_loader 中的图片在 TensorBoard 中进行展示，这里我们不再是一次取出一张 img 而是一次取出一组 imgs，因此我们要使用 TensorBoard 中的<code>add_images()</code>方法，该方法是<code>add_image()</code>方法针对于 DataLoader 的版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">writer = SummaryWriter(<span class="string">&quot;dataloader&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">    step = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> test_loader:</span><br><span class="line">        imgs, targets = data</span><br><span class="line">        writer.add_images(tag=<span class="string">f&quot;Epoch : <span class="subst">&#123;epoch&#125;</span>&quot;</span>, img_tensor=imgs, global_step=step)</span><br><span class="line">        step = step + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>我们只需要把原方法中<code>img_tensor</code>参数改成<code>imgs</code>入参即可，也就是一个 [batch_size, H, W, C] 的列表，其余参数不变，生成的 TensorBoard 展示如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E5%B1%95%E7%A4%BA%E5%8A%A0%E8%BD%BD%E5%90%8E%E7%9A%84%E5%9B%BE%E7%89%87.png" alt="image-20250815103603584"></p>
+<h3 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a><strong>代码实现</strong></h3><p>对应这部分完整的源码文件已上传至网盘文件：<code>data_loader.ipynb</code></p>
+<hr>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/08/11/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/08/11/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/')">数据处理</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/08/11/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=数据处理&amp;url=http://example.com/2025/08/11/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A246.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">MyBlog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Python与机器学习<span class="tagsPageCount">18</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A247.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/08/11/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A247.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">神经网络基础</div></div></a></div><div class="next-post pull-right"><a href="/2025/08/15/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A247.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">网络模型</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/07/19/AI%E5%BA%94%E7%94%A8%E4%B8%8E%E5%BC%80%E5%8F%91/" title="AI应用与开发"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A216.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-19</div><div class="title">AI应用与开发</div></div></a></div><div><a href="/2025/07/25/KNN%E7%AE%97%E6%B3%95/" title="ML入门-KNN算法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A224.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-25</div><div class="title">ML入门-KNN算法</div></div></a></div><div><a href="/2025/07/28/ML%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/" title="ML前置知识"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A226.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-28</div><div class="title">ML前置知识</div></div></a></div><div><a href="/2025/07/31/ML%E4%BB%A3%E7%A0%81/" title="ML代码"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A228.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-31</div><div class="title">ML代码</div></div></a></div><div><a href="/2025/07/23/python-pandas/" title="python-pandas"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A221.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-23</div><div class="title">python-pandas</div></div></a></div><div><a href="/2025/07/21/PyQt/" title="PyQt"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A228.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-21</div><div class="title">PyQt</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">数据处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E5%B8%B8%E8%A7%81%E7%BB%84%E7%BB%87%E5%BD%A2%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">数据集常见组织形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="toc-number">1.2.</span> <span class="toc-text">数据的加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#init"><span class="toc-number">1.2.1.</span> <span class="toc-text">__init__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getitem"><span class="toc-number">1.2.2.</span> <span class="toc-text">__getitem__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#len"><span class="toc-number">1.2.3.</span> <span class="toc-text">__len__()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E6%B5%8B%E8%AF%95"><span class="toc-number">1.2.4.</span> <span class="toc-text">实际测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.5.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TensorBoard"><span class="toc-number">1.3.</span> <span class="toc-text">TensorBoard</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#add-scalar"><span class="toc-number">1.3.1.</span> <span class="toc-text">add_scalar()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#close"><span class="toc-number">1.3.2.</span> <span class="toc-text">close()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%B1%95%E7%A4%BA"><span class="toc-number">1.3.3.</span> <span class="toc-text">图像展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add-image"><span class="toc-number">1.3.4.</span> <span class="toc-text">add_image()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1"><span class="toc-number">1.3.5.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#transforms"><span class="toc-number">1.4.</span> <span class="toc-text">transforms</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ToTensor"><span class="toc-number">1.4.1.</span> <span class="toc-text">ToTensor()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ToPILImage"><span class="toc-number">1.4.2.</span> <span class="toc-text">ToPILImage()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Normalize"><span class="toc-number">1.4.3.</span> <span class="toc-text">Normalize()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#resize"><span class="toc-number">1.4.4.</span> <span class="toc-text">resize()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compose"><span class="toc-number">1.4.5.</span> <span class="toc-text">Compose()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-2"><span class="toc-number">1.4.6.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BD%BF%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text">官方数据集使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E5%8A%A0%E8%BD%BD"><span class="toc-number">1.5.1.</span> <span class="toc-text">数据集加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E8%AE%BF%E9%97%AE"><span class="toc-number">1.5.2.</span> <span class="toc-text">数据集访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-3"><span class="toc-number">1.5.3.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dataloader"><span class="toc-number">1.6.</span> <span class="toc-text">dataloader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dataloader-%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="toc-number">1.6.1.</span> <span class="toc-text">Dataloader 实例化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%AE%B0%E8%BD%BD%E4%B8%8E%E8%8E%B7%E5%8F%96"><span class="toc-number">1.6.2.</span> <span class="toc-text">数据记载与获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-4"><span class="toc-number">1.6.3.</span> <span class="toc-text">代码实现</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/08/15/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/" title="网络模型"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A247.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络模型"/></a><div class="content"><a class="title" href="/2025/08/15/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/" title="网络模型">网络模型</a><time datetime="2025-08-15T02:55:31.000Z" title="发表于 2025-08-15 10:55:31">2025-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/11/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" title="数据处理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A246.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据处理"/></a><div class="content"><a class="title" href="/2025/08/11/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" title="数据处理">数据处理</a><time datetime="2025-08-11T07:49:28.000Z" title="发表于 2025-08-11 15:49:28">2025-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/11/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" title="神经网络基础"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A247.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="神经网络基础"/></a><div class="content"><a class="title" href="/2025/08/11/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" title="神经网络基础">神经网络基础</a><time datetime="2025-08-11T02:41:51.000Z" title="发表于 2025-08-11 10:41:51">2025-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/11/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%89%A9%E5%B1%953/" title="线段树扩展3"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A244.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="线段树扩展3"/></a><div class="content"><a class="title" href="/2025/08/11/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%89%A9%E5%B1%953/" title="线段树扩展3">线段树扩展3</a><time datetime="2025-08-11T02:02:05.000Z" title="发表于 2025-08-11 10:02:05">2025-08-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/10/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%89%A9%E5%B1%952/" title="线段树扩展2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A243.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="线段树扩展2"/></a><div class="content"><a class="title" href="/2025/08/10/%E7%BA%BF%E6%AE%B5%E6%A0%91%E6%89%A9%E5%B1%952/" title="线段树扩展2">线段树扩展2</a><time datetime="2025-08-10T13:04:05.000Z" title="发表于 2025-08-10 21:04:05">2025-08-10</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">2</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>18</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>19</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
