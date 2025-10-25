@@ -1,0 +1,452 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>符号表管理 | MyBlog</title><meta name="keywords" content="专业课"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="符号表管理"><meta name="application-name" content="符号表管理"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="符号表管理"><meta property="og:url" content="http://example.com/2025/09/29/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%AE%A1%E7%90%86/index.html"><meta property="og:site_name" content="MyBlog"><meta property="og:description" content="符号表管理符号表在编译过程中，编译程序用来记录源程序中各种名字的特性信息，也称为名字特性表 名字：程序名，过程名，函数名，用户定义类型名，变量名，常量名，枚举值名，标号名 特性信息：上述名字的种类，类型，维数，参数个数与目标地址（存储单元地址）等 符号表主要是服务于语义分析的，从直观上来讲，无论是变"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="http://example.com/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A295.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://example.com/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A295.jpg"><meta name="description" content="符号表管理符号表在编译过程中，编译程序用来记录源程序中各种名字的特性信息，也称为名字特性表 名字：程序名，过程名，函数名，用户定义类型名，变量名，常量名，枚举值名，标号名 特性信息：上述名字的种类，类型，维数，参数个数与目标地址（存储单元地址）等 符号表主要是服务于语义分析的，从直观上来讲，无论是变"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/09/29/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%AE%A1%E7%90%86/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: MyBlog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'MyBlog',
+  title: '符号表管理',
+  postAI: '',
+  pageFillDescription: '符号表管理, 符号表, 符号表的结构与内容, 符号表的组织方式, 非分程序结构语言的符号表组织, 分程序结构语言的符号表组织, 分程序语言的作用域, 分程序语言的符号表组织, 标准标识符的处理, 分程序表结构, 分程序符号表的构造方法符号表管理符号表在编译过程中编译程序用来记录源程序中各种名字的特性信息也称为名字特性表名字程序名过程名函数名用户定义类型名变量名常量名枚举值名标号名特性信息上述名字的种类类型维数参数个数与目标地址存储单元地址等符号表主要是服务于语义分析的从直观上来讲无论是变量还是函数我们都必须先声明再使用符号表的主要作用就是帮助我们记录曾经声明过的标识符在程序中遇到某个标识符时用于检验其合法性是否声明是否重定义是否有作用域冲突等符号表的结构与内容符号表一般分为名字和特性信息两列名字域存放名字一般为标识符的符号串或者是指向标识符符号串的指针特性域可以包括多个子域分别表示标识符的有关信息其中数组的上下界值指的是数组每个维度所支持的最小索引下标对于多数语言而言都是和最大索引下标符号表的组织方式统一符号表不论什么名字都填入统一格式的符号表中此时符号表表项按照信息量最大的名字设计填表查表方便结构设计简单但是浪费大量空间很可能得到一张稀疏表对不同种类的名字分别建立各种符号表节省空间但填表和查表不方便折中办法大部分共同信息组成统一格式的符号表特殊信息另设附表两者用指针进行链接类似于文件系统中多级指针索引的内存分配非分程序结构语言的符号表组织非分程序的结构语言每个可独立进行编译的程序单元是一个不包含有子模块的单一模块如语言也就是不会出现嵌套调用的情况对于非分程序结构语言而言我们根据作用域不同将其中的标识符分为全局子程序名函数名公共区名局部程序单元中定义的变量为此我们的符号表也组织为以下两部分全局符号表局部符号表建表和查表的整体处理流程如下子程序函数名公共区变量直接填入全局符号表在子程序函数声明部分读到标识符时构建局部符号表查本程序单元的局部符号表检查有无重名若有则报错否则进行填表在语句部分读到标识符时查表查本程序单元局部符号表检查有无声明若有则为合法局部量否则查全局变量表若有则为合法全局两否则为无定义标识符程序单元结束释放该程序单元的局部符号表程序执行结束释放全部符号表包括全局符号表分程序结构语言的符号表组织分程序语言的作用域分程序结构语言模块内部可以嵌入子模块标识符的作用域标识符局部于所定义的最小模块模块中所定义标识符的作用域是定义该标识符的子程序过程或函数声明中定义的标识符包括形参的作用域为本过程体即在某个函数内部定义的语句体我们无法从这个函数的外部跳转到结构中循环语句中定义的标识符其作用域为该循环语句此时循环语句的和应该看成是单独的一层语句体属于该循环语句从该循环语句之外无法跳进循环语句内部分程序语言的符号表组织假设标识符都需要先声明后引用标号除外需要特殊处理在程序声明部分或读到标识符时出现对标识符的声明建表查找本层符号表如果有同名则为重复声明报错否则填入符号表在语句中读到标识符时出现对标识符的引用查表查找本层符号表如果有同名则说明变量已声明直接取改名字信息局部量否则逐层向外查找外层的符号表如果有定义也说明变量已声明否则是未声明标识符直接报错假设当前语句在第层语句体中如果本层不存在某个符号的声明我们需要逐层向外查找直到查找到全局声明则总共有最多次查找标准标识符的处理标准标识符指的是语言本身定义的一些标准过程和函数的名字它们是标识符的子集比如等注意它们不是语言的保留字标准标识符的特点用户不需要声明即可全程使用设计编译程序时标准名字及其数目已知处理方法预先把标准标识符填入名字表中因为他们是全程量所以应该填入最外层直观来讲标准标识符相当于头文件中的函数比如这样的函数用户不需要声明就可以直接调用在编译的时候就需要我们先把他们加到最顶层的全局符号表中确保他们被调用时能够查表查到对应的声明分程序表结构其中指明该分程序的直接外层分程序编号记录该分程序符号表登记项的个数指向该分程序符号表的起始位置根据这段程序我们所设计的分程序表和符号表如下图所示其中分程序索引表的形成顺序每个模块头的出现顺序分程序符号表的形成顺序每个模块语法分析时的语法单位的识别顺序分程序符号表的构造方法我们按照每个风程序关闭的次序来构建分程序符号表上面四个程序体的结束顺序为因此我们构建分程序符号表的形成顺序也是为了使得各个分程序的符号表连续地邻接在一起在扫描具有嵌套分程序结构的源程序时我们总是按照先进后出的顺序来扫描其中各个分程序因此可以设立一个临时工作栈每当进入一层分程序时就在临时工作栈的栈顶构造该分程序的符号表在处理该分程序时不断填写符号表的内容而遇到该层分程序的结束符时此时该分程序的全部登记项应该位于栈顶我们就把这些登记项全部转移到正式符号表中每个代码块对应的符号表被释放的时刻为该代码块对应的中间代码生成完成以后这里我们采用栈式结构维护符号表的生命周期因此先创建的符号表反而后释放根据上面的程序我们可以给出在不同编译阶段下所维护的符号表的状态编译完成的声明部分时函数头函数体的符号栈状态对于一个函数而言函数本身的声明函数名属于外层作用域比如的说明属于函数作用域的声明属于的作用域的声明属于的作用域而函数中的形参属于函数本身的内层作用域和函数内定义的变量同属一个作用域编译完成的声明部分时函数头函数体当某个代码块被完全编译完成以后以函数为例该函数内部所有的参数都会从符号栈中移除符号栈中只保留函数名本身就属于上一级的作用域函数的形参此时形参不再保存参数名称而是只保存参数类型比如当编译完成以后的形参则匿名保存在符号栈的第行此时形参的作用域和函数名保持相同化归为上一级的作用域',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-10-19 23:08:28',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">MyBlog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>1</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>35</sup></a><a href="/tags/editing/" style="font-size: 1.05rem;">editing<sup>1</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>14</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>29</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">21</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">30</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>专业课</span></a></span></div></div><h1 class="post-title" itemprop="name headline">符号表管理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-09-29T02:59:21.000Z" title="发表于 2025-09-29 10:59:21">2025-09-29</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-10-19T15:08:28.555Z" title="更新于 2025-10-19 23:08:28">2025-10-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A295.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/09/29/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%AE%A1%E7%90%86/"><header><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url">专业课</a><h1 id="CrawlerTitle" itemprop="name headline">符号表管理</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2025-09-29T02:59:21.000Z" title="发表于 2025-09-29 10:59:21">2025-09-29</time><time itemprop="dateCreated datePublished" datetime="2025-10-19T15:08:28.555Z" title="更新于 2025-10-19 23:08:28">2025-10-19</time></header><h1 id="符号表管理"><a href="#符号表管理" class="headerlink" title="符号表管理"></a><strong>符号表管理</strong></h1><h2 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a><strong>符号表</strong></h2><p>在编译过程中，编译程序用来记录源程序中各种名字的特性信息，也称为名字特性表</p>
+<p>名字：程序名，过程名，函数名，用户定义类型名，变量名，常量名，枚举值名，标号名</p>
+<p>特性信息：上述名字的种类，类型，维数，参数个数与目标地址（存储单元地址）等</p>
+<p>符号表主要是服务于<strong>语义分析</strong>的，从直观上来讲，无论是变量还是函数，我们都必须先<strong>声明</strong>再<strong>使用</strong>，符号表的主要作用就是帮助我们记录曾经声明过的标识符，在程序中遇到某个标识符时，用于检验其合法性（是否声明，是否重定义，是否有作用域冲突等）</p>
+<h3 id="符号表的结构与内容"><a href="#符号表的结构与内容" class="headerlink" title="符号表的结构与内容"></a><strong>符号表的结构与内容</strong></h3><p>符号表一般分为<strong>名字</strong>和**特性（信息）**两列：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E7%AC%A6%E5%8F%B7%E8%A1%A8%E6%9E%84%E6%88%90.png" alt="image-20250929110620819"></p>
+<p>名字域：存放名字，一般为标识符的符号串，或者是指向标识符符号串的指针</p>
+<p>特性域：可以包括多个子域，分别表示标识符的有关信息</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E7%89%B9%E6%80%A7%E4%B8%8E%E7%9A%84%E5%86%85%E5%AE%B9.png" alt="image-20250929110749981"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E5%85%B6%E4%BB%96%E7%9A%84%E7%89%B9%E6%80%A7.png" alt="image-20250929110819915"></p>
+<p>其中数组的上下界值指的是数组每个维度所支持的最小索引下标（对于多数语言而言都是 0）和最大索引下标（MAX_N - 1）</p>
+<h3 id="符号表的组织方式"><a href="#符号表的组织方式" class="headerlink" title="符号表的组织方式"></a><strong>符号表的组织方式</strong></h3><p>（1）统一符号表：不论什么名字都填入统一格式的符号表中，此时符号表表项按照信息量最大的名字设计，填表、查表方便，结构设计简单，但是浪费大量空间，很可能得到一张稀疏表</p>
+<p>（2）对不同种类的名字分别建立各种符号表：节省空间，但填表和查表不方便</p>
+<p>（3）折中办法：大部分共同信息组成统一格式的符号表，特殊信息另设附表，两者用指针进行链接，类似于文件系统中多级指针索引的内存分配</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%8A%98%E4%B8%AD%E5%8A%9E%E6%B3%95.png" alt="image-20250929111157200"></p>
+<h2 id="非分程序结构语言的符号表组织"><a href="#非分程序结构语言的符号表组织" class="headerlink" title="非分程序结构语言的符号表组织"></a><strong>非分程序结构语言的符号表组织</strong></h2><p>非分程序的结构语言：每个可独立进行编译的程序单元是一个不包含有子模块的单一模块，如 FORTRAN 语言，也就是不会出现嵌套调用的情况</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E9%9D%9E%E5%88%86%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E8%AF%AD%E8%A8%80.png" alt="image-20250929111337030"></p>
+<p>对于非分程序结构语言而言，我们根据<strong>作用域</strong>不同将其中的<strong>标识符</strong>分为：</p>
+<ul>
+<li>全局：子程序名，函数名，公共区名</li>
+<li>局部：程序单元中定义的变量</li>
+</ul>
+<p>为此，我们的<strong>符号表</strong>也组织为以下两部分：</p>
+<ul>
+<li>全局符号表</li>
+<li>局部符号表</li>
+</ul>
+<p>建表和查表的整体处理流程如下：</p>
+<ul>
+<li>子程序，函数名，公共区变量直接填入全局符号表</li>
+<li>在子程序 &#x2F; 函数<strong>声明</strong>部分读到标识符时，构建局部符号表<ul>
+<li>查本程序单元的局部符号表，检查有无重名，若有则报错，否则进行填表</li>
+</ul>
+</li>
+<li>在语句部分读到标识符时，查表<ul>
+<li>查本程序单元局部符号表，检查有无声明，若有则为合法局部量，否则查全局变量表，若有则为合法全局两，否则为无定义标识符</li>
+</ul>
+</li>
+<li>程序单元结束，释放该程序单元的局部符号表</li>
+<li>程序执行结束，释放全部符号表，包括全局符号表</li>
+</ul>
+<h2 id="分程序结构语言的符号表组织"><a href="#分程序结构语言的符号表组织" class="headerlink" title="分程序结构语言的符号表组织"></a><strong>分程序结构语言的符号表组织</strong></h2><h3 id="分程序语言的作用域"><a href="#分程序语言的作用域" class="headerlink" title="分程序语言的作用域"></a><strong>分程序语言的作用域</strong></h3><p>分程序结构语言：模块内部可以嵌入子模块</p>
+<p>标识符的作用域：标识符局部于所定义的最小模块</p>
+<p>（1）模块中所定义标识符的作用域是定义该标识符的子程序</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%83%85%E5%86%B51.png" alt="image-20250929112235752"></p>
+<p>（2）过程或函数声明中定义的标识符（包括形参）的作用域为本过程体</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20250929112327194.png" alt="image-20250929112327194"></p>
+<p>即在某个函数内部定义的语句体 L，我们无法从这个函数的外部跳转到 L 结构中</p>
+<p>（3）循环语句中定义的标识符，其作用域为该循环语句</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%83%85%E5%86%B5.png" alt="image-20250929153350830"></p>
+<p>此时循环语句的 $begin$ 和 $end$ 应该看成是<strong>单独的一层</strong>，语句体 L 属于该循环语句，从该循环语句之外无法跳进循环语句内部</p>
+<h3 id="分程序语言的符号表组织"><a href="#分程序语言的符号表组织" class="headerlink" title="分程序语言的符号表组织"></a><strong>分程序语言的符号表组织</strong></h3><p>假设标识符都需要先声明后引用（标号除外，需要特殊处理）</p>
+<ul>
+<li>在程序声明部分或读到标识符时（出现对标识符的声明）建表：<ul>
+<li>查找本层符号表，如果有同名，则为重复声明，报错；否则填入符号表</li>
+</ul>
+</li>
+<li>在语句中读到标识符时（出现对标识符的引用）查表：<ul>
+<li>查找本层符号表，如果有同名，则说明变量已声明，直接取改名字信息（局部量）；否则<strong>逐层向外</strong>查找外层的符号表，如果有定义也说明变量已声明，否则是未声明标识符，直接报错</li>
+</ul>
+</li>
+</ul>
+<p>假设当前语句在第 n 层语句体中，如果本层不存在某个符号的声明，我们需要逐层向外查找，直到查找到全局声明，则总共有最多 n+1 次查找</p>
+<h3 id="标准标识符的处理"><a href="#标准标识符的处理" class="headerlink" title="标准标识符的处理"></a><strong>标准标识符的处理</strong></h3><p>标准标识符指的是语言本身定义的一些标准过程和函数的名字，它们是标识符的子集，比如 $sin$，$cos$，$abs$ 等，<strong>注意</strong>它们不是语言的保留字</p>
+<p>标准标识符的特点：用户不需要声明即可全程使用，设计编译程序时，标准名字及其数目已知</p>
+<p>处理方法：预先把标准标识符填入名字表中，因为他们是全程量，所以应该填入最外层（<strong>直观来讲</strong>，标准标识符相当于头文件中的函数，比如 $printf$，$scanf$ 这样的函数，用户不需要声明就可以直接调用，在编译的时候就需要我们先把他们加到最顶层的全局符号表中，确保他们被调用时能够查表查到对应的声明）</p>
+<h3 id="分程序表结构"><a href="#分程序表结构" class="headerlink" title="分程序表结构"></a><strong>分程序表结构</strong></h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E5%88%86%E7%A8%8B%E5%BA%8F%E8%A1%A8%E7%BB%93%E6%9E%84.png" alt="image-20250929161250780"></p>
+<p>其中：</p>
+<ul>
+<li>$outern$：指明该分程序的直接外层分程序编号</li>
+<li>$ecount$：记录该分程序符号表登记项的个数</li>
+<li>$pointer$：指向该分程序符号表的起始位置</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E5%88%86%E7%A8%8B%E5%BA%8F%E8%A1%A8%E8%AE%BE%E8%AE%A1%E3%80%81.png" alt="image-20250929161440045"></p>
+<p>根据这段程序我们所设计的分程序表和符号表如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E5%88%86%E7%A8%8B%E5%BA%8F%E8%A1%A8%E5%92%8C%E7%AC%A6%E5%8F%B7%E8%A1%A8.png" alt="image-20250929161547123"></p>
+<p>其中：</p>
+<ul>
+<li>分程序索引表的形成顺序：每个模块头的出现顺序</li>
+<li>分程序符号表的形成顺序：每个模块（语法分析时的语法单位）的识别顺序</li>
+</ul>
+<h3 id="分程序符号表的构造方法"><a href="#分程序符号表的构造方法" class="headerlink" title="分程序符号表的构造方法"></a><strong>分程序符号表的构造方法</strong></h3><p>我们按照每个风程序<strong>关闭的次序</strong>来构建分程序符号表，上面四个程序体的结束顺序为 2 4 3 1，因此我们构建分程序符号表的形成顺序也是 2 4 3 1</p>
+<p>为了使得各个分程序的符号表连续地邻接在一起，在扫描具有嵌套分程序结构的源程序时，我们总是按照先进后出的顺序来扫描其中各个分程序，因此可以设立一个<strong>临时工作栈</strong></p>
+<p>每当进入一层分程序时，就在临时工作栈的<strong>栈顶</strong>构造该分程序的符号表，在处理该分程序时，不断填写符号表的内容，而遇到该层分程序的结束符 $END$ 时，此时该分程序的全部登记项应该位于栈顶，我们就把这些登记项全部转移到正式符号表中</p>
+<p>每个代码块对应的符号表被释放的时刻为<strong>该代码块对应的中间代码生成</strong>完成以后</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E7%AC%A6%E5%8F%B7%E8%A1%A8%E5%91%A8%E6%9C%9F.png" alt="image-20251010185145505"></p>
+<p>这里我们采用<strong>栈式</strong>结构维护符号表的生命周期，因此先创建的符号表反而后释放</p>
+<p>根据上面的程序，我们可以给出在不同编译阶段下，所维护的符号表的状态：</p>
+<p>（1）编译完成 P3 的声明部分时（P3 函数头+函数体）的符号栈状态：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E7%AC%A6%E5%8F%B7%E7%AB%99.png" alt="image-20251010214542467"></p>
+<p>对于一个函数而言，函数本身的声明（<strong>函数名</strong>）属于外层作用域，比如 m1 的说明属于 main 函数作用域，p2 的声明属于 m1 的作用域，p3 的声明属于 p2 的作用域，而函数中的<strong>形参</strong>属于函数本身的内层作用域，和函数内定义的变量同属一个作用域</p>
+<p>（2）编译完成 Q2 的声明部分时（Q2 函数头+函数体）：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/Q2.png" alt="image-20251010214750397"></p>
+<p>当某个代码块被完全编译完成以后（以函数为例），该函数内部所有的参数都会从符号栈中移除，符号栈中只保留：</p>
+<ul>
+<li>函数名（本身就属于上一级的作用域）</li>
+<li>函数的形参，此时形参不再保存参数名称，而是只保存参数类型，比如当 p2 编译完成以后，p2 的形参则匿名保存在符号栈的第 10 行，此时形参的作用域和函数名保持相同，化归为上一级的作用域</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/09/29/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%AE%A1%E7%90%86/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/09/29/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%AE%A1%E7%90%86/')">符号表管理</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/09/29/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%AE%A1%E7%90%86/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=符号表管理&amp;url=http://example.com/2025/09/29/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%AE%A1%E7%90%86/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A295.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">MyBlog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>专业课<span class="tagsPageCount">14</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2105.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/09/25/(SQL)%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A293.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">关系数据库标准语言</div></div></a></div><div class="next-post pull-right"><a href="/2025/09/29/PPO/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A295.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">PPO</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/10/21/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" title="数据库设计"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2102.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-21</div><div class="title">数据库设计</div></div></a></div><div><a href="/2025/10/09/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%9D%E6%8A%A4/" title="数据库保护"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2102.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-09</div><div class="title">数据库保护</div></div></a></div><div><a href="/2025/09/25/(SQL)%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80/" title="关系数据库标准语言"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A293.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-25</div><div class="title">关系数据库标准语言</div></div></a></div><div><a href="/2025/09/20/C%E8%AF%AD%E8%A8%80%E7%B3%BB%E7%BB%9F%E7%BA%A7%E7%BC%96%E7%A8%8B/" title="C语言系统级编程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2103.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-20</div><div class="title">C语言系统级编程</div></div></a></div><div><a href="/2025/09/06/SQL/" title="SQL"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A270.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-06</div><div class="title">SQL</div></div></a></div><div><a href="/2025/09/22/%E6%96%87%E6%B3%95%E8%A7%84%E5%88%99/" title="文法规则"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A289.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-22</div><div class="title">文法规则</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">符号表管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E8%A1%A8"><span class="toc-number">1.1.</span> <span class="toc-text">符号表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%9A%84%E7%BB%93%E6%9E%84%E4%B8%8E%E5%86%85%E5%AE%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">符号表的结构与内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%9A%84%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">符号表的组织方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E5%88%86%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E8%AF%AD%E8%A8%80%E7%9A%84%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%BB%84%E7%BB%87"><span class="toc-number">1.2.</span> <span class="toc-text">非分程序结构语言的符号表组织</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E8%AF%AD%E8%A8%80%E7%9A%84%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%BB%84%E7%BB%87"><span class="toc-number">1.3.</span> <span class="toc-text">分程序结构语言的符号表组织</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.3.1.</span> <span class="toc-text">分程序语言的作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E7%9A%84%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%BB%84%E7%BB%87"><span class="toc-number">1.3.2.</span> <span class="toc-text">分程序语言的符号表组织</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E6%A0%87%E8%AF%86%E7%AC%A6%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-number">1.3.3.</span> <span class="toc-text">标准标识符的处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%A8%8B%E5%BA%8F%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.4.</span> <span class="toc-text">分程序表结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%A8%8B%E5%BA%8F%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.5.</span> <span class="toc-text">分程序符号表的构造方法</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/10/25/RLHF/" title="(一)RLHF_PPO"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2105.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="(一)RLHF_PPO"/></a><div class="content"><a class="title" href="/2025/10/25/RLHF/" title="(一)RLHF_PPO">(一)RLHF_PPO</a><time datetime="2025-10-25T02:45:26.000Z" title="发表于 2025-10-25 10:45:26">2025-10-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/23/%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/" title="语义分析和代码生成">语义分析和代码生成</a><time datetime="2025-10-23T07:29:17.000Z" title="发表于 2025-10-23 15:29:17">2025-10-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/21/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/" title="语义分析和代码生成"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2103.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="语义分析和代码生成"/></a><div class="content"><a class="title" href="/2025/10/21/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/" title="语义分析和代码生成">语义分析和代码生成</a><time datetime="2025-10-21T08:31:25.000Z" title="发表于 2025-10-21 16:31:25">2025-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/21/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" title="数据库设计"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2102.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库设计"/></a><div class="content"><a class="title" href="/2025/10/21/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" title="数据库设计">数据库设计</a><time datetime="2025-10-21T01:50:34.000Z" title="发表于 2025-10-21 09:50:34">2025-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/16/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90Day1/" title="算法设计与分析Day1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2100.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法设计与分析Day1"/></a><div class="content"><a class="title" href="/2025/10/16/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90Day1/" title="算法设计与分析Day1">算法设计与分析Day1</a><time datetime="2025-10-16T14:11:44.000Z" title="发表于 2025-10-16 22:11:44">2025-10-16</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">85</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>1</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>35</sup></a><a href="/tags/editing/" style="font-size: 0.88rem;">editing<sup>1</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>14</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>29</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

@@ -1,0 +1,647 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>错误处理 | MyBlog</title><meta name="keywords" content="专业课"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="错误处理"><meta name="application-name" content="错误处理"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="错误处理"><meta property="og:url" content="http://example.com/2025/10/15/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/index.html"><meta property="og:site_name" content="MyBlog"><meta property="og:description" content="错误处理错误处理概述编译程序对于语法和语义正确的源程序，要能够正确编译产生等价的目标代码，而对于错误的源程序不能发现一个错误就立刻停止，而是要能检查出错误的性质和出错位置，并且使得编译能够进行下去，同时尽可能多而准确的发现和指出各种错误 错误分类从编译角度，错误可以分成语法错误和语义错误两类：  语"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="http://example.com/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A299.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://example.com/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A299.jpg"><meta name="description" content="错误处理错误处理概述编译程序对于语法和语义正确的源程序，要能够正确编译产生等价的目标代码，而对于错误的源程序不能发现一个错误就立刻停止，而是要能检查出错误的性质和出错位置，并且使得编译能够进行下去，同时尽可能多而准确的发现和指出各种错误 错误分类从编译角度，错误可以分成语法错误和语义错误两类：  语"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/10/15/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: MyBlog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'MyBlog',
+  title: '错误处理',
+  postAI: '',
+  pageFillDescription: '错误处理, 错误处理概述, 错误分类, 错误诊察, 错误处理, 目标程序运行时错误的检测和处理, 遏制重复的错误信息, 语法制导翻译技术, 翻译文法和语法制导翻译, 输入文法和翻译文法, 语法制导翻译的实现方法, 属性翻译文法, 属性翻译文法, 综合属性, 继承属性, 属性翻译文法的自顶向下翻译, 继承属性求值规则, 综合属性求值规则, 求值顺序规则, 简单赋值形式的L-属性翻译文法, SL-ATG, L-ATG 到 SL-ATG 的转化, 自顶向下语法制导翻译, 符号串翻译文法的自顶向下翻译, 属性翻译文法的自顶向下翻译, 中缀表达式转四元式的属性翻译文法设计错误处理错误处理概述编译程序对于语法和语义正确的源程序要能够正确编译产生等价的目标代码而对于错误的源程序不能发现一个错误就立刻停止而是要能检查出错误的性质和出错位置并且使得编译能够进行下去同时尽可能多而准确的发现和指出各种错误错误分类从编译角度错误可以分成语法错误和语义错误两类语法错误程序结构不符合语法规则或者词法规则的错误语义错误程序不符合我们所编写的语言的语义规则上机实验中处理的语义错误或超越具体计算机系统的限制数据溢出错误常数太大计算结果溢出符号表静态存储分配数据区溢出动态分配数据区溢出等错误诊察违反语义和语法规则以及超过编译系统限制的错误由编译程序在语法分析和语义分析过程中诊察出来其中语义分析需要借助符号表下标越界计算结果溢出动态存储数据区溢出等错误在目标程序运行时才能检测因此需要由目标程序诊察因此编译程序需要生成相应的目标程序对运行代码进行检查并处理错误处理发现错误以后在报告错误的同时还要求对错误进行处理以方便编译能够继续进行下去目前有两种处理方法错误改正编译发现错误以后根据文法对错误进行改正对于简单的语法错误如缺少数组括号分号等可能容易改正但是对于较为复杂的错误如运算符号冗余表达式缺少括号等则难以改正错误局部化处理当编译程序发现错误以后尽可能把错误限制在一个局部的范围内避免错误扩散和影响程序其他部分的分析错误的局部化处理一般原则当诊断到错误以后就暂停对后面符号的分析跳过错误所在的语法成分一旦跳过就认为该语法成分是正确的然后继续向下分析词法分析发现不合法字符显示错误并且跳过该标识符单词继续向下分析语法语义分析跳过所在的语法成分短语或语句一般是跳到语句的右界符一般就认为是一条语句的结尾处然后从新语句继续向下分析递归下降分析法如果我们定义右界符为可能会导致跳过的符号过多会漏判一些错误信息因此我们需要提高错误局部化程度我们维护两个集合集合合法后继符号集合某语法成分的后继符号集合停止符号跳读必须停止的符号集合当发现错误的时候我们重复跳过字符直到读取到或集合中的符号就停止跳读相当于两个集合取并集目标程序运行时错误的检测和处理在编译时我们需要生成检测这类错误下标变量下标值越界计算结果溢出动态存储分配数据区溢出的代码而对于这类错误要正确报告出错误位置很困难因为目标程序与源程序之间很难建立位置上的对应关系一般处理方法当目标程序运行检测到这类错误时就调用异常处理打印错误信息和运行现场寄存器和寄存器中的值然后直接停止程序运行即可遏制重复的错误信息语义错误主要来源于标识符未声明和类型不一致等错误这种错误往往会多次出现比如有一个未声明的变量每次使用都会触发变量未声明错误一般处理办法建立一张错误名字表每次发现出错名字后先查表若先前已经报过这个错误则不再打印错误信息否则登记到表中并且打印错误信息溢出错误即编译程序所需的工作区或源程序所需的数据区域溢出为了使得编译程序正常运行同样需要遏制重复的错误信息一般处理方法对各数据区分别设置一个标志单元初始为当发生溢出时先查看单元内容若为则表示刚发生溢出打印错误信息把标志设为若为则不再重复打印用来实现上述逻辑的代码需要在目标代码运行时发挥作用它同样是由编译程序所生成的编译程序在生成目标码的同时也会生成和目标码运行时错误处理有关的代码语法制导翻译技术语义分析的过程和语法成分密切相关我们每识别到一个完整的语法成分都需要调用符号表进行查表写入操作这意味着我们的语义分析需要在语法成分识别的框架下完成因此语义分析又称为语法制导的翻译技术严谨点来讲全称应该是语法制导下的语义分析与翻译技术编译中我们所关心的程序语义是操作语义也就是和程序怎么执行运行之间的关系翻译文法和语法制导翻译对于下面这段文法其定义了中缀表达式如果我们相对某个中缀表达式进行翻译得到逆波兰表示我们需要在上述文法中插入相应的动作符号其中为动作符号这里我们的动作符号写在运算符和以及终结符这里没有括号因为后缀表达式不输出括号位置其中为动作符号标记其后为字符串在该具体实例中动作标记对应语义子程序的功能是要输出打印动作标记符号后面的字符串因此产生式分析并且输出分析并且输出动作符号的作用就是在正常推导的过程中加一个说明提示在推导的某个位置及时的把对应的符号打印出来设计特定的打印顺序即可得到后缀表达式输入文法和翻译文法输入文法未插入动作符号的文法由输入文法可以通过推导产生输入序列翻译文法插入动作符号的文法由翻译文法可以通过推导产生活动序列而活动序列由输入序列和动作序列两部分所组成我们分别用原文法和加入动作符号后的文法做一遍推导把当成终结符对于活动序列我们可以分别得到输入序列和动作序列两部分其中动作序列就是我们需要的后缀表达式我们依次执行动作序列中的动作打印出来的就是后缀表达式活动序列输入序列动作序列翻译文法是上下文无关文法终结符号集合由输入符号和动作符号组成由翻译文法所产生的终结符号串称为活动序列翻译文法和原文法相比终结符集合发生了变化加入了动作符号字符串组成的若干新终结符这种带有动作符号的翻译文法也称为符号串翻译文法输入文法中的动作符号对应的语义子程序是输出动作符号标记后的字符串的文法在输入文法中加入一些新文法这些文法由动作符号标识作用为输出后的字符串语法制导翻译按照翻译文法所进行的翻译给定一个输入符号串根据翻译文法获得翻译该符号串的动作序列并且执行该序列所规定的动作过程语法制导翻译的实现方法在文法的适当位置插入语义动作符号当按照文法分析到动作符号时就调用相应的语义子程序完成翻译任务翻译文法所定义的翻译是由输入序列和动作序列所组成的对偶集即给定了一个翻译文法就相当于给定了一个对偶集补充翻译文法就是在上下文无关文法的产生式中插入动作如打印生成代码压栈输出符号等的文法当我们对某个输入串进行一次合法的推导分析时就会得到一条动作序列把所有插入在产生式右部的动作按实际触发顺序依次串起来因而由翻译文法定义的翻译可以看成是一组二元组输入序列动作序列的集合每个合法输入串对应着按该文法推导时触发的那条唯一的动作序列对偶集输入序列和动作序列一一对应因为一但文法和动作都固定下来对于每个能被该文法接受的输入序列分析过程会唯一确定动作触发的位置和次序也就唯一生成了与之配对的动作序列属性翻译文法属性翻译文法翻译文法属性文法在翻译文法的基础上我们进一步定义属性文法翻译文法中的符号包括终结符非终结符和动作符号均可带有属性这样能够更好地描述和实现编译过程直观来讲属性就是贴在语法树每个结点符号上的小纸条字段用来携带传递语义信息或中间结果动作符号终结符非终结符都可以拥有这种用于传递信息的字段字段里的内容可以是任意你在翻译编译时需要的内容类型值地址生成的目标代码片段回填链表行号作用域信息是否为左值常量性数组维度甚至是函数指针过程本身属性可以分成两种综合属性语义函数的返回值语法树上从子节点往父节点汇总的信息继承属性语义函数的参数语法树上从父节点或左兄弟传下去的信息综合属性其中对于终结符的综合属性是我们直接赋予可能是外部输入的比如这个表达式我们直接令分别等于和相当于人为赋值而对于非终结符的综合属性则可以通过画出语法树加自底向上推导的形式确定每个非终结符的综合属性每个非终结符的综合属性来自它子的节点的汇总也可以写成一条一条推导式的形式然后通过引入属性变量名借助求值规则来实现综合属性的推导总的来讲综合属性的推导如果是使用语法树进行推导则为自底向上如果是使用推导式进行推导则为自右向左继承属性继承属性和综合属性恰好相反继承属性的推导是自左向右自顶向下即从产生式的左侧获取信息传递给右侧的产生式考虑下面的文法首先把该文法改写成翻译文法它需要完成的翻译任务为把声明的变量填入符号表因此完成该工作的动作符号应为假设我们有语句我们在填表的时候先填入变量类型为再填入变量名当我们要登记变量名的时候其中标识符是综合而来的键盘输入而的变量类型则是继承而来的由先前定义的的类型所决定这是由逗号分隔定义的变量类型相同而决定的现在我们需要两个信息填表的时候需要知道变量的类型和标识符当我们定义形如这样的多个变量时当处理到后边的变量时我们需要知道变量的类型首先对于终结符和它们的有关信息可以通过词法分析得到即相当于从外界直接获取输入我们为其设置两个综合属性表示变量类型表示变量名因此填表的动作符号和变量表也需要得到这些属性信息此时它们必须从或处拿到这些属性对于这种从前面符号处得到的属性就称为继承属性继承前面符号的值从和处继承得到从处继承得到因此我们的属性翻译文法中等具有如下的关系继承属性的推导也可以得到对应的语法树推导顺序为自左向右自顶向下这里对于同一层而言左侧的和可以把属性继承给右边的和变量表而对于不同层而言上层的变量表可以把属性继承给下层的和变量表文法的扩展过程输入文法字符串翻译文法加入动作符号属性翻译文法加入综合属性和继承属性借助求值规则实现属性翻译文法的自顶向下翻译属性翻译文法这是属性翻译文法中比较简单的一种其输入文法要求是文法可以用自顶向下分析方法构造分析器在分析过程中可以进行属性求值特征每个符号的继承属性只依赖于该符号左边的信息属性翻译文法是带有下列说明的翻译文法文法中的终结符非终结符以及动作符号都带有属性且每个属性都有一个值域非终结符号以及动作符号的属性可以分为继承属性和综合属性同时有入参和返回值开始符号的继承属性具有指定的初始值输入符号终结符号的每个综合属性具有指定的初始值属性值的求值规则如下所示继承属性求值规则继承属性体现自顶向下自左向右的求值特性产生式左部的非终结符号的继承属性值取前面产生式右部同名符号已有的继承属性值产生式右部符号非终结符动作符号的继承属性值用该产生式左部符号的继承属性或出现在该符号左部的符号的所有属性值进行计算对于第二条规则产生式左部符号左侧和该符号左部是两个不同的概念前者只能用其继承属性后者可以同时用其继承和综合属性综合属性求值规则综合属性体现自底向上自右向左的求值特性产生式右部非终结符号的综合属性值取其下面后面产生式左部同名非终结符号的综合属性值产生式左部非终结符号的综合属性值用该产生式左部符号的继承属性或该产生式某些右部符号的任意属性进行计算动作符号的综合属性用该符号的继承属性或该符号右部某些符号的任意属性进行计算注意区分产生式左部非终结符对应的是产生式左部符号包括该符号本身只要是在产生式左部的符号即可的继承属性而动作符号对应的是该符号本身的继承属性求值顺序规则属性值的求值顺序求值顺序为继承来自该式前面表达式右部符号的继承属性继承来自的继承属性综合来自该式后面表达式左部符号的综合属性继承来自表达式左部的继承属性和符号左部的全部属性综合来自该式后面表达式左部符号的综合属性综合来自本身的继承属性和中某些符号的综合属性注意终结符只有综合属性由词法分析器提供非终结符和动作符号既可以有综合属性也可以有继承属性文法开始符号的所有继承属性作为属性计算前的初始值一般来说对于出现在产生式右边的继承属性和出现在产生式左边的综合属性都必须提供一个求值规则属性求值规则只能使用相应产生式中的文法符号和属性这有助于在产生式范围内封装属性的依赖性但出现在产生式左边的继承属性和产生式右边的综合属性不由所给的产生式的属性求值规则进行计算它们由其他产生式的属性规则计算求值顺序的继承属性若为开始符号则有指定值否则由上面产生式右部符号的继承属性求得的综合属性由的继承属性或产生式某些右部符号的所有属性求得的继承属性由的继承属性求得的综合属性由下面产生式中左部符号的综合属性求得的继承属性由和的继承属性求得的综合属性由下面产生式中左部符号的综合属性求得注意这里之所以我们总是强调右部某些符号的综合属性主要是为了防止冗余求值或死循环比如下面这个例子这里的继承属性本来就是由的继承属性得来的因此在推导的综合属性的时候已经综合了就不需要再综合了否则会产生不必要的冗余这就是所谓某些右部符号的含义注意总结符号只能有综合属性由词法分析器提供而非终结符和动作符号可以同时有继承属性和综合属性这里倒不是说综合符号就不能有继承属性只是没有必要因为综合符号在翻译过程中就相当于叶子节点其信息由词法分析阶段决定词法分析一旦把输入切成像等信息就固定了这些就是终结符的综合属性继承属性的作用是把父节点左兄弟的上下文传给子结点以指导展开翻译而终结符不再展开没有下游要受它影响因此没必要传继承属性下来简单赋值形式的属性翻译文法属性翻译文法是简单赋值形式的属性翻译文法是一般情况普通的我们称的属性值是和的属性值的函数而在中某符号的属性值或常量比如我们有或者这称为复写规则为了实现上的方便我们希望文法符号的属性求值规则为上述简单形式也就是形式为此我们对现有的的定义做一点改变从而形成一个称为简单赋值形式的定义一个被定义为简单赋值形式的当且仅当满足以下条件先统一记号一条产生式写成左部符号产生式箭头左边的那个非终结符右部符号右边序列里的每一个它们可以是非终结符或终结符在这个前提下定义需要满足的两个条件简单赋值形式的属性翻译文法可精确表述为条件右部符号的继承属性怎么赋值对右部中每个符号的继承属性其赋值只能是简单赋值且取值来源仅限于三类一个常量左部符号的某个继承属性右部中位于之前的某个符号的综合属性也就是说的继承属性不能依赖自己或右边符号的属性只能看和左侧兄弟这是属性的关键约束保证可自左向右一次求值无环条件左部符号的综合属性怎么赋值对左部非终结符的综合属性其赋值也必须是简单赋值且取值来源仅限于一个常量自己的某个继承属性右部中某个符号可为的综合属性因为在规约返回父结点时右部各子结点的综合属性都已经就绪所以的综合属性可以取自任何一个子结点的综合属性或直接沿用的继承信息或设为常量目的一个简单赋值定时的除动作符号外其余符号的属性求值规则就是形如这样的赋值表达式右部是属性或者常量简单化也就是说在简单赋值形式的属性翻译文法里除了动作符号可以做任意过程外其他一切属性求值都必须是简单赋值也就是赋值表达式的右边只能是某个属性把别处已有的属性直接拷贝过来一个常量不允许写成带计算组合函数调用的复杂式子例如字符串拼接如果需要做复杂工作打印拼接生成代码片段回填等应放到动作符号里如动作符号可以执行过程但属性间的赋值必须保持直接拷贝已有属性或赋值常量到的转化给定一个考虑如何将其转化为等价的赋值形式的我们以为例这里此时显然继承属性的求值规则不是简单赋值形式的因为它需要对函数进行运算我们考虑通过以下步骤的变形变为简单赋值形式的设动作符号表示函数求值该动作符号对应两个继承属性和一个综合属性即我们可以认为是入参是返回值修改产生式插入到产生式右部的适当位置引入新的复写规则把赋值给同时的运算结果赋值给最后删去原有的包含的规则最后得到的简单赋值形式的如下相当于就是我们不想要这种运算函数但是从和拿到又必须经过这个函数计算前面我们又提到过动作符号里可以放任意复杂的运算函数因此我们就在和之间插入一个代表这种运算的动作符号实现一个承接桥梁的功能自顶向下语法制导翻译文法的发展顺序为输入文法翻译文法属性翻译文法简单赋值形式的属性翻译文法先有翻译文法单纯的符号串翻译文法也就是只有动作符号不传参的自顶向下翻译然后在此基础上有属性翻译文法的自顶向下翻译符号串翻译文法的自顶向下翻译翻译文法的自顶向下翻译递归下降翻译器按照翻译要求在文法中插入语法动作符号在分析过程调用相应的语义处理程序完成翻译任务假设我们把下面这个输入文法改写成符号串翻译文法主程序对于的处理这里主程序没有发生改变因为所有的的含义即表示打印字符而这些动作符号都是加在和这些具体符号的过程中比如对于的我们需要在和的之间输出在的之后输出属性翻译文法的自顶向下翻译属性翻译文法的自顶向下翻译我们需要把处理翻译文法的递归下降翻译器进行适当扩展便可得到处理属性翻译文法的递归下降翻译器具体方法如下这里需要注意是继承变量是综合变量这里才是过程真正的入参其实是过程的返回值过程调用语句的实参继承属性继承属性值传入实参综合属性属性变量名传地址返回时才有值关于属性名的约定具有相同值的属性取相同的属性名产生式左部的同名非终结符使用相同的属性名递归下降法规定每个非终结符只编写一个子程序具有简单赋值形式的属性变量名如果取相同的属性名可以删除属性求值规则的情况的情况一个简单的示例这里其中和之间以及和之间就是有具有简单赋值形式我们可以干脆就把写成把写成这样就可以省去属性求值规则也就是上面的情况下面我们展示属性规范文法的递归下降解析过程和字符串翻译文法相比其实就是多了调用时的传参以及结束时的返回值我们要处理的文法如下首先我们需要先把相同值的属性进行同名化从而删掉一些不必要的求值规则比如则二者可以都用来代替以此类推化简后的文法规则如下主程序的分析还是以对的分析作为全局入口这里有一个继承属性也就是分析的时候需要入参因此我们在调用需要额外传一个参数进去这就是属性翻译唯一区别于字符串翻译的地方对于最开始的入口此时相当于开始文法其继承属性需要人为定义我们设置为因此中初始化的入参为接下来我们考虑对的解析过程根据第一个读到的字符是还是分为和两种解析情况对于他要为顶层的分析传回返回值和因此需要再的中定义临时变量和而对于他不需要为顶层的分析传回任何返回值也就相应不需要定义临时变量这里和的获得具体值来源有所不同其中是终结符的综合属性我们可以直接写这个就是我们读到的而是非终结符的综合属性需要当做的返回值来看因此我们要写成也就是传的地址在结束时即可获取对应的值最后写语句表示对和的返回下面是后续的分析过程对于这个需要其中涉及到的属性值有其中是传入的参数相当于是综合属性对应的变量名因此还需要在中定义临时变量其中的值先直接由终结符综合而来可以有有了的值以后我们立马可以同时根据得到的值接着我们调用传入的变量名当解析完以后的值也获得最后有了和的值我们可以根据得到的值最后执行中缀表达式转四元式的属性翻译文法设计首先需要先得到字符串翻译文法考虑在原输入文法的基础上加上动作序列这里很明显我们只需要输出四元式和四元式的部分即可因为是中缀表达式显然我们想输出其对应的四元式时必须要解析完最后一个操作数才可以因此动作符号都位于产生式最后的位置接着设计属性关系得到属性翻译文法输入符号操作数作为终结符需要有一个综合属性表示该符号在数据区的地址等价于这个对应的值是什么每个子表达式作为非终结符也需要有一个综合属性表示该符号所对应的子表达式的运算结果在数据区中的地址这个表达式中间运算结果的值动作符号有三个继承属性分别表示中间结果左运算数右运算数对应值在数据区中的地址而对于运算符本身则由动作符号进行区分这样即可得到表达式四元式的属性翻译文法这里表示由系统进行分配当子表达式计算完成时系统需要为中间运算结果分配一段内存空间用于这个中间结果的存储因此的含义就是这段空间的分配最后我们把简单赋值形式的属性同名化进一步化简求值规则即可得到反应属性求值的语法树如下自顶向下的语法制导翻译属性文法文法符号包括动作符号可以带有属性并且定义相应的属性求值规则就称为属性翻译文法和翻译文法相比前者能够更详细的描述翻译过程翻译文法在输入文法中插入语义动作符号完成翻译任务的子任务',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-10-23 15:18:53',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">MyBlog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>1</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>35</sup></a><a href="/tags/editing/" style="font-size: 1.05rem;">editing<sup>1</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>14</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>29</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">21</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">30</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>专业课</span></a></span></div></div><h1 class="post-title" itemprop="name headline">错误处理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-10-15T06:12:50.000Z" title="发表于 2025-10-15 14:12:50">2025-10-15</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-10-23T07:18:53.650Z" title="更新于 2025-10-23 15:18:53">2025-10-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A299.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/10/15/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/"><header><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url">专业课</a><h1 id="CrawlerTitle" itemprop="name headline">错误处理</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2025-10-15T06:12:50.000Z" title="发表于 2025-10-15 14:12:50">2025-10-15</time><time itemprop="dateCreated datePublished" datetime="2025-10-23T07:18:53.650Z" title="更新于 2025-10-23 15:18:53">2025-10-23</time></header><h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a><strong>错误处理</strong></h1><h2 id="错误处理概述"><a href="#错误处理概述" class="headerlink" title="错误处理概述"></a><strong>错误处理概述</strong></h2><p>编译程序对于语法和语义正确的源程序，要能够正确编译产生等价的目标代码，而对于错误的源程序不能发现一个错误就立刻停止，而是要能检查出错误的性质和出错位置，并且使得编译能够进行下去，同时尽可能多而准确的发现和指出各种错误</p>
+<h3 id="错误分类"><a href="#错误分类" class="headerlink" title="错误分类"></a><strong>错误分类</strong></h3><p>从编译角度，错误可以分成<strong>语法错误</strong>和<strong>语义错误</strong>两类：</p>
+<ul>
+<li>语法错误：程序结构不符合语法规则或者词法规则的错误</li>
+<li>语义错误：程序不符合我们所编写的语言的语义规则（上机实验中处理的语义错误）或超越具体计算机系统的限制（数据溢出错误，常数太大，计算结果溢出；符号表，静态存储分配数据区溢出；动态分配数据区溢出等）</li>
+</ul>
+<h3 id="错误诊察"><a href="#错误诊察" class="headerlink" title="错误诊察"></a><strong>错误诊察</strong></h3><p>违反语义和语法规则以及超过编译系统限制的错误，由<strong>编译程序</strong>在语法分析和语义分析过程中诊察出来（其中语义分析需要借助符号表）</p>
+<p>下标越界，计算结果溢出，动态存储数据区溢出等错误在目标程序运行时才能检测，因此需要由<strong>目标程序</strong>诊察</p>
+<p>因此，编译程序需要生成相应的目标程序，对运行代码进行检查并处理</p>
+<h3 id="错误处理-1"><a href="#错误处理-1" class="headerlink" title="错误处理"></a><strong>错误处理</strong></h3><p>发现错误以后，在报告错误的同时，还要求对错误进行处理，以方便编译能够继续进行下去，目前有两种处理方法：</p>
+<ul>
+<li>错误改正：编译发现错误以后，根据文法对错误进行改正（对于简单的语法错误，如缺少数组括号，分号等可能容易改正，但是对于较为复杂的错误，如运算符号冗余，表达式缺少括号等则难以改正）</li>
+<li>错误局部化处理：当编译程序发现错误以后，尽可能把错误限制在一个<strong>局部</strong>的范围内，避免错误扩散和影响程序其他部分的分析</li>
+</ul>
+<p>错误的<strong>局部化</strong>处理</p>
+<p>一般原则：当诊断到错误以后，就暂停对后面符号的分析，跳过错误所在的语法成分（一旦跳过就认为该语法成分是正确的），然后继续向下分析</p>
+<ul>
+<li>词法分析：发现不合法字符，显示错误，并且跳过该<strong>标识符 &#x2F; 单词</strong>，继续向下分析</li>
+<li>语法语义分析：跳过所在的语法成分（短语或语句），一般是跳到语句的<strong>右界符</strong>（一般就认为是一条语句的结尾 \n 处），然后从新语句继续向下分析递归下降分析法</li>
+</ul>
+<p>如果我们定义右界符为 \n，可能会导致跳过的符号过多，会漏判一些错误信息，因此我们需要提高错误<strong>局部化程度</strong>，我们维护两个集合：</p>
+<ul>
+<li>S1 集合：合法后继符号集合（某语法成分的后继符号）</li>
+<li>S2 集合：停止符号（跳读必须停止的符号集合）</li>
+</ul>
+<p>当发现错误的时候，我们重复跳过字符，直到读取到 S1 或 S2 集合中的符号，就停止跳读（相当于两个集合取并集）</p>
+<h3 id="目标程序运行时错误的检测和处理"><a href="#目标程序运行时错误的检测和处理" class="headerlink" title="目标程序运行时错误的检测和处理"></a><strong>目标程序运行时错误的检测和处理</strong></h3><p>在编译时，我们需要生成检测这类错误（下标变量下标值越界，计算结果溢出，动态存储分配数据区溢出）的代码，而对于这类错误，要正确报告出错误位置很困难，因为目标程序与源程序之间很难建立位置上的对应关系</p>
+<p>一般处理方法：当目标程序运行检测到这类错误时，就调用异常处理，打印错误信息和运行现场（寄存器和寄存器中的值），然后直接<strong>停止</strong>程序运行即可</p>
+<h3 id="遏制重复的错误信息"><a href="#遏制重复的错误信息" class="headerlink" title="遏制重复的错误信息"></a><strong>遏制重复的错误信息</strong></h3><p>语义错误主要来源于标识符未声明和类型不一致等错误，这种错误往往会多次出现（比如有一个未声明的变量 x，每次使用都会触发变量未声明错误）</p>
+<p>一般处理办法：建立一张错误名字表，每次发现出错名字后，先查表，若先前已经报过这个错误，则不再打印错误信息，否则登记到表中，并且打印错误信息</p>
+<p>溢出错误：即编译程序所需的工作区或源程序所需的数据区域溢出，为了使得编译程序正常运行，同样需要遏制重复的错误信息</p>
+<p>一般处理方法：对各数据区分别设置一个标志单元，初始为 0，当发生溢出时，先查看单元内容，若为 0，则表示刚发生溢出，打印错误信息，把标志设为 1；若为 1，则不再重复打印</p>
+<p>用来实现上述逻辑的代码需要在<strong>目标代码运行</strong>时发挥作用，它同样是由编译程序所生成的（编译程序在生成目标码的同时，也会生成和目标码运行时错误处理有关的代码）</p>
+<h2 id="语法制导翻译技术"><a href="#语法制导翻译技术" class="headerlink" title="语法制导翻译技术"></a><strong>语法制导翻译技术</strong></h2><p>语义分析的过程和语法成分密切相关，我们每识别到一个完整的语法成分，都需要调用符号表，进行查表 &#x2F; 写入操作，这意味着我们的语义分析需要在语法成分识别的框架下完成，因此语义分析又称为语法制导的翻译技术</p>
+<p>严谨点来讲全称应该是：语法制导下的语义分析与翻译技术</p>
+<p>编译中我们所关心的程序语义是<strong>操作语义</strong>，也就是和程序怎么执行 &#x2F; 运行之间的关系</p>
+<h3 id="翻译文法和语法制导翻译"><a href="#翻译文法和语法制导翻译" class="headerlink" title="翻译文法和语法制导翻译"></a><strong>翻译文法和语法制导翻译</strong></h3><p>对于下面这段文法，其定义了中缀表达式，如果我们相对某个中缀表达式 $a+b*c$ 进行翻译得到逆波兰表示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%9A%E4%B9%89.png" alt="image-20251015151944232"></p>
+<p>我们需要在上述文法中插入相应的<strong>动作符号</strong>：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E5%8A%A8%E4%BD%9C%E7%AC%A6%E5%8F%B7.png" alt="image-20251015152048712"></p>
+<p>其中 @+，@<em>，@i 为*<em>动作符号</em></em>，这里我们的动作符号写在运算符（+和 *）以及终结符（i，这里没有括号，因为后缀表达式不输出括号）位置，其中 @ 为动作符号标记，其后为字符串</p>
+<p>在该具体实例中，动作标记对应<strong>语义</strong>子程序的功能是要<strong>输出打印</strong>动作标记符号后面的字符串，因此产生式：</p>
+<ul>
+<li>$E\rightarrow E+T@+$：分析 E，+，T 并且输出 +</li>
+<li>$F\rightarrow i@i$：分析 i，并且输出 i</li>
+</ul>
+<p>动作符号的作用就是在正常推导的过程中加一个说明，提示在推导的某个位置，及时的把对应的符号打印出来，设计特定的打印顺序即可得到后缀表达式</p>
+<h3 id="输入文法和翻译文法"><a href="#输入文法和翻译文法" class="headerlink" title="输入文法和翻译文法"></a><strong>输入文法和翻译文法</strong></h3><p>输入文法：未插入动作符号的文法，由输入文法可以通过推导产生输入序列</p>
+<p>翻译文法：插入动作符号的文法，由翻译文法可以通过推导产生<strong>活动序列</strong>，而活动序列由<strong>输入序列</strong>和<strong>动作序列</strong>两部分所组成</p>
+<p>我们分别用原文法和加入动作符号后的文法做一遍推导，把 @ 当成终结符</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%8E%A8%E5%AF%BC.png" alt="image-20251015152918172"></p>
+<p>对于活动序列，我们可以分别得到输入序列和动作序列两部分，其中动作序列就是我们需要的后缀表达式，我们依次执行动作序列中的动作，打印出来的就是后缀表达式</p>
+<p>活动序列 &#x3D; 输入序列 + 动作序列</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%B4%BB%E5%8A%A8%E5%BA%8F%E5%88%97.png" alt="image-20251015153016230"></p>
+<p>翻译文法是<strong>上下文无关文法</strong>，终结符号集合由输入符号和动作符号组成，由翻译文法所产生的终结符号串称为活动序列，翻译文法和原文法相比终结符集合发生了变化，加入了（动作符号+字符串）组成的若干新终结符 </p>
+<p>这种带有动作符号的翻译文法也称为<strong>符号串翻译文法</strong>，输入文法中的动作符号对应的<strong>语义子程序</strong>是输出动作符号标记 @ 后的字符串的文法（在输入文法中加入一些新文法，这些文法由动作符号标识，作用为输出 @ 后的字符串）</p>
+<p>语法制导翻译：按照<strong>翻译文法</strong>所进行的翻译，给定一个输入符号串，根据翻译文法获得翻译该符号串的动作序列，并且执行该序列所规定的动作过程</p>
+<h3 id="语法制导翻译的实现方法"><a href="#语法制导翻译的实现方法" class="headerlink" title="语法制导翻译的实现方法"></a><strong>语法制导翻译的实现方法</strong></h3><p>在文法的适当位置插入语义动作符号，当按照文法分析到动作符号时，就调用相应的语义子程序，完成翻译任务</p>
+<p>翻译文法所定义的翻译是由输入序列和动作序列所组成的对偶集，即给定了一个翻译文法，就相当于给定了一个对偶集</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E5%AF%B9%E5%81%B6%E9%9B%86.png" alt="image-20251015171236439"></p>
+<p>补充：</p>
+<p>翻译文法就是在<strong>上下文无关文法</strong>的产生式中<strong>插入动作</strong>（如打印、生成代码、压栈、输出符号等）的文法<br>当我们对某个输入串进行一次合法的推导 &#x2F; 分析时，就会得到一条<strong>动作序列</strong>（把所有插入在产生式右部的动作按实际触发顺序依次串起来）<br>因而，“由翻译文法定义的翻译” 可以看成是<strong>一组二元组 (输入序列, 动作序列)</strong> 的集合：每个合法输入串，对应着按该文法推导时触发的那条唯一的动作序列</p>
+<p><strong>对偶集</strong>：<strong>输入序列</strong>和<strong>动作序列</strong>一一对应，因为一但文法和动作都固定下来，对于每个能被该文法接受的输入序列，分析过程会唯一确定动作触发的位置和次序，也就唯一生成了与之配对的动作序列</p>
+<h2 id="属性翻译文法"><a href="#属性翻译文法" class="headerlink" title="属性翻译文法"></a><strong>属性翻译文法</strong></h2><h3 id="属性翻译文法-1"><a href="#属性翻译文法-1" class="headerlink" title="属性翻译文法"></a><strong>属性翻译文法</strong></h3><p>翻译文法 -&gt; 属性文法</p>
+<p>在翻译文法的基础上，我们进一步定义属性文法，翻译文法中的符号，包括<strong>终结符</strong>，<strong>非终结符</strong>和<strong>动作符号</strong>均可带有<strong>属性</strong>，这样能够更好地描述和实现编译过程</p>
+<p>直观来讲：属性就是贴在语法树每个结点（符号）上的**“小纸条 &#x2F; 字段”**，用来携带 &#x2F; 传递语义信息或中间结果，动作符号，终结符，非终结符都可以拥有这种用于传递信息的字段</p>
+<p>字段里的内容可以是<strong>任意</strong>你在翻译 &#x2F; 编译时需要的内容：类型、值、地址、生成的目标代码片段、回填链表、行号、作用域信息、是否为左值、常量性、数组维度……甚至是 “函数指针 &#x2F; 过程” 本身</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E5%B1%9E%E6%80%A7%E7%BF%BB%E8%AF%91%E6%96%87%E6%B3%95.png" alt="image-20251015171432866"></p>
+<p>属性可以分成两种：</p>
+<ul>
+<li>综合属性：语义函数的返回值（语法树上从子节点往父节点汇总的信息）</li>
+<li>继承属性：语义函数的参数（语法树上从父节点或左兄弟传下去的信息）</li>
+</ul>
+<h4 id="综合属性"><a href="#综合属性" class="headerlink" title="综合属性"></a><strong>综合属性</strong></h4><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E7%BB%BC%E5%90%88%E5%B1%9E%E6%80%A7.png" alt="image-20251015171739625"></p>
+<p>其中对于终结符的综合属性是我们<strong>直接赋予</strong>（可能是外部输入）的（比如 i + i 这个表达式，我们<strong>直接</strong>令 i 分别等于 3 和 5，相当于人为赋值），而对于非终结符的综合属性，则可以通过画出<strong>语法树</strong>加<strong>自底向上推导</strong>的形式，确定每个非终结符的综合属性</p>
+<p>每个非终结符的综合属性来自它子的节点的汇总</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E9%9D%9E%E7%BB%88%E7%BB%93%E7%AC%A6.png" alt="image-20251015171941229"></p>
+<p>也可以写成一条一条推导式的形式，然后通过引入<strong>属性变量名</strong>，借助<strong>求值规则</strong>来实现综合属性的推导</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E7%BB%BC%E5%90%88%E5%B1%9E%E6%80%A7%E6%B0%B4%E5%B9%B3%E6%8E%A8%E5%AF%BC.png" alt="image-20251015172122066"></p>
+<p>总的来讲，综合属性的推导，如果是使用语法树进行推导，则为自底向上；如果是使用推导式进行推导，则为自右向左</p>
+<h4 id="继承属性"><a href="#继承属性" class="headerlink" title="继承属性"></a><strong>继承属性</strong></h4><p>继承属性和综合属性恰好相反，继承属性的推导是自左向右，自顶向下，即从产生式的左侧获取信息，传递给右侧的产生式</p>
+<p>考虑下面的文法：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251016100038799.png" alt="image-20251016100038799"></p>
+<p>首先把该文法改写成翻译文法，它需要完成的翻译任务为<strong>把声明的变量填入符号表</strong>，因此完成该工作的动作符号应为：$@set_table$</p>
+<p>假设我们有语句<code>int A, B;</code>，我们在填表的时候，先填入变量类型为 int，再填入变量名 A，当我们要登记变量名 B 的时候，其中标识符 B 是综合而来的（键盘输入），而 B 的变量类型则是<strong>继承</strong>而来的，由先前定义的 A 的类型所决定（这是由逗号分隔定义的变量类型相同而决定的）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251016100437640.png" alt="image-20251016100437640"></p>
+<p>现在我们需要两个信息：</p>
+<ul>
+<li>填表的时候，需要知道变量的类型和标识符</li>
+<li>当我们定义形如 int A, B, C 这样的多个变量时，当处理到后边的变量 B C 时，我们需要知道变量的类型</li>
+</ul>
+<p>首先对于终结符 Type 和 id，它们的有关信息可以通过词法分析得到（即相当于从外界直接获取输入），我们为其设置两个综合属性：</p>
+<ul>
+<li>$Type_{\uparrow t}$：t 表示变量类型</li>
+<li>$id_{\uparrow n}$：n 表示变量名</li>
+</ul>
+<p>因此填表的动作符号 $@set_table$ 和变量表也需要得到这些属性信息，此时它们必须从 Type 或 id 处拿到这些属性，对于这种从前面符号处得到的属性，就称为<strong>继承属性</strong>，继承前面符号的值：</p>
+<ul>
+<li>$@set_{table\downarrow t_1,n_1}$：从 Type 和 id 处继承得到</li>
+<li>$&lt;var;; table&gt;_{\downarrow t_2}$：从 Type 处继承得到</li>
+</ul>
+<p>因此我们的<strong>属性</strong>翻译文法中，$n, t, t1, t2$ 等具有如下的关系：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251016101022058.png" alt="image-20251016101022058"></p>
+<p>继承属性的推导也可以得到对应的语法树，推导顺序为自左向右，自顶向下，这里对于同一层而言，左侧的 Type 和 id 可以把属性继承给右边的 @set_table 和变量表，而对于不同层而言，上层的变量表可以把属性继承给下层的 @set_table 和变量表：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251016101140330.png" alt="image-20251016101140330"></p>
+<p>文法的扩展过程：</p>
+<ul>
+<li>输入文法</li>
+<li>（字符串）翻译文法：加入动作符号</li>
+<li>属性翻译文法：加入综合属性和继承属性，借助求值规则实现</li>
+</ul>
+<h2 id="属性翻译文法的自顶向下翻译"><a href="#属性翻译文法的自顶向下翻译" class="headerlink" title="属性翻译文法的自顶向下翻译"></a><strong>属性翻译文法的自顶向下翻译</strong></h2><p>（1）L-属性翻译文法（L-ATG）</p>
+<p>这是属性翻译文法中比较简单的一种，其输入文法要求是 LL(1) 文法，可以用自顶向下分析方法构造分析器，在分析过程中可以进行属性求值</p>
+<p><strong>特征</strong>：每个符号的继承属性只依赖于该符号左边的信息</p>
+<p>L-属性翻译文法是带有下列说明的翻译文法：</p>
+<ul>
+<li>文法中的终结符，非终结符以及动作符号都带有<strong>属性</strong>，且每个属性都有一个值域</li>
+<li>非终结符号以及动作符号的属性可以分为继承属性和综合属性（同时有入参和返回值）</li>
+<li>开始符号的继承属性具有指定的初始值</li>
+<li>输入符号（终结符号）的每个综合属性具有指定的初始值</li>
+<li>属性值的求值规则如下所示</li>
+</ul>
+<h3 id="继承属性求值规则"><a href="#继承属性求值规则" class="headerlink" title="继承属性求值规则"></a><strong>继承属性求值规则</strong></h3><p>继承属性——体现自顶向下，自左向右的求值特性：</p>
+<ul>
+<li>产生式左部的<strong>非终结符号</strong>的继承属性值，取<strong>前面</strong>产生式右部同名符号已有的继承属性值</li>
+<li>产生式右部符号（非终结符，动作符号）的继承属性值，用<strong>该产生式左部符号的继承属性</strong>或出现在<strong>该符号左部的符号的所有属性值</strong>进行计算</li>
+<li>对于第二条规则，<strong>产生式左部</strong>（-&gt;符号左侧）和<strong>该符号左部</strong>是两个不同的概念，前者只能用其继承属性，后者可以同时用其继承和综合属性</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251016102726706.png" alt="image-20251016102726706"></p>
+<h3 id="综合属性求值规则"><a href="#综合属性求值规则" class="headerlink" title="综合属性求值规则"></a><strong>综合属性求值规则</strong></h3><p>综合属性——体现自底向上，自右向左的求值特性：</p>
+<ul>
+<li>产生式右部非终结符号的综合属性值，取其<strong>下面 &#x2F; 后面</strong>产生式左部<strong>同名</strong>非终结符号的综合属性值</li>
+<li>产生式左部非终结符号的综合属性值，用该产生式<strong>左部符号的继承属性</strong>或该产生式某些<strong>右部符号的任意属性</strong>进行计算</li>
+<li>动作符号的综合属性用<strong>该符号的继承属性</strong>或该符号<strong>右部某些符号的任意属性</strong>进行计算</li>
+<li>注意区分，产生式左部非终结符对应的是产生式左部符号（包括该符号本身，只要是在产生式左部的符号即可）的继承属性；而动作符号对应的是该符号本身的继承属性</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251016103429156.png" alt="image-20251016103429156"></p>
+<h3 id="求值顺序规则"><a href="#求值顺序规则" class="headerlink" title="求值顺序规则"></a><strong>求值顺序规则</strong></h3><p>属性值的求值顺序：$A\rightarrow B C$</p>
+<p>求值顺序为：</p>
+<ul>
+<li>A继承：来自该式前面表达式右部符号 A 的继承属性</li>
+<li>B继承：来自 A 的继承属性</li>
+<li>B综合：来自该式后面表达式左部符号 B 的综合属性</li>
+<li>C继承：来自 A（表达式左部）的继承属性和 B（符号 C 左部）的全部属性</li>
+<li>C综合：来自该式后面表达式左部符号 C 的综合属性</li>
+<li>A综合：来自 A 本身的继承属性和 B C 中某些符号的综合属性</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>终结符只有综合属性（由词法分析器提供）</li>
+<li>非终结符和动作符号既可以有综合属性也可以有继承属性</li>
+<li>文法开始符号的所有继承属性作为属性计算前的初始值</li>
+</ul>
+<p>一般来说，对于出现在<strong>产生式右边的继承属性</strong>和<strong>出现在产生式左边的综合属性</strong>都必须提供一个求值规则，属性求值规则只能使用相应产生式中的文法符号和属性（这有助于在产生式范围内封装属性的依赖性），但出现在<strong>产生式左边的继承属性</strong>和<strong>产生式右边的综合属性</strong>不由所给的产生式的属性求值规则进行计算，它们由其他产生式的属性规则计算</p>
+<p>求值顺序：$A \rightarrow BC$</p>
+<ul>
+<li>A 的继承属性：若 A 为开始符号，则有指定值；否则由上面产生式右部符号 A 的继承属性求得</li>
+<li>A 的综合属性：由 A 的继承属性或产生式某些右部符号的所有属性求得</li>
+<li>B 的继承属性：由 A 的继承属性求得</li>
+<li>B 的综合属性：由下面产生式中左部符号 B 的综合属性求得</li>
+<li>C 的继承属性：由 A 和 B 的继承属性求得</li>
+<li>C 的综合属性：由下面产生式中左部符号 C 的综合属性求得</li>
+</ul>
+<p><strong>注意</strong>：这里之所以我们总是强调右部某些符号的综合属性，主要是为了防止冗余求值或死循环，比如下面这个例子</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251023112817080.png" alt="image-20251023112817080"></p>
+<p>这里 B 的继承属性 r 本来就是由 A 的继承属性 p 得来的，因此在推导 A 的综合属性 q 的时候，q 已经综合了 p，就不需要再综合 r 了，否则会产生不必要的冗余，这就是所谓<strong>某些右部符号</strong>的含义</p>
+<p><strong>注意</strong>：<strong>总结符号</strong>只能有<strong>综合属性</strong>（由词法分析器提供），而<strong>非终结符</strong>和<strong>动作符号</strong>可以同时有<strong>继承属性</strong>和<strong>综合属性</strong></p>
+<p>这里倒不是说综合符号就不能有继承属性，只是没有必要，因为综合符号在翻译过程中就相当于叶子节点，其信息由词法分析阶段决定，词法分析一旦把输入切成 token，像 <code>ID.lexeme</code>、<code>NUM.value</code>、<code>tok.line</code> 等信息就<strong>固定</strong>了，这些就是终结符的综合属性，继承属性的作用是“把父节点 &#x2F; 左兄弟的上下文<strong>传给</strong>子结点以指导展开 &#x2F; 翻译，而终结符<strong>不再展开</strong>，没有下游要受它影响，因此没必要传继承属性下来</p>
+<h2 id="简单赋值形式的L-属性翻译文法"><a href="#简单赋值形式的L-属性翻译文法" class="headerlink" title="简单赋值形式的L-属性翻译文法"></a><strong>简单赋值形式的L-属性翻译文法</strong></h2><p>属性翻译文法是 L-ATG，简单赋值形式的属性翻译文法是 SL-ATG</p>
+<h3 id="SL-ATG"><a href="#SL-ATG" class="headerlink" title="SL-ATG"></a><strong>SL-ATG</strong></h3><p>一般情况（普通的 L-ATG）： x :&#x3D; f(y, z) 我们称 x 的属性值是 y 和 z 的属性值的函数</p>
+<p>而在 SL-ATG 中： x :&#x3D; 某符号的属性值或常量，比如我们有<code>x:=y</code>或者<code>x,y,z:=17</code>，这称为<strong>复写规则</strong></p>
+<p>为了实现上的方便，我们希望文法符号的属性求值规则为上述简单形式（也就是 SL-ATG 形式），为此，我们对现有的 L-ATG 的定义做一点改变，从而形成一个称为简单赋值形式的 SL-ATG</p>
+<p>（定义）一个 L-ATG 被定义为简单赋值形式的 SL-ATG，当且仅当满足以下条件：</p>
+<p>先统一记号：一条产生式写成 $A \rightarrow X_1,X_2,\cdots,X_n$</p>
+<ul>
+<li>左部符号＝<strong>A</strong>（产生式箭头左边的那个非终结符）</li>
+<li>右部符号＝右边序列里的每一个 <strong>$X_i$</strong>（它们可以是非终结符或终结符）</li>
+</ul>
+<p>在这个前提下，定义需要满足的两个条件（SL-ATG：简单赋值形式的 L-属性翻译文法）可精确表述为：</p>
+<p><strong>条件 1（右部符号的继承属性怎么赋值）</strong></p>
+<p>对右部中<strong>每个</strong>符号 $X_i$ 的<strong>继承属性</strong> $X_i.a$，其赋值<strong>只能是简单赋值</strong>，且取值来源仅限于三类：</p>
+<ol>
+<li>一个<strong>常量</strong>：<code>Xi.a := c</code></li>
+<li><strong>左部符号 A 的某个继承属性</strong>：<code>Xi.a := A.b</code></li>
+<li><strong>右部中位于 $X_i$ 之前的某个符号</strong> $X_j$（j&lt;i）的<strong>综合属性</strong>：<code>Xi.a := Xj.c</code></li>
+</ol>
+<blockquote>
+<p>也就是说，$X_i$ 的继承属性<strong>不能</strong>依赖自己或右边符号的属性，只能看<strong>A</strong>和<strong>左侧兄弟</strong>，这是 L-属性的关键约束，保证可自左向右一次求值、无环</p>
+</blockquote>
+<p><strong>条件 2（左部符号的综合属性怎么赋值）</strong></p>
+<p>对<strong>左部非终结符 A</strong> 的<strong>综合属性</strong> $A.a$，其赋值也必须是<strong>简单赋值</strong>，且取值来源仅限于：</p>
+<ol>
+<li>一个<strong>常量</strong>：<code>A.a := c</code></li>
+<li><strong>A 自己的某个继承属性</strong>：<code>A.a := A.b</code></li>
+<li><strong>右部中某个符号</strong> $X_k$（k 可为 1..n）的<strong>综合属性</strong>：<code>A.a := Xk.c</code></li>
+</ol>
+<blockquote>
+<p>因为在规约 &#x2F; 返回父结点时，右部各子结点的综合属性都已经就绪，所以 A 的综合属性可以取自任何一个子结点的综合属性，或直接沿用 A 的继承信息，或设为常量</p>
+</blockquote>
+<p>目的：一个简单赋值定时的 L-ATG 除动作符号外，其余符号的属性<strong>求值规则</strong>（就是形如 x:&#x3D;y 这样的赋值表达式）右部是属性或者常量（简单化）</p>
+<p>也就是说在简单赋值形式的 L-属性翻译文法（SL-ATG）里，除了 “动作符号” 可以做任意过程外，其他一切属性求值都必须是<strong>简单赋值</strong>，也就是赋值表达式的右边只能是：</p>
+<ul>
+<li><strong>某个属性</strong>：<code>X.a := Y.b</code>（把别处已有的属性直接拷贝过来）</li>
+<li><strong>一个常量</strong>：<code>X.a := c</code></li>
+</ul>
+<p>不允许写成带计算 &#x2F; 组合&#x2F;函数调用的复杂式子，例如：</p>
+<ul>
+<li>⛔ <code>X.a := Y.b + Z.c</code></li>
+<li>⛔ <code>X.a := f(Y.b)</code></li>
+<li>⛔ <code>X.a := Y.b || Z.c || &quot;*&quot;（字符串拼接）</code></li>
+</ul>
+<p>如果需要做 “复杂工作”（打印、拼接、生成代码片段、回填等），应放到<strong>动作符号</strong>里（如 <code>@emit(&quot;+&quot;)</code>、<code>@genCode(...)</code>），动作符号可以执行过程，但<strong>属性间的赋值</strong>必须保持 “直接拷贝已有属性或赋值常量”</p>
+<h3 id="L-ATG-到-SL-ATG-的转化"><a href="#L-ATG-到-SL-ATG-的转化" class="headerlink" title="L-ATG 到 SL-ATG 的转化"></a><strong>L-ATG 到 SL-ATG 的转化</strong></h3><p>给定一个 L-ATG，考虑如何将其转化为等价的赋值形式的 SL-ATG，我们以 $<A>\rightarrow a_{\uparrow R}<B><em>{\uparrow S}<C></em>{\downarrow I}$ 为例，这里 $I:&#x3D;f(R,S)$，此时显然继承属性的求值规则不是简单赋值形式的，因为它需要对函数 $f$ 进行运算</p>
+<p>我们考虑通过以下步骤的变形，变为简单赋值形式的 L-ATG：</p>
+<ul>
+<li>设动作符号 $@f$ 表示<strong>函数 f 求值</strong>，该动作符号对应两个继承属性 I1 I2 和一个综合属性 S1，即 $@f_{\downarrow I_1,I_2 \uparrow S1},S1:&#x3D;f(I_1,I_2)$，我们可以认为 I1，I2 是入参，S1 是返回值</li>
+<li>修改产生式，插入 $@f$ 到产生式<strong>右部的适当位置</strong>，引入新的复写规则（把 R, S 赋值给 I1, I2，同时 f 的运算结果赋值给 S1），最后删去原有的包含 f 的规则 S1:&#x3D;f(I1,I2)</li>
+<li>最后得到的简单赋值形式的 L-ATG 如下：</li>
+</ul>
+<p>$$<br><A>\rightarrow a_{\uparrow R}<B><em>{\uparrow S}@f</em>{\downarrow I_1,I_2 \uparrow S_1}<C>_{\downarrow I}\<br>I_1:&#x3D;S,I2:&#x3D;R,S1:&#x3D;f(I1,I2),I:&#x3D;S1<br>$$</p>
+<p>相当于就是我们不想要这种运算函数 f，但是从 R 和 S 拿到 I 又必须经过这个函数计算，前面我们又提到过动作符号里可以放任意复杂的运算函数，因此我们就在 R S 和 S1 之间插入一个代表这种运算的动作符号，实现一个承接 &#x2F; 桥梁的功能</p>
+<h2 id="自顶向下语法制导翻译"><a href="#自顶向下语法制导翻译" class="headerlink" title="自顶向下语法制导翻译"></a><strong>自顶向下语法制导翻译</strong></h2><p>文法的发展顺序为：输入文法，翻译文法，属性翻译文法，简单赋值形式的属性翻译文法</p>
+<p>先有<strong>翻译文法</strong>（单纯的符号串翻译文法，也就是只有动作符号，不传参）的自顶向下翻译，然后在此基础上有<strong>属性翻译文法</strong>的自顶向下翻译</p>
+<h3 id="符号串翻译文法的自顶向下翻译"><a href="#符号串翻译文法的自顶向下翻译" class="headerlink" title="符号串翻译文法的自顶向下翻译"></a><strong>符号串翻译文法的自顶向下翻译</strong></h3><p>翻译文法的自顶向下翻译——递归下降翻译器：按照翻译要求，在文法中插入<strong>语法动作符号</strong>，在分析过程调用相应的语义处理程序，完成翻译任务</p>
+<p>假设我们把下面这个输入文法改写成符号串翻译文法：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021153642272.png" alt="image-20251021153642272"></p>
+<p>主程序（对于<code>&lt;S&gt;</code>的处理）：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021154020919.png" alt="image-20251021154020919"></p>
+<p>这里主程序没有发生改变，因为所有的 @* 的含义即表示打印 * 字符，而这些动作符号都是加在<code>&lt;S&gt;</code>和<code>&lt;A&gt;</code>这些具体符号的 Parser 过程中，比如对于 S 的 Parser，我们需要在 A 和 S 的 Parser 之间输出 x，在 b 的 Parser 之后输出 z</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021154216559.png" alt="image-20251021154216559"></p>
+<h3 id="属性翻译文法的自顶向下翻译-1"><a href="#属性翻译文法的自顶向下翻译-1" class="headerlink" title="属性翻译文法的自顶向下翻译"></a><strong>属性翻译文法的自顶向下翻译</strong></h3><p>属性翻译文法的自顶向下翻译：我们需要把处理翻译文法的递归下降翻译器进行适当扩展，便可得到处理属性翻译文法的递归下降翻译器，具体方法如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021154337257.png" alt="image-20251021154337257"></p>
+<p>这里需要注意，x 是继承变量，y 是综合变量，这里 x 才是 U 过程真正的入参，y 其实是 U 过程的返回值</p>
+<p>过程调用语句的实参：</p>
+<ul>
+<li>继承属性：继承属性值（传入实参）</li>
+<li>综合属性：属性变量名（传地址，返回时才有值）</li>
+</ul>
+<p>关于属性名的约定：</p>
+<ul>
+<li>具有相同值的属性取相同的属性名</li>
+<li>产生式左部的<strong>同名</strong>非终结符使用相同的属性名（递归下降法规定每个非终结符只编写一个子程序，具有简单赋值形式的属性变量名如果取相同的属性名，可以删除属性求值规则）</li>
+</ul>
+<p>（1）的情况：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021154847911.png" alt="image-20251021154847911"></p>
+<p>（2）的情况：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021154908628.png" alt="image-20251021154908628"></p>
+<p>一个简单的示例：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021154948823.png" alt="image-20251021154948823"> </p>
+<p>这里 t2, t1 :&#x3D; t, n1 :&#x3D; n 其中 t1 t2 和 t 之间，以及 n1 和 n 之间就是有具有简单赋值形式，我们可以干脆就把 t1 t2 写成 t，把 n1 写成 n，这样就可以省去属性求值规则，也就是上面（2）的情况</p>
+<p>下面我们展示属性规范文法的递归下降解析过程，和字符串翻译文法相比，其实就是多了调用 Parser 时的传参（$\downarrow$）以及 Parser 结束时的返回值（$\uparrow$）</p>
+<p>我们要处理的文法如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021155808423.png" alt="image-20251021155808423"></p>
+<p>（1）首先我们需要先把相同值的属性进行同名化，从而删掉一些不必要的<strong>求值规则</strong>，比如 R2:&#x3D;R1，则二者可以都用 R 来代替，以此类推，化简后的文法规则如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021155926384.png" alt="image-20251021155926384"></p>
+<p>主程序的分析还是以对<code>&lt;S&gt;</code>的分析作为全局入口，这里 S 有一个继承属性 $\downarrow R$，也就是分析 S 的时候需要入参 R，因此我们在调用 ParserS() 需要额外传一个<strong>参数</strong>进去，这就是属性翻译唯一区别于字符串翻译的地方：</p>
+<p>对于最开始的入口，此时 S 相当于开始文法，其继承属性需要人为定义，我们设置为 7，因此 ProcS() 中初始化的入参为 7：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021160121445.png" alt="image-20251021160121445"></p>
+<p>接下来我们考虑对 S 的解析过程，根据第一个读到的字符是 a 还是 b，分为 P1 和 P2 两种解析情况，对于 P1，他要为顶层的分析传回返回值 T 和 Q，因此需要再 P1 的 BLOCK 中定义临时变量 T 和 Q；而对于 P2，他不需要为顶层的分析传回任何返回值，也就相应不需要定义临时变量</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021161344230.png" alt="image-20251021161344230"></p>
+<p>这里 T 和 Q 的<strong>获得具体值</strong>来源有所不同，其中 T 是终结符 a 的综合属性，我们可以直接写<code>T:=TOKEN</code>，这个 TOKEN 就是我们读到的 a；而 Q 是非终结符<code>&lt;A&gt;</code>的综合属性，需要当做 ParserA() 的返回值来看，因此我们要写成<code>PROCA(Q)</code>，也就是传 Q 的地址，在 ProcA() 结束时，即可获取 Q 对应的值，最后写 RETURN 语句表示对 T 和 Q 的返回</p>
+<p> 下面是后续的分析过程：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021161915645.png" alt="image-20251021161915645"></p>
+<p>对于 P3 这个 BLOCK，需要其中涉及到的属性值有 P Q U Z，其中 P 是传入<code>&lt;A&gt;</code>的参数，相当于是综合属性对应的变量名，因此还需要在 P3 中定义临时变量 Q U Z：</p>
+<ul>
+<li>其中 U 的值先直接由终结符<code>c</code>综合而来，可以有<code>U:=token</code></li>
+<li>有了 U 的值以后，我们立马可以<code>print(@1)</code>同时根据<code>Z:=U-3</code>得到 z 的值</li>
+<li>接着我们调用 ProcA()，传入 Q 的变量名，当解析完以后，Q 的值也获得</li>
+<li>最后有了 Q 和 U 的值，我们可以根据<code>P:=Q+U</code>得到 p 的值，最后执行<code>print(@2)</code></li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021161931702.png" alt="image-20251021161931702"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251021161950092.png" alt="image-20251021161950092"></p>
+<h3 id="中缀表达式转四元式的属性翻译文法设计"><a href="#中缀表达式转四元式的属性翻译文法设计" class="headerlink" title="中缀表达式转四元式的属性翻译文法设计"></a><strong>中缀表达式转四元式的属性翻译文法设计</strong></h3><p>（1）首先需要先得到字符串翻译文法</p>
+<p>考虑在原输入文法的基础上加上动作序列，这里很明显我们只需要输出 Add 四元式和 Mult 四元式的部分即可，因为是<strong>中缀表达式</strong>，显然我们想输出其对应的四元式时，必须要解析完最后一个操作数才可以，因此动作符号都位于产生式最后的位置：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251023151054388.png" alt="image-20251023151054388"></p>
+<p>（2）接着设计属性关系，得到属性翻译文法</p>
+<ul>
+<li>输入符号（操作数）作为终结符，需要有一个综合属性，表示该符号在数据区的<strong>地址</strong>（等价于这个 ident 对应的值是什么）</li>
+<li>每个子表达式（E T）作为非终结符，也需要有一个综合属性，表示该符号所对应的子表达式的运算结果在数据区中的地址（这个表达式中间运算结果的值）</li>
+<li>动作符号有三个继承属性，分别表示中间结果，左运算数，右运算数对应值在数据区中的地址，而对于运算符本身则由动作符号进行区分</li>
+</ul>
+<p>这样即可得到表达式 -&gt; 四元式的属性翻译文法：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251023151601118.png" alt="image-20251023151601118"></p>
+<p>这里 x,p :&#x3D; NEW 表示由系统进行分配，当子表达式计算完成时，系统需要为中间运算结果分配一段<strong>内存空间</strong>，用于这个中间结果的存储，因此 NEW 的含义就是这段空间的分配</p>
+<p>最后，我们把简单赋值形式的属性同名化，进一步化简求值规则，即可得到：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251023151814289.png" alt="image-20251023151814289"></p>
+<p>反应属性求值的语法树如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/image-20251023151845254.png" alt="image-20251023151845254"></p>
+<p>自顶向下的语法制导翻译：</p>
+<ul>
+<li>属性文法：文法符号（包括动作符号）可以带有属性，并且定义相应的属性求值规则，就称为属性翻译文法，和翻译文法相比前者能够更详细的描述翻译过程</li>
+<li>翻译文法：在输入文法中插入语义动作符号（完成翻译任务的子任务）</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/10/15/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/10/15/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/')">错误处理</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/10/15/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=错误处理&amp;url=http://example.com/2025/10/15/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A299.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">MyBlog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>专业课<span class="tagsPageCount">14</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2105.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/10/13/Embedding/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A298.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Embedding</div></div></a></div><div class="next-post pull-right"><a href="/2025/10/16/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90Day1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2100.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">算法设计与分析Day1</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/10/21/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" title="数据库设计"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2102.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-21</div><div class="title">数据库设计</div></div></a></div><div><a href="/2025/10/09/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%9D%E6%8A%A4/" title="数据库保护"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2102.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-09</div><div class="title">数据库保护</div></div></a></div><div><a href="/2025/09/25/(SQL)%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A0%87%E5%87%86%E8%AF%AD%E8%A8%80/" title="关系数据库标准语言"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A293.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-25</div><div class="title">关系数据库标准语言</div></div></a></div><div><a href="/2025/09/20/C%E8%AF%AD%E8%A8%80%E7%B3%BB%E7%BB%9F%E7%BA%A7%E7%BC%96%E7%A8%8B/" title="C语言系统级编程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2103.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-20</div><div class="title">C语言系统级编程</div></div></a></div><div><a href="/2025/09/06/SQL/" title="SQL"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A270.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-06</div><div class="title">SQL</div></div></a></div><div><a href="/2025/09/22/%E6%96%87%E6%B3%95%E8%A7%84%E5%88%99/" title="文法规则"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A289.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-22</div><div class="title">文法规则</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">错误处理概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%88%86%E7%B1%BB"><span class="toc-number">1.1.1.</span> <span class="toc-text">错误分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%AF%8A%E5%AF%9F"><span class="toc-number">1.1.2.</span> <span class="toc-text">错误诊察</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-1"><span class="toc-number">1.1.3.</span> <span class="toc-text">错误处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%97%B6%E9%94%99%E8%AF%AF%E7%9A%84%E6%A3%80%E6%B5%8B%E5%92%8C%E5%A4%84%E7%90%86"><span class="toc-number">1.1.4.</span> <span class="toc-text">目标程序运行时错误的检测和处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%8F%E5%88%B6%E9%87%8D%E5%A4%8D%E7%9A%84%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.5.</span> <span class="toc-text">遏制重复的错误信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91%E6%8A%80%E6%9C%AF"><span class="toc-number">1.2.</span> <span class="toc-text">语法制导翻译技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BF%BB%E8%AF%91%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91"><span class="toc-number">1.2.1.</span> <span class="toc-text">翻译文法和语法制导翻译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%96%87%E6%B3%95%E5%92%8C%E7%BF%BB%E8%AF%91%E6%96%87%E6%B3%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">输入文法和翻译文法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.3.</span> <span class="toc-text">语法制导翻译的实现方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E7%BF%BB%E8%AF%91%E6%96%87%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">属性翻译文法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E7%BF%BB%E8%AF%91%E6%96%87%E6%B3%95-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">属性翻译文法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">综合属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">继承属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E7%BF%BB%E8%AF%91%E6%96%87%E6%B3%95%E7%9A%84%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%BF%BB%E8%AF%91"><span class="toc-number">1.4.</span> <span class="toc-text">属性翻译文法的自顶向下翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7%E6%B1%82%E5%80%BC%E8%A7%84%E5%88%99"><span class="toc-number">1.4.1.</span> <span class="toc-text">继承属性求值规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E5%B1%9E%E6%80%A7%E6%B1%82%E5%80%BC%E8%A7%84%E5%88%99"><span class="toc-number">1.4.2.</span> <span class="toc-text">综合属性求值规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E5%80%BC%E9%A1%BA%E5%BA%8F%E8%A7%84%E5%88%99"><span class="toc-number">1.4.3.</span> <span class="toc-text">求值顺序规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%B5%8B%E5%80%BC%E5%BD%A2%E5%BC%8F%E7%9A%84L-%E5%B1%9E%E6%80%A7%E7%BF%BB%E8%AF%91%E6%96%87%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text">简单赋值形式的L-属性翻译文法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SL-ATG"><span class="toc-number">1.5.1.</span> <span class="toc-text">SL-ATG</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#L-ATG-%E5%88%B0-SL-ATG-%E7%9A%84%E8%BD%AC%E5%8C%96"><span class="toc-number">1.5.2.</span> <span class="toc-text">L-ATG 到 SL-ATG 的转化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91"><span class="toc-number">1.6.</span> <span class="toc-text">自顶向下语法制导翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E4%B8%B2%E7%BF%BB%E8%AF%91%E6%96%87%E6%B3%95%E7%9A%84%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%BF%BB%E8%AF%91"><span class="toc-number">1.6.1.</span> <span class="toc-text">符号串翻译文法的自顶向下翻译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E7%BF%BB%E8%AF%91%E6%96%87%E6%B3%95%E7%9A%84%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%BF%BB%E8%AF%91-1"><span class="toc-number">1.6.2.</span> <span class="toc-text">属性翻译文法的自顶向下翻译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BD%AC%E5%9B%9B%E5%85%83%E5%BC%8F%E7%9A%84%E5%B1%9E%E6%80%A7%E7%BF%BB%E8%AF%91%E6%96%87%E6%B3%95%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.6.3.</span> <span class="toc-text">中缀表达式转四元式的属性翻译文法设计</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/10/25/RLHF/" title="(一)RLHF_PPO"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2105.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="(一)RLHF_PPO"/></a><div class="content"><a class="title" href="/2025/10/25/RLHF/" title="(一)RLHF_PPO">(一)RLHF_PPO</a><time datetime="2025-10-25T02:45:26.000Z" title="发表于 2025-10-25 10:45:26">2025-10-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/23/%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/" title="语义分析和代码生成">语义分析和代码生成</a><time datetime="2025-10-23T07:29:17.000Z" title="发表于 2025-10-23 15:29:17">2025-10-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/21/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/" title="语义分析和代码生成"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2103.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="语义分析和代码生成"/></a><div class="content"><a class="title" href="/2025/10/21/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90%E5%92%8C%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90/" title="语义分析和代码生成">语义分析和代码生成</a><time datetime="2025-10-21T08:31:25.000Z" title="发表于 2025-10-21 16:31:25">2025-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/21/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" title="数据库设计"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2102.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库设计"/></a><div class="content"><a class="title" href="/2025/10/21/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" title="数据库设计">数据库设计</a><time datetime="2025-10-21T01:50:34.000Z" title="发表于 2025-10-21 09:50:34">2025-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/16/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90Day1/" title="算法设计与分析Day1"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2100.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法设计与分析Day1"/></a><div class="content"><a class="title" href="/2025/10/16/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90Day1/" title="算法设计与分析Day1">算法设计与分析Day1</a><time datetime="2025-10-16T14:11:44.000Z" title="发表于 2025-10-16 22:11:44">2025-10-16</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">85</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>1</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>35</sup></a><a href="/tags/editing/" style="font-size: 0.88rem;">editing<sup>1</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>14</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>29</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
