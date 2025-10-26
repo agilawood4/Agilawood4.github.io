@@ -2423,8 +2423,7 @@ body[data-type='about'] #web_bg {
     background: none;
     padding: 0;
     width: auto;
-    -webkit-backdrop-filter: unset;
-            backdrop-filter: unset;
+    backdrop-filter: unset;
   }
   .author-content-item .card-content .banner-button-group .banner-button i,
   .author-content-item .card-content .banner-button-group .banner-button svg {
@@ -4369,8 +4368,7 @@ body[data-type="music"] #page .page-title {
   display: none;
 }
 body[data-type="music"] #page-header #nav {
-  -webkit-backdrop-filter: none !important;
-          backdrop-filter: none !important;
+  backdrop-filter: none !important;
   background: 0 0 !important;
   border-bottom: none !important;
 }
@@ -6659,8 +6657,7 @@ h1.page-title + .tag-cloud-list {
   }
 }
 #page-header.post-bg #nav {
-  -webkit-backdrop-filter: none;
-          backdrop-filter: none;
+  backdrop-filter: none;
   background: transparent;
   border-bottom: none;
 }
@@ -7960,8 +7957,7 @@ h1.page-title + .tag-cloud-list {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   pointer-events: none;
-  -webkit-backdrop-filter: blur(20px);
-          backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
 }
 .back-home-button .back-menu-list-group {
   display: -ms-flexbox;
@@ -16051,10 +16047,8 @@ i.bber-gotobb {
 #nav-music.playing .aplayer {
   background: var(--anzhiyu-main);
   border: var(--style-border-hover);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-          backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-          backdrop-filter: blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: blur(20px);
   transform: translateZ(0);
 }
 
