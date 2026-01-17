@@ -1,0 +1,1164 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Destiny's Blog | Destiny's Blog</title><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Destiny's Blog"><meta name="application-name" content="Destiny's Blog"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Destiny's Blog"><meta property="og:url" content="https://agilawood4.github.io/2026/01/17/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89/index.html"><meta property="og:site_name" content="Destiny's Blog"><meta property="og:description" content="数据库知识点整理 一、绪论 （1）信息和数据  数据只有组织和加工成信息才有价值，信息是加工为特定形式的数据 信息是数据所包含的意义，数据是信息的载体，是信息的具体表现形式  （2）数据处理和数据管理  从大量原始数据中抽取和推导出有价值信息的加工过程称为数据处理 数据处理的一般性操作称为数据管理，"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://agilawood4.github.io/images/picture.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://agilawood4.github.io/images/picture.jpg"><meta name="description" content="数据库知识点整理 一、绪论 （1）信息和数据  数据只有组织和加工成信息才有价值，信息是加工为特定形式的数据 信息是数据所包含的意义，数据是信息的载体，是信息的具体表现形式  （2）数据处理和数据管理  从大量原始数据中抽取和推导出有价值信息的加工过程称为数据处理 数据处理的一般性操作称为数据管理，"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://agilawood4.github.io/2026/01/17/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: Destiny's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Destiny's Blog',
+  title: 'Destiny\'s Blog',
+  postAI: '',
+  pageFillDescription: '数据库知识点整理, 一、绪论, 二、关系数据理论, 三、SQL, 四、数据库安全, 五、范式理论, 六、数据库设计, 七、索引设计, 八、查询优化, 九、事务, 十、数据库恢复, 十一、并发控制, 十二、数据库新技术数据库知识点整理一绪论信息和数据数据只有组织和加工成信息才有价值信息是加工为特定形式的数据信息是数据所包含的意义数据是信息的载体是信息的具体表现形式数据处理和数据管理从大量原始数据中抽取和推导出有价值信息的加工过程称为数据处理数据处理的一般性操作称为数据管理数据库技术是一种数据管理技术数据的三大管理阶段人工管理文件系统数据库管理系统人工管理阶段特点数据不在计算机上保存数据和程序不具有独立性没有文件系统概念一组数据对应一个程序数据共享性差文件系统阶段特点数据以文件的形式保存在外存数据和程序有一定的独立性文件多样化以记录为基本存取单位一个文件对应一个程序数据共享性差冗余度大缺点空间浪费数据不一致数据难以维护程序难以维护数据库管理系统阶段需要解决的问题集成的数据表示统一管理下的数据共享关键技术数据模型数据独立性和上一条一一对应核心软件数据库管理系统数据库系统管理数据特点面向全组织的复杂的数据结构即数据结构化数据结构化是数据库和文件系统人工管理的根本区别数据冗余度小易扩充数据和程序具有较高的独立性统一的数据控制数据的安全性控制数据的完整性控制并发控制数据库恢复数据存取的最小单位是数据项数据库中的模型可以分为概念模型信息模型图和数据模型层次网状关系模型用来表示和抽象现实世界中的数据和信息概念模型的组成实体属性域码实体型联系联系又包括名称类型也可以有属性多描述的是联系的类型数据模型是严格定义的概念集合用于精确描述系统中数据的静态特性动态特性完整性约束数据模型的三要素数据结构描述对象及对象之间联系的概念的集合描述静态特性刻画数据模型最重要的方面数据操作允许对数据进行操作的集合包括操作和操作规则描述动态特性主要包括检索和更新两大类数完整性约束完整性规则的集合对数据模型中的数据及其联系所制定的规则包括该数据模型需要遵守的基本的通用的完整性约束条件针对具体数据的特定语义约束条件数据的完整性包括正确性和相容性正确性数据有合法的类型处在有效的取值范围内相容性表示同一事实的两个数据应该相同数据模型的分类层次模型树网状模型图关系模型二维表层次模型最早出现的数据模型关系模型用关系描述实体以及实体之间的联系可以直接表示多对多关系关系要求必须规范化每个分量是不可再分的数据项不允许表中套表有较强的数学概念和理论基础数据独立性指的是应用程序和数据结构之间相互独立的关系包括逻辑独立性和物理独立性逻辑独立性外模式模式映象定义某个外模式与模式之间的对应关系当模式改变时外模式模式映象做相应改变可以保证外模式不变物理独立性模式内模式映象定义数据逻辑结构与存储结构之间的对应关系当内模式改变时模式内模式映象做相应修改使得模式保持不变数据库的三级模式两级映像外模式子模式用户模式个别用户的数据视图与某一应用有关的数据的逻辑表示模式的子集外模式可以相互覆盖一个应用只能有一个外模式模式逻辑模式概念模式全体数据的逻辑结构和特性的描述所有用户的公共数据视图三级模式的核心不涉及物理存储和应用程序细节参与定义数据的逻辑结构数据安全性完整性要求内模式物理模式存储模式对数据的物理结构和存储方式的描述三级模式两级映象的优点保证数据的独立性模式外模式分开实现逻辑独立性模式内模式分开实现物理独立性简化用户接口方便用户使用用户只需要操作外模式不需要了解数据的逻辑模式和物理结构有利于数据共享不同应用的外模式可以相互覆盖有利于数据的安全保密每个应用只能操作其对应的外模式的主要功能数据定义功能数据存取功能数据存储组织管理功能数据库的建立和维护数据库运行时管理二关系数据理论关系的性质列是同质的即同一列的分量来自同一个域有相同的数据类型不同列可以来自同一个域但每一列必须有不同的属性名行和列的顺序无所谓可以交换顺序不能有两个元组完全相同元组的每个分量都必须不可再分满足这一条件的关系称为关系模型是数据模型的一种数据模型有三要素数据结构数据操作完整性约束关系模型对应也有三要素关系模型的数据结构关系关系的描述称为关系模式记为其中为属性集为属性来自的域为属性和所在域的映射为函数依赖集合关系是关系模式在某一时刻的状态或内容关系模式是相对稳定的而关系是动态的关系模型的语义约束包括以下三个完整性约束实体完整性主码必须存在且不可为空或部分为空参照完整性如果关系中的外部码和关系中的码对应则中每个元组的的取值要么为空要么和中某个元组的的取值相等用户定义完整性关系模型的数据操作都是集合操作操作的对象和结果都是集合关系操作的基础是关系运算分类如下关系代数代数方式关系演算逻辑方式又包括元组关系演算和域关系演算主码和候选码的概念关系中的一个属性组能够唯一标识所在元组并且具有最小性主码可以是候选码中的任意一个主属性与非主属性的概念候选码中的属性称为主属性不在任何一个候选码中的属性称为非主属性关系代数分类常规集合运算并差交乘和特有的关系运算投影选择连接自然连接求商关系运算的安全约束关系运算中把不产生无限关系和无穷验证的运算称为安全运算对应的运算表达式称为安全表达式对其采取的限制称为安全约束关系代数一定是安全运算关系演算则不一定数据库语言分类数据定义语言模式定义内模式定义外模式定义数据操纵语言检索插入修改删除数据控制语言安全性控制完整性控制并发控制数据库语言特点一体化非过程化面向集合的存取关系操作对象是一个或多个关系操作结果也是一个新关系可独立使用也可与主语言嵌套使用简单且规范查询效率不如网状结构和层次结构三貌似没什么理论知识全是实现四数据库安全我们常说的数据库保护包括数据库安全性控制和数据库完整性控制两部分完整性约束防止数据库中出现不合语义的数据防止错误信息的输入和输出安全性约束保护数据库防止恶意破坏和非法存取安全性防范是防止非法用户和非法操作完整性措施是防止不合法的数据数据库的安全性是指保护数据库以防止不合法的使用造成数据的泄露更改和破坏包括以下两个层面的含义对授权用户提供可靠的信息服务拒绝对数据的非授权存取访问请求保证数据的可用性完整性一致性进而保护数据库所有者和拥有者的合法权益数据库安全性控制的策略用户标识和认证存取控制视图机制审计加密技术用户标识和认证是系统提供的最外层安全保护措施存取控制确保合法用户按照指定的权限使用访问数据而非法用户或无相关权限的用户则无法访问存取控制机制包括两部分用户权限定义合法权限检查这两部分机制共同组成了的安全子系统存取控制方法可以分为自主存取控制和强制存取控制自主存取控制同一用户对不同数据对象不同用户对同一数据对象有不同的存取权限用户可以把自身权限转授给其他用户用户权限允许用户对数据的操作类型包括数据对象和操作类型两部分基于角色的存取控制角色是一组相关权限的集合把角色授予用户即可实现权限分配用户访问时基于其所拥有的角色权限进行存取控制权限的分类用户级权限关系级权限用户级权限为每个用户授予的特定权限是对用户使用整个数据库的权限的限定和具体关系无关关系级权限为每个用户授予的和关系或视图有关的权限权限的分配和收回使用语句授予权限或角色使用语句收回权限或角色强制存取控制每个数据对象有一个密级每一个用户有一个许可证只有拥有合法许可证的用户才能存取相应对象把管理的实体分为主体用户和客体文件索引基本表视图为每个实体分配敏感度标记主体的敏感度标记称为许可证级别客体的敏感度标记称为密级主体的敏感度标记大于等于客体时只能读不能写主体的敏感度标记等于客体时可以读可以写视图机制为不同用户定义不同的视图把用户对数据的访问限制在一定范围内审计把用户对数据库所有操作都自动记录下来放入审计日志中数据加密防止数据库在数据存储和传输过程中失密使用一定的加密算法把原始数据加密成不可识别的密文存储数据库完整性约束条件指的是施加在数据库数据上的语义约束条件具体可以分类为根据约束对象划分关系级约束列级约束元组级约束根据状态划分静态约束数据库处于某一确定状态下数据对象应满足的约束条件反应数据库状态合理性的约束动态约束数据库从一个状态转变为另一个状态新旧值之间应满足的约束条件反应数据库状态变迁的约束根据完整性检查时机划分立即执行约束在一条语句执行完以后立即执行完整性约束检查延迟执行约束整个用户事务执行完成后再进行完整性约束检查实体完整性是元组之间的约束参照完整性是关系之间联系的约束用户定义完整性是列元组之间的约束数据库的完整性控制定义功能提供定义完整性约束条件的机制检查功能检查用户发出的操作请求是否违背完整性约束条件违约响应若违背完整性约束条件采取一定措施保证数据完整性五范式理论数据依赖指的是一个关系内部的属性值之间相互依赖又相互制约的关系分为函数依赖多值依赖函数依赖函数依赖的性质函数依赖是语义范畴的概念只能根据语义来确定一个函数依赖但不能形式化证明某个函数依赖成立函数依赖是不随时间而变的关系具有函数依赖可能随时间变化但函数依赖不变函数依赖分类完全函数依赖上标用部分函数依赖上标用传递函数依赖上标用码和键候选码设是关系模式的属性集合如果则称为候选码若候选码多于一个则任选一个都可以作为主码候选码的性质最小性候选码中抽去任意属性都会失去唯一标识性唯一性候选码可以唯一标识关系中的元组外部码关系模式中的属性组不是的码但是另一个关系模式的码此时被称为的外部码主属性和非主属性包含在候选码中的属性称为主属性不包含在任一候选码中的属性称为非主属性公理系统三条公理自反律如果则为所蕴含增广律如果为所蕴含成立则为所蕴含传递律如果为所蕴含则为所蕴含三条推论合并规则若成立则成立伪传递规则若成立则成立分解规则若成立则成立有效性与完备性有效性由出发根据公理推导出来的每一个函数依赖一定在所蕴含的函数依赖的全体中完备性所蕴含的函数依赖全体中的每一个函数依赖都可以由经过公理推导出范式只考到和多值依赖不考关系中每个元组的分量都不可再分即不允许表中套表即满足如果且每个非主属性都完全依赖于码则满足有两个定义形式如果且中不存在任何传递依赖则如果中不存在这样的码属性组以及非主属性不在中不在中不在中使得成立则满足如果对于中每个函数依赖当时中必定含有码则满足所有非主属性都完全函数依赖于每个候选码所有主属性都完全函数依赖于不包含它的候选码没有任何属性完全函数依赖于非码的任何一组属性即如果且此时一定是码快速判断二分解是否为无损分解分解为是无损分解保持无损连接性的充分必要条件是或者即的共同属性至少构成之一的候选码模式分解的范式等级如果要求分解保持函数依赖则分解一定可以达到不一定达到如果分解要求保持无损连接则分解一定可以达到如果分解既要求保持函数依赖有要求具有无损连接性则分解可以达到但不一定达到函数依赖集闭包和属性集闭包属性集闭包在关系中可以由通过公理导出可以由通过公理导出可以由通过公理导出则称为属性集关于函数依赖集的闭包可以由根据公理导出等价于函数依赖集闭包在关系模式中是的属性集合如果中的函数依赖能够推出则称蕴含所有像这样为所蕴含的函数依赖的全体就称为的闭包记作函数依赖集等价对于两个函数依赖集如果则称等价函数依赖集覆盖如果函数依赖集等价则称覆盖也有覆盖即同时二者都成立六数据库设计数据库设计的六个阶段需求分析对应用环境进行详细调查收集支持系统目标的基础数据及其处理概念结构设计通过对用户需求进行综合归纳和抽象形成独立于数据库逻辑结构与具体的概念模型可以用图表示逻辑结构设计将概念结构转换为某个所支持的数据模型并进行优化再将逻辑结构转换成特定的能处理的模式子模式物理结构设计设计数据库在物理设备上的存储结构和存取方法先确定数据库的内模式再对物理结构进行时间和空间效率的评价数据库实施建立数据库的过程用的描述三级模式调试产生目标模式开发应用程序组织数据入库并试运行数据库运行和维护数据库正式运行后由执行对数据库经常性的维护工作包括数据库转储与恢复数据库控制数据库性能监控数据库重组与重构数据库中关系的存取方法索引方法聚集方法方法图的设计与调整原则属性必须是不可再分的数据项如果属性中还有描述性质比如职称又包括了工资和住房标准应当把属性单独拆成一个实体属性只能和一个实体有联系如果和多个实体有联系应当把属性单独拆成一个实体属性和它所描述的实体应当是或者的关系如果是或者应当把属性单独拆成一个实体图的冲突属性冲突属性的类型取值范围取值集合单位不合法命名冲突属性名实体名联系名之间的同名异义或异名同义同名异义不同意义的对象有相同的名字异名同义相同意义的对象有不同的名字结构冲突同一对象在不同应用中有不同抽象如在一个应用中为实体在另一个应用中为属性统一实体在不同图中属性个数次序不同实体之间的联系在不同图之间呈现不同类型的冗余冗余的数据和冗余的联系冗余数据可由基本数据导出的数据冗余联系可由其他联系导出的联系关系模型的优化水平分解和垂直分解向关系模式的转换一个联系可以转换为一个独立的关系模式也可以与任意一端对应的关系模式合并转换为一个独立的关系模式关系的属性与该联系相连的各实体的码以及联系本身的属性关系的候选码每个实体的码都是该关系的候选码与某一端实体对应的关系模式合并合并后关系的属性加入与之有联系的关系也就是联系另一头的关系的码和联系本身的属性合并后关系的码不变一般对于联系我们都采用与某一端的关系模式合并的方法来处理这样可以减少系统中关系的个数尽量避免后续的连表查询一个联系可以转换为一个独立的关系模式也可以与端对应的关系模式合并转换为一个独立的关系模式关系的属性与该联系相连的各实体的码以及联系本身的属性关系的候选码端实体的码与端对应的关系模式合并合并后关系的属性在端关系中加入端关系的码和联系本身的属性合并后关系的码不变一般对于联系我们都采用与端关系模式合并的方法来处理因为这样可以减少系统中关系的个数尽量避免后续的连表查询一个联系只能转换为一个独立的关系模式无法合并到任意一端实体对应的关系模式中关系的属性与该联系相连的各实体的码以及联系本身的属性关系的候选码各实体码的组合示例对于学生和课程实体之间联系为选课我们可以把他转化为以下的关系模式其中学号和课程号是新关系的组合码选修学号课程号成绩选修学号课程号成绩选修学号课程号成绩三个或三个以上实体之间的一个多元联系转换为一个关系模式关系的属性与该联系相连的各实体的码以及联系本身的属性关系的候选码各实体码的组合具有相同码的关系模式的合并合并以后可能不满足要求但可以减少系统中关系的个数一定程度上提高查询和存储效率将一个关系模式中的全部属性加入到另一个关系模式中去掉合并后关系模式中的同义属性同义不一定同名适当调整属性的次序七索引设计数据库中的表在底层存储中会被映射为文件表文件占用磁盘块的分配方法连续分配数据块被分配到连续的磁盘块上链接分配数据块中包含指向下个数据块的指针按簇分配簇是连续的几个磁盘块簇之间通过指针相连索引分配索引块中存放指向数据块的指针一个文件内部记录的组织方式堆记录可以存放在文件空间中的任何位置顺序基于每个记录的搜索码值顺序排列索引按某种顺序有序存储聚簇把有联系的记录存在同一个块上最小化记录哈希散列在搜索码上求哈希函数计算出记录在文件中存放的块索引文件的构成索引文件由索引记录索引项组成是索引文件的记录包括两个域索引域搜索码关系中的一组属性某个属性列指针指向索引域值为的记录在磁盘块上的地址索引的分类排序索引和哈希索引排序索引索引项是排序的哈希索引索引项使用索引域上的函数确定位置聚簇索引和非聚簇索引聚簇索引索引域搜索码值的排列顺序和记录在文件中的顺序一致称为主索引非聚簇索引索引项排序的次序与文件中记录的排列顺序不同称为辅助索引稠密索引和稀疏索引稠密索引为文件中的每个搜索码值注意不是每一行都设立一个索引项稠密索引必须保证是聚簇索引稀疏索引仅为文件中部分的搜索码值设立一个索引项多级索引课上主要讲的是树和树索引树索引关键字分布在各层上树索引关键字按照递增次序从左到右分布在叶节点上并且进行链接八查询优化关系查询的四个阶段查询分析词法分析语法分析查询检查语义分析安全性检查完整性检查符号名转换查询优化代数优化物理优化查询执行代码生成代码执行查询代价的度量对于驻留在磁盘上的大型数据库从磁盘访问数据的代价通常是最重要的代价如果假设存取一个块需要一次磁盘访问使用访问磁盘的块数作为估计代价的因素查询操作的实现选择运算全表扫描法索引扫描法连接运算嵌套循环法索引连接法排序合并法法表达式的执行物化方法和流水线方法查询优化按照优化的层次可以分为物理优化和代数优化代数优化关系代数表达式的优化即按照一定的规则改变代数表达式中操作的次序和组合通过对关系代数表达式做等价变换来提高查询效率常用方法使用关系代数表达式等价变换规则查询树的启发式优化物理优化存取路径和底层操作算法的选择包括基于规则或基于代价等选择高效合理的操作算法或存取路径得到优化的查询计划常用方法基于规则的启发式优化基于代价估算的优化两者结合的优化查询优化的结果查询计划即定义了每个操作的算法以及这些操作的执行顺序查询优化的一般步骤把查询转化成语法树如关系代数语法树查询树把查询树利用代数优化转化为优化后的标准形式利用基于启发式规则的物理优化选择底层的操作算法与存取路径生成查询计划利用基于代价的物理优化选择代价最小的九事务事务的概念用户定义的数据库操作序列这些操作要么都做要么全都不做是一个不可分割的工作单位事务的特性原子性事务中所有操作要么全做要么全都不做由恢复机制实现一致性事务执行的结果必须使数据库从一个一致性状态转移到另一个一致性状态由原子性保证隔离性一个事务的执行不能被其他事务所干扰即一个事务内部的操作以及所使用的数据必须对其他并发事务是隔离的并发执行的各个事务之间不能相互干扰由并发控制机制实现持续性一个事务一旦提交以后它对数据库的影响必然是永久的其他操作和故障都不该对其执行结果有任何影响由恢复机制实现破坏事务特性的两种情况并发事务的操作交叉进行事务在运行过程中被强行终止使用数据库恢复机制和并发控制机制可以保证事务特性不被破坏事务是数据库并发控制和数据库恢复的基本单位事务的开始和结束可以由用户显式控制一般而言一个应用程序会包含多个事务其中事务的结束分为提交事务正常结束撤销全部更新回滚到事务开始状态非正常结束十数据库恢复数据库恢复技术是指数据库管理系统必须有把数据库从错误状态恢复到某一已知正确状态的功能数据库恢复是通过数据库管理系统的数据库恢复子系统完成的数据库恢复子系统的功能确保事务原子性实现事务非正常结束时的回滚确保系统发生故障以后能够及时恢复到正确状态数据库系统故障的种类事务内部故障可预期事务根据内部测试条件能够确定是否回滚不可预期不能由应用程序处理的事务故障如死锁算术溢出违反完整性规则系统故障造成系统停止运行的任何事情使得系统需要重新启动如硬件错误操作系统故障停电系统故障会打断所有正在运行的事务使得所有事务都异常终止但是不会破坏数据库介质故障指的是外存故障如磁盘损坏瞬时强磁场干扰外存故障会破坏全部或部分数据库并且影响正在存取这部分数据的事务计算机病毒人为造成的破坏或故障已成为数据库系统的主要威胁之一多数病毒会对数据进行非法修改故障对数据库系统的影响数据库本身被破坏如介质故障数据库没有被破坏但数据可能不正确如事务故障系统故障计算机病毒数据库恢复的基本原理是冗余即利用存储在系统别处的冗余数据来重建或恢复修正数据库建立冗余的两种实现方式数据转储和登录日志文件数据转储指的是定期地把整个数据库复制到磁带或另一个磁盘上保存起来的过程这些备用的数据文本称为后备副本或后援副本根据转储时是否可以修改数据分类静态转储在系统中没有事务运行时进行的转储在转储过程中不允许对数据库进行任何存取修改仅靠后援副本即可把数据库恢复到某一时刻的正确状态动态转储在转储期间允许对数据库进行存取修改需要把转储期间各事务对数据库的修改记录下来建立日志文件此时后援副本加日志文件才可把数据库恢复到某一时刻的正确状态根据转储的数据量分类海量转储每次转储全部数据增量转储每次只转储上一次转储过后更新的数据日志文件是用来记录事务对数据库更新操作的文件有两种格式以记录为单位和以数据块为单位日志文件的作用事务故障和系统故障的恢复必须用到日志文件动态转储中必须建立日志文件后援副本结合日志文件才能正确恢复数据库静态转储中用日志文件恢复转储结束时刻到故障点之间的事务日志文件的写入规则登记的次序严格按照并发事务执行的时间顺序必须先写日志文件再写数据库故障的恢复策略事务故障的恢复只需要撤销事务在不影响其他事务的情况下强行回滚撤销已做的修改反向扫描日志文件查找该事务的更新操作对事务的更新操作进行逆操作把日志记录中更新前的值写回数据库直到事务的开始标志停止系统故障的恢复需要撤销加重做系统故障造成数据库不一致状态的原因有两个未完成的事务对数据库的更新已经写入数据库已提交的事务对数据库的更新还留在缓冲区没有写入数据库因此恢复操作要撤销故障发生时未完成的事务重做已完成的事务具体步骤如下正向扫描日志文件找出故障发生前已提交的事务加入队列找到故障发生时未完成的事务加入队列对和队列中的事务分别进行重做和撤销处理介质故障的恢复装入最新的数据库后援副本使数据库恢复到最近一次转储时的一致状态对于动态转储的副本还需要装入转储开始时刻的日志文件副本把数据库恢复到一致状态装入转储以后的日志文件副本重做已经完成的事务具有检查点的恢复技术引入检查点的目的使用日志恢复故障时恢复子系统需要检查大量日志记录浪费时间且某些正确提交的事务也被重做使用检查点可以实现在检查点之前提交的事务在数据恢复处理时不用重做从而提高效率日志文件中增加检查点记录内容包括建立检查点时刻所有正在执行的事务清单这些事务最近的一个日志记录的地址系统中增加一个重新开始文件用来记录每个检查点记录在日志文件中的地址使用检查点技术进行恢复利用重新开始文件定位最近检查点记录在重新开始文件中找到最后一个检查点记录在日志文件中的地址找到检查点时刻运行事务清单由该检查点记录得到检查点建立时刻所有正在运行的事务清单把暂时放入确定需要撤消和重做的事务从检查点开始正向扫描日志文件做如下处理直到文件结束如果有新开始的事务把暂时放入如果有提交的事务把从队列移入到队列执行撤消或重做动作对中的每一个事务执行操作对中的每个事务执行操作数据库镜像根据要求自动把整个数据库或其中的关键数据复制到另一个磁盘上由自动保证镜像数据库与主数据库的一致性十一并发控制事务并行的特点优点提高系统吞吐量减少平均响应时间问题多个事务同时存取数据如果不加控制可能会读取或存储不正确的数据破坏数据库的一致性事务并发操作引发的三个典型问题丢失更新事务和对同一数据进行修改的提交结果晚于的提交结果导致的修改被覆盖造成丢失脏数据的读出事务对数据进行修改事务读取修改后的事务事务的修改操作因为某种原因被撤销后读到的数据和数据库中当前的真实数据不一致在称读到脏数据不能重复读事务读取数据以后事务对数据进行更新操作再读这个数据无法再现前一次读取的结果并发控制的基本思想是合理调度并发事务避免并发事务之间相互干扰造成数据的不一致性并发控制的主要方法是封锁机制封锁也是并发控制的基本手段其他并发控制的方法事务隔离级别悲观与乐观并发控制技术多版本并发控制技术封锁指的是事务在对某个数据对象操作之前先向系统发出请求申请对其加锁从而对该数据对象有了一定的控制权加锁的类型有以下两种排它锁锁事务对数据对象加锁允许自己读取和修改其他事务对不能加任何锁直到释放上的锁共享锁锁事务对数据对象加锁允许自己读取但不能修改其他事务对可以加锁但不能加锁直到释放上的锁锁的相容矩阵封锁协议是指运用锁和锁这两种基本封锁可以建立不同的约定形成不同级别的封锁协议确保事务并发执行过程中的数据一致性一级封锁协议防止丢失修改协议内容事务在修改数据之前必须对其加锁直到事务结束才释放事务结束包括和二级封锁协议防止丢失修改读脏数据协议内容在一级封锁协议的基础上事务在读取数据之前必须对其加锁读取完成后即可释放锁三级封锁协议防止丢失修改读脏数据不可重复读协议内容在一级封锁协议的基础上事务在读取数据之前必须对其加锁直到事务结束才释放三级锁协议的主要区别在于加锁和释放锁的时间节点的区别封锁的粒度封锁对象的大小称为封锁的粒度封锁对象属性值属性值集合元组关系某个索引项整个索引整个数据库物理页块为什么要进行多粒度封锁多粒度封锁指的是在一个系统中同时支持多种封锁粒度供不同事务选择可以平衡封锁开销和并发度两个因素通过选择适当的封锁粒度以达到最优效果封锁粒度大并发度低封锁机构简单开销小封锁粒度小并发度高封锁机构复杂开销大多粒度树多粒度树的根节点是整个数据库表示最大的封锁粒度叶子节点表示最小的封锁粒度最简单的多粒度树分为三层数据库关系元组多粒度封锁协议多粒度封锁协议允许多粒度树种的每个节点被独立的加锁对一个节点加锁意味着这个节点的所有后继节点都被加上同样类型的锁显式封锁应事务要求直接加到数据对象上的封锁隐式封锁该数据对象没有独立加锁由于其上级节点加锁而使得该数据对象被加上了锁在多粒度封锁方法中显式封锁和隐式封锁的效果是一样的意向锁表示该节点的下层节点正在被加锁规定对任意节点加锁时必须先对其所有的上层节点加意向锁好处在对象加锁时不再需要检查下级节点的锁只需要检查对象本身和它的上级节点三种意向锁分类意向共享锁如果对一个数据对象加锁表示它的后继节点中存在锁意向排它锁如果对一个数据对象加锁表示它的后继节点中存在锁意向共享排它锁如果对一个数据对象加锁表示它的后继节点中存在锁同时对它本身加锁在具有意向锁的多粒度封锁方法中任意事务要对一个数据对象加锁首先要对它的上级对象加意向锁意向锁相容矩阵活锁和死锁活锁后来的事务插队执行先来的事务一直等待解决办法先来先服务策略死锁两个事务互相等待对方封锁的数据导致二者谁都永远无法执行解决办法预防死锁死锁检测和解除预防死锁一次封锁法顺序封锁法死锁检测和解除超时法等待图法事务的调度个事务的一个调度是个事务所有操作的一个序列表示这些操作的执行顺序且这个执行顺序满足如果操作在中先于执行那么在中也要先于执行并行事务的调度并行调度的可串行化多个事务的并发执行是正确的当且仅当它们执行的结果与按照某一次序串行执行它们的结果相同这种调度策略称为可串行化调度可串行性是并行事务正确性的准则一个并发调度是正确的当且仅当它是可串行化的可串行化调度判定的充分条件一个调度在保证冲突操作次序不变的情况下可以通过交换序列中两个不冲突操作的次序得到另一个串行调度此时调度称为冲突可串行化调度冲突操作不同事务对同一数据的写写读写操作交换操作的约束冲突操作不能交换同一个事务的两个操作也不能交换一个冲突可串行化调度一定是可串行化调度两段锁协议两段锁协议用来保证并发事务的可串行性两段锁协议的内容在对任何数据进行读写操作之前事务首先要获得对该数据的封锁在释放一个封锁之后事务不再获得任何其他封锁即事务被分为两个阶段第一个阶段只获得锁称为扩展阶段第二个阶段只释放锁称为收缩阶段事务一旦开始释放锁就不能再获得任何锁可串行化的充分条件如果所有事务都遵循两段锁协议则这些事务的所有并发调度都是可串行化的即所有遵循两段锁协议的事务其并发执行结果一定是正确的遵循两段锁协议的事务仍然有可能发生死锁十二数据库新技术往年这一块是分布式数据库今年变成了云数据库什么的大概率不是理论重点也不考',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-01-17 15:28:15',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Destiny's Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>4</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>35</sup></a><a href="/tags/editing/" style="font-size: 1.05rem;">editing<sup>1</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>33</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>29</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">12</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">21</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">28</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">23</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"></span></div></div><h1 class="post-title" itemprop="name headline">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-01-17T07:28:15.018Z" title="发表于 2026-01-17 15:28:15">2026-01-17</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-01-17T07:28:15.018Z" title="更新于 2026-01-17 15:28:15">2026-01-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://agilawood4.github.io/2026/01/17/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89/"><header><h1 id="CrawlerTitle" itemprop="name headline">无题</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2026-01-17T07:28:15.018Z" title="发表于 2026-01-17 15:28:15">2026-01-17</time><time itemprop="dateCreated datePublished" datetime="2026-01-17T07:28:15.018Z" title="更新于 2026-01-17 15:28:15">2026-01-17</time></header><h1><strong>数据库知识点整理</strong></h1>
+<h2 id="一-绪论"><strong>一、绪论</strong></h2>
+<p>（1）信息和数据</p>
+<ul>
+<li>数据只有组织和加工成信息才有价值，信息是加工为特定形式的数据</li>
+<li>信息是数据所包含的意义，数据是信息的载体，是信息的具体表现形式</li>
+</ul>
+<p>（2）数据处理和数据管理</p>
+<ul>
+<li>从大量原始数据中抽取和推导出有价值信息的加工过程称为数据处理</li>
+<li>数据处理的<strong>一般性</strong>操作称为数据管理，数据库技术是一种数据管理技术</li>
+</ul>
+<p>（3）数据的三大管理阶段：人工管理，文件系统，数据库管理系统</p>
+<p>（4）人工管理阶段特点</p>
+<ul>
+<li>数据不在计算机上保存</li>
+<li>数据和程序不具有独立性</li>
+<li>没有文件系统概念</li>
+<li>一组数据对应一个程序，数据共享性差</li>
+</ul>
+<p>（5）文件系统阶段特点</p>
+<ul>
+<li>数据以文件的形式保存在外存</li>
+<li>数据和程序有一定的独立性</li>
+<li>文件多样化，以记录为基本存取单位</li>
+<li>一个文件对应一个程序，数据共享性差，冗余度大
+<ul>
+<li>缺点：空间浪费，数据不一致，数据难以维护，程序难以维护</li>
+</ul>
+</li>
+</ul>
+<p>（6）数据库管理系统阶段</p>
+<ul>
+<li>需要解决的问题：集成的数据表示，统一管理下的数据共享</li>
+<li>关键技术：数据模型，数据独立性（和上一条一一对应）</li>
+<li>核心软件：数据库管理系统 DBMS</li>
+<li>数据库系统管理数据特点：
+<ul>
+<li>面向全组织的复杂的数据结构，即<strong>数据结构化</strong>（数据结构化是数据库和文件系统，人工管理的根本区别）</li>
+<li>数据冗余度小，易扩充</li>
+<li>数据和程序具有较高的独立性</li>
+<li>统一的数据控制（数据的安全性控制，数据的完整性控制，并发控制，数据库恢复）</li>
+<li>数据存取的最小单位是数据项</li>
+</ul>
+</li>
+</ul>
+<p>（6）数据库中的模型可以分为概念模型（信息模型 E-R 图）和数据模型（层次，网状，关系模型），用来表示和抽象现实世界中的数据和信息</p>
+<p>（7）概念模型的组成：实体，属性，域，码，实体型，联系（联系又包括名称，类型，也可以有属性），1:1，1:多描述的是联系的类型</p>
+<p>（8）数据模型是严格定义的概念集合，用于精确描述系统中数据的静态特性，动态特性，完整性约束，数据模型的三要素：</p>
+<ul>
+<li>数据结构：描述对象及对象之间联系的概念的集合，描述静态特性，刻画数据模型<strong>最重要</strong>的方面</li>
+<li>数据操作：允许对数据进行操作的集合，包括操作和操作规则，描述动态特性，主要包括检索和更新两大类</li>
+<li>数完整性约束：完整性规则的集合，对数据模型中的数据及其联系所制定的规则，包括
+<ul>
+<li>该数据模型需要遵守的基本的通用的完整性约束条件</li>
+<li>针对具体数据的特定语义约束条件</li>
+</ul>
+</li>
+</ul>
+<p>（9）数据的完整性包括正确性和相容性</p>
+<ul>
+<li>正确性：数据有合法的类型，处在有效的取值范围内</li>
+<li>相容性：表示同一事实的两个数据应该相同</li>
+</ul>
+<p>（10）数据模型的分类：层次模型（树），网状模型（图），关系模型（二维表）</p>
+<ul>
+<li>层次模型：最早出现的数据模型</li>
+<li>关系模型：用关系描述实体以及实体之间的联系；可以直接表示多对多关系；关系要求必须规范化（每个分量是不可再分的数据项，不允许表中套表）；有较强的数学概念和理论基础</li>
+</ul>
+<p>（11）数据独立性指的是应用程序和数据结构之间相互独立的关系，包括逻辑独立性和物理独立性</p>
+<ul>
+<li>逻辑独立性：外模式 / 模式映象定义某个外模式与模式之间的对应关系，当模式改变时，外模式 / 模式映象做相应改变，可以保证外模式不变</li>
+<li>物理独立性：模式 / 内模式映象定义数据逻辑结构与存储结构之间的对应关系，当内模式改变时，模式 / 内模式映象做相应修改，使得模式保持不变</li>
+</ul>
+<p>（12）数据库的三级模式两级映像</p>
+<ul>
+<li>外模式（子模式，用户模式）：个别用户的数据视图，与某一应用有关的数据的逻辑表示；模式的子集，外模式可以相互覆盖；一个应用只能有一个外模式</li>
+<li>模式（逻辑模式，概念模式）：全体数据的逻辑结构和特性的描述，所有用户的公共数据视图；三级模式的<strong>核心</strong>；不涉及物理存储和应用程序细节；参与定义数据的逻辑结构，数据安全性、完整性要求</li>
+<li>内模式（物理模式，存储模式）：对数据的物理结构和存储方式的描述</li>
+</ul>
+<p>（13）三级模式两级映象的优点</p>
+<ul>
+<li>保证数据的独立性：模式 / 外模式分开实现逻辑独立性，模式 / 内模式分开实现物理独立性</li>
+<li>简化用户接口，方便用户使用：用户只需要操作外模式，不需要了解数据的逻辑模式和物理结构</li>
+<li>有利于数据共享：不同应用的外模式可以相互覆盖</li>
+<li>有利于数据的安全保密：每个应用只能操作其对应的外模式</li>
+</ul>
+<p>（14）DBMS 的主要功能</p>
+<ul>
+<li>数据定义功能</li>
+<li>数据存取功能</li>
+<li>数据存储，组织，管理功能</li>
+<li>数据库的建立和维护</li>
+<li>数据库运行时管理</li>
+</ul>
+<h2 id="二-关系数据理论"><strong>二、关系数据理论</strong></h2>
+<p>（1）关系的性质</p>
+<ul>
+<li>列是同质的，即同一列的分量来自同一个域，有相同的数据类型</li>
+<li>不同列可以来自同一个域，但每一列必须有不同的属性名</li>
+<li>行和列的顺序无所谓，可以交换顺序</li>
+<li>不能有两个元组完全相同</li>
+<li>元组的每个分量都必须不可再分，满足这一条件的关系称为 1NF</li>
+</ul>
+<p>（2）关系模型是数据模型的一种，数据模型有三要素（数据结构，数据操作，完整性约束），关系模型对应也有三要素：</p>
+<ul>
+<li>
+<p>关系模型的数据结构：<strong>关系</strong></p>
+<ul>
+<li>
+<p>关系的描述称为<strong>关系模式</strong>，记为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>U</mi><mo separator="true">,</mo><mi>D</mi><mo separator="true">,</mo><mi>d</mi><mi>o</mi><mi>m</mi><mo separator="true">,</mo><mi>F</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R(U,D,dom,F)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mclose">)</span></span></span></span>，其中 U 为属性集，D 为属性来自的域，dom 为属性和所在域的映射，F 为函数依赖集合</p>
+</li>
+<li>
+<p>关系是关系模式在某一时刻的状态或内容，关系模式是相对稳定的，而关系是动态的</p>
+</li>
+</ul>
+</li>
+<li>
+<p>关系模型的语义约束：包括以下三个完整性约束</p>
+<ul>
+<li>实体完整性：主码必须存在，且不可为空或部分为空</li>
+<li>参照完整性：如果关系 R 中的外部码 F~k~ 和关系 S 中的码 P~k~ 对应，则 R 中每个元组的 F~k~ 的取值要么为空，要么和 S 中某个元组的 P~k~ 的取值相等</li>
+<li>用户定义完整性</li>
+</ul>
+</li>
+<li>
+<p>关系模型的数据操作：都是<strong>集合操作</strong>，操作的对象和结果都是集合，关系操作的基础是<strong>关系运算</strong>，分类如下</p>
+<ul>
+<li>关系代数（代数方式）</li>
+<li>关系演算（逻辑方式），又包括元组关系演算和域关系演算</li>
+</ul>
+</li>
+</ul>
+<p>（3）主码和候选码的概念：关系中的一个属性组，能够唯一标识所在元组，并且具有最小性；主码可以是候选码中的任意一个</p>
+<p>（4）主属性与非主属性的概念：候选码中的属性称为主属性，不在任何一个候选码中的属性称为非主属性</p>
+<p>（5）关系代数分类：常规集合运算（并，差，交，乘）和特有的关系运算（投影，选择，连接，自然连接，求商）</p>
+<p>（6）关系运算的安全约束：关系运算中把不产生无限关系和无穷验证的运算称为安全运算，对应的运算表达式称为安全表达式，对其采取的限制称为安全约束</p>
+<ul>
+<li>关系代数一定是安全运算，关系演算则不一定</li>
+</ul>
+<p>（7）数据库语言分类</p>
+<ul>
+<li>数据定义语言（DDL）：模式定义，内模式定义，外模式定义</li>
+<li>数据操纵语言（DML）：检索，插入，修改，删除</li>
+<li>数据控制语言（DQL）：安全性控制，完整性控制，并发控制</li>
+</ul>
+<p>（8）数据库语言特点</p>
+<ul>
+<li>一体化，非过程化</li>
+<li>面向集合的存取关系：操作对象是一个或多个关系，操作结果也是一个新关系</li>
+<li>可独立使用也可与主语言嵌套使用</li>
+<li>简单且规范</li>
+<li>查询效率<strong>不如</strong>网状结构和层次结构</li>
+</ul>
+<h2 id="三-sql"><strong>三、SQL</strong></h2>
+<p>貌似没什么理论知识，全是 SQL 实现</p>
+<h2 id="四-数据库安全"><strong>四、数据库安全</strong></h2>
+<p>（1）我们常说的数据库保护包括数据库安全性控制和数据库完整性控制两部分</p>
+<ul>
+<li>完整性约束：防止数据库中出现不合语义的数据，防止错误信息的输入和输出</li>
+<li>安全性约束：保护数据库防止恶意破坏和非法存取</li>
+</ul>
+<p>安全性防范是防止非法用户和非法操作，完整性措施是防止不合法的数据</p>
+<p>（2）数据库的安全性是指保护数据库以防止不合法的使用造成数据的泄露，更改和破坏，包括以下两个层面的含义：</p>
+<ul>
+<li>对授权用户提供可靠的信息服务</li>
+<li>拒绝对数据的非授权存取访问请求，保证数据的可用性，完整性，一致性，进而保护数据库所有者和拥有者的合法权益</li>
+</ul>
+<p>（3）数据库安全性控制的策略：用户标识和认证，存取控制，视图机制，审计，加密技术</p>
+<p>（4）用户标识和认证是系统提供的<strong>最外层</strong>安全保护措施</p>
+<p>（5）存取控制确保合法用户按照指定的权限使用 DBMS 访问数据，而非法用户或无相关权限的用户则无法访问，存取控制机制包括两部分：</p>
+<ul>
+<li>用户权限定义</li>
+<li>合法权限检查</li>
+</ul>
+<p>这两部分机制共同组成了 DBMS 的<strong>安全子系统</strong></p>
+<p>（6）存取控制方法可以分为自主存取控制（DAC）和强制存取控制（MAC）</p>
+<ul>
+<li>自主存取控制：同一用户对不同数据对象，不同用户对同一数据对象有不同的存取权限，用户可以把自身权限转授给其他用户
+<ul>
+<li>用户权限：允许用户对数据的操作类型，包括数据对象和操作类型两部分</li>
+<li>基于<strong>角色</strong>的存取控制：角色是一组相关权限的集合，把角色授予用户即可实现权限分配，用户访问时基于其所拥有的角色权限进行存取控制（RBAC）</li>
+<li>权限的分类：用户级权限，关系级权限
+<ul>
+<li>用户级权限：为每个用户授予的特定权限，是对用户使用整个数据库的权限的限定，和具体关系无关</li>
+<li>关系级权限：为每个用户授予的和关系或视图有关的权限</li>
+</ul>
+</li>
+<li>权限的分配和收回：使用<code>Grant</code>语句授予权限或角色，使用<code>Revoke</code>语句收回权限或角色</li>
+</ul>
+</li>
+<li>强制存取控制：每个数据对象有一个密级，每一个用户有一个许可证，只有拥有合法许可证的用户才能存取相应对象
+<ul>
+<li>把 DBMS 管理的实体分为主体（用户）和客体（文件，索引，基本表，视图）</li>
+<li>为每个实体分配敏感度标记，主体的敏感度标记称为许可证级别，客体的敏感度标记称为密级</li>
+<li>主体的敏感度标记<strong>大于等于</strong>客体时，只能读不能写；主体的敏感度标记<strong>等于</strong>客体时，可以读可以写</li>
+</ul>
+</li>
+</ul>
+<p>（7）视图机制：为不同用户定义不同的视图，把用户对数据的访问限制在一定范围内</p>
+<p>（8）审计：把用户对数据库所有操作都自动记录下来放入审计日志中</p>
+<p>（9）数据加密：防止数据库在数据存储和传输过程中失密，使用一定的加密算法，把原始数据加密成不可识别的密文存储</p>
+<p>（10）数据库完整性约束条件指的是施加在数据库数据上的语义约束条件，具体可以分类为：</p>
+<ul>
+<li>根据约束对象划分：
+<ul>
+<li><strong>关系</strong>级约束</li>
+<li><strong>列</strong>级约束</li>
+<li><strong>元组</strong>级约束</li>
+</ul>
+</li>
+<li>根据状态划分：
+<ul>
+<li>静态约束（数据库处于某一确定状态下，数据对象应满足的约束条件，反应数据库状态合理性的约束）</li>
+<li>动态约束（数据库从一个状态转变为另一个状态，新旧值之间应满足的约束条件，反应数据库状态变迁的约束）</li>
+</ul>
+</li>
+<li>根据完整性检查时机划分：
+<ul>
+<li>立即执行约束：在一条语句执行完以后立即执行完整性约束检查</li>
+<li>延迟执行约束：整个用户事务执行完成后，再进行完整性约束检查</li>
+</ul>
+</li>
+<li>实体完整性是元组之间的约束，参照完整性是关系之间联系的约束，用户定义完整性是列，元组之间的约束</li>
+</ul>
+<p>（11）数据库的完整性控制</p>
+<ul>
+<li>定义功能：提供定义完整性约束条件的机制</li>
+<li>检查功能：检查用户发出的操作请求是否违背完整性约束条件</li>
+<li>违约响应：若违背完整性约束条件，采取一定措施保证数据完整性</li>
+</ul>
+<h2 id="五-范式理论"><strong>五、范式理论</strong></h2>
+<p>（1）数据依赖指的是，一个关系内部的属性值之间相互依赖又相互制约的关系，分为:</p>
+<ul>
+<li>函数依赖</li>
+<li>多值依赖</li>
+</ul>
+<p>（2）函数依赖</p>
+<p>（2）函数依赖的性质</p>
+<ul>
+<li>函数依赖是语义范畴的概念：只能根据语义来确定一个函数依赖，但不能形式化证明某个函数依赖成立</li>
+<li>函数依赖是不随时间而变的：关系 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span> 具有函数依赖 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X\to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span> 可能随时间变化，但函数依赖不变</li>
+</ul>
+<p>（3）函数依赖分类</p>
+<ul>
+<li>完全函数依赖：上标用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span></li>
+<li>部分函数依赖：上标用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span></li>
+<li>传递函数依赖：上标用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span></li>
+</ul>
+<p>（4）码和键</p>
+<ul>
+<li>候选码：设 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span> 是关系模式 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&lt;</mo><mi>U</mi><mo separator="true">,</mo><mi>F</mi><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">R&lt;U,F&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span></span></span> 的属性集合，如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mover><mo stretchy="true">→</mo><mpadded width="+0.6em" lspace="0.3em"><mi>f</mi></mpadded></mover><mi>U</mi></mrow><annotation encoding="application/x-tex">K\xrightarrow{f}U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1191079999999998em;vertical-align:-0.010999999999999899em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081079999999999em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg width="400em" height="0.522em" viewbox="0 0 400000 522" preserveaspectratio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.010999999999999899em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span></span></span></span>，则称 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span> 为候选码，若候选码多于一个，则任选一个都可以作为主码</li>
+<li>候选码的性质：
+<ul>
+<li>最小性：候选码中抽去任意属性，都会失去唯一标识性</li>
+<li>唯一性：候选码可以唯一标识关系中的元组</li>
+</ul>
+</li>
+<li>外部码：关系模式 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span> 中的属性组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span> 不是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span> 的码，但是另一个关系模式的码，此时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span> 被称为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span> 的外部码</li>
+<li>主属性和非主属性：包含在候选码中的属性称为主属性，不包含在任一候选码中的属性称为非主属性</li>
+</ul>
+<p>（5）Armstrong 公理系统</p>
+<ul>
+<li>三条公理：
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">A1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord">1</span></span></span></span> 自反律：如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>⊆</mo><mi>X</mi><mo>⊆</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">Y\subseteq X\subseteq U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span></span></span></span>，则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X\to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 所蕴含</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">A2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord">2</span></span></span></span> 增广律：如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X\to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 所蕴含，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>⊆</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">Z\subseteq U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span></span></span></span> 成立，则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mi>Z</mi><mo>→</mo><mi>Y</mi><mi>Z</mi></mrow><annotation encoding="application/x-tex">XZ\to YZ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 所蕴含</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">A3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord">3</span></span></span></span> 传递律：如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X\to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>→</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">Y\to Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 所蕴含，则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">X\to Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 所蕴含</li>
+</ul>
+</li>
+<li>三条推论：
+<ul>
+<li>合并规则：若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X\to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">X\to Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span></span></span></span> 成立，则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi><mi>Z</mi></mrow><annotation encoding="application/x-tex">X\to YZ</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span></span></span></span> 成立</li>
+<li>伪传递规则：若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X\to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mi>Y</mi><mo>→</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">WY\to Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span></span></span></span> 成立，则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>W</mi><mi>X</mi><mo>→</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">WX\to Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span></span></span></span> 成立</li>
+<li>分解规则：若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X\to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>⊆</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">Z\subseteq Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span> 成立，则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">X\to Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span></span></span></span> 成立</li>
+</ul>
+</li>
+<li>有效性与完备性：
+<ul>
+<li>有效性：由 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 出发根据 Armstrong 公理推导出来的每一个函数依赖一定在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 所蕴含的函数依赖的全体中</li>
+<li>完备性：$ F$ 所蕴含的函数依赖全体中的每一个函数依赖，都可以由 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 经过 Armstrong 公理推导出</li>
+</ul>
+</li>
+</ul>
+<p>（6）范式（只考到 BCNF，4NF 和多值依赖不考）</p>
+<ul>
+<li>1NF：关系中每个元组的分量都不可再分，即不允许表中套表，即满足 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>∈</mo><mn>1</mn><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">R\in1NF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span></li>
+<li>2NF：如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>∈</mo><mn>1</mn><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">R\in 1NF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span>，且每个非主属性都完全依赖于码，则满足 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>∈</mo><mn>2</mn><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">R\in2NF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span></li>
+<li>3NF：有两个定义形式
+<ul>
+<li>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>∈</mo><mn>2</mn><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">R\in2NF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span>，且 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span> 中不存在任何传递依赖，则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>∈</mo><mn>3</mn><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">R\in 3NF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span></li>
+<li>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span> 中不存在这样的码 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span>，属性组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span> 以及非主属性 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo stretchy="false">(</mo><mi>Z</mi><mtext>不在</mtext><mi>Y</mi><mtext>中</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Z(Z不在Y中)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">在</span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mord cjk_fallback">中</span><span class="mclose">)</span></span></span></span>，使得 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi><mo separator="true">,</mo><mi>Y</mi><mo>→</mo><mi>Z</mi><mo separator="true">,</mo><mi>Y</mi><mo>↛</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">X\to Y,Y\to Z,Y \nrightarrow X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">Z</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel amsrm">↛</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span> 成立，则满足 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>∈</mo><mn>3</mn><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">R\in3NF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span></li>
+</ul>
+</li>
+<li>BCNF：如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>∈</mo><mn>1</mn><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">R\in1NF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span>，对于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span> 中每个函数依赖 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X\to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>，当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>⊈</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">Y\not\subseteq X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span> 时，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span> 中必定含有码，则满足 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>∈</mo><mi>B</mi><mi>C</mi><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">R\in BCNF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span>
+<ul>
+<li>所有非主属性都完全函数依赖于每个候选码</li>
+<li>所有主属性都完全函数依赖于不包含它的候选码</li>
+<li>没有任何属性完全函数依赖于非码的任何一组属性，即如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mover><mo stretchy="true">→</mo><mpadded width="+0.6em" lspace="0.3em"><mi>f</mi></mpadded></mover><mi>Y</mi></mrow><annotation encoding="application/x-tex">X\xrightarrow{f} Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1191079999999998em;vertical-align:-0.010999999999999899em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel x-arrow"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1081079999999999em;"><span style="top:-3.322em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight x-arrow-pad"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span></span></span></span><span class="svg-align" style="top:-2.689em;"><span class="pstrut" style="height:2.7em;"></span><span class="hide-tail" style="height:0.522em;min-width:1.469em;"><svg width="400em" height="0.522em" viewbox="0 0 400000 522" preserveaspectratio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.010999999999999899em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>，且 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>⊈</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">Y\not\subseteq X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="rlap"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel"></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span>，此时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span> 一定<strong>是码</strong></li>
+</ul>
+</li>
+</ul>
+<p>（7）快速判断二分解是否为无损分解</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&lt;</mo><mi>U</mi><mo separator="true">,</mo><mi>F</mi><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">R&lt;U,F&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span></span></span> 分解为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>U</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>F</mi><mn>1</mn></msub><mo>&gt;</mo><mo separator="true">,</mo><msub><mi>R</mi><mn>2</mn></msub><mo>&lt;</mo><msub><mi>U</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>F</mi><mn>2</mn></msub><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">R_1&lt;U_1,F_1&gt;,R_2&lt;U_2,F_2&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span></span></span> 是无损分解（保持无损连接性）的充分必要条件是：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>∩</mo><msub><mi>U</mi><mn>2</mn></msub><mo>→</mo><msub><mi>U</mi><mn>1</mn></msub><mo>−</mo><msub><mi>U</mi><mn>2</mn></msub><mo>∈</mo><msup><mi>F</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">U_1∩U_2\to U_1-U_2\in F^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span> 或者 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>∩</mo><msub><mi>U</mi><mn>2</mn></msub><mo>→</mo><msub><mi>U</mi><mn>2</mn></msub><mo>−</mo><msub><mi>U</mi><mn>1</mn></msub><mo>∈</mo><msup><mi>F</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">U_1∩U_2\to U_2-U_1\in F^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10903em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span>，即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>R</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">R_1,R_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的共同属性至少构成 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>R</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">R_1,R_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 之一的候选码</li>
+</ul>
+<p>（8）模式分解的范式等级</p>
+<ul>
+<li>如果要求分解保持函数依赖，则分解一定可以达到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">3NF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span>，不一定达到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mi>C</mi><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">BCNF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span></li>
+<li>如果分解要求保持无损连接，则分解一定可以达到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">4NF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span></li>
+<li>如果分解既要求保持函数依赖，有要求具有无损连接性，则分解可以达到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">3NF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span>，但不一定达到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mi>C</mi><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">BCNF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span></li>
+</ul>
+<p>（9）函数依赖集闭包和属性集闭包</p>
+<ul>
+<li>属性集闭包：在关系 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&lt;</mo><mi>U</mi><mo separator="true">,</mo><mi>F</mi><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">R&lt;U,F&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span></span></span> 中，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>⊆</mo><mi>U</mi></mrow><annotation encoding="application/x-tex">X\subseteq U</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>X</mi><mi>F</mi><mo>+</mo></msubsup><mo>=</mo><mo stretchy="false">{</mo><mi>A</mi><mi mathvariant="normal">∣</mi><mi>X</mi><mo>→</mo><mi>A</mi><mtext>可以由</mtext><mi>F</mi><mtext>通过</mtext><mi>A</mi><mi>r</mi><mi>m</mi><mi>s</mi><mi>t</mi><mi>r</mi><mi>o</mi><mi>n</mi><mi>g</mi><mtext>公理导出</mtext><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">X_F^+=\{A|X\to A可以由F通过 Armstrong公理导出\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104993em;vertical-align:-0.293531em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.811462em;"><span style="top:-2.4064690000000004em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">F</span></span></span><span style="top:-3.1031310000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.293531em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">A</span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">A</span><span class="mord cjk_fallback">可</span><span class="mord cjk_fallback">以</span><span class="mord cjk_fallback">由</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord cjk_fallback">通</span><span class="mord cjk_fallback">过</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">m</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord cjk_fallback">公</span><span class="mord cjk_fallback">理</span><span class="mord cjk_fallback">导</span><span class="mord cjk_fallback">出</span><span class="mclose">}</span></span></span></span>，则称 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>X</mi><mi>F</mi><mo>+</mo></msubsup></mrow><annotation encoding="application/x-tex">X_F^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104993em;vertical-align:-0.293531em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.811462em;"><span style="top:-2.4064690000000004em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">F</span></span></span><span style="top:-3.1031310000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.293531em;"><span></span></span></span></span></span></span></span></span></span> 为属性集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span> 关于函数依赖集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 的闭包
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X\to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span> 可以由 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 根据 Armstrong 公理导出，等价于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>∈</mo><msubsup><mi>X</mi><mi>F</mi><mo>+</mo></msubsup></mrow><annotation encoding="application/x-tex">Y \in X_F^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.104993em;vertical-align:-0.293531em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.811462em;"><span style="top:-2.4064690000000004em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">F</span></span></span><span style="top:-3.1031310000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.293531em;"><span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+</li>
+<li>函数依赖集闭包：在关系模式 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>&lt;</mo><mi>U</mi><mo separator="true">,</mo><mi>F</mi><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">R&lt;U,F&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span></span></span> 中，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo separator="true">,</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X,Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span> 是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span></span></span></span> 的属性集合，如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 中的函数依赖能够推出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X\to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>，则称 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 蕴含 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X\to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>，所有像这样为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 所蕴含的函数依赖的全体就称为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 的闭包，记作 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">F^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span>
+<ul>
+<li>函数依赖集等价：对于两个函数依赖集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo separator="true">,</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">F,G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">G</span></span></span></span>，如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mo>+</mo></msup><mo>=</mo><msup><mi>G</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">F^+=G^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span>，则称 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo separator="true">,</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">F,G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">G</span></span></span></span> 等价</li>
+<li>函数依赖集覆盖：如果函数依赖集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo separator="true">,</mo><mi>G</mi></mrow><annotation encoding="application/x-tex">F,G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">G</span></span></span></span> 等价，则称 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span> 覆盖 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>，也有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span> 覆盖 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span></span></span></span>，即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>⊆</mo><msup><mi>G</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">F\subseteq G^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span> 同时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>⊆</mo><msup><mi>F</mi><mo>+</mo></msup></mrow><annotation encoding="application/x-tex">G\subseteq F^+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">G</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.771331em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.771331em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span> 二者都成立</li>
+</ul>
+</li>
+</ul>
+<h2 id="六-数据库设计"><strong>六、数据库设计</strong></h2>
+<p>（1）数据库设计的六个阶段</p>
+<ul>
+<li>需求分析：对应用环境进行详细调查，收集支持系统目标的基础数据及其处理</li>
+<li>概念结构设计：通过对用户需求进行综合，归纳和抽象，形成独立于数据库逻辑结构与具体 DBMS 的概念模型，可以用 E-R 图表示</li>
+<li>逻辑结构设计：将概念结构转换为某个 DBMS 所支持的数据模型，并进行优化，再将逻辑结构转换成特定的 DBMS 能处理的模式，子模式</li>
+<li>物理结构设计：设计数据库在物理设备上的存储结构和存取方法，先确定数据库的内模式，再对物理结构进行时间和空间效率的评价</li>
+<li>数据库实施：建立数据库的过程，用 DBMS 的 DDL 描述三级模式，调试产生目标模式，开发应用程序，组织数据入库并试运行</li>
+<li>数据库运行和维护：数据库正式运行后，由 DBA 执行对数据库经常性的维护工作，包括数据库转储与恢复，数据库控制，数据库性能监控，数据库重组与重构</li>
+</ul>
+<p>（2）数据库中关系的存取方法：索引方法，聚集方法，Hash 方法</p>
+<p>（3）E-R 图的设计与调整原则</p>
+<ul>
+<li>属性必须是不可再分的数据项，如果属性中还有描述性质（比如职称又包括了工资和住房标准），应当把属性单独拆成一个实体</li>
+<li>属性只能和一个实体有联系，如果和多个实体有联系，应当把属性单独拆成一个实体</li>
+<li>属性和它所描述的实体应当是 1:1 或者 1:n 的关系，如果是 n:1 或者 m:n，应当把属性单独拆成一个实体</li>
+</ul>
+<p>（4）E-R 图的冲突</p>
+<ul>
+<li>属性冲突：属性的类型，取值范围，取值集合，单位不合法</li>
+<li>命名冲突：属性名，实体名，联系名之间的同名异义，或异名同义
+<ul>
+<li>同名异义：不同意义的对象有相同的名字</li>
+<li>异名同义：相同意义的对象有不同的名字</li>
+</ul>
+</li>
+<li>结构冲突：
+<ul>
+<li>同一对象在不同应用中有不同抽象，如在一个应用中为实体，在另一个应用中为属性</li>
+<li>统一实体在不同 E-R 图中属性个数，次序不同</li>
+<li>实体之间的联系在不同 E-R 图之间呈现不同类型</li>
+</ul>
+</li>
+</ul>
+<p>（5）E-R 的冗余：冗余的数据和冗余的联系</p>
+<ul>
+<li>冗余数据：可由基本数据导出的数据</li>
+<li>冗余联系：可由其他联系导出的联系</li>
+</ul>
+<p>（6）关系模型的优化：水平分解和垂直分解</p>
+<p>（7）E-R 向关系模式的转换</p>
+<p>①一个 1:1 联系可以转换为一个独立的关系模式，也可以与任意一端对应的关系模式合并</p>
+<ul>
+<li>转换为一个独立的关系模式
+<ul>
+<li>关系的属性：与该联系相连的各实体的码，以及联系本身的属性</li>
+<li>关系的候选码：每个实体的码都是该关系的候选码</li>
+</ul>
+</li>
+<li>与某一端实体对应的关系模式合并
+<ul>
+<li>合并后关系的属性：加入与之有联系的关系（也就是联系另一头的关系）的码和联系本身的属性</li>
+<li>合并后关系的码：不变</li>
+</ul>
+</li>
+</ul>
+<p>一般对于 1:1 联系，我们都采用与某一端的关系模式合并的方法来处理，这样可以减少系统中关系的个数，尽量避免后续的连表查询</p>
+<p>②一个 1:n 联系可以转换为一个独立的关系模式，也可以与 n 端对应的关系模式合并</p>
+<ul>
+<li>转换为一个独立的关系模式
+<ul>
+<li>关系的属性：与该联系相连的各实体的码以及联系本身的属性</li>
+<li>关系的候选码：n 端实体的码</li>
+</ul>
+</li>
+<li>与 n 端对应的关系模式合并
+<ul>
+<li>合并后关系的属性：在 n 端关系中加入 1 端关系的码和联系本身的属性</li>
+<li>合并后关系的码：不变</li>
+</ul>
+</li>
+</ul>
+<p>一般对于 1:n 联系，我们都采用与 n 端关系模式合并的方法来处理，因为这样可以减少系统中关系的个数，尽量避免后续的连表查询</p>
+<p>③一个 m:n 联系只能转换为一个独立的关系模式，无法合并到任意一端实体对应的关系模式中</p>
+<ul>
+<li>关系的属性：与该联系相连的各实体的码以及联系本身的属性</li>
+<li>关系的候选码：各实体码的组合</li>
+</ul>
+<p>示例：对于学生和课程实体之间，联系为选课，我们可以把他转化为以下的关系模式，其中学号和课程号是新关系的组合码</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>选修</mtext><mo stretchy="false">(</mo><mtext>学号</mtext><mo separator="true">,</mo><mtext>课程号</mtext><mo separator="true">,</mo><mtext>成绩</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">选修(学号,课程号,成绩)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">选</span><span class="mord cjk_fallback">修</span><span class="mopen">(</span><span class="mord cjk_fallback">学</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">课</span><span class="mord cjk_fallback">程</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">绩</span><span class="mclose">)</span></span></span></span></span></p>
+<p>④三个或三个以上实体之间的一个多元联系转换为一个关系模式</p>
+<ul>
+<li>关系的属性：与该联系相连的各实体的码以及联系本身的属性</li>
+<li>关系的候选码：各实体码的组合</li>
+</ul>
+<p>⑤具有相同码的关系模式的合并（合并以后可能不满足 2NF 要求），但可以减少系统中关系的个数，一定程度上提高查询和存储效率</p>
+<ul>
+<li>将一个关系模式中的全部属性加入到另一个关系模式中</li>
+<li>去掉合并后关系模式中的同义属性（同义不一定同名）</li>
+<li>适当调整属性的次序</li>
+</ul>
+<h2 id="七-索引设计"><strong>七、索引设计</strong></h2>
+<p>（1）数据库中的表在底层存储中会被映射为文件，表 / 文件占用磁盘块的分配方法</p>
+<ul>
+<li>连续分配：数据块被分配到连续的磁盘块上</li>
+<li>链接分配：数据块中包含指向下个数据块的指针</li>
+<li>按簇分配：簇是连续的几个磁盘块，簇之间通过指针相连</li>
+<li>索引分配：索引块中存放指向数据块的指针</li>
+</ul>
+<p>（2）一个文件内部记录的组织方式</p>
+<ul>
+<li>堆：记录可以存放在文件空间中的任何位置</li>
+<li>顺序：基于每个记录的<strong>搜索码</strong>值顺序排列</li>
+<li>索引：按某种顺序有序存储</li>
+<li>聚簇：把有联系的记录存在同一个块上，最小化 I/O 记录</li>
+<li>哈希（散列）：在搜索码上求哈希函数，计算出记录在文件中存放的块</li>
+</ul>
+<p>（3）索引文件的构成：索引文件由索引记录 / 索引项组成，是索引文件的记录，包括两个域</p>
+<ul>
+<li>索引域（搜索码）：关系中的一组属性（某个属性列）</li>
+<li>指针：指向索引域值为 K 的记录在磁盘块上的地址</li>
+</ul>
+<p>（4）索引的分类</p>
+<ul>
+<li>排序索引和哈希索引
+<ul>
+<li>排序索引：索引项是排序的</li>
+<li>哈希索引：索引项使用索引域上的 Hash 函数确定位置</li>
+</ul>
+</li>
+<li>聚簇索引和非聚簇索引
+<ul>
+<li>聚簇索引：索引域 / 搜索码值的排列顺序和记录在文件中的顺序一致，称为主索引</li>
+<li>非聚簇索引：索引项排序的次序与文件中记录的排列顺序不同，称为辅助索引</li>
+</ul>
+</li>
+<li>稠密索引和稀疏索引
+<ul>
+<li>稠密索引：为文件中的每个搜索码值（注意不是每一行）都设立一个索引项，稠密索引必须保证是聚簇索引</li>
+<li>稀疏索引：仅为文件中部分的搜索码值设立一个索引项</li>
+</ul>
+</li>
+</ul>
+<p>（5）多级索引：课上主要讲的是 B 树和 B+ 树索引</p>
+<ul>
+<li>B 树索引：关键字分布在各层上</li>
+<li>B+ 树索引：关键字按照递增次序从左到右分布在叶节点上，并且进行链接</li>
+</ul>
+<h2 id="八-查询优化"><strong>八、查询优化</strong></h2>
+<p>（1）关系查询的四个阶段</p>
+<ul>
+<li>查询分析：词法分析，语法分析</li>
+<li>查询检查：语义分析，安全性检查，完整性检查，符号名转换</li>
+<li>查询优化：代数优化，物理优化</li>
+<li>查询执行：代码生成，代码执行</li>
+</ul>
+<p>（2）查询代价的度量，对于驻留在磁盘上的大型数据库，从磁盘访问数据的 <strong>I/O 代价</strong>通常是最重要的代价，如果假设存取一个块需要一次磁盘访问，使用<strong>访问磁盘的块数</strong>作为估计代价的因素</p>
+<p>（3）查询操作的实现</p>
+<ul>
+<li>选择运算：全表扫描法，索引扫描法</li>
+<li>连接运算：嵌套-循环法，索引连接法，排序-合并法，Hash Join 法</li>
+</ul>
+<p>（4）表达式的执行：物化方法和流水线方法</p>
+<p>（5）查询优化按照优化的层次可以分为物理优化和代数优化</p>
+<ul>
+<li>代数优化：关系代数表达式的优化，即按照一定的规则，改变代数表达式中操作的次序和组合
+<ul>
+<li>通过对关系代数表达式做等价变换来提高查询效率</li>
+<li>常用方法：使用关系代数表达式等价变换规则，查询树的启发式优化</li>
+</ul>
+</li>
+<li>物理优化：存取路径和底层操作算法的选择，包括基于规则或基于代价等
+<ul>
+<li>选择高效合理的操作算法或存取路径，得到优化的查询计划</li>
+<li>常用方法：基于规则的启发式优化，基于代价估算的优化，两者结合的优化</li>
+</ul>
+</li>
+<li>查询优化的结果：查询计划，即定义了每个操作的算法以及这些操作的执行顺序</li>
+</ul>
+<p>（6）查询优化的一般步骤</p>
+<ul>
+<li>把查询转化成语法树，如关系代数语法树（查询树）</li>
+<li>把查询树利用<strong>代数优化</strong>转化为优化后的标准形式</li>
+<li>利用基于启发式规则的物理优化，选择底层的操作算法与存取路径，生成查询计划，利用基于代价的物理优化，选择代价最小的</li>
+</ul>
+<h2 id="九-事务"><strong>九、事务</strong></h2>
+<p>（1）事务的概念：用户定义的数据库操作序列，这些操作要么都做，要么全都不做，是一个不可分割的工作单位</p>
+<p>（2）事务的特性（ACID）</p>
+<ul>
+<li>原子性（Atomicity）：事务中所有操作要么全做，要么全都不做
+<ul>
+<li>由恢复机制实现</li>
+</ul>
+</li>
+<li>一致性（Consistency）：事务执行的结果必须使数据库从一个一致性状态，转移到另一个一致性状态
+<ul>
+<li>由原子性保证</li>
+</ul>
+</li>
+<li>隔离性（Isolation）：一个事务的执行不能被其他事务所干扰，即一个事务内部的操作以及所使用的数据必须对其他并发事务是隔离的，并发执行的各个事务之间不能相互干扰
+<ul>
+<li>由并发控制机制实现</li>
+</ul>
+</li>
+<li>持续性（Durability）：一个事务一旦提交以后，它对数据库的影响必然是永久的，其他操作和故障都不该对其执行结果有任何影响
+<ul>
+<li>由恢复机制实现</li>
+</ul>
+</li>
+</ul>
+<p>（3）破坏事务特性的两种情况</p>
+<ul>
+<li>并发事务的操作交叉进行</li>
+<li>事务在运行过程中被强行终止</li>
+</ul>
+<p>（4）使用数据库恢复机制和并发控制机制可以保证事务特性不被破坏，事务是数据库并发控制和数据库恢复的基本单位</p>
+<p>（5）事务的开始和结束可以由用户显式控制，一般而言一个应用程序会包含多个事务，其中事务的结束分为：</p>
+<ul>
+<li>COMMIT：提交事务，正常结束</li>
+<li>ROLLBACK：撤销全部更新，回滚到事务开始状态，非正常结束</li>
+</ul>
+<h2 id="十-数据库恢复"><strong>十、数据库恢复</strong></h2>
+<p>（1）数据库恢复技术是指，数据库管理系统必须有把数据库从错误状态恢复到某一已知正确状态的功能</p>
+<ul>
+<li>数据库恢复是通过数据库管理系统的<strong>数据库恢复子系统</strong>完成的</li>
+<li>数据库恢复子系统的功能：确保事务原子性，实现事务非正常结束时的回滚；确保系统发生故障以后，能够及时恢复到正确状态</li>
+</ul>
+<p>（2）数据库系统故障的种类</p>
+<ul>
+<li>事务内部故障
+<ul>
+<li>可预期：事务根据内部测试条件，能够确定是否回滚</li>
+<li>不可预期：不能由应用程序处理的事务故障，如死锁，算术溢出，违反完整性规则</li>
+</ul>
+</li>
+<li>系统故障
+<ul>
+<li>造成<strong>系统停止运行</strong>的任何事情，使得系统需要重新启动，如硬件错误，操作系统故障，停电</li>
+<li>系统故障会打断所有正在运行的事务，使得所有事务都异常终止，但是不会破坏数据库</li>
+</ul>
+</li>
+<li>介质故障
+<ul>
+<li>指的是外存故障，如磁盘损坏，瞬时强磁场干扰</li>
+<li>外存故障会破坏全部或部分数据库，并且影响正在存取这部分数据的事务</li>
+</ul>
+</li>
+<li>计算机病毒
+<ul>
+<li>人为造成的破坏或故障，已成为数据库系统的主要威胁之一</li>
+<li>多数病毒会对数据进行非法修改</li>
+</ul>
+</li>
+</ul>
+<p>（3）故障对数据库系统的影响</p>
+<ul>
+<li>数据库本身被破坏，如介质故障</li>
+<li>数据库没有被破坏，但数据可能不正确，如事务故障，系统故障，计算机病毒</li>
+</ul>
+<p>（4）数据库恢复的基本原理是<strong>冗余</strong>，即利用存储在系统别处的冗余数据来重建或恢复修正数据库</p>
+<ul>
+<li>建立冗余的两种实现方式：数据转储和登录日志文件</li>
+</ul>
+<p>（5）数据转储指的是，DBA 定期地把整个数据库复制到磁带或另一个磁盘上保存起来的过程，这些备用的数据文本称为后备副本或后援副本</p>
+<p>根据转储时是否可以修改数据分类：</p>
+<ul>
+<li>静态转储：在系统中没有事务运行时进行的转储，在转储过程中不允许对数据库进行任何存取，修改，仅靠后援副本即可把数据库恢复到某一时刻的正确状态</li>
+<li>动态转储：在转储期间允许对数据库进行存取，修改，需要把转储期间各事务对数据库的修改记录下来，建立日志文件，此时后援副本加日志文件才可把数据库恢复到某一时刻的正确状态</li>
+</ul>
+<p>根据转储的数据量分类：</p>
+<ul>
+<li>海量转储：每次转储全部数据</li>
+<li>增量转储：每次只转储上一次转储过后更新的数据</li>
+</ul>
+<p>（6）日志文件是用来记录事务对数据库更新操作的文件，有两种格式：以记录为单位和以数据块为单位</p>
+<ul>
+<li>日志文件的作用
+<ul>
+<li>事务故障和系统故障的恢复必须用到日志文件</li>
+<li>动态转储中必须建立日志文件，后援副本结合日志文件才能正确恢复数据库</li>
+<li>静态转储中，用日志文件恢复转储结束时刻到故障点之间的事务</li>
+</ul>
+</li>
+<li>日志文件的写入规则
+<ul>
+<li>登记的次序严格按照并发事务执行的时间顺序</li>
+<li>必须先写日志文件，再写数据库</li>
+</ul>
+</li>
+</ul>
+<p>（7）故障的恢复策略</p>
+<ul>
+<li>
+<p>事务故障的恢复：只需要撤销事务（UNDO），在不影响其他事务的情况下，强行回滚，撤销已做的修改</p>
+<ul>
+<li>反向扫描日志文件，查找该事务的更新操作</li>
+<li>对事务的更新操作进行<strong>逆操作</strong>，把日志记录中更新前的值写回数据库</li>
+<li>直到事务的开始标志停止</li>
+</ul>
+</li>
+<li>
+<p>系统故障的恢复：需要撤销加重做（UNDO + REDO），系统故障造成数据库不一致状态的原因有两个</p>
+<ul>
+<li>未完成的事务对数据库的更新已经写入数据库</li>
+<li>已提交的事务对数据库的更新还留在缓冲区没有写入数据库</li>
+</ul>
+<p>因此恢复操作要撤销故障发生时未完成的事务，重做已完成的事务，具体步骤如下：</p>
+<ul>
+<li>正向扫描日志文件，找出故障发生前已提交的事务，加入 REDO 队列，找到故障发生时未完成的事务，加入 UNDO 队列</li>
+<li>对 REDO 和 UNDO 队列中的事务分别进行重做和撤销处理</li>
+</ul>
+</li>
+<li>
+<p>介质故障的恢复：</p>
+<ul>
+<li>装入最新的数据库后援副本，使数据库恢复到最近一次转储时的一致状态，对于动态转储的副本，还需要装入转储开始时刻的日志文件副本，把数据库恢复到一致状态</li>
+<li>装入转储以后的日志文件副本，重做已经完成的事务</li>
+</ul>
+</li>
+</ul>
+<p>（8）具有检查点的恢复技术</p>
+<ul>
+<li>引入检查点的目的：
+<ul>
+<li>使用日志恢复故障时，恢复子系统需要检查大量日志记录，浪费时间，且某些正确提交的事务也被重做</li>
+<li>使用检查点可以实现，在检查点之前提交的事务，在数据恢复处理时不用重做，从而提高效率</li>
+</ul>
+</li>
+<li>日志文件中增加检查点（checkpoint）记录，内容包括：
+<ul>
+<li>建立检查点时刻所有正在执行的事务清单</li>
+<li>这些事务最近的一个日志记录的地址</li>
+<li>系统中增加一个重新开始文件，用来记录每个检查点记录在日志文件中的地址</li>
+</ul>
+</li>
+<li>使用检查点技术进行恢复：
+<ul>
+<li>利用重新开始文件定位最近检查点记录：在重新开始文件中找到最后一个检查点记录在日志文件中的地址</li>
+<li>找到检查点时刻运行事务清单：由该检查点记录得到检查点建立时刻所有正在运行的事务清单 ACTIVE-LIST，把 ACTIVE-LIST 暂时放入UNDO-LIST</li>
+<li>确定需要撤消和重做的事务：从检查点开始正向扫描日志文件，做如下处理，直到文件结束：</li>
+<li>如果有新开始的事务 T~i~，把 T~i~ 暂时放入UNDO-LIST</li>
+<li>如果有提交的事务 T~j~ ，把 T~j~ 从 UNDO-LIST 队列移入到 REDO-LIST 队列</li>
+<li>执行撤消或重做动作：对 UNDO-LIST 中的每一个事务执行 UNDO 操作，对 REDO-LIST 中的每个事务执行 REDO 操作</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/.io//D:%5CBlog%5Csource%5Cimages%5Cimage-20260102232420484.png" alt="image-20260102232420484"></p>
+<p>（9）数据库镜像：根据 DBA 要求，自动把整个数据库或其中的关键数据复制到另一个磁盘上，由 DBMS 自动保证镜像数据库与主数据库的一致性</p>
+<h2 id="十一-并发控制"><strong>十一、并发控制</strong></h2>
+<p>（1）事务并行的特点</p>
+<ul>
+<li>优点：提高系统吞吐量，减少平均响应时间</li>
+<li>问题：多个事务同时存取数据，如果不加控制可能会读取或存储不正确的数据，破坏数据库的一致性</li>
+</ul>
+<p>（2）事务并发操作引发的三个典型问题</p>
+<ul>
+<li><strong>丢失更新</strong>：事务 T~1~ 和 T~2~ 对同一数据进行修改，T~2~ 的提交结果晚于 T~1~ 的提交结果，导致 T~1~ 的修改被覆盖，造成丢失</li>
+<li><strong>脏数据的读出</strong>：事务 T~1~ 对数据进行修改，事务 T~2~ 读取修改后的事务，事务 T~1~ 的修改操作因为某种原因被撤销后，T~2~ 读到的数据和数据库中当前的真实数据不一致，在称 T~2~ 读到脏数据</li>
+<li><strong>不能重复读</strong>：事务 T~1~ 读取数据以后，事务 T~2~ 对数据进行更新操作，T~1~ 再读这个数据无法再现前一次读取的结果</li>
+</ul>
+<p>（3）并发控制的基本思想是<strong>合理调度并发事务</strong>，避免并发事务之间相互干扰，造成数据的不一致性</p>
+<ul>
+<li>并发控制的主要方法是<strong>封锁机制</strong>，封锁也是并发控制的基本手段</li>
+<li>其他并发控制的方法：事务隔离级别，悲观与乐观并发控制技术，多版本并发控制技术</li>
+</ul>
+<p>（4）封锁指的是事务 T 在对某个数据对象操作之前，先向系统发出请求，申请对其加锁，从而对该数据对象有了一定的控制权，加锁的类型有以下两种</p>
+<ul>
+<li>排它锁（X 锁）：事务 T 对数据对象 R 加 X 锁，允许自己读取和修改 R，其他事务对 R 不能加任何锁，直到 T 释放 R 上的 X 锁</li>
+<li>共享锁（S 锁）：事务 T 对数据对象 R 加 S 锁，允许自己读取 R 但不能修改 R，其他事务对 R 可以加 S 锁但不能加 X 锁，直到 T 释放 R 上的 S 锁</li>
+</ul>
+<p>锁的相容矩阵：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/.io//D:%5CBlog%5Csource%5Cimages%5Cimage-20260103090659860.png" alt="image-20260103090659860"></p>
+<p>（5）封锁协议是指，运用 S 锁和 X 锁这两种基本封锁，可以建立不同的约定，形成不同级别的<strong>封锁协议</strong>，确保事务并发执行过程中的数据一致性</p>
+<ul>
+<li>一级封锁协议：防止丢失修改
+<ul>
+<li>协议内容：事务 T 在修改数据 R 之前必须对其加 X 锁，直到<strong>事务结束</strong>才释放，事务结束包括 COMMIT 和 ROLLBACK</li>
+</ul>
+</li>
+<li>二级封锁协议：防止丢失修改，读脏数据
+<ul>
+<li>协议内容：在一级封锁协议的基础上，事务 T 在读取数据 R 之前必须对其加 S 锁，<strong>读取完成</strong>后即可释放 S 锁</li>
+</ul>
+</li>
+<li>三级封锁协议：防止丢失修改，读脏数据，不可重复读
+<ul>
+<li>协议内容：在一级封锁协议的基础上，事务 T 在读取数据 R 之前必须对其加 S 锁，直到<strong>事务结束</strong>才释放</li>
+</ul>
+</li>
+</ul>
+<p>三级锁协议的主要区别在于加锁和释放锁的时间节点的区别：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/.io//D:%5CBlog%5Csource%5Cimages%5Cimage-20260103091425177.png" alt="image-20260103091425177"></p>
+<p>（6）封锁的粒度：封锁对象的大小称为封锁的粒度</p>
+<ul>
+<li>封锁对象：属性值，属性值集合，元组，关系，某个索引项，整个索引，整个数据库，物理页，块</li>
+<li>为什么要进行多粒度封锁：
+<ul>
+<li>多粒度封锁指的是在一个系统中同时支持多种封锁粒度供不同事务选择，可以平衡封锁开销和并发度两个因素，通过选择适当的封锁粒度以达到最优效果</li>
+<li>封锁粒度大，并发度低，封锁机构简单，开销小</li>
+<li>封锁粒度小，并发度高，封锁机构复杂，开销大</li>
+</ul>
+</li>
+</ul>
+<p>（7）多粒度树：多粒度树的根节点是整个数据库，表示最大的封锁粒度，叶子节点表示最小的封锁粒度（最简单的多粒度树分为三层：数据库，关系，元组）</p>
+<p>（8）多粒度封锁协议</p>
+<ul>
+<li>多粒度封锁协议允许多粒度树种的每个节点被独立的加锁，对一个节点加锁意味着这个节点的所有后继节点都被加上同样类型的锁
+<ul>
+<li>显式封锁：应事务要求直接加到数据对象上的封锁</li>
+<li>隐式封锁：该数据对象没有独立加锁，由于其上级节点加锁而使得该数据对象被加上了锁</li>
+</ul>
+</li>
+<li>在多粒度封锁方法中，显式封锁和隐式封锁的效果是一样的</li>
+</ul>
+<p>（8）意向锁：表示该节点的下层节点正在被加锁</p>
+<ul>
+<li>规定：对任意节点加锁时，必须先对其所有的上层节点加意向锁</li>
+<li>好处：在对象加锁时，不再需要检查下级节点的锁，只需要检查对象本身和它的上级节点</li>
+<li>三种意向锁分类：
+<ul>
+<li>意向共享锁（IS）：如果对一个数据对象加 IS 锁，表示它的后继节点中存在 S 锁</li>
+<li>意向排它锁（IX）：如果对一个数据对象加 IX 锁，表示它的后继节点中存在 X 锁</li>
+<li>意向共享排它锁（SIX=S+IX）：如果对一个数据对象加 SIX 锁，表示它的后继节点中存在 X 锁，同时对它本身加 S 锁</li>
+</ul>
+</li>
+<li>在具有<strong>意向锁</strong>的多粒度封锁方法中，任意事务 T 要对一个数据对象加锁，首先要对它的上级对象加意向锁</li>
+</ul>
+<p>意向锁相容矩阵：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/.io//D:%5CBlog%5Csource%5Cimages%5Cimage-20260103093719137.png" alt="image-20260103093719137"></p>
+<p>（9）活锁和死锁</p>
+<ul>
+<li>活锁：后来的事务插队执行，先来的事务一直等待
+<ul>
+<li>解决办法：先来先服务策略</li>
+</ul>
+</li>
+<li>死锁：两个事务互相等待对方封锁的数据，导致二者谁都永远无法执行
+<ul>
+<li>解决办法：预防死锁，死锁检测和解除
+<ul>
+<li>预防死锁：一次封锁法，顺序封锁法</li>
+<li>死锁检测和解除：超时法，等待图法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>（10）事务的调度</p>
+<ul>
+<li>N 个事务的一个<strong>调度</strong> S 是 N 个事务所有操作的一个序列 S，表示这些操作的执行顺序，且这个执行顺序满足，如果操作 i 在 T 中先于 k 执行，那么在 S 中 i 也要先于 k 执行</li>
+</ul>
+<p>（11）并行事务的调度</p>
+<ul>
+<li>并行调度的可串行化：多个事务的并发执行是正确的，当且仅当它们执行的结果与按照某一次序串行执行它们的结果相同，这种调度策略称为<strong>可串行化调度</strong>
+<ul>
+<li>可串行性是并行事务正确性的准则：一个并发调度是正确的，当且仅当它是可串行化的</li>
+</ul>
+</li>
+<li>可串行化调度判定的充分条件：一个调度 Sc 在保证冲突操作次序不变的情况下，可以通过交换序列中两个不冲突操作的次序，得到另一个串行调度 Sc‘，此时调度 Sc 称为<strong>冲突可串行化调度</strong>
+<ul>
+<li>冲突操作：不同事务对同一数据的写-写，读-写操作</li>
+<li>交换操作的约束：冲突操作不能交换，同一个事务的两个操作也不能交换</li>
+</ul>
+</li>
+<li>一个冲突可串行化调度，一定是可串行化调度</li>
+</ul>
+<p>（12）两段锁协议</p>
+<ul>
+<li>两段锁协议用来保证并发事务的可串行性</li>
+<li>两段锁协议的内容：
+<ul>
+<li>在对任何数据进行读，写操作之前，事务首先要获得对该数据的封锁</li>
+<li>在释放一个封锁之后，事务不再获得任何其他封锁</li>
+<li>即事务被分为两个阶段，第一个阶段只获得锁，称为<strong>扩展阶段</strong>，第二个阶段只释放锁，称为<strong>收缩阶段</strong>，事务一旦开始释放锁，就不能再获得任何锁</li>
+</ul>
+</li>
+<li>可串行化的充分条件：如果所有事务都遵循两段锁协议，则这些事务的<strong>所有</strong>并发调度都是可串行化的，即所有遵循两段锁协议的事务，其并发执行结果一定是正确的</li>
+<li>遵循两段锁协议的事务仍然有可能发生死锁</li>
+</ul>
+<h2 id="十二-数据库新技术"><strong>十二、数据库新技术</strong></h2>
+<p>往年这一块是分布式数据库，今年变成了云数据库什么的，大概率不是理论重点，也不考（）</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://agilawood4.github.io/2026/01/17/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://agilawood4.github.io/2026/01/17/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89/')">Destiny's Blog</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://agilawood4.github.io/2026/01/17/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Destiny's Blog&amp;url=https://agilawood4.github.io/2026/01/17/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://agilawood4.github.io" target="_blank">Destiny's Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"></div></div></div><div class="post_share"><div class="social-share" data-image="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A297.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/12/06/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2126.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">数据库复习</div></div></a></div><div class="next-post pull-right"><a href="/2026/01/17/(SQL1)%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%AE%BA/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2122.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数据库概论</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">数据库知识点整理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E7%BB%AA%E8%AE%BA"><span class="toc-number">1.1.</span> <span class="toc-text">一、绪论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA"><span class="toc-number">1.2.</span> <span class="toc-text">二、关系数据理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-sql"><span class="toc-number">1.3.</span> <span class="toc-text">三、SQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8"><span class="toc-number">1.4.</span> <span class="toc-text">四、数据库安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E8%8C%83%E5%BC%8F%E7%90%86%E8%AE%BA"><span class="toc-number">1.5.</span> <span class="toc-text">五、范式理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.6.</span> <span class="toc-text">六、数据库设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E7%B4%A2%E5%BC%95%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.7.</span> <span class="toc-text">七、索引设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="toc-number">1.8.</span> <span class="toc-text">八、查询优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D-%E4%BA%8B%E5%8A%A1"><span class="toc-number">1.9.</span> <span class="toc-text">九、事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%81%A2%E5%A4%8D"><span class="toc-number">1.10.</span> <span class="toc-text">十、数据库恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80-%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6"><span class="toc-number">1.11.</span> <span class="toc-text">十一、并发控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B0%E6%8A%80%E6%9C%AF"><span class="toc-number">1.12.</span> <span class="toc-text">十二、数据库新技术</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/17/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%84%E7%BB%87%E5%8F%8A%E7%AE%A1%E7%90%86/" title="运行时的存储组织及管理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A297.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="运行时的存储组织及管理"/></a><div class="content"><a class="title" href="/2026/01/17/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%84%E7%BB%87%E5%8F%8A%E7%AE%A1%E7%90%86/" title="运行时的存储组织及管理">运行时的存储组织及管理</a><time datetime="2026-01-17T07:28:15.283Z" title="发表于 2026-01-17 15:28:15">2026-01-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/17/%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B/" title="算法设计与分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2120.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法设计与分析"/></a><div class="content"><a class="title" href="/2026/01/17/%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B/" title="算法设计与分析">算法设计与分析</a><time datetime="2026-01-17T07:28:15.259Z" title="发表于 2026-01-17 15:28:15">2026-01-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/17/%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89NP%E9%97%AE%E9%A2%98/" title="无题">无题</a><time datetime="2026-01-17T07:28:15.257Z" title="发表于 2026-01-17 15:28:15">2026-01-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/17/%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E8%A1%A5%E5%85%85/" title="无题">无题</a><time datetime="2026-01-17T07:28:15.216Z" title="发表于 2026-01-17 15:28:15">2026-01-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/17/%E8%A1%8C%E4%BA%BA%E9%87%8D%E8%AF%86%E5%88%AB%E5%AD%A6%E4%B9%A0/" title="ReID"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A233.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ReID"/></a><div class="content"><a class="title" href="/2026/01/17/%E8%A1%8C%E4%BA%BA%E9%87%8D%E8%AF%86%E5%88%AB%E5%AD%A6%E4%B9%A0/" title="ReID">ReID</a><time datetime="2026-01-17T07:28:15.214Z" title="发表于 2026-01-17 15:28:15">2026-01-17</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>4</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>35</sup></a><a href="/tags/editing/" style="font-size: 0.88rem;">editing<sup>1</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>33</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>29</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
