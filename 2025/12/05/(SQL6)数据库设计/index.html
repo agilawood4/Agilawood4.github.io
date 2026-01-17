@@ -1,0 +1,729 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>数据库设计 | Destiny's Blog</title><meta name="keywords" content="专业课"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="数据库设计"><meta name="application-name" content="数据库设计"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="数据库设计"><meta property="og:url" content="https://agilawood4.github.io/2025/12/05/(SQL6)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/index.html"><meta property="og:site_name" content="Destiny's Blog"><meta property="og:description" content="数据库设计 （1）数据库设计： 数据库设计是指对于一个给定的应用环境，构造（设计）优化的数据库逻辑模式和物理结构，并据此建立数据库及其应用系统，使之能够有效存储和管理数据，满足各种用户的应用需求，包括信息管理需求和数据操作需求 （2）信息管理要求：在数据库中应该存储和管理哪些数据对象 （3）数据操作"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2125.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2125.jpg"><meta name="description" content="数据库设计 （1）数据库设计： 数据库设计是指对于一个给定的应用环境，构造（设计）优化的数据库逻辑模式和物理结构，并据此建立数据库及其应用系统，使之能够有效存储和管理数据，满足各种用户的应用需求，包括信息管理需求和数据操作需求 （2）信息管理要求：在数据库中应该存储和管理哪些数据对象 （3）数据操作"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://agilawood4.github.io/2025/12/05/(SQL6)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: Destiny's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Destiny's Blog',
+  title: '数据库设计',
+  postAI: '',
+  pageFillDescription: '数据库设计, 数据库设计的基本步骤, 需求分析, 数据字典, 概念结构设计1, 概念模型, E-R模型, E-R图, 概念结构设计2, 实体与属性的划分原则, E-R 图的集成, 冗余的消除, 逻辑结构设计, E-R 图向关系模型的转换, 数据模型的优化, 设计用户子模式, 索引的建立与删除, 建立索引, 删除索引, 物理结构设计, 关系模式存取方法的选择数据库设计数据库设计数据库设计是指对于一个给定的应用环境构造设计优化的数据库逻辑模式和物理结构并据此建立数据库及其应用系统使之能够有效存储和管理数据满足各种用户的应用需求包括信息管理需求和数据操作需求信息管理要求在数据库中应该存储和管理哪些数据对象数据操作要求对数据对象需要进行哪些操作如查询增删改操作数据库设计的目标为用户和各种应用系统提供一个信息基础设施和高效率的运行环境高效率的运行环境数据库数据的存取效率高数据库存储空间的利用率高数据库系统运行管理的效率高数据库建设的基本规律基础数据管理技术现代数据库设计需要把结构数据设计和行为处理设计相结合数据库设计的基本步骤数据库设计分为个步骤需求分析了解用户需求该阶段做的是否充分与准确决定了构建数据库的速度和质量概念结构设计对用户需求进行综合归纳与抽象形成一个独立于具体数据库管理系统的概念模型画图形成概念模式逻辑结构设计将逻辑结构转换为具体的数据库管理系统所支持的数据模型并对其进行优化建表视图范式分解形成数据的外模式物理结构设计根据数据库管理系统特点和处理的需要进行物理存储安排建立索引包括存储结构与存取方法数据存进硬件形成数据的内模式数据库实施根据逻辑设计和物理设计的结果构建数据库编写与调试应用程序组织数据入库并进行试运行数据库的运行和维护经过试运行后即可投入正式运行在运行过程中必须不断对其进行评估调整与修改注意需求分析和概念设计独立于任何数据库管理系统逻辑设计和物理设计与选用的数据库管理系统密切相关各个阶段的数据设计描述数据库设计过程中的各级模式需求分析结构化分析方法该方法从最上层的系统组织机构入手采用自顶向下逐层分解的方式分析系统数据字典数据字典是关于数据库中数据的描述即元数据不是数据本身数据字典是在需求分析阶段建立是进行详细的数据收集和数据分析所获得的并在数据库设计过程中不断修改充实完善数据字典的内容数据项数据结构数据流数据存储处理过程数据项数据项是不可再分的数据单位数据项描述包括数据项名数据项含义说明别名数据类型长度取值范围取值含义与其他数据项的逻辑关系数据项之间的联系取值范围用户定义完整性与其他数据项的逻辑关系参照完整性共同组成了数据的完整性约束条件是设计数据检验功能的依据数据项之间的联系函数依赖关系可以用关系规范化理论作为指导用数据依赖的概念分析和表示数据项之间的联系数据结构数据结构反映数据之间的组合关系数据结构描述包括数据结构名含义说明组成数据项数据结构一个数据结构可以由若干个数据项组成也可以由若干个数据结构组成也可以由若干个数据项和数据结构混合组成数据流数据结构在系统内传输的路径数据流描述包括数据流名说明数据流来源数据流曲线组成数据结构平均流量高峰期流量数据流来源说明该数据流来自哪个过程数据流曲线说明该数据流将到哪个过程去平均流量在单位时间每天每周每月中的传输次数高峰期流量在高峰时期的数据流量数据存储数据结构停留或保存的地方也是数据流的来源和去向之一数据存储描述包括数据存储名说明编号输入的数据流输出的数据流组成数据结构数据量存取频度存取方式存取频度每小时每天每周存取次数每次存取的数据量等信息存取方法批处理联机处理检索更新顺序检索随机检索输入的数据流数据来源输出的数据流数据去向处理过程处理过程的具体处理逻辑一般用判定表或判定树来描述数据字典中只需要描述处理过程的说明性信息处理过程描述包括处理过程名说明输入数据流输出数据流处理简要说明简要说明用于说明该处理过程的功能及处理要求其中功能是指该处理过程用来做什么处理要求是指处理频度要求如单位时间内处理多少事务多少数据量响应时间要求概念结构设计概念模型概念结构设计是将需求分析得到的用户需求抽象为信息结构即概念模型的过程概念模型的特点能真实充分地反映现实世界是现实世界的一个真实模型易于理解可以用它和不熟悉计算机的用户交换意见易于更改当应用环境和应用要求改变时概念模型应当容易进行模型修改和扩充易于想关系网状层次等数据模型转换概念模型的描述工具模型模型模型是用图描述现实世界的概念模型图的核心是实体实体名称实体所拥有的属性实体之间的联系实体之间的联系两个实体之间的联系联系如果对于实体集中的每一个实体实体集中至多也有一个也可以没有实体与之联系反之亦然则称实体集和实体集具有一对一联系记为学校里一个班级只有一个正班长而一个班长只在一个班中任职则班级与班长之间具有一对一关系如果对于实体集中的每一个实体实体集中有个实体与之联系反之对于实体集中的每一个实体实体集中至多只有一个实体与之联系则称实体集与实体集有一对多关系即为一个班级中有若干名学生而每个学生只在一个班级中则班级和学生之间具有一对多关系班级是学生是多如果对于实体集中的每一个实体实体集中有个实体与之联系反之对于实体集中的每一个实体实体集中也有个实体与之联系则称实体集与实体集具有多对多联系即为一门课程同时有多个学生选修而一个学生可以选修多门课程则课程与学生之间具有多对多联系两个以上的实体型之间的联系一般地两个以上的实体型之间也存在着一对一一对多多对多联系示例对于课程教师参考书三个实体型如果一门课程可以由若干个教师讲授使用若干本参考书而每一个教师只能讲授一门课程每一本参考书只能供一门课程使用则课程和教师课程和参考书之间都是一对多联系示例对于供应商项目零件三个实体型如果一个供应商可以给多个项目供货每个项目可以由多个供应商供货一个供应商可以提供多种零件每种零件可以由多个供应商提供因此供应商和零件供应商和项目之间都是多对多联系单个实体型内部的联系同一个实体集内的各个实体之间也存在一对一一对多多对多的联系示例职工实体型内部具有领导与被领导的联系即某一个职工作为干部领导其他多名职工而每个职工只能有一个领导因此在职工内部有一对多联系联系的度联系的度指的是参与联系的实体型的数目两个实体型之间的联系度为也称为二元联系三个实体型之间的联系度为也称为三元联系个实体型之间的联系度为也称为元联系图图提供表示实体型属性和联系的方法实体型用矩形表示矩形框内写明实体名属性用椭圆形表示使用无向边将其与相应的实体型连接起来示例学生实体具有学号姓名等属性用图表示如下联系用菱形表示菱形框内写明联系名并用无向边分别与有关实体连接起来同时在无向边上标注联系的类型联系也可以具有属性老师和学生之间是教学关系那么菱形框中就可以写教学领导和职工之间是管理关系那么菱形框中就可以写管理示例如果用供应量来描述联系的属性表示供应商提供了多少数量的零件给某项目则这三个实体之间的图如下一个完整的图的示例概念结构设计概念设计的第一步就是对需求分析阶段收集到的数据进行分类组织确定实体实体属性实体间联系类型形成图实体与属性的划分原则为了简化图现实世界的事物能作为属性对待的尽量作为属性对待作为属性不能再具有描述的性质比如姓名不能再拆分为姓和名属性必须是不可分的数据项不能包含其他属性属性不能与其他实体具有联系即图中所表示的联系只能是实体之间的联系示例属性必须不可分对于职称而言如果它没有与工资福利等挂钩则可以作为职工实体的属性而如果不同的职称有不同的工资住房标准和不同的附加福利则作为一个实体更恰当确保关系表满足第一范式的关键就在于如果图中的属性可再分我们需要把它单独拆分成为一个实体示例属性只能与一个实体发生联系在医院中一个病人只能住在一个病房病房号可以作为病人实体的一个属性而如果病房号还和医生实体发生联系即一个医生负责哪几个病房此时病房号应该作为一个单独的实体示例如果一种货物只放在一个仓库则可以把仓库号作为货物的属性而如果一种货物可以存放在多个仓库中或者仓库本身有面积属性或仓库与职工会发生管理上的联系此时应该把仓库作为一个实体图的集成图的集成一般分成两步合并解决各个分图之间的冲突将分图合并起来生成初步图修改和重构消除不必要的冗余生成基本图合并图生成初步图各个局部应用所面向的问题不同各个子系统的图之间必然会存在许多不一致的地方这些不一致就称为冲突常见的冲突分为三类属性冲突属性域冲突即属性值的类型取值范围或取值集合不同比如学号在有的图中为整数在有的图中为字符串属性取值单位冲突不同的属性值单位不同需要进行换算统一命名冲突同名异义不同意义的对象在不同的局部应用中具有相同的名字异名同义同一意义的对象在不同的局部应用中具有不同的名字命名冲突可能发生在实体联系一级上也可能发生在属性一级上通过讨论协商等手段可以解决结构冲突冲突统一对象在不同应用中具有不同的抽象例如职工在某一局部应用中可能被当做实体在另一局部应用中可能被当成属性解决方法把属性变换为实体或把实体变换为属性使同一对象具有相同的抽象通常比较靠谱的做法是把属性变为实体冲突同一实体在不同子系统的图中素包含的属性个数和属性排列次序不完全相同解决方法该实体的属性取各个子系统的图中属性的并集再适当调整属性的次序冲突实体间的联系在不同的图中为不同的类型解决方法实体联系类型具有包含关系是的特例而又是的特例我们只需要上升到范围最大的联系类型即可零件和产品之间存在多对多的联系构成零件产品供应商之间存在多对多的联系供应现在把这两个图进行合并消除不必要的冗余设计基本的图冗余的数据是指可以由基本数据导出的数据冗余的联系是可以由其他联系导出的联系消除冗余主要采用分析方法即以数据字典和数据流图为依据根据数据字典中关于数据项之间逻辑关系的说明来消除冗余消除冗余关系后的初步图就称为基本的图示例在下图中有关系以及也就是产品消耗的材料数产品使用的零件数零件消耗的材料数以及材料在仓库中的中存放量每个仓库的存放量之和因此在有了以后就是冗余数据可以被删除而由于的删除产品和材料之间的使用联系也是冗余的也可以被删除然而也并不是所有冗余都必须被消除有时候为了提高查询效率我们也要存一些冗余信息比如上面的如果经常被查询为了减少计算开销也可以考虑保留冗余的消除我们使用规范化理论来消除冗余联系确定分图实体之间的数据依赖实体之间的一对一一对多多对多联系可以用实体码之间的函数依赖表示具体求解流程如下图所示先根据图求解函数依赖集这里职工可以唯一确定部门职工和产品可以唯一确定生产天数因此函数依赖集为职工号部门号职工号产品号天数职工号部门号职工号产品号天数职工号部门号职工号产品号天数接着求解函数依赖集的最小覆盖集他们的差集我们得到集合逐一考察集合中的函数依赖确定是否是冗余的联系若是就把它去掉注意注意下面两个问题冗余联系一定在集合中但是集合中的联系不一定都是冗余当实体之间存在多种联系时要把实体之间的联系加以区分逻辑结构设计逻辑结构设计的任务把概念结构设计阶段设计好的基本图转换为与选用数据库管理系统产品所支持的数据模型相符合的逻辑结构图向关系模型的转换图由实体型矩形实体的类型椭圆形实体型之间的联系菱形三个要素组成图向关系模型的转换就是将实体型实体的属性和实体型之间的联系转化为关系模式转换原则一个实体型转换为一个关系模式关系的属性为实体的属性关系的码为实体的码实体型之间联系的转换一个联系可以转换为一个独立的关系模式也可以与任意一端对应的关系模式合并转换为一个独立的关系模式关系的属性与该联系相连的各实体的码以及联系本身的属性关系的候选码每个实体的码都是该关系的候选码与某一端实体对应的关系模式合并合并后关系的属性加入与之有联系的关系也就是联系另一头的关系的码和联系本身的属性合并后关系的码不变一般对于联系我们都采用与某一端的关系模式合并的方法来处理这样可以减少系统中关系的个数尽量避免后续的连表查询一个联系可以转换为一个独立的关系模式也可以与端对应的关系模式合并转换为一个独立的关系模式关系的属性与该联系相连的各实体的码以及联系本身的属性关系的候选码端实体的码与端对应的关系模式合并合并后关系的属性在端关系中加入端关系的码和联系本身的属性合并后关系的码不变一般对于联系我们都采用与端关系模式合并的方法来处理因为这样可以减少系统中关系的个数尽量避免后续的连表查询一个联系只能转换为一个独立的关系模式无法合并到任意一端实体对应的关系模式中关系的属性与该联系相连的各实体的码以及联系本身的属性关系的候选码各实体码的组合示例对于学生和课程实体之间联系为选课我们可以把他转化为以下的关系模式其中学号和课程号是新关系的组合码选修学号课程号成绩选修学号课程号成绩选修学号课程号成绩三个或三个以上实体之间的一个多元联系转换为一个关系模式关系的属性与该联系相连的各实体的码以及联系本身的属性关系的候选码各实体码的组合具有相同码的关系模式的合并合并以后可能不满足要求但可以减少系统中关系的个数一定程度上提高查询和存储效率将一个关系模式中的全部属性加入到另一个关系模式中去掉合并后关系模式中的同义属性同义不一定同名适当调整属性的次序转换后共有七个关系模式部门表部门编号部门领导编号职工表职工编号职工所属部门编号产品表产品编号负责产品的职工编号零件表零件编号供应商表供应商编号供应表供应商编号零件编号产品编号供应量参加表职工编号产品编号天数部门表部门编号部门领导编号职工表职工编号职工所属部门编号产品表产品编号负责产品的职工编号零件表零件编号供应商表供应商编号供应表供应商编号零件编号产品编号供应量参加表职工编号产品编号天数部门表部门编号部门领导编号职工表职工编号职工所属部门编号产品表产品编号负责产品的职工编号零件表零件编号供应商表供应商编号供应表供应商编号零件编号产品编号供应量参加表职工编号产品编号天数数据模型的优化数据库逻辑设计的结果不是唯一的为了进一步提高数据库应用系统的性能还应该适当地修改调整数据模型的结构这就是数据模型的优化数据模型优化的方法确定数据依赖按需求分析阶段所得到的语义分别写出每个关系模式内部各属性之间的数据依赖以及不同关系模式属性之间数据依赖对于各个关系模式之间的数据依赖做极小化处理消除冗余的联系按照数据依赖理论对关系模式进行分析考察是否存在部分函数依赖传递函数依赖多值依赖等确定各关系模式分别属于第几范式按照范式需求判断是否要对关系模式做必要的合并和分解注意并不是规范化程度越高的关系就越优高规范化关系模式可能带来较大连接运算代价常用的分解方法有水平分解和垂直分解水平分解把基本关系的元组分为若干子集合定义每个子集合为一个子关系分解原则依据二八定律把常用的的数据抽取出来形成一个子关系比如在班级表中毕业班学生信息会被频繁查询考虑将毕业班单独建立一个表分解原则或者根据每个事务存取的数据对应一个子关系垂直分解把关系模式的属性分解为若干子集合形成若干子关系模式分解原则经常在一起使用的属性从中分解出来形成一个子关系模式比如在学生表中学生的学号和姓名会被频繁查询考虑把这两列抽取出来作为一个表剩下的属性作为一个表分解有点可以提高某些事务的效率分解缺点可能使一些事务不得不执行连接操作而降低效率是否使用取决于分解后上所有事务的总效率是否得到提高设计用户子模式定义数据库模式主要是从系统的时间效率空间效率易维护等角度出发定义用户外模式时应该更注重考虑用户的习惯与方便性使用更符合用户习惯的别名合并各分图曾做了消除命名冲突的工作以使数据库系统中同一关系和属性具有唯一的名字使用视图机制可以在设计用户视图时可以重新定义某些属性名使其与用户习惯一致方便使用针对不同级别的用户定义不同的视图以保证系统的安全性简化用户对系统的使用如果某些局部应用中经常要用到某些复杂的查询为了方便用户可以为这些复杂的查询定义视图比如连和表同时查询姓名和成绩可以提前建立好对应的视图索引的建立与删除索引建立的目的加快查询速度建立索引的对象或者表的属主即建立表的人一般会在主键设置约束的属性上建立索引维护索引的对象自动完成对索引的维护使用索引的对象会自动选择是否使用索引以及使用哪些索引有关索引的其他内容关系型数据库的索引一般采用树索引来实现树索引具有动态平衡的优点索引具有查找速度快的优点采用树还是索具体由来决定索引是关系数据库内部所实现的技术属于内模式的范畴语句定义索引的时候可以定义唯一索引非唯一索引以及聚簇索引建立索引因为只会自动在或者上建立索引如果想对其他列建立索引我们需要手动执行建立索引的语句索引名表名列名列名其中参数表示建立唯一索引参数表示建立聚簇索引示例为表分别建立唯一索引其中参数表示建立聚簇索引聚簇索引是指索引顺序与表中记录在物理内存中的顺序一致的索引组织示例在表的列上建立一个聚簇索引聚簇索引的查询速度是最快的在最经常查询的列上建立聚簇索引可以提高查询效率一个基本表上最多只能建立一个聚簇索引经常更新的列不适合建立聚簇索引删除索引语句格式索引名删除索引时系统会从数据字典中删除有关该素银的描述目的是使得物理和逻辑结构一致物理结构设计数据库在物理设备上的存储结构与存取方法称为数据库的物理结构它依赖于选定的数据库管理系统为一个给定的逻辑数据模型选取一个最适合应用要求的物理结构的过程就是数据库的物理设计关系模式存取方法的选择数据库系统是多用户共享的系统对同一个关系要建立多条存取路径才能满足多用户的多种应用要求物理结构设计的任务之一就是根据关系数据库管理所支持的存取方法在其中选择合适的存取方法数据库管理系统常用的存取方法树索引存取方法索引存取方法聚簇存取方法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-12-05 23:07:02',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Destiny's Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>4</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>35</sup></a><a href="/tags/editing/" style="font-size: 1.05rem;">editing<sup>1</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>33</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>29</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">21</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">28</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">23</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>专业课</span></a></span></div></div><h1 class="post-title" itemprop="name headline">数据库设计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-12-05T07:26:00.000Z" title="发表于 2025-12-05 15:26:00">2025-12-05</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-12-05T15:07:02.302Z" title="更新于 2025-12-05 23:07:02">2025-12-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2125.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://agilawood4.github.io/2025/12/05/(SQL6)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/"><header><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url">专业课</a><h1 id="CrawlerTitle" itemprop="name headline">数据库设计</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2025-12-05T07:26:00.000Z" title="发表于 2025-12-05 15:26:00">2025-12-05</time><time itemprop="dateCreated datePublished" datetime="2025-12-05T15:07:02.302Z" title="更新于 2025-12-05 23:07:02">2025-12-05</time></header><h1><strong>数据库设计</strong></h1>
+<p>（1）数据库设计： 数据库设计是指对于一个给定的应用环境，构造（设计）优化的数据库逻辑模式和物理结构，并据此建立数据库及其应用系统，使之能够有效存储和管理数据，满足各种用户的应用需求，包括信息管理需求和数据操作需求</p>
+<p>（2）信息管理要求：在数据库中应该存储和管理哪些数据对象</p>
+<p>（3）数据操作要求：对数据对象需要进行哪些操作，如查询，增，删，改操作</p>
+<p>（4）数据库设计的目标：为用户和各种应用系统提供一个信息基础设施和高效率的运行环境</p>
+<p>（5）高效率的运行环境：数据库数据的存取效率高，数据库存储空间的利用率高，数据库系统运行管理的效率高</p>
+<p>数据库建设的基本规律：基础数据 &gt; 管理 &gt; 技术</p>
+<p>现代数据库设计需要把结构（数据）设计和行为（处理）设计相结合</p>
+<h2 id="数据库设计的基本步骤"><strong>数据库设计的基本步骤</strong></h2>
+<p>数据库设计分为 6 个步骤：</p>
+<ul>
+<li>需求分析：了解用户需求，该阶段做的是否充分与准确，决定了构建数据库的速度和质量</li>
+<li>概念结构设计：对用户需求进行综合、归纳与抽象，形成一个<strong>独立于具体数据库管理系统</strong>的概念模型（画 E-R 图）
+<ul>
+<li>形成概念模式</li>
+</ul>
+</li>
+<li>逻辑结构设计：将逻辑结构转换为具体的数据库管理系统所支持的数据模型，并对其进行优化（建表 / 视图 + 范式分解）
+<ul>
+<li>形成数据的外模式</li>
+</ul>
+</li>
+<li>物理结构设计：根据数据库管理系统特点和处理的需要，进行物理存储安排，建立索引，包括存储结构与存取方法（数据存进硬件）
+<ul>
+<li>形成数据的内模式</li>
+</ul>
+</li>
+<li>数据库实施：根据逻辑设计和物理设计的结果构建数据库，编写与调试应用程序，组织数据入库并进行试运行</li>
+<li>数据库的运行和维护：经过试运行后即可投入正式运行，在运行过程中必须不断对其进行评估，调整与修改</li>
+</ul>
+<p>【注意】需求分析和概念设计独立于任何数据库管理系统，逻辑设计和物理设计与选用的数据库管理系统密切相关</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251205162155814.png" alt="image-20251205162155814"></p>
+<p>各个阶段的数据设计描述：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251205163003593.png" alt="image-20251205163003593"></p>
+<p>数据库设计过程中的各级模式：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251205163301473.png" alt="image-20251205163301473"></p>
+<h3 id="需求分析"><strong>需求分析</strong></h3>
+<p>结构化分析方法（Structured Analysis，SA）：该方法从最上层的系统组织机构入手，采用自顶向下，逐层分解的方式分析系统</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251205163859672.png" alt="image-20251205163859672"></p>
+<h4 id="数据字典"><strong>数据字典</strong></h4>
+<p>数据字典是关于数据库中数据的描述，即元数据，不是数据本身，数据字典是在需求分析阶段建立，是进行详细的数据收集和数据分析所获得的，并在数据库设计过程中不断修改，充实，完善</p>
+<p>数据字典的内容：数据项，数据结构，数据流，数据存储，处理过程</p>
+<p>（1）数据项：数据项是不可再分的数据单位</p>
+<p>数据项描述包括：数据项名，数据项含义说明，别名，数据类型，长度，取值范围，取值含义，与其他数据项的逻辑关系，数据项之间的联系</p>
+<ul>
+<li>取值范围 - 用户定义完整性，与其他数据项的逻辑关系 - 参照完整性，共同组成了数据的完整性约束条件，是设计数据检验功能的依据</li>
+<li>数据项之间的联系 - 函数依赖关系，可以用关系规范化理论作为指导，用数据依赖的概念分析和表示数据项之间的联系</li>
+</ul>
+<p>（2）数据结构：数据结构反映数据之间的组合关系</p>
+<p>数据结构描述包括：数据结构名，含义说明，组成（{数据项，数据结构}）</p>
+<ul>
+<li>一个数据结构可以由若干个数据项组成，也可以由若干个数据结构组成，也可以由若干个数据项和数据结构混合组成</li>
+</ul>
+<p>（3）数据流：数据结构在系统内传输的路径</p>
+<p>数据流描述包括：数据流名，说明，数据流来源，数据流曲线，组成（{数据结构}，平均流量，高峰期流量）</p>
+<ul>
+<li>数据流来源：说明该数据流来自哪个过程</li>
+<li>数据流曲线：说明该数据流将到哪个过程去</li>
+<li>平均流量：在单位时间（每天，每周，每月）中的传输次数</li>
+<li>高峰期流量：在高峰时期的数据流量</li>
+</ul>
+<p>（4）数据存储：数据结构停留或保存的地方，也是数据流的来源和去向之一</p>
+<p>数据存储描述包括：数据存储名，说明，编号，输入的数据流，输出的数据流，组成（{数据结构}，数据量，存取频度，存取方式）</p>
+<ul>
+<li>存取频度：每小时，每天，每周存取次数，每次存取的数据量等信息</li>
+<li>存取方法：批处理 / 联机处理，检索 / 更新，顺序检索 / 随机检索</li>
+<li>输入的数据流：数据来源</li>
+<li>输出的数据流：数据去向</li>
+</ul>
+<p>（5）处理过程：处理过程的具体处理逻辑一般用判定表或判定树来描述，数据字典中只需要描述处理过程的说明性信息</p>
+<p>处理过程描述包括：处理过程名，说明，输入（{数据流}），输出（{数据流}），处理（{简要说明}）</p>
+<ul>
+<li>简要说明用于<strong>说明</strong>该处理过程的功能及处理要求，其中功能是指该处理过程用来做什么，处理要求是指处理频度要求，如单位时间内处理多少事务，多少数据量，响应时间要求</li>
+</ul>
+<h3 id="概念结构设计1"><strong>概念结构设计1</strong></h3>
+<h4 id="概念模型"><strong>概念模型</strong></h4>
+<p>概念结构设计是将需求分析得到的用户需求抽象为信息结构（即概念模型）的过程</p>
+<p>概念模型的特点：</p>
+<ul>
+<li>能真实、充分地反映现实世界，是现实世界的一个真实模型</li>
+<li>易于理解，可以用它和不熟悉计算机的用户交换意见</li>
+<li>易于更改，当应用环境和应用要求改变时，概念模型应当容易进行模型修改和扩充</li>
+<li>易于想关系，网状，层次等数据模型转换</li>
+</ul>
+<p>概念模型的描述工具：<strong>E-R模型</strong></p>
+<h4 id="e-r模型"><strong>E-R模型</strong></h4>
+<p>E-R 模型是用 E-R 图描述现实世界的概念模型，E-R 图的核心是实体（实体名称，实体所拥有的属性，实体之间的联系）</p>
+<p><strong>实体之间的联系</strong></p>
+<p>（1）两个实体之间的联系</p>
+<ul>
+<li>1:1 联系：如果对于实体集 A 中的每一个实体，实体集 B 中至多也有一个（也可以没有）实体与之联系，反之亦然，则称实体集 A 和实体集 B 具有一对一联系，记为 1:1
+<ul>
+<li>学校里一个班级只有一个正班长，而一个班长只在一个班中任职，则班级与班长之间具有一对一关系</li>
+</ul>
+</li>
+<li>1:n：如果对于实体集 A 中的每一个实体，实体集 B 中有 n 个实体（n≥0）与之联系，反之，对于实体集 B 中的每一个实体，实体集 A 中至多只有一个实体与之联系，则称实体集 A 与实体集 B 有一对多关系，即为 1:n
+<ul>
+<li>一个班级中有若干名学生，而每个学生只在一个班级中，则班级和学生之间具有一对多关系（班级是 1，学生是多）</li>
+</ul>
+</li>
+<li>m:n：如果对于实体集 A 中的每一个实体，实体集 B 中有 n 个实体（n≥0）与之联系，反之，对于实体集 B 中的每一个实体，实体集 A 中也有 m 个实体（m≥0）与之联系，则称实体集 A 与实体集 B 具有多对多联系，即为 m:n
+<ul>
+<li>一门课程同时有多个学生选修，而一个学生可以选修多门课程，则课程与学生之间具有多对多联系</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251116203453251.png" alt="image-20251116203453251"></p>
+<p>（2）两个以上的实体型之间的联系</p>
+<p>一般地，两个以上的实体型之间也存在着一对一，一对多，多对多联系</p>
+<p>示例1：对于课程，教师，参考书三个实体型，如果一门课程可以由若干个教师讲授，使用若干本参考书，而每一个教师只能讲授一门课程，每一本参考书只能供一门课程使用，则课程和教师，课程和参考书之间都是一对多联系</p>
+<p>示例2：对于供应商，项目，零件三个实体型，如果一个供应商可以给多个项目供货，每个项目可以由多个供应商供货，一个供应商可以提供多种零件，每种零件可以由多个供应商提供，因此供应商和零件，供应商和项目之间都是多对多联系</p>
+<p>（3）单个实体型内部的联系</p>
+<p>同一个实体集内的各个实体之间也存在一对一，一对多，多对多的联系</p>
+<p>示例：职工实体型内部具有领导与被领导的联系，即某一个职工作为干部领导其他多名职工，而每个职工只能有一个领导，因此在职工内部有一对多联系</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251116204411788.png" alt="image-20251116204411788"></p>
+<p><strong>联系的度</strong></p>
+<p>联系的度指的是参与联系的实体型的数目</p>
+<ul>
+<li>两个实体型之间的联系度为 2，也称为二元联系</li>
+<li>三个实体型之间的联系度为 3，也称为三元联系</li>
+<li>N个实体型之间的联系度为 N，也称为N元联系</li>
+</ul>
+<h4 id="e-r图"><strong>E-R图</strong></h4>
+<p>E-R图提供表示实体型，属性和联系的方法</p>
+<ul>
+<li>实体型：用矩形表示，矩形框内写明实体名</li>
+<li>属性：用椭圆形表示，使用无向边将其与相应的实体型连接起来</li>
+</ul>
+<p>示例：学生实体具有学号，姓名… 等属性，用 E-R 图表示如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251116204654117.png" alt="image-20251116204654117"></p>
+<ul>
+<li>联系：用菱形表示，菱形框内写明联系名，并用无向边分别与有关实体连接起来，同时在无向边上标注联系的类型（1:1，1:n，m:n），联系也可以具有<strong>属性</strong>（老师和学生之间是教学关系，那么菱形框中就可以写“教学”，领导和职工之间是管理关系，那么菱形框中就可以写“管理”）</li>
+</ul>
+<p>示例：如果用“供应量”来描述联系的属性，表示供应商提供了多少数量的零件给某项目，则这三个实体之间的 E-R 图如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251116205606791.png" alt="image-20251116205606791"></p>
+<p>一个完整的 E-R 图的示例：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251116210018132.png" alt="image-20251116210018132"></p>
+<h3 id="概念结构设计2"><strong>概念结构设计2</strong></h3>
+<p>概念设计的第一步就是对需求分析阶段收集到的数据进行分类，组织，确定实体，实体属性，实体间联系类型，形成 E-R 图</p>
+<h4 id="实体与属性的划分原则"><strong>实体与属性的划分原则</strong></h4>
+<p>为了简化 E-R 图，现实世界的事物能作为属性对待的，尽量作为属性对待</p>
+<ul>
+<li>作为属性，不能再具有描述的性质（比如姓名不能再拆分为姓和名），属性必须是<strong>不可分</strong>的数据项，不能包含其他属性</li>
+<li>属性不能与其他实体具有联系，即 E-R 图中所表示的联系只能是实体之间的联系</li>
+</ul>
+<p>示例①：属性必须不可分</p>
+<p>对于职称而言，如果它没有与工资，福利等挂钩，则可以作为职工实体的属性，而如果不同的职称有不同的工资，住房标准和不同的附加福利，则作为一个实体更恰当</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251205171515591.png" alt="image-20251205171515591"></p>
+<p>确保关系表满足第一范式的关键就在于，如果 E-R 图中的属性可再分，我们需要把它单独拆分成为一个实体</p>
+<p>示例②：属性只能与一个实体发生联系</p>
+<p>在医院中，一个病人只能住在一个病房，病房号可以作为病人实体的一个属性，而如果病房号还和医生实体发生联系，即一个医生负责哪几个病房，此时病房号应该作为一个单独的实体</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251205171915119.png" alt="image-20251205171915119"></p>
+<p>示例③：如果一种货物只放在一个仓库，则可以把仓库号作为货物的属性，而如果一种货物可以存放在多个仓库中，或者仓库本身有面积属性，或仓库与职工会发生管理上的联系，此时应该把仓库作为一个实体</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251205172207723.png" alt="image-20251205172207723"></p>
+<h4 id="e-r-图的集成"><strong>E-R 图的集成</strong></h4>
+<p>E-R 图的集成一般分成两步：</p>
+<ul>
+<li>合并：解决各个分 E-R 图之间的冲突，将分 E-R 图合并起来生成初步 E-R 图</li>
+<li>修改和重构：消除不必要的冗余，生成基本 E-R 图</li>
+</ul>
+<p>（1）合并 E-R 图，生成初步 E-R 图</p>
+<p>各个局部应用所面向的问题不同，各个子系统的 E-R 图之间必然会存在许多不一致的地方，这些不一致就称为<strong>冲突</strong>，常见的冲突分为三类：</p>
+<ul>
+<li>属性冲突
+<ul>
+<li>属性域冲突：即属性值的类型、取值范围或取值集合不同，比如学号在有的 E-R 图中为整数，在有的 E-R 图中为字符串</li>
+<li>属性取值单位冲突：不同的属性值单位不同，需要进行换算统一</li>
+</ul>
+</li>
+<li>命名冲突
+<ul>
+<li>同名异义：不同意义的对象在不同的局部应用中具有相同的名字</li>
+<li>异名同义：同一意义的对象在不同的局部应用中具有不同的名字</li>
+<li>命名冲突：可能发生在实体，联系一级上，也可能发生在属性一级上，通过讨论，协商等手段可以解决</li>
+</ul>
+</li>
+<li>结构冲突
+<ul>
+<li>冲突1：统一对象在不同应用中具有不同的抽象，例如，职工在某一局部应用中可能被当做实体，在另一局部应用中可能被当成属性</li>
+<li>解决方法：把属性变换为实体，或把实体变换为属性，使同一对象具有相同的抽象（通常比较<strong>靠谱</strong>的做法是把属性变为实体）</li>
+<li>冲突2：同一实体在不同子系统的 E-R 图中素包含的属性个数和属性排列次序不完全相同</li>
+<li>解决方法：该实体的属性取各个子系统的 E-R 图中属性的并集。再适当调整属性的次序</li>
+<li>冲突3：实体间的联系在不同的 E-R 图中为不同的类型</li>
+<li>解决方法：实体联系类型具有包含关系，1:1 是 1:n 的特例，而 1:n 又是 m:n 的特例，我们只需要上升到范围最大的联系类型即可</li>
+</ul>
+</li>
+</ul>
+<p>零件和产品之间存在多对多的联系<strong>构成</strong>，零件，产品，供应商之间存在多对多的联系<strong>供应</strong>，现在把这两个 E-R 图进行合并：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251205195430181.png" alt="image-20251205195430181"></p>
+<p>（2）消除不必要的冗余，设计基本的 E-R 图</p>
+<p>冗余的数据是指可以由基本数据<strong>导出</strong>的数据，冗余的联系是可以由其他联系<strong>导出</strong>的联系</p>
+<p>消除冗余主要采用分析方法，即以数据字典和数据流图为依据，根据数据字典中关于数据项之间逻辑关系的说明来消除冗余</p>
+<p>消除冗余关系后的初步 E-R 图，就称为<strong>基本</strong>的 E-R 图</p>
+<p>示例：在下图中，有关系 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>3</mn></msub><mo>=</mo><msub><mi>Q</mi><mn>1</mn></msub><mo>×</mo><msub><mi>Q</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">Q_3=Q_1×Q_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，以及 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>4</mn></msub><mo>=</mo><mo>∑</mo><msub><mi>Q</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">Q_4=\sum Q_5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.00001em;vertical-align:-0.25001em;"></span><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，也就是产品消耗的材料数 = 产品使用的零件数 × 零件消耗的材料数，以及材料在仓库中的中存放量 = 每个仓库的存放量之和</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251205200217244.png" alt="image-20251205200217244"></p>
+<p>因此在有了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>Q</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>Q</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">Q_1,Q_2,Q_5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 以后，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>3</mn></msub><mo separator="true">,</mo><msub><mi>Q</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">Q_3,Q_4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 就是冗余数据，可以被删除，而由于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">Q_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的删除，产品和材料之间的使用联系也是冗余的，也可以被删除</p>
+<p>然而也并不是所有冗余都必须被消除，有时候为了提高查询效率，我们也要存一些冗余信息（比如上面的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>3</mn></msub><mo separator="true">,</mo><msub><mi>Q</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">Q_3,Q_4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 如果经常被查询，为了减少计算开销，也可以考虑保留）</p>
+<h4 id="冗余的消除"><strong>冗余的消除</strong></h4>
+<p>我们使用规范化理论来消除冗余联系</p>
+<p>（1）确定<strong>分 E-R 图</strong>实体之间的数据依赖</p>
+<p>实体之间的一对一，一对多，多对多联系可以用实体码之间的函数依赖表示</p>
+<p>具体求解流程如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251205201349425.png" alt="image-20251205201349425"></p>
+<p>先根据 E-R 图求解函数依赖集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">F_L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，这里职工可以唯一确定部门，职工和产品可以唯一确定生产天数，因此函数依赖集为：</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>L</mi></msub><mo>=</mo><mo stretchy="false">{</mo><mtext>职工号</mtext><mo>→</mo><mtext>部门号</mtext><mo separator="true">,</mo><mo stretchy="false">(</mo><mtext>职工号</mtext><mo separator="true">,</mo><mtext>产品号</mtext><mo stretchy="false">)</mo><mo>→</mo><mtext>天数</mtext><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">F_L=\{职工号\to部门号,(职工号,产品号)\to天数\}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord cjk_fallback">职</span><span class="mord cjk_fallback">工</span><span class="mord cjk_fallback">号</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">部</span><span class="mord cjk_fallback">门</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mord cjk_fallback">职</span><span class="mord cjk_fallback">工</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">产</span><span class="mord cjk_fallback">品</span><span class="mord cjk_fallback">号</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">天</span><span class="mord cjk_fallback">数</span><span class="mclose">}</span></span></span></span></span></p>
+<p>接着求解函数依赖集的最小覆盖集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">G_L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，他们的差集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><msub><mi>F</mi><mi>L</mi></msub><mo>−</mo><msub><mi>G</mi><mi>L</mi></msub></mrow><annotation encoding="application/x-tex">D=F_L-G_L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">L</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，我们得到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span> 集合，逐一考察 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span> 集合中的函数依赖，确定是否是冗余的联系，若是就把它去掉</p>
+<p>【注意】注意下面两个问题：</p>
+<ul>
+<li>冗余联系一定在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span> 集合中，但是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi></mrow><annotation encoding="application/x-tex">D</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span></span> 集合中的联系不一定都是冗余</li>
+<li>当实体之间存在多种联系时，要把实体之间的联系加以区分</li>
+</ul>
+<h3 id="逻辑结构设计"><strong>逻辑结构设计</strong></h3>
+<p>逻辑结构设计的任务：把概念结构设计阶段设计好的基本 E-R 图转换为与选用数据库管理系统产品所支持的数据模型相符合的逻辑结构</p>
+<h4 id="e-r-图向关系模型的转换"><strong>E-R 图向关系模型的转换</strong></h4>
+<p>E-R 图由实体型（矩形），实体的类型（椭圆形），实体型之间的联系（菱形）三个要素组成，E-R 图向关系模型的转换就是将实体型，实体的属性和实体型之间的联系转化为关系模式</p>
+<p>（1）转换原则：一个实体型转换为一个关系模式，关系的属性为实体的属性，关系的码为实体的码</p>
+<p>（2）实体型之间联系的转换</p>
+<p>①一个 1:1 联系可以转换为一个独立的关系模式，也可以与任意一端对应的关系模式合并</p>
+<ul>
+<li>转换为一个独立的关系模式
+<ul>
+<li>关系的属性：与该联系相连的各实体的码，以及联系本身的属性</li>
+<li>关系的候选码：每个实体的码都是该关系的候选码</li>
+</ul>
+</li>
+<li>与某一端实体对应的关系模式合并
+<ul>
+<li>合并后关系的属性：加入与之有联系的关系（也就是联系另一头的关系）的码和联系本身的属性</li>
+<li>合并后关系的码：不变</li>
+</ul>
+</li>
+</ul>
+<p>一般对于 1:1 联系，我们都采用与某一端的关系模式合并的方法来处理，这样可以减少系统中关系的个数，尽量避免后续的连表查询</p>
+<p>②一个 1:n 联系可以转换为一个独立的关系模式，也可以与 n 端对应的关系模式合并</p>
+<ul>
+<li>转换为一个独立的关系模式
+<ul>
+<li>关系的属性：与该联系相连的各实体的码以及联系本身的属性</li>
+<li>关系的候选码：n 端实体的码</li>
+</ul>
+</li>
+<li>与 n 端对应的关系模式合并
+<ul>
+<li>合并后关系的属性：在 n 端关系中加入 1 端关系的码和联系本身的属性</li>
+<li>合并后关系的码：不变</li>
+</ul>
+</li>
+</ul>
+<p>一般对于 1:n 联系，我们都采用与 n 端关系模式合并的方法来处理，因为这样可以减少系统中关系的个数，尽量避免后续的连表查询</p>
+<p>③一个 m:n 联系只能转换为一个独立的关系模式，无法合并到任意一端实体对应的关系模式中</p>
+<ul>
+<li>关系的属性：与该联系相连的各实体的码以及联系本身的属性</li>
+<li>关系的候选码：各实体码的组合</li>
+</ul>
+<p>示例：对于学生和课程实体之间，联系为选课，我们可以把他转化为以下的关系模式，其中学号和课程号是新关系的组合码</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>选修</mtext><mo stretchy="false">(</mo><mtext>学号</mtext><mo separator="true">,</mo><mtext>课程号</mtext><mo separator="true">,</mo><mtext>成绩</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">选修(学号,课程号,成绩)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">选</span><span class="mord cjk_fallback">修</span><span class="mopen">(</span><span class="mord cjk_fallback">学</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">课</span><span class="mord cjk_fallback">程</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">绩</span><span class="mclose">)</span></span></span></span></span></p>
+<p>④三个或三个以上实体之间的一个多元联系转换为一个关系模式</p>
+<ul>
+<li>关系的属性：与该联系相连的各实体的码以及联系本身的属性</li>
+<li>关系的候选码：各实体码的组合</li>
+</ul>
+<p>⑤具有相同码的关系模式的合并（合并以后可能不满足 2NF 要求），但可以减少系统中关系的个数，一定程度上提高查询和存储效率</p>
+<ul>
+<li>将一个关系模式中的全部属性加入到另一个关系模式中</li>
+<li>去掉合并后关系模式中的同义属性（同义不一定同名）</li>
+<li>适当调整属性的次序</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251205205432702.png" alt="image-20251205205432702"></p>
+<p>转换后共有七个关系模式：</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>部门表</mtext><mo stretchy="false">(</mo><mtext>部门编号</mtext><mo separator="true">,</mo><mtext>部门领导编号</mtext><mo separator="true">,</mo><mo>…</mo><mtext> </mtext><mo stretchy="false">)</mo><mspace linebreak="newline"></mspace><mtext>职工表</mtext><mo stretchy="false">(</mo><mtext>职工编号</mtext><mo separator="true">,</mo><mtext>职工所属部门编号</mtext><mo separator="true">,</mo><mo>…</mo><mtext> </mtext><mo stretchy="false">)</mo><mspace linebreak="newline"></mspace><mtext>产品表</mtext><mo stretchy="false">(</mo><mtext>产品编号</mtext><mo separator="true">,</mo><mtext>负责产品的职工编号</mtext><mo separator="true">,</mo><mo>…</mo><mtext> </mtext><mo stretchy="false">)</mo><mspace linebreak="newline"></mspace><mtext>零件表</mtext><mo stretchy="false">(</mo><mtext>零件编号</mtext><mo separator="true">,</mo><mo>…</mo><mtext> </mtext><mo stretchy="false">)</mo><mspace linebreak="newline"></mspace><mtext>供应商表</mtext><mo stretchy="false">(</mo><mtext>供应商编号</mtext><mo separator="true">,</mo><mo>…</mo><mtext> </mtext><mo stretchy="false">)</mo><mspace linebreak="newline"></mspace><mtext>供应表</mtext><mo stretchy="false">(</mo><mtext>供应商编号</mtext><mo separator="true">,</mo><mtext>零件编号</mtext><mo separator="true">,</mo><mtext>产品编号</mtext><mo separator="true">,</mo><mtext>供应量</mtext><mo separator="true">,</mo><mo>…</mo><mtext> </mtext><mo stretchy="false">)</mo><mspace linebreak="newline"></mspace><mtext>参加表</mtext><mo stretchy="false">(</mo><mtext>职工编号</mtext><mo separator="true">,</mo><mtext>产品编号</mtext><mo separator="true">,</mo><mtext>天数</mtext><mo separator="true">,</mo><mo>…</mo><mtext> </mtext><mo stretchy="false">)</mo><mspace linebreak="newline"></mspace></mrow><annotation encoding="application/x-tex">部门表(部门编号,部门领导编号,\dots)\\
+职工表(职工编号,职工所属部门编号,\dots)\\
+产品表(产品编号,负责产品的职工编号,\dots)\\
+零件表(零件编号,\dots)\\
+供应商表(供应商编号,\dots)\\
+供应表(供应商编号,零件编号,产品编号,供应量,\dots)\\
+参加表(职工编号,产品编号,天数,\dots)\\
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">部</span><span class="mord cjk_fallback">门</span><span class="mord cjk_fallback">表</span><span class="mopen">(</span><span class="mord cjk_fallback">部</span><span class="mord cjk_fallback">门</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">部</span><span class="mord cjk_fallback">门</span><span class="mord cjk_fallback">领</span><span class="mord cjk_fallback">导</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mclose">)</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">职</span><span class="mord cjk_fallback">工</span><span class="mord cjk_fallback">表</span><span class="mopen">(</span><span class="mord cjk_fallback">职</span><span class="mord cjk_fallback">工</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">职</span><span class="mord cjk_fallback">工</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">属</span><span class="mord cjk_fallback">部</span><span class="mord cjk_fallback">门</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mclose">)</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">产</span><span class="mord cjk_fallback">品</span><span class="mord cjk_fallback">表</span><span class="mopen">(</span><span class="mord cjk_fallback">产</span><span class="mord cjk_fallback">品</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">负</span><span class="mord cjk_fallback">责</span><span class="mord cjk_fallback">产</span><span class="mord cjk_fallback">品</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">职</span><span class="mord cjk_fallback">工</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mclose">)</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">零</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">表</span><span class="mopen">(</span><span class="mord cjk_fallback">零</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mclose">)</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">供</span><span class="mord cjk_fallback">应</span><span class="mord cjk_fallback">商</span><span class="mord cjk_fallback">表</span><span class="mopen">(</span><span class="mord cjk_fallback">供</span><span class="mord cjk_fallback">应</span><span class="mord cjk_fallback">商</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mclose">)</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">供</span><span class="mord cjk_fallback">应</span><span class="mord cjk_fallback">表</span><span class="mopen">(</span><span class="mord cjk_fallback">供</span><span class="mord cjk_fallback">应</span><span class="mord cjk_fallback">商</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">零</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">产</span><span class="mord cjk_fallback">品</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">供</span><span class="mord cjk_fallback">应</span><span class="mord cjk_fallback">量</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mclose">)</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">参</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">表</span><span class="mopen">(</span><span class="mord cjk_fallback">职</span><span class="mord cjk_fallback">工</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">产</span><span class="mord cjk_fallback">品</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">天</span><span class="mord cjk_fallback">数</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mclose">)</span></span><span class="mspace newline"></span></span></span></span></p>
+<h4 id="数据模型的优化"><strong>数据模型的优化</strong></h4>
+<p>数据库逻辑设计的结果不是唯一的，为了进一步提高数据库应用系统的性能，还应该适当地修改，调整数据模型的结构，这就是数据模型的优化</p>
+<p>数据模型优化的方法：</p>
+<ul>
+<li>确定数据依赖：按需求分析阶段所得到的语义，分别写出每个关系模式内部各属性之间的数据依赖以及不同关系模式属性之间数据依赖</li>
+<li>对于各个关系模式之间的数据依赖做极小化处理，消除冗余的联系</li>
+<li>按照数据依赖理论对关系模式进行分析，考察是否存在部分函数依赖，传递函数依赖，多值依赖等，确定各关系模式分别属于第几范式</li>
+<li>按照范式需求判断是否要对关系模式做必要的合并和分解，<strong>注意</strong>，并不是规范化程度越高的关系就越优，高规范化关系模式可能带来较大连接运算代价</li>
+</ul>
+<p>常用的分解方法有水平分解和垂直分解：</p>
+<ul>
+<li>
+<p>水平分解：把基本关系的元组分为若干子集合，定义每个子集合为一个子关系</p>
+<ul>
+<li>分解原则1：依据二八定律，把常用的 20% 的数据抽取出来，形成一个子关系（比如在班级表中，毕业班学生信息会被频繁查询，考虑将毕业班单独建立一个表）</li>
+<li>分解原则2：或者根据每个<strong>事务</strong>存取的数据对应一个子关系</li>
+</ul>
+</li>
+<li>
+<p>垂直分解：把关系模式 R 的属性分解为若干子集合，形成若干子关系模式</p>
+<ul>
+<li>分解原则：经常在一起使用的属性从 R 中分解出来，形成一个子关系模式（比如在学生表中，学生的学号和姓名会被频繁查询，考虑把这两列抽取出来作为一个表，剩下的属性作为一个表）</li>
+<li>分解有点：可以提高某些事务的效率</li>
+<li>分解缺点：可能使一些事务不得不执行连接操作而降低效率</li>
+<li>是否使用：取决于分解后 R 上所有事务的总效率是否得到提高</li>
+</ul>
+</li>
+</ul>
+<h4 id="设计用户子模式"><strong>设计用户子模式</strong></h4>
+<p>定义数据库模式主要是从系统的时间效率，空间效率，易维护等角度出发</p>
+<p>定义用户外模式时应该更注重考虑用户的习惯与方便性：</p>
+<ul>
+<li>使用更符合用户习惯的别名
+<ul>
+<li>合并各分 E-R 图曾做了消除命名冲突的工作，以使数据库系统中同一关系和属性具有唯一的名字，使用视图机制可以在设计用户视图时可以重新定义某些属性名，使其与用户习惯一致，方便使用</li>
+</ul>
+</li>
+<li>针对不同级别的用户定义不同的视图，以保证系统的安全性</li>
+<li>简化用户对系统的使用
+<ul>
+<li>如果某些局部应用中经常要用到某些复杂的查询，为了方便用户，可以为这些复杂的查询定义视图（比如连 S 和 SC 表同时查询姓名和成绩，可以提前建立好对应的视图）</li>
+</ul>
+</li>
+</ul>
+<h3 id="索引的建立与删除"><strong>索引的建立与删除</strong></h3>
+<p>索引建立的目的：加快查询速度</p>
+<p>建立索引的对象：DBA 或者表的属主（即建立表的人）</p>
+<ul>
+<li>DBMS 一般会在①主键（Primary Key）②设置 UNIQUE 约束的属性上建立索引</li>
+</ul>
+<p>维护索引的对象：DBMS 自动完成对索引的维护</p>
+<p>使用索引的对象：DBMS 会自动选择是否使用索引以及使用哪些索引</p>
+<p>有关索引的其他内容：</p>
+<ul>
+<li>RDBMS（关系型数据库）的索引一般采用 B+ 树，Hash 索引来实现</li>
+<li>B+ 树索引具有动态平衡的优点，Hash 索引具有查找速度快的优点，采用 B+ 树还是 Hash 索具体由 RDBMS 来决定</li>
+<li>索引是关系数据库内部所实现的技术，属于<strong>内模式</strong>的范畴</li>
+<li><code>create index</code>语句定义索引的时候，可以定义唯一索引，非唯一索引以及聚簇索引</li>
+</ul>
+<h4 id="建立索引"><strong>建立索引</strong></h4>
+<p>因为 DBMS 只会自动在 Primary Key 或者 Unique 上建立索引，如果想对其他列建立索引，我们需要手动执行建立索引的语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> [<span class="keyword">unique</span>] [cluster] index index<span class="operator">&lt;</span>索引名<span class="operator">&gt;</span> <span class="keyword">on</span><span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br><span class="line">(<span class="operator">&lt;</span>列名<span class="operator">&gt;</span>[<span class="keyword">asc</span><span class="operator">|</span> <span class="keyword">desc</span>], <span class="operator">&lt;</span>列名<span class="operator">&gt;</span>[<span class="keyword">asc</span><span class="operator">|</span> <span class="keyword">desc</span>], ...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中 unique 参数表示建立唯一索引，cluster 参数表示建立聚簇索引</li>
+</ul>
+<p>示例：为 S SC C 表分别建立唯一索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> index SSno <span class="keyword">on</span> S(Sno);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> index CCno <span class="keyword">on</span> C(Cno);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> index SCno <span class="keyword">on</span> SC(Sno <span class="keyword">asc</span>, Cno <span class="keyword">desc</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中 cluster 参数表示建立聚簇索引，聚簇索引是指索引顺序与表中记录在物理内存中的顺序一致的索引组织</li>
+</ul>
+<p>示例：在 S 表的 Sname 列上建立一个聚簇索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> cluster index SSname <span class="keyword">on</span> S(Sname);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>聚簇索引的查询速度是最快的，在最经常查询的列上建立聚簇索引可以提高查询效率</li>
+<li>一个基本表上最多只能建立一个聚簇索引</li>
+<li>经常更新的列不适合建立聚簇索引</li>
+</ul>
+<h4 id="删除索引"><strong>删除索引</strong></h4>
+<p>语句格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> index<span class="operator">&lt;</span>索引名<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除索引时，系统会从<strong>数据字典</strong>中删除有关该素银的描述（目的是使得物理和逻辑结构一致）</li>
+</ul>
+<h3 id="物理结构设计"><strong>物理结构设计</strong></h3>
+<p>数据库在物理设备上的<strong>存储结构</strong>与<strong>存取方法</strong>称为数据库的物理结构，它依赖于选定的数据库管理系统</p>
+<p>为一个给定的逻辑数据模型选取一个最适合应用要求的物理结构的过程，就是数据库的物理设计</p>
+<h4 id="关系模式存取方法的选择"><strong>关系模式存取方法的选择</strong></h4>
+<p>数据库系统是多用户共享的系统，对同一个关系要建立多条存取路径才能满足多用户的多种应用要求</p>
+<p>物理结构设计的任务之一就是根据关系数据库管理所支持的存取方法，在其中选择合适的存取方法</p>
+<p>数据库管理系统常用的存取方法：</p>
+<ul>
+<li>B+树索引存取方法</li>
+<li>Hash索引存取方法</li>
+<li>聚簇存取方法</li>
+</ul>
+<hr>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://agilawood4.github.io/2025/12/05/(SQL6)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://agilawood4.github.io/2025/12/05/(SQL6)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/')">数据库设计</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://agilawood4.github.io/2025/12/05/(SQL6)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=数据库设计&amp;url=https://agilawood4.github.io/2025/12/05/(SQL6)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2125.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://agilawood4.github.io" target="_blank">Destiny's Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>专业课<span class="tagsPageCount">33</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/picture.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/12/05/(SQL7)%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E4%B8%8E%E7%B4%A2%E5%BC%95/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2127.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">存储管理与索引</div></div></a></div><div class="next-post pull-right"><a href="/2025/12/06/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2126.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数据库复习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/12/06/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" title="数据库复习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2126.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-06</div><div class="title">数据库复习</div></div></a></div><div><a href="/2025/12/04/(SQL)%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF/" title="事务处理技术"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2124.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-04</div><div class="title">事务处理技术</div></div></a></div><div><a href="/2025/11/15/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BE%8B%E9%A2%98%E9%80%89%E8%AE%B2/" title="数据库例题选讲"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2114.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-15</div><div class="title">数据库例题选讲</div></div></a></div><div><a href="/2025/12/02/(SQL1)%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%AE%BA/" title="数据库概论"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2122.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-02</div><div class="title">数据库概论</div></div></a></div><div><a href="/2025/10/21/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" title="数据库设计"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2102.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-21</div><div class="title">数据库设计</div></div></a></div><div><a href="/2025/11/15/(SQL2)%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" title="关系数据库"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2116.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-15</div><div class="title">关系数据库</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">数据库设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.</span> <span class="toc-text">数据库设计的基本步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.1.1.</span> <span class="toc-text">需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">数据字典</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A11"><span class="toc-number">1.1.2.</span> <span class="toc-text">概念结构设计1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">概念模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#e-r%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">E-R模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#e-r%E5%9B%BE"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">E-R图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A12"><span class="toc-number">1.1.3.</span> <span class="toc-text">概念结构设计2</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%B1%9E%E6%80%A7%E7%9A%84%E5%88%92%E5%88%86%E5%8E%9F%E5%88%99"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">实体与属性的划分原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#e-r-%E5%9B%BE%E7%9A%84%E9%9B%86%E6%88%90"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">E-R 图的集成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%97%E4%BD%99%E7%9A%84%E6%B6%88%E9%99%A4"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">冗余的消除</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.4.</span> <span class="toc-text">逻辑结构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#e-r-%E5%9B%BE%E5%90%91%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">E-R 图向关系模型的转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">数据模型的优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E7%94%A8%E6%88%B7%E5%AD%90%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">设计用户子模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="toc-number">1.1.5.</span> <span class="toc-text">索引的建立与删除</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E7%B4%A2%E5%BC%95"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">建立索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%B4%A2%E5%BC%95"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">删除索引</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.6.</span> <span class="toc-text">物理结构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%AD%98%E5%8F%96%E6%96%B9%E6%B3%95%E7%9A%84%E9%80%89%E6%8B%A9"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">关系模式存取方法的选择</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/07/%E4%B8%8A%E6%9C%BA%E9%A2%98%E7%9B%AE/" title="无题">无题</a><time datetime="2026-01-07T14:27:41.629Z" title="发表于 2026-01-07 22:27:41">2026-01-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/03/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89/" title="无题">无题</a><time datetime="2026-01-03T02:55:30.151Z" title="发表于 2026-01-03 10:55:30">2026-01-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/27/%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89NP%E9%97%AE%E9%A2%98/" title="无题">无题</a><time datetime="2025-12-27T02:29:55.205Z" title="发表于 2025-12-27 10:29:55">2025-12-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/20/%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B/" title="算法设计与分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2120.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法设计与分析"/></a><div class="content"><a class="title" href="/2025/12/20/%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B/" title="算法设计与分析">算法设计与分析</a><time datetime="2025-12-20T07:34:05.895Z" title="发表于 2025-12-20 15:34:05">2025-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/06/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" title="数据库复习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2126.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库复习"/></a><div class="content"><a class="title" href="/2025/12/06/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" title="数据库复习">数据库复习</a><time datetime="2025-12-06T07:29:15.000Z" title="发表于 2025-12-06 15:29:15">2025-12-06</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>4</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>35</sup></a><a href="/tags/editing/" style="font-size: 0.88rem;">editing<sup>1</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>33</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>29</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

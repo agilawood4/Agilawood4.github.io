@@ -1,0 +1,930 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>数据库设计 | Destiny's Blog</title><meta name="keywords" content="专业课"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="数据库设计"><meta name="application-name" content="数据库设计"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="数据库设计"><meta property="og:url" content="https://agilawood4.github.io/2025/11/16/(SQL3)SQL%E8%AF%AD%E5%8F%A5%E8%A1%A5%E5%85%85/index.html"><meta property="og:site_name" content="Destiny's Blog"><meta property="og:description" content="数据库设计 概念结构设计 概念模型 概念结构设计是将需求分析得到的用户需求抽象为信息结构（即概念模型）的过程 概念模型的特点：  能真实、充分地反映现实世界，是现实世界的一个真实模型 易于理解，可以用它和不熟悉计算机的用户交换意见 易于更改，当应用环境和应用要求改变时，概念模型应当容易进行模型修改和"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2124.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2124.jpg"><meta name="description" content="数据库设计 概念结构设计 概念模型 概念结构设计是将需求分析得到的用户需求抽象为信息结构（即概念模型）的过程 概念模型的特点：  能真实、充分地反映现实世界，是现实世界的一个真实模型 易于理解，可以用它和不熟悉计算机的用户交换意见 易于更改，当应用环境和应用要求改变时，概念模型应当容易进行模型修改和"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://agilawood4.github.io/2025/11/16/(SQL3)SQL%E8%AF%AD%E5%8F%A5%E8%A1%A5%E5%85%85/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: Destiny's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Destiny's Blog',
+  title: '数据库设计',
+  postAI: '',
+  pageFillDescription: '数据库设计, 概念结构设计, 概念模型, E-R模型, E-R图, 基本表的定义 删除 修改, 定义基本表, 数据类型, 数据查询, 单表查询, 排序子句, 聚类函数, 分组子句, 连接查询, 等值与非等值连接查询, 自身连接, 外连接, 多表连接, 嵌套查询, 带有 in 谓词的查询, 带有 ANY 或 ALL 谓词的子查询, 带有 EXISTS 谓词的子查询, EXISTS 谓词, NOT EXISTS 谓词, 用 NOT EXISTS 实现全称量词, 用 NOT EXISTS 实现逻辑蕴含, 集合查询, 并操作 UNION, 交操作 INTERSECT, 差操作, 基于派生表的查询, 数据更新, 插入数据, 修改数据, 删除数据, 空值的处理, 视图, 建立视图, 删除视图, 视图查询, 视图更新, 视图的作用, SQL 类型总结数据库设计概念结构设计概念模型概念结构设计是将需求分析得到的用户需求抽象为信息结构即概念模型的过程概念模型的特点能真实充分地反映现实世界是现实世界的一个真实模型易于理解可以用它和不熟悉计算机的用户交换意见易于更改当应用环境和应用要求改变时概念模型应当容易进行模型修改和扩充易于想关系网状层次等数据模型转换概念模型的描述工具模型模型模型是用图描述现实世界的概念模型图的核心是实体实体名称实体所拥有的属性实体之间的联系实体之间的联系两个实体之间的联系联系如果对于实体集中的每一个实体实体集中至多也有一个也可以没有实体与之联系反之亦然则称实体集和实体集具有一对一联系记为学校里一个班级只有一个正班长而一个班长只在一个班中任职则班级与班长之间具有一对一关系如果对于实体集中的每一个实体实体集中有个实体与之联系反之对于实体集中的每一个实体实体集中至多只有一个实体与之联系则称实体集与实体集有一对多关系即为一个班级中有若干名学生而每个学生只在一个班级中则班级和学生之间具有一对多关系班级是学生是多如果对于实体集中的每一个实体实体集中有个实体与之联系反之对于实体集中的每一个实体实体集中也有个实体与之联系则称实体集与实体集具有多对多联系即为一门课程同时有多个学生选修而一个学生可以选修多门课程则课程与学生之间具有多对多联系两个以上的实体型之间的联系一般地两个以上的实体型之间也存在着一对一一对多多对多联系示例对于课程教师参考书三个实体型如果一门课程可以由若干个教师讲授使用若干本参考书而每一个教师只能讲授一门课程每一本参考书只能供一门课程使用则课程和教师课程和参考书之间都是一对多联系示例对于供应商项目零件三个实体型如果一个供应商可以给多个项目供货每个项目可以由多个供应商供货一个供应商可以提供多种零件每种零件可以由多个供应商提供因此供应商和零件供应商和项目之间都是多对多联系单个实体型内部的联系同一个实体集内的各个实体之间也存在一对一一对多多对多的联系示例职工实体型内部具有领导与被领导的联系即某一个职工作为干部领导其他多名职工而每个职工只能有一个领导因此在职工内部有一对多联系联系的度联系的度指的是参与联系的实体型的数目两个实体型之间的联系度为也称为二元联系三个实体型之间的联系度为也称为三元联系个实体型之间的联系度为也称为元联系图图提供表示实体型属性和联系的方法实体型用矩形表示矩形框内写明实体名属性用椭圆形表示使用无向边将其与相应的实体型连接起来示例学生实体具有学号姓名等属性用图表示如下联系用菱形表示菱形框内写明联系名并用无向边分别与有关实体连接起来同时在无向边上标注联系的类型联系也可以具有属性老师和学生之间是教学关系那么菱形框中就可以写教学领导和职工之间是管理关系那么菱形框中就可以写管理示例如果用供应量来描述联系的属性表示供应商提供了多少数量的零件给某项目则这三个实体之间的图如下一个完整的图的示例基本表的定义删除修改定义基本表语句格式如下表名列名数据类型列级完整性约束条件列名数据类型列级完整性约束条件说明如果完整性约束条件涉及到该表的多个属性列则必须定义在表级上否则既可以定义在列级也可以定义在表级示例建立学生表学号是主码姓名取值唯一列级完整性约束条件取唯一值示例建立一个课程表选修课是外码被参照表是被参照列是设置外键的语法要设置成外键的列要参考的表要参考的表中的列是示例建立一个学生选课表主码由两个属性构成必须作为表级完整性进行定义表级完整性约束条件是外码被参照表是被参照列为标记完整性约束条件是外码被参照表是被参照列为设置主键的语法要设置成主键的列设置外键的语法要设置成外键的列要参考的表要参考的表中的列是数据类型数据类型含义长度为的定长字符串最大长度为的变长字符串长整数也写为短整数定点数由位数字组成不包括符号小数点只包括整数数位小数数位小数点后面后位数字取决于机器精度的浮点数取决于机器精度的双精度浮点数浮点数精度至少为位数字日期包括年月日格式为时间包含一日的时分秒格式为数据查询语句格式要显示的目标列名待查询的表名或视图名查询条件列名分组条件列名单表查询功能对一个表的内容进行查询选择表中的若干列查询表中的指定列在后指定要查询的列名在后指定要查询的表名示例查询全体学生的学号和姓名示例查询全体学生的学号姓名所在系查询表中的全体列在关键字后面把目标列名写成示例查询全体学生的详细记录查询经过计算的值功能选出表中指定的属性列经过计算后输出格式子句的目标列表达式可以设置算术表达式字符串常量函数列别名示例查全体学生的姓名及其出生年份用当前年份减去学生年龄即得学生出生年份示例查询全体学生的姓名出生年份所在系要求用小写字母表示系名这里我们在输出中额外增加了一列列名即为每一列的内容相同全都是示例把上面查询的列名输出设置为中文给列名起别名姓名生日年龄系名取消值重复的行在关键字和目标列名之间加上关键字即可示例在学生选课表中查询所有选过课的学生的学号排序子句子句可以按一个或多个属性列排序升序降序缺省时为升序当排序含空值时默认空值是最大值升序排序空值排在最后降序排序空值排在最前示例查询选修了三号课程的学生的学号及成绩查询结果按分数降序排列示例查询全体学生情况查询结果按所在系号升序排列同一系中的学生按年龄降序排列如果是多关键字排序只需要各关键字按逗号分隔即可越靠前的关键字优先级越高聚类函数常见的聚类函数设计如下统计元组个数列名列名列名统计某一列中值的个数列名列名列名计算某一列值的总和列名列名列名计算某一列值的平均值列名列名列名计算某一列值中的最大值列名列名列名计算某一列值中的最小值其中仍然表示去重比如如果我们想统计有多少学生选过课可以写成示例查询学生总人数直接查元组即可示例查询学生选修课程的总学分数注意聚类函数只能写在语句后面作为查询目标和子句中不能子句使用分组子句分组语句通过实现该子句的作用是按指定的一列或多列值进行分组值相等的分为一组比如相同系分为一组相同学号分为一组等用以细化聚类函数的作用对象说明如果未对查询结果分组聚类函数将默认作用于整个查询结果如果对查询结果分组聚类函数将默认作用于每个组示例查询每门课程相应的选课人数根据课号分组每一组内查询对应的总数注意如果在中使用了子句则查询的目标列只能是以下两类后面加的分组依据比如上例中的聚类函数的计算结果不能再查询其他列名比如这种实现是错误的带有筛选条件的分组子句分组以后可以使用短语指定筛选条件示例查询选修了三门以上课程的学生学号示例查询每门课程相应的选课人数只显示选课人数的课号和人数和子句的区别作用对象不同子句作用于基本表或视图从中选择满足条件的元组短语作用于分组从中选择满足条件的分组子句中不能使用聚类函数作为条件表达式比如要查询平均成绩分的学生的学号和成绩对于这类聚类函数参与比较作为筛选条件的查询我们通常使用分组查询实现连接查询等值与非等值连接查询连接查询的子句中用来连接两个表的条件称为连接条件或连接谓词其一般格式为表名列名比较运算符表名列名表名列名比较运算符表名列名表名列名比较运算符表名列名其中常见的比较运算符还是表名列名表名列名表名列名注意当连接运算符为的时候表示为等值连接其他运算符为非等值连接连接谓词中的列名称为连接字段并且要求各个连接子段类型必须是可比的但名字不必相同示例查询所有学生信息和对应的选课信息计算等值连接必须给出连接条件否则无法得到正确的查询结果此时我们查询的结果中会同时有和两列这和关系代数中的等值连接的结果是一一对应的即不会进行去重运算本身不支持自然连接如果想实现自然连接需要在等值连接中把目标列中的重复属性列手动去掉即可得到自然连接的实现示例把上例改成自然连接我们通过手动投影的方式在和中只保留了其中一列注意只要有连表查询就要给出连表条件有张表的连表查询就需要给出个连表条件两两之间根据哪一列做连接自身连接一个表和它自身进行连接即称为自身连接此时需要给表起别名以示区别由于所有属性名此时在各个表中都有同名属性所以必须使用表的别名作为前缀即使用表名列名的形式写入查询目标和连接条件示例查询每门课程的先修课的先修课我们给表名起别名的语法为表名别名所谓先修课的先修课即把表复制两份第一张表的和第二张表的做等值连接查询第一张表的对应的第二张表的即可外连接多表连接如果连接操作是对两个以上的表进行连接此时称为多表连接示例查询每个学生的姓名选修课程名成绩嵌套查询一个语句称为一个查询块嵌套查询定义嵌套查询是指将一个查询块嵌套在另一个查询块的子句或短语的条件中的查询说明外层查询称为父查询内层查询称为子查询子查询中不能再使用语句带有谓词的查询在嵌套查询中子查询的结果往往是个集合用谓词表示父查询的条件在子查询结果的集合中示例查询与刘晨在同一个系学习的学生学号如果使用嵌套查询思路为先查询刘晨所在的系在查找所在系也在这个系的同学的学号刘晨该查询也可以使用自身连接来实现刘晨示例查询选修了课程名为信息系统的学生学号和姓名考虑分三步进行查询先在表中查询信息系统对应的课号再在表中查询这个课号对应的学号最后在表中查询这个学号对应的姓名信息系统我们也可以进行连表查询此时需要把这三个表连做一个大表信息系统我们对嵌套查询有如下分类相关子查询子查询的查询条件依赖于父查询整个查询语句称为嵌套查询不相关子查询子查询的查询条件不依赖于父查询我们上面给出的实例都是不相关子查询示例找出每个学生超过他选修课程平均成绩的课程号带有或谓词的子查询谓词语义满足集合中任意一个值即为真否则为假满足集合中所有值才为真否则为假和通常需要搭配比较运算符使用大于子查询结果中的某个值即为真大于子查询结果中的所有值才为真其余运算符也以此类推示例查询所有年龄小于任意一个计算机系学生的年龄的不是计算机系的学生的姓名这里的其实表示的是最大值的意思只要小于子查询集合中的最大值即集合中一定存在一个元素使得子查询结果为真因此可以使用聚类函数实现示例查询年龄小于任意一个计算机学院学生的年龄且不在计算机学院的学生姓名带有谓词的子查询谓词谓词代表存在量词带有谓词的子查询只返回逻辑真值或逻辑假值示例查询所有选修了号课程的学生姓名实现思路在表中选择一条记录去表中检验是否存在表中的一条记录使得二者学号相等且课号为号更常见的做法是直接连表查询即可这两种查询相比前者实现较为复杂但效率高后者实现简单但效率低需要连表占用内存空间大说明使用存在量词以后若内层查询结果非空则外层子句返回真值否则返回假值由于对应的子查询返回的只是值和子查询选择的列名无关因此由引出的子查询目标列表都使用即可谓词谓词和谓词的查询结果恰好相反如果内层查询结果非空则外层子句返回假值如果内层查询结果为空则外层子句返回真值示例查询没有选修号课程的学生姓名示例查询与刘晨在同一个系学习的学生姓名刘晨用实现全称量词语言中没有全称量词可以把带有全称量词的谓词转换为等价的带有存在量词的谓词即示例查询选修了全部课程的学生姓名等价于查询学生满足不存在一门课程使得这个学生没有选修这门课程即使用两次表示全称量词用实现逻辑蕴含语言中没有蕴含逻辑运算可以使用谓词演算将逻辑蕴含谓词等价转换为我们用的主要是的表示形式示例查询至少选修了学号为的那个学生选修的全部课程的学生的学号等价于查询这样的学生学号满足不存在第一个一门课使得号学生选了并且这个同学没有第二个选集合查询我们所涉及的集合操作主要是并差交三类运算并操作示例查询计算机科学系以及年龄不超过岁的学生其中关键字表示将多个查询结果取并集系统会自动去重而如果希望不进行去重则可以使用关键字进行合并保留重复元素实际上对于上面这个查询我们都这么写交操作示例查询计算机科学系的学生与年龄不大于十九岁的学生的交集其中关键字表示将多个查询结果取交集示例查询既选修了号课又选修了号课的学生的学号我们可以用关键字实现上述查询即先把选修课号的学生学号查询结果组成一个集合只需要再查询选修课号且学号在这个集合里的学生学号即可差操作示例查询计算机系且年龄大于岁的学生学号可以用计算机系的学生学号与年龄不超过岁的学生学号做差集实现基于派生表的查询子查询不仅可以出现在子句中还可以出现在子句中此时子查询生成的临时派生表称为主查询的查询对象在这个派生表中查询对应的列示例找出每个学生超过他自己选修课程平均成绩的课程号这里涉及到一个聚类函数我们考虑先把它加工出来也就是先加工一张派生表按每个学生分组维护每个学生的平均成绩接着再把这张派生表和原表做连表查询对每一个学号对应的每一门课做检索即可如果子查询中没有聚类函数则派生表可以不指定属性列子查询后面查询出来的列名就作为其默认属性示例查询所有选修了号课程的学生姓名我们这里如果非要用派生表来做可以先把选修号课程的学生学号加工成一张派生表然后把原表和这张派生表做连表查询这类我们就没有给派生表指定列名列名就默认为我们得到的总结语句的一般格式目标列别名目标列表达式别名表名或视图名别名条件表达式列名条件表达式列名数据更新插入数据插入元组语句格式如下表名属性列属性列值值值值值值如果我们插入的每一条数据对应原表的每一个属性列都有值不为空此时我们可以不指定属性列系统会按顺序依次把每一个属性列填满此时属性列名可以省略如果我们插入的只是部分属性列的值则必须要指定插入的是哪几列否则系统会自动优先填充靠前的列把后面的列留空此时我们只插入和这两列则必须显式指出属性名子句属性列的顺序可以与表中的顺序不一致如果不一致需要显式指出并且和列一一对应子句提供的值的类型个数顺序必须和属性列保持一致插入子查询的结果示例对于每个系求学生的平均年龄并把结果存入数据库先建表系名学生平均年龄插入数据这里我们用子查询代替的内容这里如果使用子查询结果作为插入数据就不需要加关键字修改数据语句格式表名列名表达式列名表达式条件表达式这里如果不加子句则表示对所有元组的对应列都做相应修改比如新的一年每个同学的年龄都增加说明子句指定修改方式修改的列修改后的取值子句指定要修改的元组缺省则表示修改全部元组在执行修改语句时会检查修改操作是否破坏表上已经定义的完整性规则示例将学生的年龄改为岁示例把所有学生年龄都增加一岁示例带子查询的修改语句把计算机系全体学生的成绩清零删除数据语句格式表名条件表达式功能删除表中满足子句条件的元组如果有子句则指定要删除的元组缺省则表示删除表中所有的元组但表本身的定义会被保留示例删除学号为的学生记录示例删除所有学生的选课记录示例带子查询的删除语句删除计算机系学生的选课记录空值的处理空值的存在是因为取值具有不确定性对运算关系带来特殊的问题所以需要做特殊的处理语言中允许某些元组的某些属性取空值空值空值空值空值空值空值空值空值空值空值空值空值空值一般有以下几种情况该属性有值但当前还不知道它的具体值该属性不应该有值该属性由于某种原因不便于填写男性和女性之外的性别空值的产生示例向表中插入一个元组学号是课号是成绩为空或者也可以只指定有值的两列不指定值的位置默认设置为空值的判断判断一个属性的值是否为空值用或来表示示例从表中找到漏填了数据的学生信息除了作为码的学号信息之外其余信息都可能漏填空值的约束条件空值具有以下约束条件属性定义域定义中有约束条件的不能为空值加入了限制的属性不能为空值码中的属性主属性不能取空值含有空值的运算算术运算空值与另一个值包括另一个空值的算术运算结果为空值比较运算空值与另一个值包括另一个空值的比较运算结果为逻辑运算运算存在一个结果即为运算存在两个结果才为取反运算的取反解结果仍然为视图视图的特点视图是虚表是从一个或几个基本表或视图中导出的结果内存中只存放视图的定义视图中维护哪几列这些列分别来自哪些表不存放视图对应的实际数据真正用到视图中数据时会从对应表中现场调用作为数据源的表中的数据发生变化视图查询出的数据也随之发生变化基于视图的操作查询删除受限更新定义基于视图的新视图建立视图语句格式视图列名列名子查询说明组成视图的属性列名必须全部省略或全部指定子查询不允许含有子句或短语系统在执行语句的时候只是把视图定义相当于只有表头没有具体内容存入数据库中并不真正执行其中的语句只有在对视图进行查询时才会按视图的定义从基本表中将数据取出示例建立信息系学生的视图示例建立信息系学生的视图并要求进行修改和插入操作时仍需保证该视图中只有信息系的学生这里的是创建视图时的一个约束选项它的主要作用是确保通过视图对数据进行修改时这些修改必须满足视图的筛选条件当为视图添加约束以后通过视图进行插入操作时新插入的数据必须满足视图的条件否则会被拒绝通过视图进行更新操作时更新后的数据必须满足视图的条件否则会被拒绝示例创建一个只显示成年用户的视图通过视图操作时必须满足的约束这些操作会成功张三这些操作会失败李四基于多个表所建立的视图示例建立信息系选修了号课程的学生视图分组视图示例将学生的学号和它的平均成绩定义为一个视图在子查询中需要按学号分组查询每个学号对应的平均成绩不指定属性列示例将表中所有女生记录定义为一个视图女这里因为和表中属性列完全相同只是前者比后者多了必须是女的限制因此可以不显式指出从中选出了哪些列而是直接用代替此时如果我们修改了基本表中的列结构和之间基本的映射关系就会被破坏后续视图即无法正常工作所以还是推荐显式列出基本表中具体的列名删除视图语句的格式视图名说明该语句从内存中删除指定的视图定义因为视图只存定义不存具体数据如果该视图中还导出了其他视图必须使用关键字可以实现级联删除也就是在删除该视图的时候把由该视图导出的视图一并删除否则会报错由于我们删除视图时有时候并不知道当前视图是否生成了其他新的视图因此推荐最好加入删除基本表时由该基本表所导出的视图定义必须使用视图名语句显式删除视图查询视图在完成定义以后用户即可像基本表一样使用语句对视图进行查询而用户对视图的查询会被系统转化回对基本表等价的查询这一过程称为视图消解法但是生成时涉及到聚类函数的视图在使用视图消解的时候可能会产生问题比如在视图中查询平均成绩在分以上的学生这条语句会被系统转换为而我们之前说过聚类函数不能使用在子句中只能在和子句中使用因此正确的转换应该是但是系统无法做到这么智能的转换视图更新更新视图是指通过视图来插入删除数据因为视图本身并不存储数据因此对视图的更新操作通过将视图消解转化为对实际表的更新操作注意为了防止在更新视图时出错定义视图时最好加子句示例将信息系学生视图中学号为的学生姓名改为刘辰刘辰这里因为本身就限定了学生的系是信息系因此不再需要指定示例向信息系学生视图中插入一个新的学生记录赵新岁赵新此时也不需要额外指定系有关信息和视图查询相似有一些涉及聚类函数所生成的视图是不可更新的因为这些视图的更新不能唯一地有意义地转换成对相应的基本表的更新示例对视图学号为的学生平均分改成分这条更新会出错因为表中的平均分是由表中多条成绩加工得到的现在只告诉系统去改平均成绩系统并不知道各科成绩具体怎么修改才能凑出分的平均分因此无法把修改映射回原表进而报错视图的作用视图的作用总结如下视图能够简化用户的操作视图能够使得用户以多种角度看待同一数据视图对重构数据库提供了一定程度的逻辑独立性视图能够对机密数据提供安全保护适当利用视图可以更清晰地表达查询类型总结题目检索所有比李勇年龄大的学生姓名自身连表查询检索所有学生的全部信息外连接用法检索选修课程的学生姓名子查询三种实现方式检索选修课程的学生最高分子查询检索选修所有课程的学生姓名双重否定表肯定检索所选课程包含选修的课程的同学的学号双重否定表肯定检索无人选修的课程的课号和名称集合运算检索选修课程的学生总数聚合运算检索学号为的学生的总分和平均分聚合运算检索选修至少三门课的学生学号和选课门数分组检索检索至少选修四门课的学生学号和总成绩不及格课程既不贡献课数也不贡献分数输出按总成绩降序排列分组检索检索所有姓刘的学生的学号和姓名部分匹配查询检索每个学生超过自己平均成绩的课程号基于派生表的查询注意聚集函数只能用在和子句中也可以出现在子句中子句顺序其他有关数据定义操纵的语句创建基本表表名列名类型完整性约束创建视图视图名列名子查询创建索引索引名表名列名升序降序删除基本表视图索引表名视图名索引名插入元组表名列名值表名列名子查询修改元组表名列名值修改条件删除元组表名删除条件修改表格表名列名类型完整性约束添加新的列表名列名类型修改列的数据类型表名列名删除列的完整性约束表名列名删除列表名旧列名新列名类型约束修改列名',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-01-13 23:51:54',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Destiny's Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>4</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>35</sup></a><a href="/tags/editing/" style="font-size: 1.05rem;">editing<sup>1</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>33</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>29</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">21</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">28</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">23</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>专业课</span></a></span></div></div><h1 class="post-title" itemprop="name headline">数据库设计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-11-16T11:23:23.000Z" title="发表于 2025-11-16 19:23:23">2025-11-16</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-01-13T15:51:54.680Z" title="更新于 2026-01-13 23:51:54">2026-01-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2124.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://agilawood4.github.io/2025/11/16/(SQL3)SQL%E8%AF%AD%E5%8F%A5%E8%A1%A5%E5%85%85/"><header><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url">专业课</a><h1 id="CrawlerTitle" itemprop="name headline">数据库设计</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2025-11-16T11:23:23.000Z" title="发表于 2025-11-16 19:23:23">2025-11-16</time><time itemprop="dateCreated datePublished" datetime="2026-01-13T15:51:54.680Z" title="更新于 2026-01-13 23:51:54">2026-01-13</time></header><h1><strong>数据库设计</strong></h1>
+<h2 id="概念结构设计"><strong>概念结构设计</strong></h2>
+<h3 id="概念模型"><strong>概念模型</strong></h3>
+<p>概念结构设计是将需求分析得到的用户需求抽象为信息结构（即概念模型）的过程</p>
+<p>概念模型的特点：</p>
+<ul>
+<li>能真实、充分地反映现实世界，是现实世界的一个真实模型</li>
+<li>易于理解，可以用它和不熟悉计算机的用户交换意见</li>
+<li>易于更改，当应用环境和应用要求改变时，概念模型应当容易进行模型修改和扩充</li>
+<li>易于想关系，网状，层次等数据模型转换</li>
+</ul>
+<p>概念模型的描述工具：<strong>E-R模型</strong></p>
+<h3 id="e-r模型"><strong>E-R模型</strong></h3>
+<p>E-R 模型是用 E-R 图描述现实世界的概念模型，E-R 图的核心是实体（实体名称，实体所拥有的属性，实体之间的联系）</p>
+<p><strong>实体之间的联系</strong></p>
+<p>（1）两个实体之间的联系</p>
+<ul>
+<li>1:1 联系：如果对于实体集 A 中的每一个实体，实体集 B 中至多也有一个（也可以没有）实体与之联系，反之亦然，则称实体集 A 和实体集 B 具有一对一联系，记为 1:1
+<ul>
+<li>学校里一个班级只有一个正班长，而一个班长只在一个班中任职，则班级与班长之间具有一对一关系</li>
+</ul>
+</li>
+<li>1:n：如果对于实体集 A 中的每一个实体，实体集 B 中有 n 个实体（n≥0）与之联系，反之，对于实体集 B 中的每一个实体，实体集 A 中至多只有一个实体与之联系，则称实体集 A 与实体集 B 有一对多关系，即为 1:n
+<ul>
+<li>一个班级中有若干名学生，而每个学生只在一个班级中，则班级和学生之间具有一对多关系（班级是 1，学生是多）</li>
+</ul>
+</li>
+<li>m:n：如果对于实体集 A 中的每一个实体，实体集 B 中有 n 个实体（n≥0）与之联系，反之，对于实体集 B 中的每一个实体，实体集 A 中也有 m 个实体（m≥0）与之联系，则称实体集 A 与实体集 B 具有多对多联系，即为 m:n
+<ul>
+<li>一门课程同时有多个学生选修，而一个学生可以选修多门课程，则课程与学生之间具有多对多联系</li>
+</ul>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251116203453251.png" alt="image-20251116203453251"></p>
+<p>（2）两个以上的实体型之间的联系</p>
+<p>一般地，两个以上的实体型之间也存在着一对一，一对多，多对多联系</p>
+<p>示例1：对于课程，教师，参考书三个实体型，如果一门课程可以由若干个教师讲授，使用若干本参考书，而每一个教师只能讲授一门课程，每一本参考书只能供一门课程使用，则课程和教师，课程和参考书之间都是一对多联系</p>
+<p>示例2：对于供应商，项目，零件三个实体型，如果一个供应商可以给多个项目供货，每个项目可以由多个供应商供货，一个供应商可以提供多种零件，每种零件可以由多个供应商提供，因此供应商和零件，供应商和项目之间都是多对多联系</p>
+<p>（3）单个实体型内部的联系</p>
+<p>同一个实体集内的各个实体之间也存在一对一，一对多，多对多的联系</p>
+<p>示例：职工实体型内部具有领导与被领导的联系，即某一个职工作为干部领导其他多名职工，而每个职工只能有一个领导，因此在职工内部有一对多联系</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251116204411788.png" alt="image-20251116204411788"></p>
+<p><strong>联系的度</strong></p>
+<p>联系的度指的是参与联系的实体型的数目</p>
+<ul>
+<li>两个实体型之间的联系度为 2，也称为二元联系</li>
+<li>三个实体型之间的联系度为 3，也称为三元联系</li>
+<li>N个实体型之间的联系度为 N，也称为N元联系</li>
+</ul>
+<h3 id="e-r图"><strong>E-R图</strong></h3>
+<p>E-R图提供表示实体型，属性和联系的方法</p>
+<ul>
+<li>实体型：用矩形表示，矩形框内写明实体名</li>
+<li>属性：用椭圆形表示，使用无向边将其与相应的实体型连接起来</li>
+</ul>
+<p>示例：学生实体具有学号，姓名… 等属性，用 E-R 图表示如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251116204654117.png" alt="image-20251116204654117"></p>
+<ul>
+<li>联系：用菱形表示，菱形框内写明联系名，并用无向边分别与有关实体连接起来，同时在无向边上标注联系的类型（1:1，1:n，m:n），联系也可以具有<strong>属性</strong>（老师和学生之间是教学关系，那么菱形框中就可以写“教学”，领导和职工之间是管理关系，那么菱形框中就可以写“管理”）</li>
+</ul>
+<p>示例：如果用“供应量”来描述联系的属性，表示供应商提供了多少数量的零件给某项目，则这三个实体之间的 E-R 图如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251116205606791.png" alt="image-20251116205606791"></p>
+<p>一个完整的 E-R 图的示例：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251116210018132.png" alt="image-20251116210018132"></p>
+<h2 id="基本表的定义-删除-修改"><strong>基本表的定义 删除 修改</strong></h2>
+<h3 id="定义基本表"><strong>定义基本表</strong></h3>
+<p>语句格式如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create table</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> (</span><br><span class="line">	<span class="operator">&lt;</span>列名<span class="operator">&gt;</span><span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span>[<span class="operator">&lt;</span>列级完整性约束条件<span class="operator">&gt;</span>],</span><br><span class="line">    <span class="operator">&lt;</span>列名<span class="operator">&gt;</span><span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span>[<span class="operator">&lt;</span>列级完整性约束条件<span class="operator">&gt;</span>],</span><br><span class="line">    ...</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>说明：如果完整性约束条件涉及到该表的多个属性列，则必须定义在<strong>表级</strong>上，否则既可以定义在列级也可以定义在表级</p>
+<p>示例：建立学生表 Student，学号是主码，姓名取值唯一</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create table</span> Student(</span><br><span class="line">	Sno <span class="type">char</span>(<span class="number">9</span>) <span class="keyword">primary key</span>, <span class="comment">/* 列级完整性约束条件 */</span></span><br><span class="line">    Sname <span class="type">char</span>(<span class="number">20</span>) <span class="keyword">unique</span>, <span class="comment">/* Sname 取唯一值 */</span></span><br><span class="line">    Ssex <span class="type">char</span>(<span class="number">2</span>),</span><br><span class="line">    Sage <span class="type">SMALLINT</span>,</span><br><span class="line">    Sdept <span class="type">char</span>(<span class="number">20</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>示例：建立一个课程表 Course</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create table</span> Course(</span><br><span class="line">	Cno <span class="type">char</span>(<span class="number">4</span>) <span class="keyword">primary key</span>,</span><br><span class="line">    Cname <span class="type">char</span>(<span class="number">40</span>),</span><br><span class="line">    Cpno <span class="type">char</span>(<span class="number">4</span>), <span class="comment">/* 选修课 */</span></span><br><span class="line">    Ceredit SNALLINT,</span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (Cpno) <span class="keyword">REFERENCES</span> Course(Cno) <span class="comment">/* Cpno 是外码，被参照表是 Course，被参照列是 Cno */</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>设置外键的语法：<code>foreign key(要设置成外键的列) references 要参考的表(要参考的表中的列是Cno)</code></p>
+<p>示例：建立一个学生选课表 SC</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create table</span> SC(</span><br><span class="line">	Sno <span class="type">char</span>(<span class="number">9</span>),</span><br><span class="line">	Cno <span class="type">char</span>(<span class="number">4</span>),</span><br><span class="line">	Grade SNALLINT,</span><br><span class="line">	<span class="keyword">primary key</span>(Sno, Cno),</span><br><span class="line">	<span class="comment">/* 主码由两个属性构成，必须作为表级完整性进行定义 */</span></span><br><span class="line">	<span class="keyword">foreign key</span>(Sno) <span class="keyword">references</span> Student(Sno),</span><br><span class="line">	<span class="comment">/* 表级完整性约束条件，Sno 是外码，被参照表是 Student，被参照列为 Sno */</span></span><br><span class="line">	<span class="keyword">foreign key</span>(Cno) <span class="keyword">references</span> Course(Cno)</span><br><span class="line">	<span class="comment">/* 标记完整性约束条件，Cno 是外码，被参照表是 Course，被参照列为 Cno */</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>设置主键的语法：<code>primary key(要设置成主键的列)</code></p>
+<p>设置外键的语法：<code>forign key(要设置成外键的列) refernces 要参考的表(要参考的表中的列是Cno)</code></p>
+<h3 id="数据类型"><strong>数据类型</strong></h3>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CHAR（n）</td>
+<td>长度为 n 的定长字符串</td>
+</tr>
+<tr>
+<td>VARCHAR（n）</td>
+<td>最大长度为 n 的变长字符串</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>长整数，也写为 INTEGER</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>短整数</td>
+</tr>
+<tr>
+<td>NUMRIC</td>
+<td>定点数，由 p 位数字组成（不包括符号，小数点，只包括整数数位+小数数位），小数点后面后 d 位数字</td>
+</tr>
+<tr>
+<td>REAL</td>
+<td>取决于机器精度的浮点数</td>
+</tr>
+<tr>
+<td>Double Precision</td>
+<td>取决于机器精度的双精度浮点数</td>
+</tr>
+<tr>
+<td>FLOAT（n）</td>
+<td>浮点数，精度至少为 n 位数字</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>日期，包括年月日，格式为 YYYY-MM-DD</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>时间，包含一日的时分秒，格式为 HH:MM:SS</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据查询"><strong>数据查询</strong></h2>
+<p>语句格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">&lt;</span>要显示的目标列名<span class="operator">&gt;</span> </span><br><span class="line"><span class="keyword">from</span> <span class="operator">&lt;</span>待查询的表名或视图名<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">where</span> <span class="operator">&lt;</span>查询条件<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> <span class="operator">&lt;</span>列名<span class="operator">&gt;</span> <span class="keyword">having</span> <span class="operator">&lt;</span>分组条件<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="operator">&lt;</span>列名<span class="operator">&gt;</span> [<span class="keyword">ASC</span><span class="operator">|</span><span class="keyword">DESC</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="单表查询"><strong>单表查询</strong></h3>
+<p>功能：对一个表的内容进行查询</p>
+<p>（1）选择表中的若干列 / 查询表中的指定列</p>
+<p>在 select 后指定要查询的列名，在 from 后指定要查询的表名</p>
+<p>示例：查询全体学生的学号和姓名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno,Sname <span class="keyword">from</span> S;</span><br></pre></td></tr></table></figure>
+<p>示例：查询全体学生的学号，姓名，所在系</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno,Sname,Sdept <span class="keyword">from</span> S;</span><br></pre></td></tr></table></figure>
+<p>（2）查询表中的<strong>全体列</strong></p>
+<p>在 select 关键字后面把目标列名写成 *</p>
+<p>示例：查询全体学生的详细记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> S;</span><br></pre></td></tr></table></figure>
+<p>（3）查询经过计算的值</p>
+<p>功能：选出表中指定的属性列，经过计算后输出</p>
+<p>格式：select 子句的目标列表达式可以设置</p>
+<ul>
+<li>算术表达式</li>
+<li>字符串常量</li>
+<li>函数</li>
+<li>列别名</li>
+</ul>
+<p>示例：查全体学生的姓名及其出生年份（用当前年份减去学生年龄，即得学生出生年份）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname,<span class="number">2004</span><span class="operator">-</span>Sage <span class="keyword">from</span> S;</span><br></pre></td></tr></table></figure>
+<p>示例：查询全体学生的姓名，出生年份，所在系，要求用小写字母表示系名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname, <span class="string">&#x27;Year of Birth: &#x27;</span>, <span class="number">2004</span><span class="operator">-</span>Sage, <span class="built_in">LOWER</span>(Sdept) <span class="keyword">from</span> S;</span><br></pre></td></tr></table></figure>
+<p>这里我们在输出中额外增加了一列<code>‘Year of Brirh: ’</code>，列名即为<code>‘Year of Birth: ’</code>，每一列的内容相同，全都是<code>Year of Birth: </code></p>
+<p>示例：把上面查询的列名输出设置为中文（给列名起别名）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname 姓名, <span class="string">&#x27;Year of Birth: &#x27;</span> 生日, <span class="number">2004</span><span class="operator">-</span>Sage 年龄, <span class="built_in">LOWER</span>(Sdept) 系名 <span class="keyword">from</span> S;</span><br></pre></td></tr></table></figure>
+<p><strong>取消值重复的行</strong></p>
+<p>在 select 关键字和目标列名之间加上<code>distinct</code>关键字即可</p>
+<p>示例：在学生选课表中查询所有选过课的学生的学号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> Sno <span class="keyword">from</span> SC;</span><br></pre></td></tr></table></figure>
+<h3 id="排序子句"><strong>排序子句</strong></h3>
+<p>ORDER BY 子句可以按一个或多个属性列排序：</p>
+<ul>
+<li>升序：<code>ASC</code></li>
+<li>降序：<code>DESC</code></li>
+</ul>
+<p>缺省时为升序，当排序含空值时，默认空值是<strong>最大值</strong>，升序排序空值排在最后，降序排序空值排在最前</p>
+<p>示例：查询选修了三号课程的学生的学号及成绩，查询结果按分数降序排列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno, Grade <span class="keyword">from</span> S <span class="keyword">where</span> Cno<span class="operator">=</span><span class="string">&#x27;3&#x27;</span> ordered <span class="keyword">by</span> Grade <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<p>示例：查询全体学生情况，查询结果按所在系号升序排列，同一系中的学生按年龄降序排列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sekect <span class="operator">*</span> feom S ordered <span class="keyword">by</span> Sdept <span class="keyword">ASC</span>, Sage <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<p>如果是多关键字排序，只需要各关键字按逗号分隔即可，越靠前的关键字优先级越高</p>
+<h3 id="聚类函数"><strong>聚类函数</strong></h3>
+<p>常见的聚类函数设计如下：</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>O</mi><mi>U</mi><mi>N</mi><mi>T</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mi>D</mi><mi>I</mi><mi>S</mi><mi>T</mi><mi>I</mi><mi>N</mi><mi>C</mi><mi>T</mi><mi mathvariant="normal">∣</mi><mi>A</mi><mi>L</mi><mi>L</mi><mo stretchy="false">]</mo><mo>∗</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">COUNT([DISTINCT|ALL]*)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord">∣</span><span class="mord mathdefault">A</span><span class="mord mathdefault">L</span><span class="mord mathdefault">L</span><span class="mclose">]</span><span class="mord">∗</span><span class="mclose">)</span></span></span></span>：统计元组个数</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mi>O</mi><mi>U</mi><mi>N</mi><mi>T</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mi>D</mi><mi>I</mi><mi>S</mi><mi>T</mi><mi>I</mi><mi>N</mi><mi>C</mi><mi>T</mi><mi mathvariant="normal">∣</mi><mi>A</mi><mi>L</mi><mi>L</mi><mo stretchy="false">]</mo><mo>&lt;</mo><mtext>列名</mtext><mo>&gt;</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">COUNT([DISTINCT|ALL]&lt;列名&gt;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord">∣</span><span class="mord mathdefault">A</span><span class="mord mathdefault">L</span><span class="mord mathdefault">L</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">列</span><span class="mord cjk_fallback">名</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">)</span></span></span></span>：统计某一列中值的个数</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>U</mi><mi>M</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mi>D</mi><mi>I</mi><mi>S</mi><mi>T</mi><mi>I</mi><mi>N</mi><mi>C</mi><mi>T</mi><mi mathvariant="normal">∣</mi><mi>A</mi><mi>L</mi><mi>L</mi><mo stretchy="false">]</mo><mo>&lt;</mo><mtext>列名</mtext><mo>&gt;</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">SUM([DISTINCT|ALL]&lt;列名&gt;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mopen">(</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord">∣</span><span class="mord mathdefault">A</span><span class="mord mathdefault">L</span><span class="mord mathdefault">L</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">列</span><span class="mord cjk_fallback">名</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">)</span></span></span></span>：计算某一列值的总和</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>V</mi><mi>G</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mi>D</mi><mi>I</mi><mi>S</mi><mi>T</mi><mi>I</mi><mi>N</mi><mi>C</mi><mi>T</mi><mi mathvariant="normal">∣</mi><mi>A</mi><mi>L</mi><mi>L</mi><mo stretchy="false">]</mo><mo>&lt;</mo><mtext>列名</mtext><mo>&gt;</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">AVG([DISTINCT|ALL]&lt;列名&gt;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord mathdefault">G</span><span class="mopen">(</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord">∣</span><span class="mord mathdefault">A</span><span class="mord mathdefault">L</span><span class="mord mathdefault">L</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">列</span><span class="mord cjk_fallback">名</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">)</span></span></span></span>：计算某一列值的平均值</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>A</mi><mi>X</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mi>D</mi><mi>I</mi><mi>S</mi><mi>T</mi><mi>I</mi><mi>N</mi><mi>C</mi><mi>T</mi><mi mathvariant="normal">∣</mi><mi>A</mi><mi>L</mi><mi>L</mi><mo stretchy="false">]</mo><mo>&lt;</mo><mtext>列名</mtext><mo>&gt;</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">MAX([DISTINCT|ALL]&lt;列名&gt;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mopen">(</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord">∣</span><span class="mord mathdefault">A</span><span class="mord mathdefault">L</span><span class="mord mathdefault">L</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">列</span><span class="mord cjk_fallback">名</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">)</span></span></span></span>：计算某一列值中的最大值</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>I</mi><mi>N</mi><mo stretchy="false">(</mo><mo stretchy="false">[</mo><mi>D</mi><mi>I</mi><mi>S</mi><mi>T</mi><mi>I</mi><mi>N</mi><mi>C</mi><mi>T</mi><mi mathvariant="normal">∣</mi><mi>A</mi><mi>L</mi><mi>L</mi><mo stretchy="false">]</mo><mo>&lt;</mo><mtext>列名</mtext><mo>&gt;</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">MIN([DISTINCT|ALL]&lt;列名&gt;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mopen">(</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord">∣</span><span class="mord mathdefault">A</span><span class="mord mathdefault">L</span><span class="mord mathdefault">L</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">列</span><span class="mord cjk_fallback">名</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">)</span></span></span></span>：计算某一列值中的最小值</li>
+</ul>
+<p>其中 <code>distinct</code> 仍然表示去重，比如如果我们想统计有多少学生选过课，可以写成：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="keyword">distinct</span> Sno)</span><br><span class="line"><span class="keyword">from</span> SC;</span><br></pre></td></tr></table></figure>
+<p>示例：查询学生总人数（直接查元组即可）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> S;</span><br></pre></td></tr></table></figure>
+<p>示例：查询学生 001 选修课程的总学分数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(CCredit) </span><br><span class="line"><span class="keyword">from</span> C, SC</span><br><span class="line"><span class="keyword">where</span> SC.Sno<span class="operator">=</span><span class="string">&#x27;001&#x27;</span> <span class="keyword">and</span> SC.Cno<span class="operator">=</span>C.Cno;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：聚类函数只能写在 select 语句后面（作为查询目标）和 having 子句中，不能 where 子句使用</p>
+<h3 id="分组子句"><strong>分组子句</strong></h3>
+<p>分组语句通过 <code>group by</code> 实现，该子句的作用是：按指定的一列或多列值进行分组，值相等的分为一组（比如相同系分为一组，相同学号分为一组等），用以细化聚类函数的作用对象</p>
+<p>说明：</p>
+<ul>
+<li>如果未对查询结果分组，聚类函数将默认作用于整个查询结果</li>
+<li>如果对查询结果分组，聚类函数将默认作用于每个组</li>
+</ul>
+<p>示例：查询每门课程相应的选课人数</p>
+<p>根据课号 Cno 分组，每一组内查询对应的 Sno 总数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Cno, <span class="built_in">sum</span>(Sno)</span><br><span class="line"><span class="keyword">from</span> SC</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Cno;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：如果在 SELECT 中使用了 GROUP BY 子句，则查询的目标列只能是以下两类</p>
+<ul>
+<li>BROUP BY 后面加的分组依据，比如上例中的 Cno</li>
+<li>聚类函数的计算结果</li>
+</ul>
+<p>不能再查询其他列名，比如<code>select Sno from SC group by Cno</code> 这种实现是错误的</p>
+<p><strong>带有筛选条件的分组</strong></p>
+<p>GROUP BY 子句分组以后，可以使用 HAVING 短语指定筛选条件</p>
+<p>示例：查询选修了三门以上课程的学生学号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno</span><br><span class="line"><span class="keyword">from</span> SC</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Sno <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>)<span class="operator">&gt;</span><span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<p>示例：查询每门课程相应的选课人数，只显示选课人数&gt;30的课号和人数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Cno, <span class="built_in">count</span>(Sno)</span><br><span class="line"><span class="keyword">from</span> SC</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Cno <span class="keyword">having</span> <span class="built_in">count</span>(Sno)<span class="operator">&gt;</span><span class="number">30</span>;</span><br></pre></td></tr></table></figure>
+<p>HAVING 和 WHERE 子句的区别：</p>
+<ul>
+<li>作用对象不同，WHERE 子句作用于基本表或视图，从中选择满足条件的元组，HAVING 短语作用于分组，从中选择满足条件的分组</li>
+<li>WHERE 子句中不能使用聚类函数作为条件表达式</li>
+</ul>
+<p>比如要查询平均成绩&gt;90分的学生的学号和成绩，对于这类<strong>聚类函数参与比较</strong>作为筛选条件的查询，我们通常使用分组查询实现：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno, <span class="built_in">avg</span>(Grade)</span><br><span class="line"><span class="keyword">from</span> SC</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Sno <span class="keyword">having</span> <span class="built_in">avg</span>(Grade)<span class="operator">&gt;</span><span class="number">90</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="连接查询"><strong>连接查询</strong></h2>
+<h3 id="等值与非等值连接查询"><strong>等值与非等值连接查询</strong></h3>
+<p>连接查询的 WHERE 子句中用来连接两个表的条件称为连接条件或连接谓词，其一般格式为：</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mtext>表名</mtext><mn>1</mn><mo>&gt;</mo><mi mathvariant="normal">.</mi><mo>&lt;</mo><mtext>列名</mtext><mn>1</mn><mo>&gt;</mo><mo>&lt;</mo><mtext>比较运算符</mtext><mo>&gt;</mo><mo>&lt;</mo><mtext>表名</mtext><mn>2</mn><mo>&gt;</mo><mi mathvariant="normal">.</mi><mo>&lt;</mo><mtext>列名</mtext><mn>2</mn><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&lt;表名1&gt;.&lt;列名1&gt; &lt;比较运算符&gt; &lt;表名2&gt;.&lt;列名2&gt;
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">表</span><span class="mord cjk_fallback">名</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord">.</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">列</span><span class="mord cjk_fallback">名</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">比</span><span class="mord cjk_fallback">较</span><span class="mord cjk_fallback">运</span><span class="mord cjk_fallback">算</span><span class="mord cjk_fallback">符</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">表</span><span class="mord cjk_fallback">名</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord">.</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord cjk_fallback">列</span><span class="mord cjk_fallback">名</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span></span></span></span></p>
+<p>其中常见的比较运算符还是：<code>&gt;,&lt;,&gt;=,&lt;=,=,!=</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span>表名<span class="number">1</span><span class="operator">&gt;</span>.<span class="operator">&lt;</span>列名<span class="number">1</span><span class="operator">&gt;</span> <span class="keyword">between</span> <span class="operator">&lt;</span>表名<span class="number">2</span><span class="operator">&gt;</span>.<span class="operator">&lt;</span>列名<span class="number">2</span><span class="operator">&gt;</span> <span class="keyword">and</span> <span class="operator">&lt;</span>表名<span class="number">3</span><span class="operator">&gt;</span>.<span class="operator">&lt;</span>列名<span class="number">3</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li>当连接运算符为 “=” 的时候表示为等值连接，其他运算符为非等值连接</li>
+<li>连接谓词中的列名称为<strong>连接字段</strong>，并且要求各个连接子段类型必须是可比的，但名字不必相同</li>
+</ul>
+<p>示例：查询所有学生信息和对应的选课信息</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> S.<span class="operator">*</span>, SC.<span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> S, SC</span><br><span class="line"><span class="keyword">where</span> S.Sno <span class="operator">=</span> SC.Sno;</span><br></pre></td></tr></table></figure>
+<p>计算<strong>等值连接</strong>必须给出连接条件，否则无法得到正确的查询结果，此时我们查询的结果中会同时有 S.Sno 和 SC.Sno 两列，这和关系代数中的等值连接的结果是一一对应的，即不会进行去重运算</p>
+<p>SQL 本身不支持自然连接，如果想实现<strong>自然连接</strong>，需要在等值连接中把目标列中的重复属性列手动去掉，即可得到自然连接的实现</p>
+<p>示例：把上例改成自然连接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> S.Sno, S.Sname, S.Ssex, S.Sage, S.Sdept, SC.Cno, SC.Grade</span><br><span class="line"><span class="keyword">from</span> S, SC</span><br><span class="line"><span class="keyword">where</span> S.Sno <span class="operator">=</span> SC.Sno;</span><br></pre></td></tr></table></figure>
+<p>我们通过手动投影的方式，在 S.Sno 和 SC.Sno 中只保留了其中一列</p>
+<p><strong>注意</strong>：只要有连表查询，就要给出连表条件，有 N 张表的连表查询，就需要给出 N-1 个连表条件（两两之间，根据哪一列做连接）</p>
+<h3 id="自身连接"><strong>自身连接</strong></h3>
+<p>一个表和它自身进行连接，即称为自身连接</p>
+<p>此时需要给表起<strong>别名</strong>以示区别，由于所有属性名此时在各个表中都有同名属性，所以必须使用表的别名作为前缀，即使用<code>&lt;表名&gt;.&lt;列名&gt;</code>的形式写入查询目标和连接条件</p>
+<p>示例：查询每门课程的先修课的先修课</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> FIRST.Cno, SECOND.Cpno</span><br><span class="line"><span class="keyword">from</span> C <span class="keyword">FIRST</span>, C <span class="keyword">SECOND</span></span><br><span class="line"><span class="keyword">where</span> FIRST.Cpno <span class="operator">=</span> SECOND.Cno ;</span><br></pre></td></tr></table></figure>
+<p>我们给表名起别名的语法为<code>&lt;表名&gt; &lt;别名&gt;</code>，所谓先修课的先修课，即把 SC 表复制两份，第一张表的 Cpno 和第二张表的 Cno 做等值连接，查询第一张表的 Cno 对应的第二张表的 Cno 即可</p>
+<h3 id="外连接"><strong>外连接</strong></h3>
+<h3 id="多表连接"><strong>多表连接</strong></h3>
+<p>如果连接操作是对两个以上的表进行连接，此时称为多表连接</p>
+<p>示例：查询每个学生的姓名，选修课程名，成绩</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> S.Sname, C.Cname, SC.Grade</span><br><span class="line"><span class="keyword">from</span> S, SC, C</span><br><span class="line"><span class="keyword">where</span> S.Sno <span class="operator">=</span> SC.Sno <span class="keyword">and</span> C.Cno <span class="operator">=</span> SC.Cno;</span><br></pre></td></tr></table></figure>
+<h2 id="嵌套查询"><strong>嵌套查询</strong></h2>
+<p>一个 <code>select-from-where</code> 语句称为一个查询块</p>
+<p>嵌套查询定义：嵌套查询是指将一个查询块嵌套在另一个查询块的 WHERE 子句或 HAVING 短语的条件中的查询</p>
+<p>说明：外层查询称为父查询，内层查询称为子查询，子查询中不能再使用 ORDER BY 语句</p>
+<h3 id="带有-in-谓词的查询"><strong>带有 in 谓词的查询</strong></h3>
+<p>在嵌套查询中，子查询的结果往往是个集合，用 IN 谓词表示父查询的条件在子查询结果的集合中</p>
+<p>示例：查询与刘晨在同一个系学习的学生学号</p>
+<p>如果使用嵌套查询，思路为先查询刘晨所在的系，在查找所在系也在这个系的同学的学号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno </span><br><span class="line"><span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> Sdept <span class="keyword">in</span> (</span><br><span class="line">    <span class="keyword">select</span> Sdept</span><br><span class="line">    <span class="keyword">from</span> S</span><br><span class="line">    <span class="keyword">where</span> Sname<span class="operator">=</span><span class="string">&#x27;刘晨&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>该查询也可以使用自身连接来实现：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> S1.Sno</span><br><span class="line"><span class="keyword">from</span> S S1, S S2</span><br><span class="line"><span class="keyword">where</span> S1.Sdept<span class="operator">=</span>S2.Sdept <span class="keyword">and</span> S2.Sname<span class="operator">=</span><span class="string">&#x27;刘晨&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>示例：查询选修了课程名为“信息系统”的学生学号和姓名</p>
+<p>考虑分三步进行查询，先在 C 表中查询“信息系统”对应的课号，再在 SC 表中查询这个课号对应的学号，最后在 S 表中查询这个学号对应的姓名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno, Sname</span><br><span class="line"><span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> Sno <span class="keyword">in</span>(</span><br><span class="line">    <span class="keyword">select</span> Sno</span><br><span class="line">    <span class="keyword">from</span> SC</span><br><span class="line">    <span class="keyword">where</span> Cno <span class="keyword">in</span>(</span><br><span class="line">        <span class="keyword">select</span> Cno </span><br><span class="line">        <span class="keyword">from</span> C</span><br><span class="line">        <span class="keyword">where</span> Cname<span class="operator">=</span>&quot;信息系统&quot;</span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>我们也可以进行连表查询，此时需要把 S SC C 这三个表连做一个大表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> S.Sno, S.Sname</span><br><span class="line"><span class="keyword">from</span> S, SC, C</span><br><span class="line"><span class="keyword">where</span> S.Sno <span class="operator">=</span> SC.Sno <span class="keyword">and</span> C.Cno <span class="operator">=</span> SC.Cno <span class="keyword">and</span> C.Cname <span class="operator">=</span> &quot;信息系统&quot;;</span><br></pre></td></tr></table></figure>
+<p>我们对嵌套查询有如下分类：</p>
+<ul>
+<li>相关子查询：子查询的查询条件依赖于父查询，整个查询语句称为嵌套查询</li>
+<li>不相关子查询：子查询的查询条件不依赖于父查询（我们上面给出的实例都是不相关子查询）</li>
+</ul>
+<p>示例：找出每个学生超过他选修课程平均成绩的课程号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno, Cno</span><br><span class="line"><span class="keyword">from</span> SC sc1</span><br><span class="line"><span class="keyword">where</span> sc1 <span class="operator">&gt;=</span> (</span><br><span class="line">    <span class="keyword">select</span> <span class="built_in">AVG</span>(Grade)</span><br><span class="line">    <span class="keyword">from</span> SC sc2</span><br><span class="line">    <span class="keyword">where</span> sc1.Sno <span class="operator">=</span> sc2.Sno</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="带有-any-或-all-谓词的子查询"><strong>带有 ANY 或 ALL 谓词的子查询</strong></h3>
+<p>谓词语义：</p>
+<ul>
+<li>ANY：满足集合中任意一个值即为真，否则为假</li>
+<li>ALL：满足集合中所有值才为真，否则为假</li>
+</ul>
+<p>ANY 和 ALL 通常需要搭配比较运算符使用：</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mi>A</mi><mi>N</mi><mi>Y</mi></mrow><annotation encoding="application/x-tex">&gt;ANY</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span></span></span></span>：大于子查询结果中的某个值即为真</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mi>A</mi><mi>L</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">&gt;ALL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mord mathdefault">L</span><span class="mord mathdefault">L</span></span></span></span>：大于子查询结果中的所有值才为真</li>
+<li>其余运算符也以此类推</li>
+</ul>
+<p>示例：查询所有年龄小于任意一个计算机系学生的年龄的不是计算机系的学生的姓名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> S1.Sname</span><br><span class="line"><span class="keyword">from</span> S S1</span><br><span class="line"><span class="keyword">where</span> S1.Sdept<span class="operator">!=</span><span class="string">&#x27;CS&#x27;</span> <span class="keyword">and</span> S1.Sage <span class="operator">&lt;</span> <span class="keyword">any</span>(</span><br><span class="line">	<span class="keyword">select</span> Sage</span><br><span class="line">	<span class="keyword">from</span> S S2</span><br><span class="line">	<span class="keyword">where</span> S2.Sdept<span class="operator">=</span><span class="string">&#x27;CS&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>这里的 ANY 其实表示的是<strong>最大值</strong>的意思，只要 Sage 小于子查询集合中的最大值，即集合中一定存在一个元素，使得子查询结果为真，因此可以使用<strong>聚类函数</strong>实现：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> S1.Sname</span><br><span class="line"><span class="keyword">from</span> S S1</span><br><span class="line"><span class="keyword">where</span> S1.Sdept <span class="operator">!=</span> <span class="string">&#x27;CS&#x27;</span> <span class="keyword">and</span> S1.Sage <span class="operator">&lt;</span> <span class="keyword">select</span> <span class="built_in">max</span>(S2.Sage)</span><br><span class="line"><span class="keyword">from</span> S S2</span><br><span class="line"><span class="keyword">where</span> S2.Sdept <span class="operator">=</span> <span class="string">&#x27;CS&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>示例：查询年龄小于任意一个计算机学院学生的年龄，且不在计算机学院的学生姓名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> S1.Sname</span><br><span class="line"><span class="keyword">from</span> S S1</span><br><span class="line"><span class="keyword">where</span> S1.Sdept<span class="operator">!=</span><span class="string">&#x27;CS&#x27;</span> <span class="keyword">and</span> S1.Sage <span class="operator">&lt;</span> <span class="keyword">all</span>(</span><br><span class="line">	<span class="keyword">select</span> Sage</span><br><span class="line">	<span class="keyword">from</span> S S2</span><br><span class="line">	<span class="keyword">where</span> S2.Sdept<span class="operator">=</span><span class="string">&#x27;CS&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="带有-exists-谓词的子查询"><strong>带有 EXISTS 谓词的子查询</strong></h2>
+<h3 id="exists-谓词"><strong>EXISTS 谓词</strong></h3>
+<p>EXISTS 谓词代表存在量词 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∃</mi></mrow><annotation encoding="application/x-tex">\exists</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">∃</span></span></span></span>，带有 EXISTS 谓词的子查询只返回逻辑真值 true 或逻辑假值 false</p>
+<p>示例：查询所有选修了 1 号课程的学生姓名</p>
+<p>实现思路：在 S 表中选择一条记录，去 SC 表中检验，是否<strong>存在</strong> SC 表中的一条记录，使得二者学号相等，且课号为 1 号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname </span><br><span class="line"><span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">exists</span> (</span><br><span class="line">    <span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">    <span class="keyword">from</span> SC</span><br><span class="line">    <span class="keyword">where</span> SC.Sno<span class="operator">=</span>S.Sno <span class="keyword">and</span> SC.Cno<span class="operator">=</span><span class="string">&#x27;1&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>更常见的做法是直接连表查询即可</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname</span><br><span class="line"><span class="keyword">from</span> S, SC</span><br><span class="line"><span class="keyword">where</span> S.Sno<span class="operator">=</span>SC.Sno <span class="keyword">and</span> SC.Cno<span class="operator">=</span><span class="string">&#x27;1&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>这两种查询相比，前者实现较为复杂，但效率高；后者实现简单，但效率低（需要连表，占用内存空间大）</p>
+<p>说明：</p>
+<ul>
+<li>使用存在量词 EXISTS 以后，若内层查询结果非空，则外层 WHERE 子句返回真值，否则返回假值</li>
+<li>由于 EXISTS 对应的子查询返回的只是 bool 值，和子查询选择的列名无关，因此由 EXISTS 引出的子查询目标列表都使用 * 即可</li>
+</ul>
+<h3 id="not-exists-谓词"><strong>NOT EXISTS 谓词</strong></h3>
+<p>NOT EXISTS 谓词和 EXISTS 谓词的查询结果恰好相反，如果内层查询结果非空，则外层 WHERE 子句返回假值；如果内层查询结果为空，则外层 WHERE 子句返回真值</p>
+<p>示例：查询没有选修 1 号课程的学生姓名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname </span><br><span class="line"><span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span> (</span><br><span class="line">    <span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">    <span class="keyword">from</span> SC</span><br><span class="line">    <span class="keyword">where</span> S.Sno<span class="operator">=</span>SC.Sno <span class="keyword">and</span> SC.Cno<span class="operator">=</span><span class="string">&#x27;1&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>示例：查询与刘晨在同一个系学习的学生姓名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname</span><br><span class="line"><span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">exists</span> (</span><br><span class="line">    <span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">    <span class="keyword">from</span> S</span><br><span class="line">    <span class="keyword">where</span> s1.Sno<span class="operator">=</span>s2.Sno <span class="keyword">and</span> s2.Sname<span class="operator">=</span><span class="string">&#x27;刘晨&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="用-not-exists-实现全称量词"><strong>用 NOT EXISTS 实现全称量词</strong></h3>
+<p>SQL 语言中没有全称量词 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∀</mi></mrow><annotation encoding="application/x-tex">\forall</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">∀</span></span></span></span>，可以把带有全称量词的谓词转换为等价的带有存在量词的谓词，即：</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">∀</mi><mi>x</mi><mo stretchy="false">)</mo><mi>p</mi><mo>≡</mo><mi mathvariant="normal">¬</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∃</mi><mi>x</mi><mo stretchy="false">(</mo><mi mathvariant="normal">¬</mi><mi>p</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\forall x)p\equiv\lnot(\exists x(\lnot p))
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">∀</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mord mathdefault">p</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">¬</span><span class="mopen">(</span><span class="mord">∃</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord">¬</span><span class="mord mathdefault">p</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span></p>
+<p>示例：查询选修了全部课程的学生姓名</p>
+<p>等价于查询学生，满足<strong>不存在</strong>一门课程，使得这个学生没有<strong>选修</strong>这门课程，即使用两次<code>not exists</code>表示全称量词</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname</span><br><span class="line"><span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span> (</span><br><span class="line">	<span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line">	<span class="keyword">from</span> C</span><br><span class="line">	<span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span> (</span><br><span class="line">		<span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">		<span class="keyword">from</span> SC</span><br><span class="line">		<span class="keyword">where</span> S.Sno<span class="operator">=</span>SC.Sno <span class="keyword">and</span> C.Cno<span class="operator">=</span>SC.Cno</span><br><span class="line">	) </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="用-not-exists-实现逻辑蕴含"><strong>用 NOT EXISTS 实现逻辑蕴含</strong></h3>
+<p>SQL 语言中没有蕴含逻辑运算，可以使用谓词演算将逻辑蕴含谓词等价转换为：</p>
+<p class="katex-block katex-error" title="ParseError: KaTeX parse error: Undefined control sequence: \or at position 29: …q\equiv \lnot p\̲o̲r̲ ̲q\equiv\lnot(p\…">p\rightarrow q\equiv \lnot p\or q\equiv\lnot(p\and\lnot q)
+</p>
+<p>我们用的主要是 <span class="katex-error" title="ParseError: KaTeX parse error: Undefined control sequence: \and at position 8: \lnot(p\̲a̲n̲d̲\lnot q)">\lnot(p\and\lnot q)</span> 的表示形式</p>
+<p>示例：查询至少选修了学号为 001 的那个学生选修的全部课程的学生的学号</p>
+<p>等价于查询这样的学生学号，满足<strong>不存在</strong>（第一个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\lnot</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord">¬</span></span></span></span>）一门课，使得 001 号学生选了，<strong>并且</strong>（<span class="katex-error" title="ParseError: KaTeX parse error: Undefined control sequence: \and at position 1: \̲a̲n̲d̲">\and</span>）这个同学<strong>没有</strong>（第二个 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi></mrow><annotation encoding="application/x-tex">\lnot</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord">¬</span></span></span></span>）选：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> Sno </span><br><span class="line"><span class="keyword">from</span> SC SCX</span><br><span class="line">    <span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span> (</span><br><span class="line">    <span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line">    <span class="keyword">from</span> SC SCY</span><br><span class="line">    <span class="keyword">where</span> SCY.Sno<span class="operator">=</span><span class="string">&#x27;001&#x27;</span> <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">exists</span> (</span><br><span class="line">        <span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line">        <span class="keyword">from</span> SC SCZ</span><br><span class="line">        <span class="keyword">where</span> SCZ.Cno<span class="operator">=</span>SCY.Cno <span class="keyword">and</span> SCZ.Sno<span class="operator">=</span>SCX.Sno</span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="集合查询"><strong>集合查询</strong></h2>
+<p>我们所涉及的集合操作主要是：并，差，交三类运算</p>
+<h3 id="并操作-union"><strong>并操作 UNION</strong></h3>
+<p>示例：查询计算机科学系<strong>以及</strong>年龄不超过 19 岁的学生</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> S.Sdept<span class="operator">=</span><span class="string">&#x27;CS&#x27;</span></span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> Sage <span class="operator">&lt;=</span> <span class="number">19</span>;</span><br></pre></td></tr></table></figure>
+<p>其中<code>union</code>关键字表示将多个查询结果取并集，系统会自动去重，而如果希望不进行去重，则可以使用<code>union all</code>关键字进行合并，保留重复元素</p>
+<p>实际上对于上面这个查询，我们都这么写：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> Sage<span class="operator">&lt;=</span><span class="number">19</span> <span class="keyword">or</span> Sdept<span class="operator">=</span><span class="string">&#x27;CS&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="交操作-intersect"><strong>交操作 INTERSECT</strong></h3>
+<p>示例：查询计算机科学系的学生与年龄不大于十九岁的学生的交集</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> S <span class="keyword">where</span> Sdept<span class="operator">=</span><span class="string">&#x27;CS&#x27;</span></span><br><span class="line"><span class="keyword">intersect</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> S <span class="keyword">where</span> Sage<span class="operator">&lt;=</span><span class="number">19</span>;</span><br></pre></td></tr></table></figure>
+<p>其中 <code>intersect</code> 关键字表示将多个查询结果取交集</p>
+<p>示例：查询既选修了 1 号课又选修了 2 号课的学生的学号</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno</span><br><span class="line"><span class="keyword">from</span> SC sc1 </span><br><span class="line"><span class="keyword">where</span> sc1.Cno <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span> <span class="keyword">and</span> sc1.Sno <span class="keyword">in</span> (</span><br><span class="line">	<span class="keyword">select</span> Sno</span><br><span class="line">    <span class="keyword">from</span> SC sc2</span><br><span class="line">    <span class="keyword">where</span> sc2.Cno <span class="operator">=</span> <span class="string">&#x27;2&#x27;</span>;</span><br><span class="line">) </span><br></pre></td></tr></table></figure>
+<p>我们可以用 <code>in</code> 关键字实现上述查询，即先把选修课号 1 的学生学号查询结果组成一个集合，只需要再查询选修课号 2 且学号在这个集合里的学生学号即可</p>
+<h3 id="差操作"><strong>差操作</strong></h3>
+<p>示例：查询计算机系且年龄大于 19 岁的学生学号</p>
+<p>可以用计算机系的学生学号与年龄不超过 19 岁的学生学号做差集实现</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno <span class="keyword">from</span> S <span class="keyword">where</span> Sdept<span class="operator">=</span><span class="string">&#x27;CS&#x27;</span></span><br><span class="line"><span class="keyword">EXCEPT</span></span><br><span class="line"><span class="keyword">select</span> Sno <span class="keyword">from</span> S <span class="keyword">where</span> Sage<span class="operator">&lt;=</span><span class="number">19</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="基于派生表的查询"><strong>基于派生表的查询</strong></h2>
+<p>子查询不仅可以出现在 WHERE 子句中，还可以出现在 FROM 子句中，此时子查询生成的<strong>临时派生表</strong>（derived table）称为主查询的查询对象（在这个派生表中查询对应的列）</p>
+<p>示例：找出每个学生超过他自己选修课程平均成绩的课程号</p>
+<p>这里涉及到一个聚类函数<code>avg(Grade)</code>，我们考虑先把它加工出来，也就是先加工一张派生表<code>Avg_sc(avg_sno, avg_grade)</code>按每个学生分组，维护每个学生的平均成绩，接着再把这张派生表和原 SC 表做连表查询，对每一个学号对应的每一门课<code>Avg_sc</code>做检索即可：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno, Cno</span><br><span class="line"><span class="keyword">from</span> SC, (<span class="keyword">select</span> Sno, <span class="built_in">avg</span>(Grade) <span class="keyword">from</span> SC <span class="keyword">group</span> <span class="keyword">by</span> Sno <span class="keyword">as</span> Avg_sc(avg_sno, avg_grade))</span><br><span class="line"><span class="keyword">where</span> SC.Sno<span class="operator">=</span>Avg_sc.Sno <span class="keyword">and</span> SC.Grade <span class="operator">&gt;=</span> Avg_sc.avg_grade;</span><br></pre></td></tr></table></figure>
+<p>如果子查询中没有聚类函数，则派生表可以不指定属性列，子查询 SELECT 后面查询出来的列名就作为其默认属性</p>
+<p>示例：查询所有选修了 1 号课程的学生姓名</p>
+<p>我们这里如果非要用派生表来做，可以先把选修 1 号课程的学生学号加工成一张派生表<code>SC1(Sno)</code>，然后把原 S 表和这张派生表做连表查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sname </span><br><span class="line"><span class="keyword">from</span> S, (<span class="keyword">select</span> Sno <span class="keyword">from</span> SC <span class="keyword">where</span> Cno<span class="operator">=</span><span class="string">&#x27;1&#x27;</span> <span class="keyword">as</span> SC1)</span><br><span class="line"><span class="keyword">where</span> S.Sno <span class="operator">=</span> SC1.Sno;</span><br></pre></td></tr></table></figure>
+<p>这类我们就没有给派生表指定列名，列名就默认为我们 SELECT 得到的<code>Sno</code></p>
+<p><strong>总结</strong></p>
+<p>SELECT 语句的一般格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> [<span class="keyword">all</span><span class="operator">|</span><span class="keyword">distinct</span>] <span class="operator">&lt;</span>目标列<span class="operator">&gt;</span> [别名], <span class="operator">&lt;</span>目标列表达式<span class="operator">&gt;</span> [别名]</span><br><span class="line"><span class="keyword">from</span> <span class="operator">&lt;</span>表名或视图名<span class="operator">&gt;</span> [别名]</span><br><span class="line"><span class="keyword">where</span> <span class="operator">&lt;</span>条件表达式<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> <span class="operator">&lt;</span>列名<span class="operator">&gt;</span> <span class="keyword">having</span> <span class="operator">&lt;</span>条件表达式<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="operator">&lt;</span>列名<span class="operator">&gt;</span> [<span class="keyword">ASC</span><span class="operator">|</span><span class="keyword">DESC</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="数据更新"><strong>数据更新</strong></h2>
+<h3 id="插入数据"><strong>插入数据</strong></h3>
+<p>（1）插入元组</p>
+<p>语句格式如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert into</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> [(<span class="operator">&lt;</span>属性列<span class="number">1</span><span class="operator">&gt;</span>, <span class="operator">&lt;</span>属性列<span class="number">2</span><span class="operator">&gt;</span>, ...)]</span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">    (<span class="operator">&lt;</span>值<span class="number">11</span><span class="operator">&gt;</span>, <span class="operator">&lt;</span>值<span class="number">12</span><span class="operator">&gt;</span>, ...),</span><br><span class="line">    (<span class="operator">&lt;</span>值<span class="number">21</span><span class="operator">&gt;</span>, <span class="operator">&lt;</span>值<span class="number">22</span><span class="operator">&gt;</span>, ...),</span><br><span class="line">    ...</span><br><span class="line">    (<span class="operator">&lt;</span>值t1<span class="operator">&gt;</span>, <span class="operator">&lt;</span>值t2<span class="operator">&gt;</span>, ...);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果我们插入的每一条数据对应原表的每一个属性列都有值（不为空 / NULL），此时我们可以不指定属性列，系统会按顺序依次把每一个属性列填满</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert into</span> SC (Sno, Cno, Grade)</span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">	(<span class="string">&#x27;001&#x27;</span>, <span class="string">&#x27;001&#x27;</span>, <span class="number">10</span>),</span><br><span class="line">	(<span class="string">&#x27;002&#x27;</span>, <span class="string">&#x27;001&#x27;</span>, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p>此时属性列名<code>(Sno, Cno, Grade)</code>可以省略</p>
+<ul>
+<li>如果我们插入的只是部分属性列的值，则必须要指定插入的是哪几列，否则系统会自动优先填充靠前的列，把后面的列留空</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert into</span> SC (Sno, Cno)</span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">	(<span class="string">&#x27;001&#x27;</span>, <span class="string">&#x27;001&#x27;</span>),</span><br><span class="line">	(<span class="string">&#x27;002&#x27;</span>, <span class="string">&#x27;001&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>此时我们只插入 Sno 和 Cno 这两列，则必须显式指出属性名</p>
+<ul>
+<li>INTO 子句：属性列的顺序可以与表中的顺序不一致，如果不一致需要显式指出，并且和 VALUES 列一一对应</li>
+<li>VALUES 子句：提供的值的类型、个数、顺序必须和属性列保持一致</li>
+</ul>
+<p>（2）插入子查询的结果</p>
+<p>示例：对于每个系，求学生的平均年龄，并把结果存入数据库</p>
+<ul>
+<li>先建表：</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create table</span> Dept_age(</span><br><span class="line">    Sdept <span class="type">char</span>(<span class="number">15</span>),		<span class="comment">/* 系名 */</span></span><br><span class="line">    Avg_age <span class="type">SMALLINT</span>;	<span class="comment">/* 学生平均年龄 */</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>插入数据：这里我们用子查询<code>select Sdept, AVG(Sage) from S group by Sdept</code>代替<code>values</code>的内容</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert into</span> Dept_Age</span><br><span class="line"><span class="keyword">select</span> Sdept, <span class="built_in">AVG</span>(Sage) <span class="keyword">from</span> S <span class="keyword">group</span> <span class="keyword">by</span> Sdept;</span><br></pre></td></tr></table></figure>
+<p>这里如果使用子查询结果作为插入数据，就不需要加<code>values</code>关键字</p>
+<h3 id="修改数据"><strong>修改数据</strong></h3>
+<p>语句格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span><span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">set</span> <span class="operator">&lt;</span>列名<span class="operator">&gt;=</span><span class="operator">&lt;</span>表达式<span class="operator">&gt;</span>, <span class="operator">&lt;</span>列名<span class="operator">&gt;=</span><span class="operator">&lt;</span>表达式<span class="operator">&gt;</span>, ...</span><br><span class="line"><span class="keyword">where</span> <span class="operator">&lt;</span>条件表达式<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里如果不加 WHERE 子句，则表示对所有元组的对应列都做相应修改（比如新的一年，每个同学的年龄都增加 1）</p>
+<p>说明：</p>
+<ul>
+<li>SET 子句：指定修改方式，修改的列，修改后的取值</li>
+<li>WHERE 子句：指定要修改的元组，缺省则表示修改全部元组</li>
+<li>在执行修改语句时会检查修改操作是否破坏表上已经定义的完整性规则</li>
+</ul>
+<p>示例：将学生 001 的年龄改为 22 岁</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> S <span class="keyword">set</span> Sage<span class="operator">=</span><span class="number">22</span> <span class="keyword">where</span> Sno<span class="operator">=</span><span class="string">&#x27;001&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>示例：把所有学生年龄都增加一岁</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> S <span class="keyword">set</span> Sage <span class="operator">=</span> Sage <span class="operator">+</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>示例（带子查询的修改语句）：把计算机系全体学生的成绩清零</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> SC <span class="keyword">set</span> Grade<span class="operator">=</span><span class="number">0</span> </span><br><span class="line"><span class="keyword">where</span> Sno <span class="keyword">in</span> (</span><br><span class="line">    <span class="keyword">select</span> Sno</span><br><span class="line">    <span class="keyword">from</span> S</span><br><span class="line">    <span class="keyword">where</span> Sdept<span class="operator">=</span><span class="string">&#x27;CS&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="删除数据"><strong>删除数据</strong></h3>
+<p>语句格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="keyword">where</span> [条件表达式]</span><br></pre></td></tr></table></figure>
+<p>功能：删除表中满足 WHERE 子句条件的元组</p>
+<p>如果有 WHERE 子句，则指定要删除的元组，缺省则表示删除表中所有的元组，但表本身的定义会被保留</p>
+<p>示例：删除学号为 001 的学生记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> S <span class="keyword">where</span> Sno<span class="operator">=</span><span class="string">&#x27;001&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>示例：删除所有学生的选课记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> SC;</span><br></pre></td></tr></table></figure>
+<p>示例（带子查询的删除语句）：删除计算机系学生的选课记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> SC</span><br><span class="line"><span class="keyword">where</span> Sno <span class="keyword">in</span> (</span><br><span class="line">	<span class="keyword">select</span> Sno</span><br><span class="line">	<span class="keyword">from</span> S</span><br><span class="line">	<span class="keyword">where</span> Sdept<span class="operator">=</span><span class="string">&#x27;CS&#x27;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="空值的处理"><strong>空值的处理</strong></h3>
+<p>空值的存在是因为取值具有不确定性，对运算关系带来特殊的问题，所以需要做特殊的处理</p>
+<p>SQL 语言中允许某些元组的某些属性取空值空值空值空值空值空值空值空值空值空值空值空值空值空值，一般有以下几种情况：</p>
+<ul>
+<li>该属性有值，但当前还不知道它的具体值</li>
+<li>该属性不应该有值</li>
+<li>该属性由于某种原因不便于填写（男性和女性之外的性别）</li>
+</ul>
+<p><strong>空值的产生</strong></p>
+<p>示例：向 SC 表中插入一个元组，学号是 001，课号是 001，成绩为空</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert into</span> SC (Sno, Cno, Grade)</span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">	(<span class="string">&#x27;001&#x27;</span>, <span class="string">&#x27;001&#x27;</span>, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+<p>或者也可以只指定有值的两列，不指定值的位置默认设置为 null</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert into</span> SC (Sno, Cno)</span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">	(<span class="string">&#x27;001&#x27;</span>, <span class="string">&#x27;001&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>空值的判断</strong></p>
+<p>判断一个属性的值是否为空值，用 IS NULL 或 IS NOTNULL 来表示</p>
+<p>示例：从 S 表中找到漏填了数据的学生信息（除了作为码的学号信息之外，其余信息都可能漏填）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> Sname <span class="keyword">is</span> <span class="keyword">null</span> <span class="keyword">or</span> Ssex <span class="keyword">is</span> <span class="keyword">null</span> <span class="keyword">or</span> Sage <span class="keyword">is</span> <span class="keyword">null</span> <span class="keyword">or</span> Sdept <span class="keyword">is</span> <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>空值的约束条件</strong></p>
+<p>空值具有以下约束条件：</p>
+<ul>
+<li>属性定义 / 域定义中有 not null 约束条件的不能为空值</li>
+<li>加入了 unique 限制的属性不能为空值</li>
+<li>码中的属性（主属性）不能取空值</li>
+</ul>
+<p><strong>含有空值的运算</strong></p>
+<p>（1）算术运算：空值与另一个值（包括另一个空值）的算术运算结果为空值</p>
+<p>（2）比较运算：空值与另一个值（包括另一个空值）的比较运算结果为 UNKNOWN</p>
+<p>（3）逻辑运算：</p>
+<ul>
+<li>AND 运算：存在一个 UNKNWON 结果即为 UNKNOWN</li>
+<li>OR 运算：存在两个 UNKNOWN 结果才为 UNKNOWN</li>
+<li>取反运算：UNKNOWN 的取反解结果仍然为 UNKNOWN</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251117150523177.png" alt="image-20251117150523177"></p>
+<h2 id="视图"><strong>视图</strong></h2>
+<p>视图的特点：</p>
+<ul>
+<li>视图是虚表，是从一个或几个基本表（或视图）中导出的结果</li>
+<li>内存中只存放视图的定义（视图中维护哪几列，这些列分别来自哪些表），不存放视图对应的实际数据（真正用到视图中数据时会从对应表中现场调用）</li>
+<li>作为数据源的表中的数据发生变化，视图查询出的数据也随之发生变化</li>
+</ul>
+<p>基于视图的操作：查询，删除，受限更新，定义基于视图的新视图</p>
+<h3 id="建立视图"><strong>建立视图</strong></h3>
+<p>语句格式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> <span class="operator">&lt;</span>视图<span class="operator">&gt;</span> [(<span class="operator">&lt;</span>列名<span class="operator">&gt;</span>, <span class="operator">&lt;</span>列名<span class="operator">&gt;</span>, ...)]</span><br><span class="line"><span class="keyword">as</span> <span class="operator">&lt;</span>子查询<span class="operator">&gt;</span> [<span class="keyword">with</span> <span class="keyword">check</span> option];</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<ul>
+<li>组成视图的属性列名：必须全部省略或全部指定</li>
+<li>子查询不允许含有 ORDER BY 子句或 DISTINCT 短语</li>
+<li>系统在执行 CREATE VIEW 语句的时候只是把视图<strong>定义</strong>（相当于只有表头，没有具体内容）存入数据库中，并不真正执行其中的 SELECT 语句；只有在对视图进行查询时，才会按视图的定义从基本表中将数据取出</li>
+</ul>
+<p>示例：建立信息系学生的视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> IS_S</span><br><span class="line"><span class="keyword">as</span> <span class="keyword">select</span> Sno, Sname, Sage</span><br><span class="line"><span class="keyword">from</span> S </span><br><span class="line"><span class="keyword">where</span> Sdept<span class="operator">=</span><span class="string">&#x27;IS&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>示例：建立信息系学生的视图，并要求进行修改和插入操作时，仍需保证该视图中只有信息系的学生</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> IS_S</span><br><span class="line"><span class="keyword">as</span> <span class="keyword">select</span> Sno, Sname, Sage</span><br><span class="line"><span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> Sdept<span class="operator">=</span><span class="string">&#x27;IS&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">CHECK</span> OPTION;</span><br></pre></td></tr></table></figure>
+<p>这里的<code>WITH CHECK OPTION</code>是创建视图时的一个约束选项，它的主要作用是确保通过视图对数据进行修改时，这些修改必须满足视图的筛选条件</p>
+<p>当为视图添加<code>WITH CHECK OPTION</code>约束以后：</p>
+<ul>
+<li>通过视图进行插入操作时，新插入的数据必须满足视图的 WHERE 条件，否则会被拒绝</li>
+<li>通过视图进行更新操作时，更新后的数据必须满足视图的 WHERE 条件，否则会被拒绝</li>
+</ul>
+<p>示例：创建一个只显示成年用户的视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> adult_users <span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> id, name, age</span><br><span class="line"><span class="keyword">from</span> users</span><br><span class="line"><span class="keyword">where</span> age <span class="operator">&gt;=</span> <span class="number">18</span></span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">CHECK</span> OPTION;</span><br></pre></td></tr></table></figure>
+<p>通过视图操作时，必须满足<code>age&gt;=18</code>的约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 这些操作会成功</span></span><br><span class="line"><span class="keyword">UPDATE</span> adult_users <span class="keyword">SET</span> age <span class="operator">=</span> <span class="number">20</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">INSERT INTO</span> adult_users (name, age) <span class="keyword">VALUES</span> (<span class="string">&#x27;张三&#x27;</span>, <span class="number">25</span>);  </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 这些操作会失败</span></span><br><span class="line"><span class="keyword">UPDATE</span> adult_users <span class="keyword">SET</span> age <span class="operator">=</span> <span class="number">16</span> <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">INSERT INTO</span> adult_users (name, age) <span class="keyword">VALUES</span> (<span class="string">&#x27;李四&#x27;</span>, <span class="number">17</span>); </span><br></pre></td></tr></table></figure>
+<p><strong>基于多个表所建立的视图</strong></p>
+<p>示例：建立信息系选修了 1 号课程的学生视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> IS_S1 (Sno, Sname, Grade)</span><br><span class="line"><span class="keyword">as</span> <span class="keyword">select</span> S.Sno, S.Sname, SC.Grade</span><br><span class="line"><span class="keyword">from</span> S, SC</span><br><span class="line"><span class="keyword">where</span> S.Sno<span class="operator">=</span>SC.Sno <span class="keyword">and</span> S.Sdept<span class="operator">=</span><span class="string">&#x27;IS&#x27;</span> <span class="keyword">and</span> SC.Cno<span class="operator">=</span><span class="string">&#x27;1&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p><strong>分组视图</strong></p>
+<p>示例：将学生的学号和它的平均成绩定义为一个视图</p>
+<p>在子查询中需要按学号分组，查询每个学号对应的平均成绩</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> S_G(Sno, Gavg)</span><br><span class="line"><span class="keyword">as</span> <span class="keyword">select</span> Sno, <span class="built_in">avg</span>(Grade) <span class="keyword">from</span> SC <span class="keyword">group</span> <span class="keyword">by</span> Sno;</span><br></pre></td></tr></table></figure>
+<p><strong>不指定属性列</strong></p>
+<p>示例：将 S 表中所有女生记录定义为一个视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> F_S (Sno, Sname, Ssex, Sage, Sdept) </span><br><span class="line"><span class="keyword">as</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> S</span><br><span class="line"><span class="keyword">where</span> Ssex<span class="operator">=</span><span class="string">&#x27;女&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>这里因为<code>F_S</code>和<code>S</code>表中属性 / 列完全相同，只是前者比后者多了必须是女的限制，因此可以不显式指出从 S 中选出了哪些列，而是直接用 * 代替</p>
+<p>此时如果我们修改了基本表 S 中的列结构，F_S 和 S 之间基本的映射关系就会被破坏，后续视图即无法正常工作，所以还是推荐显式列出 SELECT 基本表中具体的列名</p>
+<h3 id="删除视图"><strong>删除视图</strong></h3>
+<p>语句的格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> <span class="operator">&lt;</span>视图名<span class="operator">&gt;</span> [cascade];</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<ul>
+<li>该语句从内存中删除指定的视图<strong>定义</strong>（因为视图只存定义，不存具体数据）</li>
+<li>如果该视图中还导出了其他视图，<strong>必须</strong>使用<code>CASCADE</code>关键字可以实现<strong>级联删除</strong>，也就是在删除该视图的时候，把由该视图导出的视图一并删除，否则会报错</li>
+<li>由于我们删除视图时，有时候并不知道当前视图是否生成了其他新的视图，因此推荐最好加入<code>CASCADE</code></li>
+<li>删除基本表时，由该基本表所导出的视图定义必须使用<code>drop view &lt;视图名&gt;</code>语句显式删除</li>
+</ul>
+<h3 id="视图查询"><strong>视图查询</strong></h3>
+<p>视图在完成定义以后，用户即可像基本表一样（使用 SELECT 语句）对视图进行查询，而用户对视图的查询会被系统转化回对基本表等价的查询，这一过程称为<strong>视图消解法</strong></p>
+<p>但是生成时涉及到聚类函数的视图，在使用视图消解的时候可能会产生问题，比如：在 S_G(Sno, AvgG) 视图中查询平均成绩在 90 分以上的学生</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno <span class="keyword">from</span> S_G <span class="keyword">where</span> AngG <span class="operator">&gt;=</span> <span class="number">90</span>;</span><br></pre></td></tr></table></figure>
+<p>这条语句会被系统转换为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno <span class="keyword">from</span> S, SC</span><br><span class="line"><span class="keyword">where</span> <span class="built_in">avg</span>(Grade) <span class="operator">&gt;=</span> <span class="number">90</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Sno;</span><br></pre></td></tr></table></figure>
+<p>而我们之前说过，聚类函数不能使用在 WHERE 子句中，只能在 SELECT 和 GROUP BY 子句中使用，因此正确的转换应该是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> Sno <span class="keyword">from</span> SC</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> Sno <span class="keyword">Having</span> <span class="built_in">avg</span>(Grade) <span class="operator">&gt;=</span> <span class="number">90</span>;</span><br></pre></td></tr></table></figure>
+<p>但是系统无法做到这么智能的转换</p>
+<h3 id="视图更新"><strong>视图更新</strong></h3>
+<p>更新视图是指通过视图来插入，删除数据，因为视图本身并不存储数据，因此对视图的更新操作通过将视图消解，转化为对实际表的更新操作</p>
+<p>注意：为了防止在更新视图时出错，定义视图时最好加<code>WITH CHECK OPTION</code>子句</p>
+<p>示例：将信息系学生视图 IS_S 中学号为 ‘001’ 的学生姓名改为刘辰</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> IS_S <span class="keyword">set</span> Sname<span class="operator">=</span><span class="string">&#x27;刘辰&#x27;</span> <span class="keyword">where</span> Sno<span class="operator">=</span><span class="string">&#x27;001&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>这里因为 IS_S 本身就限定了学生的系是信息系，因此不再需要指定 Sedpt=‘IS’</p>
+<p>示例：向信息系学生视图 IS_S 中插入一个新的学生记录：002，赵新，20岁</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert into</span> IS_S </span><br><span class="line"><span class="keyword">values</span></span><br><span class="line">	(<span class="string">&#x27;002&#x27;</span>, 赵新, <span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+<p>此时也不需要额外指定系有关信息</p>
+<p>和视图查询相似，有一些涉及聚类函数所生成的视图是不可更新的，因为这些视图的更新不能唯一地有意义地转换成对相应的基本表的更新</p>
+<p>示例：对视图 S_G 学号为 001 的学生平均分改成 90 分</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> S_G <span class="keyword">set</span> AvgG<span class="operator">=</span><span class="number">90</span> <span class="keyword">where</span> Sno<span class="operator">=</span><span class="string">&#x27;001&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>这条更新会出错，因为 S_G 表中的平均分是由 SC 表中多条成绩加工得到的，现在只告诉系统去改平均成绩，系统并不知道各科成绩具体怎么修改，才能凑出 90 分的平均分，因此无法把修改映射回原表，进而报错</p>
+<h3 id="视图的作用"><strong>视图的作用</strong></h3>
+<p>视图的作用总结如下：</p>
+<ul>
+<li>视图能够简化用户的操作</li>
+<li>视图能够使得用户以多种角度看待同一数据</li>
+<li>视图对重构数据库提供了一定程度的逻辑独立性</li>
+<li>视图能够对机密数据提供安全保护</li>
+<li>适当利用视图可以更清晰地表达查询</li>
+</ul>
+<h2 id="sql-类型总结"><strong>SQL 类型总结</strong></h2>
+<p>题目：</p>
+<ul>
+<li>检索所有比李勇年龄大的学生姓名（自身连表查询）</li>
+<li>检索所有学生的全部信息（外连接用法）</li>
+<li>检索选修 C2 课程的学生姓名（子查询 ANY，IN，EXISTS 三种实现方式）</li>
+<li>检索选修 C2 课程的学生最高分（子查询 ALL）</li>
+<li>检索选修所有课程的学生姓名（双重否定表肯定）</li>
+<li>检索所选课程包含 S2 选修的课程的同学的学号（双重否定表肯定）</li>
+<li>检索无人选修的课程的课号和名称（集合运算）</li>
+<li>检索选修课程的学生总数（聚合运算）</li>
+<li>检索学号为 S4 的学生的总分和平均分（聚合运算）</li>
+<li>检索选修至少三门课的学生学号和选课门数（分组检索）</li>
+<li>检索至少选修四门课的学生学号和总成绩（不及格课程既不贡献课数也不贡献分数），输出按总成绩降序排列（分组检索）</li>
+<li>检索所有姓刘的学生的学号和姓名（部分匹配查询）</li>
+<li>检索每个学生超过自己平均成绩的课程号（基于派生表的查询）</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>聚集函数只能用在 select 和 having 子句中，也可以出现在 order by 子句中</li>
+<li>子句顺序 where &gt; group by &gt; order by</li>
+</ul>
+<p>其他有关数据定义，操纵的 SQL 语句：</p>
+<p>（1）创建基本表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create table</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> (<span class="operator">&lt;</span>列名<span class="operator">&gt;</span><span class="operator">&lt;</span>类型<span class="operator">&gt;</span><span class="operator">&lt;</span>完整性约束<span class="operator">&gt;</span>,...);</span><br></pre></td></tr></table></figure>
+<p>（2）创建视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> <span class="operator">&lt;</span>视图名<span class="operator">&gt;</span> (<span class="operator">&lt;</span>列名<span class="operator">&gt;</span>,...) <span class="keyword">as</span> 子查询;</span><br></pre></td></tr></table></figure>
+<p>（3）创建索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> [<span class="keyword">unique</span>] [cluster] index <span class="operator">&lt;</span>索引名<span class="operator">&gt;</span> <span class="keyword">on</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> (<span class="operator">&lt;</span>列名<span class="operator">&gt;</span><span class="operator">&lt;</span>升序<span class="operator">|</span>降序<span class="operator">&gt;</span>,...);</span><br></pre></td></tr></table></figure>
+<p>（4）删除基本表 / 视图 / 索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="operator">&lt;</span>表名 <span class="operator">/</span> 视图名 <span class="operator">/</span> 索引名<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure>
+<p>（5）插入元组</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert into</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>(<span class="operator">&lt;</span>列名<span class="operator">&gt;</span>,...) <span class="keyword">values</span>(<span class="operator">&lt;</span>值<span class="operator">&gt;</span>,...);</span><br><span class="line"><span class="keyword">insert into</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>(<span class="operator">&lt;</span>列名<span class="operator">&gt;</span>,...) 子查询;</span><br></pre></td></tr></table></figure>
+<p>（6）修改元组</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="keyword">set</span> <span class="operator">&lt;</span>列名<span class="operator">&gt;</span> <span class="operator">=</span> <span class="operator">&lt;</span>值<span class="operator">&gt;</span> <span class="keyword">where</span> 修改条件;</span><br></pre></td></tr></table></figure>
+<p>（7）删除元组</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="keyword">where</span> 删除条件;</span><br></pre></td></tr></table></figure>
+<p>（8）修改表格</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="keyword">add</span><span class="operator">&lt;</span>列名<span class="operator">&gt;</span><span class="operator">&lt;</span>类型<span class="operator">&gt;</span><span class="operator">&lt;</span>完整性约束<span class="operator">&gt;</span>,...; <span class="comment">/* 添加新的列 */</span></span><br><span class="line"><span class="keyword">alter</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> modify<span class="operator">&lt;</span>列名<span class="operator">&gt;</span><span class="operator">&lt;</span>类型<span class="operator">&gt;</span>,...; <span class="comment">/* 修改列的数据类型 */</span></span><br><span class="line"><span class="keyword">alter</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="keyword">drop</span><span class="operator">&lt;</span>列名<span class="operator">&gt;</span>,...; <span class="comment">/* 删除列的完整性约束 */</span></span><br><span class="line"><span class="keyword">alter</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> <span class="keyword">drop</span> <span class="keyword">column</span> <span class="operator">&lt;</span>列名<span class="operator">&gt;</span>,...; <span class="comment">/* 删除列 */</span></span><br><span class="line"><span class="keyword">alter</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> change <span class="keyword">column</span> <span class="operator">&lt;</span>旧列名<span class="operator">&gt;</span> <span class="keyword">to</span> <span class="operator">&lt;</span>新列名<span class="operator">&gt;</span><span class="operator">&lt;</span>类型<span class="operator">&gt;</span><span class="operator">&lt;</span>约束<span class="operator">&gt;</span>,...; <span class="comment">/* 修改列名 */</span></span><br></pre></td></tr></table></figure>
+<hr>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://agilawood4.github.io/2025/11/16/(SQL3)SQL%E8%AF%AD%E5%8F%A5%E8%A1%A5%E5%85%85/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://agilawood4.github.io/2025/11/16/(SQL3)SQL%E8%AF%AD%E5%8F%A5%E8%A1%A5%E5%85%85/')">数据库设计</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://agilawood4.github.io/2025/11/16/(SQL3)SQL%E8%AF%AD%E5%8F%A5%E8%A1%A5%E5%85%85/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=数据库设计&amp;url=https://agilawood4.github.io/2025/11/16/(SQL3)SQL%E8%AF%AD%E5%8F%A5%E8%A1%A5%E5%85%85/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2124.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://agilawood4.github.io" target="_blank">Destiny's Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>专业课<span class="tagsPageCount">33</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/picture.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/11/15/(SQL2)%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2116.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">关系数据库</div></div></a></div><div class="next-post pull-right"><a href="/2025/11/17/%E7%9B%AE%E6%A0%87%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E6%B4%BB%E5%8A%A8/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2117.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">运行时存储空间的组织</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/12/06/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" title="数据库复习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2126.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-06</div><div class="title">数据库复习</div></div></a></div><div><a href="/2025/12/04/(SQL)%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF/" title="事务处理技术"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2124.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-04</div><div class="title">事务处理技术</div></div></a></div><div><a href="/2025/11/15/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BE%8B%E9%A2%98%E9%80%89%E8%AE%B2/" title="数据库例题选讲"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2114.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-15</div><div class="title">数据库例题选讲</div></div></a></div><div><a href="/2025/12/02/(SQL1)%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%AE%BA/" title="数据库概论"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2122.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-02</div><div class="title">数据库概论</div></div></a></div><div><a href="/2025/10/21/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" title="数据库设计"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2102.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-21</div><div class="title">数据库设计</div></div></a></div><div><a href="/2025/11/15/(SQL2)%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" title="关系数据库"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2116.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-15</div><div class="title">关系数据库</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">数据库设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.</span> <span class="toc-text">概念结构设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">概念模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e-r%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">E-R模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e-r%E5%9B%BE"><span class="toc-number">1.1.3.</span> <span class="toc-text">E-R图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89-%E5%88%A0%E9%99%A4-%E4%BF%AE%E6%94%B9"><span class="toc-number">1.2.</span> <span class="toc-text">基本表的定义 删除 修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%9F%BA%E6%9C%AC%E8%A1%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">定义基本表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">数据类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.3.</span> <span class="toc-text">数据查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.3.1.</span> <span class="toc-text">单表查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E5%AD%90%E5%8F%A5"><span class="toc-number">1.3.2.</span> <span class="toc-text">排序子句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E7%B1%BB%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.3.</span> <span class="toc-text">聚类函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E5%AD%90%E5%8F%A5"><span class="toc-number">1.3.4.</span> <span class="toc-text">分组子句</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.4.</span> <span class="toc-text">连接查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%89%E5%80%BC%E4%B8%8E%E9%9D%9E%E7%AD%89%E5%80%BC%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.4.1.</span> <span class="toc-text">等值与非等值连接查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E8%BA%AB%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.4.2.</span> <span class="toc-text">自身连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.4.3.</span> <span class="toc-text">外连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.4.4.</span> <span class="toc-text">多表连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.5.</span> <span class="toc-text">嵌套查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9C%89-in-%E8%B0%93%E8%AF%8D%E7%9A%84%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.5.1.</span> <span class="toc-text">带有 in 谓词的查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9C%89-any-%E6%88%96-all-%E8%B0%93%E8%AF%8D%E7%9A%84%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.5.2.</span> <span class="toc-text">带有 ANY 或 ALL 谓词的子查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A6%E6%9C%89-exists-%E8%B0%93%E8%AF%8D%E7%9A%84%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.6.</span> <span class="toc-text">带有 EXISTS 谓词的子查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#exists-%E8%B0%93%E8%AF%8D"><span class="toc-number">1.6.1.</span> <span class="toc-text">EXISTS 谓词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#not-exists-%E8%B0%93%E8%AF%8D"><span class="toc-number">1.6.2.</span> <span class="toc-text">NOT EXISTS 谓词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8-not-exists-%E5%AE%9E%E7%8E%B0%E5%85%A8%E7%A7%B0%E9%87%8F%E8%AF%8D"><span class="toc-number">1.6.3.</span> <span class="toc-text">用 NOT EXISTS 实现全称量词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8-not-exists-%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91%E8%95%B4%E5%90%AB"><span class="toc-number">1.6.4.</span> <span class="toc-text">用 NOT EXISTS 实现逻辑蕴含</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.7.</span> <span class="toc-text">集合查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E6%93%8D%E4%BD%9C-union"><span class="toc-number">1.7.1.</span> <span class="toc-text">并操作 UNION</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E6%93%8D%E4%BD%9C-intersect"><span class="toc-number">1.7.2.</span> <span class="toc-text">交操作 INTERSECT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">1.7.3.</span> <span class="toc-text">差操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%B4%BE%E7%94%9F%E8%A1%A8%E7%9A%84%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.8.</span> <span class="toc-text">基于派生表的查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0"><span class="toc-number">1.9.</span> <span class="toc-text">数据更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">1.9.1.</span> <span class="toc-text">插入数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="toc-number">1.9.2.</span> <span class="toc-text">修改数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE"><span class="toc-number">1.9.3.</span> <span class="toc-text">删除数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E5%80%BC%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-number">1.9.4.</span> <span class="toc-text">空值的处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-number">1.10.</span> <span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E8%A7%86%E5%9B%BE"><span class="toc-number">1.10.1.</span> <span class="toc-text">建立视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%A7%86%E5%9B%BE"><span class="toc-number">1.10.2.</span> <span class="toc-text">删除视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.10.3.</span> <span class="toc-text">视图查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E6%9B%B4%E6%96%B0"><span class="toc-number">1.10.4.</span> <span class="toc-text">视图更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.10.5.</span> <span class="toc-text">视图的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql-%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93"><span class="toc-number">1.11.</span> <span class="toc-text">SQL 类型总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/07/%E4%B8%8A%E6%9C%BA%E9%A2%98%E7%9B%AE/" title="无题">无题</a><time datetime="2026-01-07T14:27:41.629Z" title="发表于 2026-01-07 22:27:41">2026-01-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/03/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89/" title="无题">无题</a><time datetime="2026-01-03T02:55:30.151Z" title="发表于 2026-01-03 10:55:30">2026-01-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/27/%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89NP%E9%97%AE%E9%A2%98/" title="无题">无题</a><time datetime="2025-12-27T02:29:55.205Z" title="发表于 2025-12-27 10:29:55">2025-12-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/20/%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B/" title="算法设计与分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2120.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法设计与分析"/></a><div class="content"><a class="title" href="/2025/12/20/%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B/" title="算法设计与分析">算法设计与分析</a><time datetime="2025-12-20T07:34:05.895Z" title="发表于 2025-12-20 15:34:05">2025-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/06/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" title="数据库复习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2126.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库复习"/></a><div class="content"><a class="title" href="/2025/12/06/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" title="数据库复习">数据库复习</a><time datetime="2025-12-06T07:29:15.000Z" title="发表于 2025-12-06 15:29:15">2025-12-06</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>4</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>35</sup></a><a href="/tags/editing/" style="font-size: 0.88rem;">editing<sup>1</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>33</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>29</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

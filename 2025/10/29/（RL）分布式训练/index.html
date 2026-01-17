@@ -1,0 +1,489 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>分布式训练 | Destiny's Blog</title><meta name="keywords" content="LLM与强化学习"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="分布式训练"><meta name="application-name" content="分布式训练"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="分布式训练"><meta property="og:url" content="https://agilawood4.github.io/2025/10/29/%EF%BC%88RL%EF%BC%89%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/index.html"><meta property="og:site_name" content="Destiny's Blog"><meta property="og:description" content="分布式训练 在大模型训练的过程中，我们需要同时考虑计算效率和显存效率两方面的问题：  计算效率：大模型的训练依赖于海量的训练数据，海量的训练数据带来了海量的计算需求 显存效率：大模型主要体现在模型的参数规模上，参数规模逐渐变大的模型对显存的依赖逐渐加剧  所谓的分布式训练，就是解决怎么让我们的模型能"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2109.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2109.jpg"><meta name="description" content="分布式训练 在大模型训练的过程中，我们需要同时考虑计算效率和显存效率两方面的问题：  计算效率：大模型的训练依赖于海量的训练数据，海量的训练数据带来了海量的计算需求 显存效率：大模型主要体现在模型的参数规模上，参数规模逐渐变大的模型对显存的依赖逐渐加剧  所谓的分布式训练，就是解决怎么让我们的模型能"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://agilawood4.github.io/2025/10/29/%EF%BC%88RL%EF%BC%89%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: Destiny's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Destiny's Blog',
+  title: '分布式训练',
+  postAI: '',
+  pageFillDescription: '分布式训练, 分布式训练基础, 分布式训练简介, 常见的分布式训练策略, Data Parallel, Data Parallel 基本流程, 具体实现, Data Parallel 推理, Distributed Data Parallel, Distributed Data Parallel 基本流程, 分布式训练中的基本概念, 分布式训练中的通信, Accelerate, Accelerate 基础, Accelerate 的使用分布式训练在大模型训练的过程中我们需要同时考虑计算效率和显存效率两方面的问题计算效率大模型的训练依赖于海量的训练数据海量的训练数据带来了海量的计算需求显存效率大模型主要体现在模型的参数规模上参数规模逐渐变大的模型对显存的依赖逐渐加剧所谓的分布式训练就是解决怎么让我们的模型能够在多张显卡上同时运行的问题通过阅读本文您可以大致了解和分布式训练以及模块有关的相关内容分布式训练基础分布式训练简介分布式是指系统或计算机任务被分布到多个独立的节点或计算资源上进行处理而不是集中在单个节点或计算机上分布式模型训练是一种机器学习和深度学习领域中的训练方法它通过将计算任务分发到多个计算资源或者设备上来加速模型的训练过程分布式训练通过并行计算的方式将数据和计算任务分配到多个节点上从而提高训练速度和处理大规模数据的能力常见的分布式训练策略假设我们的数据集是模型是一个的两层网络常见的分布式训练策略如下数据并行每个上都复制一份完整模型但是每个上训练的数据不同即把整个数据集划分为多份在不同上运行不同的子数据集此时要求每张卡都能够完整加载整个模型如果模型本身参数量很大一张卡显存不够该方法同样失效流水并行把模型按层拆分每个上都包含模型的部分层保证能够正常训练此时不要求每张卡内都可以执行完整的训练流程张量并行把模型每层的权重拆开对于每一份权重每个上各包含一部分保证能够正常训练此时不要求每张卡内都可以执行完整的训练流程并行我们可以考虑把上述三种并行方式混合使用比如在下图中我们分别采用了路数据并行路流水并行路张量并行的实现思路总共需要用到张显卡这里我们先介绍基于所实现的数据并行方法基本流程大致可以分为以下几个流程加载和数据把数据从均分到各卡把从复制到各卡各卡同时进行前向传播收集各卡上的输出并且计算实际上值是在各卡上直接算好的负责统一回收把分发到各卡进行反向传播计算梯度收集各卡的梯度进行汇总更新模型具体实现我们只需要对得到的原始模型做如下代码处理即可其中位置传入我们要做数据并行的模型位置传入我们多卡运行想使用的显卡如果设为则默认所有卡都可用此时我们会得到可用的编号列表而此时变成了类型如果我们想拿到原本初始的模型需要执行才能得到如果是我们手动实现的过程根据前面的介绍我们会从各张卡上把对应计算的汇总到上此时的不再是一个标量而是一个列表的形式如果我们直接对它或者取会报错此时可以考虑先取均值而如果是使用自带的训练器的话则不需要对模型做任何修改系统在运行时会自动检测进而判断可用的数如果有多卡的话会自动进入模式运行推理实际运行中如果我们使用模块中的调用多进行训练训练速度其实没有多大的提升甚至有可能下降因而其实我们很不推荐使用模块中的进行分布式训练存在的问题其本身实现是一个单进程多线程的过程由于锁的问题不能充分发挥多卡的优势由于本身训练策略的问题各个副卡只负责前向计算和反向传播而优化器等全部部署在主卡上会出现一个主节点占用远高于其他节点的情况效率较低每次训练开始都要重新同步模型大模型的同步时间会比较难接受尤其是设置较小的时候只适用于单机训练无法支持真正的分布式多节点训练实际上更多被用在并行推理验证的过程中因为在推理过程中我们不会对模型进行更新因此也就省去了每一轮推理都要把模型从主卡复制到多卡进行重新部署所花费的时间这是我们节省时间的主要原因基本流程才是真正的数据并行化训练其大致流程如下使用多个进程每个进程都加载数据和模型各个进程同时前向传播得到输出各个进程分别计算反向传播计算梯度各进程间通信将梯度在各卡同步各进程分别更新模型相当于每张卡上都会有单独的前向和反向传播只是会在过程中把各张卡的梯度进行同步分布式训练中的基本概念分布式训练中的基本概念如下进程组一个分布式任务对应一个进程组一般就是所有卡都放在一个组里全局的并行数一般等于总的卡数节点可以是一台机器或者一个容器一个节点内包含多张卡整个分布式训练任务内的进程序号每个内部的相对进程序号下面以机卡分布式训练为例进行说明这里每两张卡共同完成一个训练流程每个进程占用两张分布式训练中的通信通信的概念在分布式训练中通信是不同计算节点之间进行信息交换以协调训练任务的关键组成部分通信类型点对点通信将数据从一个进程传输到另一个进程集合通信一个分组中所有进程的通信模式称为集合通信常见的集合通信其中和是一组对偶的操作把信息从一台机器分发到多台机器的过程即为把信息从多台机器汇总到一台机器的过程即为而则是在的基础上不仅汇总信息同时对汇总到的信息做聚合计算示例中为加法则是在此基础上把聚合后的信息从一台机器分发到剩下的机器上而则是把一台机器上的同一个信息复制多份然后分发到其他各个机器上则是在的基础上把各个机器的信息汇总后再更新给所有的机器而不仅仅是一台机器基础简介是生态中针对分布式训练推理提供的库目标是简化分布式训练的流程这个库本身不提供分布式训练的内容但是其内部集成了多种分布式训练的框架如等库提供了统一的接口一套代码搞定多种分布式训练框架只用在源代码上加几行代码即可让单机训练程序变为分布式训练程序库中也是通过集成的分布式训练因此库的学习非常有必要的使用使用有关包中的模块启动自动化分布式训练需要在源代码中做出以下修改导包和加速器实例创建把我们先前加载好的直接传入中进行更新在模型训练时把修改为这些是最基本的修改内容此外为了使得整个代码更加优雅我们通常还会在如下层面做相关的修改对的简化之前在中我们的构造是这样的其中我们传入了这个参数该参数用于控制在分布式训练时把同一个数据集按进程拆分成互不重叠的子集并在每个做一致的随机打乱这样每个只迭代自己那一份数据避免重复保证覆盖而如果使用模块则不再需要这个参数我们直接设置如下代码即可其中训练集需要而验证集则不需要对模型加载的简化之前在的实现中我们需要通过环境变量获取来设置模型在对应的显卡上而使用则完全不需要直接加载模型即可同理对于数据所在显卡的设置也不再需要模型数据数据填充优化如果我们的数据总数不能整除的话最后我们则会加载出一组数据这组数据的数量如果使用处理则系统会用空白数据自行填充这组数据使得最终数据总数这就会导致我们计算的准确率偏高使用则可以很好的避免这个问题首先我们通过方法把转化为类别索引即转化为每个位置是样本预测的类别取最大的下标接着我们把所有进程上各自的和收集拼接成全局向量而不是每张卡分别进行评估使用方法即可实现对跨进程的张量的收集和对齐得到全局一致的和这样就能很好地处理不同进程最后一个样本数可能不等的情况最后就是我们收集好的全局标签则是全局预测的结果我们只需要统计二者相等的数量即可只允许单一输出信息的设置假设我们想输出某个调试信息如果我们直接因为此时是多卡运行每张都会执行一次打印在中我们通过设置满足条件值的才进行特判打印即而模块提供了现成的函数接口直接传入我们要输出的信息即可实现单个进程输出的约束对聚合函数的改写在中库和库都提供了相关的聚合方法即方法的实现只不过前者是的后者需要把聚合结果设置新的变量进行存储实现这里传字符串也可以实现需要注意的是方法在模块中就叫同时二者接收运算符的形参名称也不同',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-10-29 23:06:11',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Destiny's Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>4</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>35</sup></a><a href="/tags/editing/" style="font-size: 1.05rem;">editing<sup>1</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>33</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>29</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">13</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">16</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">21</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">28</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">23</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url">LLM与强化学习</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>LLM与强化学习</span></a></span></div></div><h1 class="post-title" itemprop="name headline">分布式训练</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-10-29T08:42:08.000Z" title="发表于 2025-10-29 16:42:08">2025-10-29</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-10-29T15:06:11.448Z" title="更新于 2025-10-29 23:06:11">2025-10-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2109.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://agilawood4.github.io/2025/10/29/%EF%BC%88RL%EF%BC%89%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/"><header><a class="post-meta-categories" href="/categories/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url">LLM与强化学习</a><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" tabindex="-1" itemprop="url">LLM与强化学习</a><h1 id="CrawlerTitle" itemprop="name headline">分布式训练</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2025-10-29T08:42:08.000Z" title="发表于 2025-10-29 16:42:08">2025-10-29</time><time itemprop="dateCreated datePublished" datetime="2025-10-29T15:06:11.448Z" title="更新于 2025-10-29 23:06:11">2025-10-29</time></header><h1><strong>分布式训练</strong></h1>
+<p>在大模型训练的过程中，我们需要同时考虑计算效率和显存效率两方面的问题：</p>
+<ul>
+<li>计算效率：大模型的训练依赖于海量的训练数据，海量的训练数据带来了海量的计算需求</li>
+<li>显存效率：大模型主要体现在模型的参数规模上，参数规模逐渐变大的模型对显存的依赖逐渐加剧</li>
+</ul>
+<p>所谓的分布式训练，就是解决怎么让我们的模型能够在<strong>多张 GPU 显卡</strong>上同时运行的问题，通过阅读本文，您可以大致了解和分布式训练以及<code>accelerate</code>模块有关的相关内容</p>
+<h2 id="分布式训练基础"><strong>分布式训练基础</strong></h2>
+<h3 id="分布式训练简介"><strong>分布式训练简介</strong></h3>
+<p>分布式（Distributed）是指系统或计算机任务被分布到多个独立的节点或计算资源上进行处理，而不是集中在单个节点或计算机上</p>
+<p>分布式模型训练是一种机器学习和深度学习领域中的训练方法，它通过将计算任务分发到多个计算资源或者设备上来加速模型的训练过程，分布式训练通过并行计算的方式，将数据和计算任务分配到多个节点上，从而提高训练速度和处理大规模数据的能力</p>
+<h3 id="常见的分布式训练策略"><strong>常见的分布式训练策略</strong></h3>
+<p>假设我们的数据集是<code>Data</code>，模型是一个<code>[L0,L1]</code>的两层网络，常见的分布式训练策略如下：</p>
+<p>（1）数据并行（Data Parallel，DP）：每个 GPU上都复制一份<strong>完整模型</strong>，但是每个 GPU 上训练的数据不同，即把整个数据集划分为多份，在不同 GPU 上运行不同的子数据集</p>
+<p>此时要求每张卡都能够完整加载整个模型，如果模型本身参数量很大，一张卡显存不够，该方法同样失效</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="C:/Users/hp/AppData/Roaming/Typora/typora-user-images/image-20251029165527101.png" alt="image-20251029165527101"></p>
+<p>（2）流水并行（Pipeline Parallel，PP）：把模型<strong>按层拆分</strong>，每个 GPU 上都包含模型的部分层，保证能够正常训练，此时不要求每张卡内都可以执行完整的训练流程</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251029165508426.png" alt="image-20251029165508426"></p>
+<p>（3）张量并行（Tensor Parallel，TP）：把模型每层的<strong>权重</strong>拆开，对于每一份权重，每个 GPU 上各包含一部分，保证能够正常训练，此时不要求每张卡内都可以执行完整的训练流程</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251029165431903.png" alt="image-20251029165431903"></p>
+<p>（4）3D并行：我们可以考虑把上述三种并行方式混合使用，比如在下图中，我们分别采用了 2 路数据并行，4 路流水并行，4 路张量并行的实现思路，总共需要用到<code>2*4*4=32</code>张 GPU 显卡</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251029170710160.png" alt="image-20251029170710160"></p>
+<h2 id="data-parallel"><strong>Data Parallel</strong></h2>
+<p>这里我们先介绍基于<code>nn.DataParrallel</code>所实现的数据并行方法</p>
+<h3 id="data-parallel-基本流程"><strong>Data Parallel 基本流程</strong></h3>
+<p>Data Parrallel 大致可以分为以下几个流程：</p>
+<ul>
+<li>GPU0 加载 model 和 batch 数据</li>
+<li>把 batch 数据从 GPU0 均分到各卡</li>
+<li>把 model 从 GPU0 复制到各卡</li>
+<li>各卡同时进行前向传播</li>
+<li>GPU0 收集各卡上的输出，并且计算 Loss（实际上 Loss 值是在各卡上直接算好的，GPU0 负责统一回收）</li>
+<li>把 Loss 分发到各卡，进行反向传播，计算梯度</li>
+<li>GPU0 收集各卡的梯度，进行汇总</li>
+<li>GPU0 更新模型</li>
+</ul>
+<h3 id="具体实现"><strong>具体实现</strong></h3>
+<p>我们只需要对得到的原始模型 model 做如下代码处理即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = nn.DataParallel(module=model, device_ids=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<p>其中 module 位置传入我们要做数据并行的模型，device_ids 位置传入我们多卡运行想使用的显卡（如果设为 None 则默认所有卡都可用）</p>
+<p>此时我们<code>print(model.device_ids)</code>会得到可用 GPU 的编号列表，而 model 此时变成了 DataParallel 类型，如果我们想拿到原本初始的模型，需要执行<code>model.module</code>才能得到</p>
+<p>如果是我们手动实现的 Trainer() 过程，根据前面的介绍，我们会从各张卡上把对应计算的 Loss 汇总到 GPU0 上，此时的<code>output.loss</code>不再是一个标量，而是一个列表的形式，如果我们直接对它<code>backward()</code>或者取<code>item()</code>会报错，此时可以考虑先取均值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">output.loss.mean().backward()</span><br><span class="line">output.loss.mean().item()</span><br></pre></td></tr></table></figure>
+<p>而如果是使用 transformers 自带的 Trainer() 训练器的话，则不需要对模型做任何修改，系统在运行时会自动检测<code>cuda.device_count()</code>进而判断可用的 GPU 数，如果有多卡的话，会<strong>自动</strong>进入<code>Data Parallel</code>模式运行</p>
+<h3 id="data-parallel-推理"><strong>Data Parallel 推理</strong></h3>
+<p>实际运行中，如果我们使用 nn 模块中的 Data Parallel 调用多 GPU 进行训练，训练速度其实没有多大的提升，甚至有可能下降，因而其实我们<strong>很不推荐</strong>使用 nn 模块中的 Data Parallel 进行分布式训练</p>
+<p><code>nn.DataParallel</code>存在的问题：</p>
+<ul>
+<li>其本身实现是一个单进程，多线程的过程，由于 GIL 锁的问题，不能充分发挥多卡的优势</li>
+<li>由于 Data Parallel 本身训练策略的问题，各个副卡只负责前向计算和反向传播，而优化器等全部部署在主卡上，会出现一个主节点占用远高于其他节点的情况</li>
+<li>效率较低，每次训练开始都要重新同步模型，大模型的同步时间会比较难接受，尤其是设置 batch_size 较小的时候</li>
+<li>只适用于单机训练，无法支持真正的分布式多节点训练</li>
+</ul>
+<p>实际上，Data Parallel 更多被用在<strong>并行推理验证</strong>的过程中，因为在推理过程中，我们不会对模型进行更新，因此也就省去了每一轮推理都要把模型从主卡复制到多卡，进行重新部署所花费的时间，这是我们节省时间的主要原因</p>
+<h2 id="distributed-data-parallel"><strong>Distributed Data Parallel</strong></h2>
+<h3 id="distributed-data-parallel-基本流程"><strong>Distributed Data Parallel 基本流程</strong></h3>
+<p>Distributed Data Parallel 才是真正的数据并行化训练，其大致流程如下：</p>
+<ul>
+<li>使用多个进程，每个进程都加载数据和模型</li>
+<li>各个进程同时前向传播，得到输出</li>
+<li>各个进程分别计算 Loss，反向传播，计算梯度</li>
+<li>各进程间通信，将梯度在各卡同步</li>
+<li>各进程分别更新模型</li>
+</ul>
+<p>相当于每张卡上都会有单独的前向和反向传播，只是会在过程中把各张卡的梯度进行同步</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251029200334859.png" alt="image-20251029200334859"></p>
+<h3 id="分布式训练中的基本概念"><strong>分布式训练中的基本概念</strong></h3>
+<p>分布式训练中的基本概念如下：</p>
+<ul>
+<li>group：进程组，一个分布式任务对应一个进程组，一般就是所有卡都放在一个组里</li>
+<li>world_size：全局的并行数，一般等于总的 GPU 卡数</li>
+<li>node：节点，可以是一台机器，或者一个容器，一个节点内包含多张 GPU 卡</li>
+<li>rank / global_rank：整个分布式训练任务内的进程序号</li>
+<li>local_rank：每个 node 内部的相对进程序号</li>
+</ul>
+<p>下面以 2 机 4 卡分布式训练为例进行说明：</p>
+<ul>
+<li>node=2；world_size=4（这里每两张 GPU 卡共同完成一个训练流程）；每个进程占用两张 GPU</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251029200927049.png" alt="image-20251029200927049"></p>
+<h3 id="分布式训练中的通信"><strong>分布式训练中的通信</strong></h3>
+<p>通信的概念：在分布式训练中，通信是不同计算节点之间进行信息交换以协调训练任务的关键组成部分</p>
+<p>通信类型：</p>
+<ul>
+<li>点对点通信：将数据从一个进程传输到另一个进程</li>
+<li>集合通信：一个分组中所有进程的通信模式称为集合通信</li>
+</ul>
+<p>常见的集合通信：</p>
+<ul>
+<li><code>Scatter</code>，<code>Gather</code>，<code>Reduce</code>，<code>All Reduce</code>，<code>Broadcast</code>，<code>All Gather</code></li>
+</ul>
+<p>其中 Scatter 和 Gather 是一组对偶的操作，把信息从一台机器分发到多台机器的过程即为 Scatter，把信息从多台机器汇总到一台机器的过程即为 Gather</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251029201646842.png" alt="image-20251029201646842"></p>
+<p>而 Reduce 则是在 Gather 的基础上，不仅汇总信息，同时对汇总到的信息做聚合计算（示例中为加法），All Reduce 则是在此基础上，把聚合后的信息从一台机器分发到剩下的机器上</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251029201847868.png" alt="image-20251029201847868"></p>
+<p>而 Broadcast 则是把一台机器上的同一个信息复制多份，然后分发到其他各个机器上，All Gather 则是在 Gather 的基础上，把各个机器的信息汇总后，再更新给所有的机器，而不仅仅是一台机器</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20251029202019798.png" alt="image-20251029202019798"></p>
+<h2 id="accelerate"><strong>Accelerate</strong></h2>
+<h3 id="accelerate-基础"><strong>Accelerate 基础</strong></h3>
+<p>Accelerate 简介：</p>
+<p>Accelerate 是 HuggingFace 生态中针对分布式训练推理提供的库，目标是简化分布式训练的流程，这个库本身不提供分布式训练的内容，但是其内部集成了多种分布式训练的框架，如 DDP，FSDP，Deepspeed 等</p>
+<p>Accelerate 库提供了统一的接口，一套代码搞定多种分布式训练框架，只用在源代码上加几行代码，即可让单机训练程序变为分布式训练程序</p>
+<p>Transformers 库中也是通过 Accelerate 集成的分布式训练，因此 Accelerate 库的学习非常有必要！</p>
+<h3 id="accelerate-的使用"><strong>Accelerate 的使用</strong></h3>
+<p>使用<code>accelerator</code>有关包中的模块启动自动化分布式训练，需要在源代码中做出以下修改：</p>
+<p>（1）导包和加速器实例创建：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> accelerate <span class="keyword">import</span> Accelerator</span><br><span class="line">accelerator = Accelerator()</span><br></pre></td></tr></table></figure>
+<p>（2）把我们先前加载好的<code>model</code>、<code>optimizer</code>、<code>trainloader</code>、<code>validloader</code>直接传入<code>accelerator.prepare()</code>中进行更新：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model, optimizer, trainloader, validloader = accelerator.prepare(model, optimizer, trainloader, validloader)</span><br></pre></td></tr></table></figure>
+<p>（3）在模型训练时，把<code>loss.backward()</code>修改为<code>accelerator.backward(loss)</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">loss = output.loss</span><br><span class="line">acceleratoe.backward(loss)</span><br><span class="line">optimizer.step()</span><br></pre></td></tr></table></figure>
+<p>这些是最基本的修改内容，此外为了使得整个代码更加优雅，我们通常还会在如下层面做相关的修改：</p>
+<p>（1）对<code>DataLoader</code>的简化：</p>
+<p>之前在 DDP 中，我们 DataLoader 的构造是这样的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">trainloader = DataLoader(trainset, batch_size=<span class="number">32</span>, collate_fn=collate_func, sampler=DistributedSampler(trainset))</span><br><span class="line">validloader = DataLoader(validset, batch_size=<span class="number">32</span>, collate_fn=collate_func, sampler=DistributedSampler(validset))</span><br></pre></td></tr></table></figure>
+<p>其中我们传入了<code>sampler=DistributedSampler(...)</code>这个参数，该参数用于控制<strong>在分布式训练（DDP）时，把同一个数据集按 “进程 / GPU” 拆分成互不重叠的子集，并在每个 epoch 做一致的随机打乱</strong>，这样每个 rank 只迭代自己那一份数据，避免重复、保证覆盖</p>
+<p>而如果使用 Accelerate 模块则不再需要这个参数，我们直接设置如下代码即可，其中训练集需要<code>shuffle</code>，而验证集则不需要：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">trainloader = DataLoader(trainset, batch_size=<span class="number">32</span>, collate_fn=collate_func, shuffle=<span class="literal">True</span>)</span><br><span class="line">validloader = DataLoader(validset, batch_size=<span class="number">32</span>, collate_fn=collate_func, shuffle=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>（2）对模型加载的简化：</p>
+<p>之前在 DDP 的实现中，我们需要通过环境变量获取<code>LOCAL_RANK</code>来设置模型在对应的 GPU 显卡上，而使用 Accelerate 则完全不需要，直接加载模型即可，同理对于数据所在显卡的设置，Accelerate 也不再需要：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模型-&gt;LOACL_RANK GPU</span></span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    model = model.to(<span class="built_in">int</span> (os.environ[<span class="string">&#x27;LOCAL_RANK&#x27;</span>]))</span><br><span class="line">model = DDP(model)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据-&gt;LOACL_RANK GPU</span></span><br><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">	batch = &#123;k:v.to(<span class="built_in">int</span>(os.environ[<span class="string">&#x27;LOCAL_RANK&#x27;</span>])) <span class="keyword">for</span> k, v <span class="keyword">in</span> batch.items()&#125;</span><br></pre></td></tr></table></figure>
+<p>（3）数据填充优化：</p>
+<p>如果我们的数据总数不能整除 batch_size 的话，最后我们则会加载出一组数据，这组数据的数量 &lt; batch_size，如果使用 DDP 处理，则系统会用<strong>空白数据</strong>自行填充这组数据，使得最终数据总数 == batch_size，这就会导致我们计算的准确率<strong>偏高</strong>，使用 Accelerate 则可以很好的避免这个问题：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pred = torch.argmax(output.logits, dim=-<span class="number">1</span>) </span><br><span class="line">pred, refs = accelerator.gather_for_metrics((pred, batch[<span class="string">&#x27;labels&#x27;</span>])) </span><br><span class="line">acc_num += (pred.long() == refs.long()).<span class="built_in">float</span>().<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
+<p>首先我们通过<code>argmax()</code>方法把 logits 转化为类别索引，即<code>[bsz, num_labels]</code>转化为<code>[bsz,]</code>，每个位置是样本预测的类别 id（取最大 logits 的下标）</p>
+<p>接着我们把<strong>所有进程</strong>上各自的 pred 和 labels 收集拼接成全局向量，而不是每张卡分别进行评估，使用<code>gather_for_metrics()</code>方法即可实现对跨进程的张量的收集和对齐，得到全局一致的 pred 和 refs，这样就能很好地处理<strong>不同进程最后一个 batch 样本数可能不等</strong>的情况</p>
+<p>最后 refs 就是我们收集好的全局标签，pred 则是全局预测的结果，我们只需要统计二者相等的数量即可</p>
+<p>（4）只允许单一 GPU 输出信息的设置：</p>
+<p>假设我们想输出某个调试信息，如果我们直接<code>print(...)</code>，因为此时是多卡运行，每张 GPU 都会执行一次打印，在 DDP 中我们通过设置满足条件值<code>RANK</code>的 GPU 才进行特判打印，即：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print_rank_0(info):</span><br><span class="line">	<span class="keyword">if</span> (<span class="built_in">int</span>)(os.envrion[<span class="string">&#x27;RANK&#x27;</span>]) == <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(info)</span><br></pre></td></tr></table></figure>
+<p>而 Accelerate 模块提供了现成的函数接口<code>accelerator.print()</code>，直接传入我们要输出的 info 信息，即可实现单个进程输出的约束</p>
+<p>（5）对聚合函数（all_reduce）的改写：</p>
+<p>在 Pytorch 中，<code>distributed</code>库和<code>accelerator</code>库都提供了相关的聚合方法，即<code>all_reduce</code>方法的实现，只不过前者是<code>inplace</code>的，后者需要把聚合结果设置新的变量进行存储：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># accelerator 实现</span></span><br><span class="line">loss = accelerator.reduce(loss, reduction=dist.RedeceOP.AVG<span class="string">&#x27;&#x27;&#x27;这里传字符串 &#x27;mean&#x27; 也可以&#x27;&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># distributed 实现</span></span><br><span class="line">dist.all_reduce(acc_num, op=dist.ReduceOp.SUM)</span><br><span class="line">dist.all_reduce(loss, op=dist.ReduceOp.AVG)</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，<code>all_reduce()</code>方法在<code>accelerator</code>模块中就叫<code>reduce()</code>，同时二者接收运算符的形参名称也不同</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://agilawood4.github.io/2025/10/29/%EF%BC%88RL%EF%BC%89%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://agilawood4.github.io/2025/10/29/%EF%BC%88RL%EF%BC%89%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/')">分布式训练</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://agilawood4.github.io/2025/10/29/%EF%BC%88RL%EF%BC%89%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=分布式训练&amp;url=https://agilawood4.github.io/2025/10/29/%EF%BC%88RL%EF%BC%89%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2109.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://agilawood4.github.io" target="_blank">Destiny's Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>LLM与强化学习<span class="tagsPageCount">4</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/picture.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/10/29/%EF%BC%88%E7%BC%96%E8%AF%91%EF%BC%89%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%84%E7%BB%87%E5%8F%8A%E7%AE%A1%E7%90%86/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A297.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">运行时的存储组织及管理</div></div></a></div><div class="next-post pull-right"><a href="/2025/10/29/%EF%BC%88RL%EF%BC%89%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2110.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Transformer实战演练</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/10/26/%EF%BC%88RL%EF%BC%89GRPO/" title="GRPO"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2107.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-26</div><div class="title">GRPO</div></div></a></div><div><a href="/2025/10/25/%EF%BC%88RL%EF%BC%89RLHF_PPO/" title="(一)RLHF_PPO"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2105.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-25</div><div class="title">(一)RLHF_PPO</div></div></a></div><div><a href="/2025/10/29/%EF%BC%88RL%EF%BC%89%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83/" title="Transformer实战演练"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2110.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-29</div><div class="title">Transformer实战演练</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">分布式训练</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text">分布式训练基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">分布式训练简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83%E7%AD%96%E7%95%A5"><span class="toc-number">1.1.2.</span> <span class="toc-text">常见的分布式训练策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#data-parallel"><span class="toc-number">1.2.</span> <span class="toc-text">Data Parallel</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#data-parallel-%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">Data Parallel 基本流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.2.</span> <span class="toc-text">具体实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-parallel-%E6%8E%A8%E7%90%86"><span class="toc-number">1.2.3.</span> <span class="toc-text">Data Parallel 推理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#distributed-data-parallel"><span class="toc-number">1.3.</span> <span class="toc-text">Distributed Data Parallel</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#distributed-data-parallel-%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">Distributed Data Parallel 基本流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.3.2.</span> <span class="toc-text">分布式训练中的基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83%E4%B8%AD%E7%9A%84%E9%80%9A%E4%BF%A1"><span class="toc-number">1.3.3.</span> <span class="toc-text">分布式训练中的通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#accelerate"><span class="toc-number">1.4.</span> <span class="toc-text">Accelerate</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#accelerate-%E5%9F%BA%E7%A1%80"><span class="toc-number">1.4.1.</span> <span class="toc-text">Accelerate 基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#accelerate-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.4.2.</span> <span class="toc-text">Accelerate 的使用</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/07/%E4%B8%8A%E6%9C%BA%E9%A2%98%E7%9B%AE/" title="无题">无题</a><time datetime="2026-01-07T14:27:41.629Z" title="发表于 2026-01-07 22:27:41">2026-01-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/03/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89/" title="无题">无题</a><time datetime="2026-01-03T02:55:30.151Z" title="发表于 2026-01-03 10:55:30">2026-01-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/27/%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89NP%E9%97%AE%E9%A2%98/" title="无题">无题</a><time datetime="2025-12-27T02:29:55.205Z" title="发表于 2025-12-27 10:29:55">2025-12-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/20/%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B/" title="算法设计与分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2120.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法设计与分析"/></a><div class="content"><a class="title" href="/2025/12/20/%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B/" title="算法设计与分析">算法设计与分析</a><time datetime="2025-12-20T07:34:05.895Z" title="发表于 2025-12-20 15:34:05">2025-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/06/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" title="数据库复习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2126.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库复习"/></a><div class="content"><a class="title" href="/2025/12/06/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" title="数据库复习">数据库复习</a><time datetime="2025-12-06T07:29:15.000Z" title="发表于 2025-12-06 15:29:15">2025-12-06</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">113</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">4</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>4</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>35</sup></a><a href="/tags/editing/" style="font-size: 0.88rem;">editing<sup>1</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>33</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>29</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
