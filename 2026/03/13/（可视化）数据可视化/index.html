@@ -1,0 +1,528 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>数据可视化 | Destiny Blog</title><meta name="keywords" content="Python与机器学习"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="数据可视化"><meta name="application-name" content="数据可视化"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="数据可视化"><meta property="og:url" content="https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/index.html"><meta property="og:site_name" content="Destiny Blog"><meta property="og:description" content="数据可视化 matplotlib 官网：https:&amp;#x2F;&amp;#x2F;matplot.org（需要在 Google 浏览器登录） Matplotlib 基础 面向对象绘图 面向对象绘图适合复杂的自定义绘图场景（比如需要在一张画布内绘制多张子图），其包含两个核心对象：  figure 对象：画布，负责整个图表的全局"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A210.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A210.jpg"><meta name="description" content="数据可视化 matplotlib 官网：https:&amp;#x2F;&amp;#x2F;matplot.org（需要在 Google 浏览器登录） Matplotlib 基础 面向对象绘图 面向对象绘图适合复杂的自定义绘图场景（比如需要在一张画布内绘制多张子图），其包含两个核心对象：  figure 对象：画布，负责整个图表的全局"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: Destiny Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Destiny Blog',
+  title: '数据可视化',
+  postAI: '',
+  pageFillDescription: '数据可视化, Matplotlib 基础, 面向对象绘图, 格式化选项, 标题、网格线与轴标签, 画布标题 suptitle, 子图标题 title, 轴标签 xylabel, 网格线 grid, 线条样式与图例, 线条样式修改, 图例 legend, 轴范围、轴刻度与水平垂直线, 轴范围 xylim, 轴刻度 xyticks, 水平垂直线 axvlineaxhlinehlinesvlines, 文本 text, 注释与箭头 annotate, 边框隐藏与轴关闭, 边框隐藏 spines, 轴关闭 axis, Matplotlib 样式, Matplotlib 布局数据可视化官网需要在浏览器登录基础面向对象绘图面向对象绘图适合复杂的自定义绘图场景比如需要在一张画布内绘制多张子图其包含两个核心对象对象画布负责整个图表的全局属性和布局对象子图负责具体某一张图表的内容相当于画布上的一个绘图区域一个可以包含多个创建对象的方法分别创建和可传入同时创建和可传入在创建画布的时候可以对画布进行尺寸设计传入参数分别表示画布的宽度和高度以英寸为单位默认尺寸为英寸格式化选项格式化选项概述标题网格线与轴标签画布标题作为整个图形的主标题通常位于顶部中央当一个图形包含多个子图时用于概括所有子图的主题有两种实现方式面向对象的实现方式单张子图的实现方式这两个方法接收常见参数如下第一个参数标题字符串字号大小通常为到字体粗细通常为到取整百注意后两个参数只有设置中字体添加思源黑体以后才能够使用子图标题描述单个图表的具体内容位于每张图表的上方有两种实现方式面向对象的实现方式单张子图的实现方式这两个方法接收常见参数和画布标题对应的函数相同除此之外我们还可以设置一个参数用于控制标题的高度距离图表上缘的距离轴标签用来指明轴和轴上坐标的含义有两种实现方式面向对象的实现方式单张子图的实现方式除了传入作为轴标签的内容我们还可以额外设置一个参数用于控制轴标签和坐标轴之间的距离网格线在图表中添加水平和或竖直的参考线帮助用户更准确地读取数据点的值有两种实现方式面向对象的实现方式单张子图的实现方式这两个方法接收如下常见参数网格线的类型常见的有等表示横轴和纵轴都绘制网格线表示只绘制横轴网格线表示只绘制纵轴网格线网格线透明度越接近越偏透明越接近越偏实线线条样式与图例线条样式修改在使用或进行绘图时我们可以传入以下参数控制绘图所用的线条样式线型表示实线表示虚线表示点线线宽默认为线的颜色可以传常见颜色单词等也可以传十六进制颜色编码线上关键节点的类型常见设置为或者图例标识不同数据系列的含义比如不同颜色或线型所代表的类别有两种实现方式面向对象的实现方式单张图表的实现方式注意在使用进行绘图时传入作为图例的标签默认不会显示只有调用方法以后才会显示此外该方法接收两个常见的位置参数用于控制图例在图中的位置默认右上左上右下左下图标中心右侧中心等传入一个元组把图标视作坐标系对应右下角对应右上角实际传入的坐标范围可以超过即图例布置在图表之外等和文字有关的设置从底层来看方法会对我们绘图时所传入的所有参数进行收集最后统一展示轴范围轴刻度与水平垂直线轴范围用于设置轴和轴坐标范围的最小值和最大值面向对象的实现方式单张图表的实现方式这些方法都接收一个元组作为参数即分别表示坐标轴的最小坐标和最大坐标轴刻度设置坐标轴上显示的刻度面向对象的实现方式单张图表的实现方式后者支持先后传入两个列表分别表示要保留显示在坐标轴上的刻度以及这个刻度可能对应的标签比如一月二月三月四月五月六月设置横轴只有刻度显示设置横轴原本刻度显示一月到六月的标签设置横轴只显示二月四月五月这三个月的标签二月四月五月设置横轴任意刻度显示一月到六月的标签如果从传入标签的角度来看先传入的一个列表相当于指定了标签在坐标轴上对应的刻度比如则表示在原图刻度为的位置分别生成标签和支持二者同时设置而和则只支持设置在原图上要保留的刻度而设置这些刻度对应的标签则需要通过和方法实现即需要分两步实现二月四月五月此外和还支持传入一个参数用于表示将轴刻度标签进行一定角度的旋转这主要是为了防止标签之间重叠提升可读性注意并不支持接收参数对应轴操作的函数都同理水平垂直线在图表中标记特定的值的位置用户标记关键时间点或事件面向对象的实现方式单张图标的实现方式其中表示即绘制垂直线表示即绘制水平线上述方法接收以下参数位置参数或坐标轴上的位置基于某个坐标进行绘制线型线宽透明度颜色等标记用于在图例中进行展示这是相对于整张子图绘制水平垂直线的方法如果我们仅想在某段区间内进行绘制则对应需要使用和方法绘制水平线绘制垂直线以水平线为例必填线的高度对齐轴的哪个刻度可选线的左端点横坐标可选线的右端点横坐标注意中所有和线条绘制有关的函数都接收类似线型线宽透明度颜色等参数用于调整绘图曲线的风格文本用于在图表中添加自定义注释或解释面向对象的实现方式单张图表的实现方式该方法接收如下的常见参数分别表示要添加的文字所处的横坐标纵坐标以及文字内容决定用什么参考系来定位文本数据坐标系默认即对应图表中实际的数据刻度子图百分比坐标系取值范围为代表文本所处在子图百分比的位置水平对齐方式以传入的坐标为基准表示文本左侧和对齐表示文本右侧和对齐表示文本中部和对齐竖直对齐方式以传入的坐标为基准同理字号子型字体颜色等参数注意中所有和文字绘制有关的函数都接收类似字号子型字体颜色等参数用于调整文字的风格注释与箭头注释用于在图表中标记重要数据点可以通过带箭头的文本清晰突出关键信息比如特定时间点峰值等使用如下方法实现各参数含义如下用于显示的文本对应参数传入一个元组表示被注释的数据点的坐标即箭头指向的位置对应参数传入一个元组表示注释文本的坐标即箭头起始的位置箭头样式设置建议直接复制官网模版比如文本格式设置用于定义字号字型颜色等边框隐藏与轴关闭边框隐藏边框用于控制图表四周的边界线移除特定边框可以简化图标外观使得图标更加简洁面向对象实现方式单张图表实现方式可以通过设置边框位置实现边框隐藏轴关闭通过设置即可关闭坐标轴即坐标轴上不会显示任何刻度和标签样式布局',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-03-16 11:07:55',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Destiny Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>4</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>49</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>35</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">19</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">25</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url">Python与机器学习</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Python与机器学习</span></a></span></div></div><h1 class="post-title" itemprop="name headline">数据可视化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-03-13T00:39:35.000Z" title="发表于 2026-03-13 08:39:35">2026-03-13</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-03-16T03:07:55.879Z" title="更新于 2026-03-16 11:07:55">2026-03-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A210.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"><header><a class="post-meta-categories" href="/categories/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url">Python与机器学习</a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" tabindex="-1" itemprop="url">Python与机器学习</a><h1 id="CrawlerTitle" itemprop="name headline">数据可视化</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2026-03-13T00:39:35.000Z" title="发表于 2026-03-13 08:39:35">2026-03-13</time><time itemprop="dateCreated datePublished" datetime="2026-03-16T03:07:55.879Z" title="更新于 2026-03-16 11:07:55">2026-03-16</time></header><h1><strong>数据可视化</strong></h1>
+<p><em>matplotlib</em> 官网：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://matplot.org">https://matplot.org</a>（需要在 <em>Google</em> 浏览器登录）</p>
+<h2 id="matplotlib-基础"><strong>Matplotlib 基础</strong></h2>
+<h3 id="面向对象绘图"><strong>面向对象绘图</strong></h3>
+<p>面向对象绘图适合复杂的自定义绘图场景（比如需要在一张画布内绘制多张子图），其包含两个核心对象：</p>
+<ul>
+<li><em>figure</em> 对象：画布，负责整个图表的全局属性和布局</li>
+<li><em>axes</em> 对象：子图，负责具体某一张图表的内容，相当于画布上的一个绘图区域</li>
+</ul>
+<p>一个 <em>figure</em> 可以包含多个 <em>axes</em></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260313145502182.png" alt="image-20260313145502182"></p>
+<p>创建对象的方法：</p>
+<ul>
+<li>分别创建 <em>figure</em> 和 <em>axes</em></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure() <span class="comment"># 可传入 figsize</span></span><br><span class="line">ax = fig.add_subplot()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>同时创建 <em>figure</em> 和 <em>axes</em></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots() <span class="comment"># 可传入 figsize</span></span><br></pre></td></tr></table></figure>
+<p>在创建画布的时候，可以对画布进行<strong>尺寸设计</strong>，传入参数 <em>figsize=(W, H)</em>，分别表示画布的宽度和高度，以英寸为单位，默认尺寸为 <em>6.4 × 4.8</em> 英寸^2^</p>
+<h2 id="格式化选项"><strong>格式化选项</strong></h2>
+<p>格式化选项概述：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260313150216879.png" alt="image-20260313150216879"></p>
+<h3 id="标题-网格线与轴标签"><strong>标题、网格线与轴标签</strong></h3>
+<h4 id="画布标题-suptitle"><strong>画布标题 suptitle</strong></h4>
+<p>作为整个图形的<strong>主标题</strong>，通常位于顶部中央，当一个图形包含多个子图时，用于概括所有子图的主题，有两种实现方式：</p>
+<ul>
+<li><em>fig.suptitle()</em>：面向对象的实现方式</li>
+<li><em>plt.suptitle()</em>：单张子图的实现方式</li>
+</ul>
+<p>这两个方法接收常见参数如下：</p>
+<ul>
+<li>第一个 <em>str</em> 参数：标题字符串</li>
+<li><em>fontsize</em>：字号大小，通常为 10 到 15</li>
+<li><em>fontweight</em>：字体粗细，通常为 100 到 900 取整百</li>
+</ul>
+<p>注意后两个参数只有设置 <em>rcParams</em> 中字体添加<strong>思源黑体</strong>以后才能够使用</p>
+<h4 id="子图标题-title"><strong>子图标题 title</strong></h4>
+<p>描述单个图表的具体内容，位于每张图表的上方，有两种实现方式：</p>
+<ul>
+<li><em>ax.set_title()</em>：面向对象的实现方式</li>
+<li><em>plt.title()</em>：单张子图的实现方式</li>
+</ul>
+<p>这两个方法接收常见参数和<strong>画布标题</strong>对应的函数相同，除此之外，我们还可以设置一个 <em>y</em> 参数，用于控制标题的高度（距离图表上缘的距离）</p>
+<h4 id="轴标签-xylabel"><strong>轴标签 xylabel</strong></h4>
+<p>用来指明 <em>x</em> 轴和 <em>y</em> 轴上坐标的含义，有两种实现方式：</p>
+<ul>
+<li><em>ax.set_xlabel()</em>，<em>ax.set_ylabel()</em>：面向对象的实现方式</li>
+<li><em>plt.xlabel()</em>，<em>ply.ylabel()</em>：单张子图的实现方式</li>
+</ul>
+<p>除了传入 <em>str</em> 作为轴标签的内容，我们还可以额外设置一个 <em>labelpad</em> 参数，用于控制轴标签和坐标轴之间的<strong>距离</strong></p>
+<h4 id="网格线-grid"><strong>网格线 grid</strong></h4>
+<p>在图表中添加水平和 / 或竖直的参考线，帮助用户更准确地读取数据点的值，有两种实现方式：</p>
+<ul>
+<li><em>plt.grid()</em>：面向对象的实现方式</li>
+<li><em>ax.grid()</em>：单张子图的实现方式</li>
+</ul>
+<p>这两个方法接收如下常见参数：</p>
+<ul>
+<li><em>linestyle</em>：网格线的类型，常见的有 <em>–</em>，<em>-</em>，<em>-.</em> 等</li>
+<li><em>axis</em>：<em>both</em> 表示横轴和纵轴都绘制网格线，<em>x</em> 表示只绘制横轴网格线，<em>y</em> 表示只绘制纵轴网格线</li>
+<li><em>alpha</em>：网格线透明度，越接近 0 越偏透明，越接近 1 越偏实线</li>
+</ul>
+<h3 id="线条样式与图例"><strong>线条样式与图例</strong></h3>
+<h4 id="线条样式修改"><strong>线条样式修改</strong></h4>
+<p>在使用 <em>ax.plot()</em> 或 <em>plt.plot()</em> 进行绘图时，我们可以传入以下参数，控制绘图所用的线条样式：</p>
+<ul>
+<li><em>linestyle</em>：线型，<em>-</em> 表示实线，<em>–</em> 表示虚线，<em>-.</em> 表示点线</li>
+<li><em>linewidth</em>：线宽，默认为 1</li>
+<li><em>color</em>：线的颜色，可以传常见颜色单词 <em>red，blue，wihte</em> 等，也可以传十六进制颜色编码</li>
+<li><em>marker</em>：线上关键节点的类型，常见设置为 <em>o</em> 或者 <em>.</em></li>
+</ul>
+<h4 id="图例-legend"><strong>图例 legend</strong></h4>
+<p>标识不同数据系列的含义，比如不同颜色或线型所代表的类别，有两种实现方式：</p>
+<ul>
+<li><em>ax.legend()</em>：面向对象的实现方式</li>
+<li><em>plt.legend()</em>：单张图表的实现方式</li>
+</ul>
+<p>注意，在使用 <em>plot</em> 进行绘图时，传入作为图例的 <em>label</em> 标签默认不会显示，只有调用 <em>legend</em> 方法以后才会显示，此外，该方法接收两个常见的位置参数，用于控制图例在图中的位置：</p>
+<ul>
+<li><em>loc</em>：<em>best</em> 默认，<em>upper right</em> 右上，<em>upper left</em> 左上，<em>lower right</em> 右下，<em>lower left</em> 左下，<em>center</em> 图标中心，<em>center right</em> 右侧中心等</li>
+<li><em>bbox_to_anchor</em>：传入一个元组 <em>(x,y)</em>，把图标视作坐标系，<em>(0,0)</em> 对应右下角，<em>(1,1)</em> 对应右上角，实际传入的坐标范围可以超过 <em>[0,1]</em>，即图例布置在<strong>图表之外</strong></li>
+<li><em>fontsize</em>，<em>fontweight</em>，<em>color</em> 等和文字有关的设置</li>
+</ul>
+<p>从底层来看，<em>legend</em> 方法会对我们绘图时所传入的所有 <em>label</em> 参数进行收集，最后统一展示</p>
+<h3 id="轴范围-轴刻度与水平垂直线"><strong>轴范围、轴刻度与水平垂直线</strong></h3>
+<h4 id="轴范围-xylim"><strong>轴范围 xylim</strong></h4>
+<p>用于设置 <em>x</em> 轴和 <em>y</em> 轴坐标范围的最小值和最大值：</p>
+<ul>
+<li><em>ax.set_xlim()</em>，<em>ax.set_ylim()</em>：面向对象的实现方式</li>
+<li><em>plt.xlim()</em>，<em>plt.ylim()</em>：单张图表的实现方式</li>
+</ul>
+<p>这些方法都接收一个<strong>元组</strong>作为参数，即 <em>(min_value, max_value)</em>，分别表示坐标轴的最小坐标和最大坐标</p>
+<h4 id="轴刻度-xyticks"><strong>轴刻度 xyticks</strong></h4>
+<p>设置坐标轴上显示的刻度：</p>
+<ul>
+<li><em>ax.set_xticks()</em>，<em>ax.set_ytiks()</em>：面向对象的实现方式</li>
+<li><em>plt.xticks()</em>，<em>plt.yticks()</em>：单张图表的实现方式</li>
+</ul>
+<p>后者支持先后传入两个列表，分别表示要保留显示在坐标轴上的刻度，以及这个刻度可能对应的标签，比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">months = [<span class="string">&#x27;一月&#x27;</span>, <span class="string">&#x27;二月&#x27;</span>, <span class="string">&#x27;三月&#x27;</span>, <span class="string">&#x27;四月&#x27;</span>, <span class="string">&#x27;五月&#x27;</span>, <span class="string">&#x27;六月&#x27;</span>]</span><br><span class="line">x = np.arange(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>)</span><br><span class="line">y = np.array([<span class="number">100</span>,<span class="number">200</span>,<span class="number">300</span>,<span class="number">400</span>,<span class="number">500</span>,<span class="number">600</span>])</span><br><span class="line">...</span><br><span class="line">plt.plot(x, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 设置横轴只有 20 40 50 刻度显示</span></span><br><span class="line">plt.xticks([<span class="number">20</span>,<span class="number">40</span>,<span class="number">50</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 设置横轴原本刻度显示一月到六月的标签</span></span><br><span class="line">plt.xticks(x, months)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 设置横轴只显示二月，四月，五月这三个月的标签</span></span><br><span class="line">plt.xticks([<span class="number">20</span>, <span class="number">40</span>, <span class="number">50</span>], [<span class="string">&#x27;二月&#x27;</span>, <span class="string">&#x27;四月&#x27;</span>, <span class="string">&#x27;五月&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 设置横轴任意刻度显示一月到六月的标签</span></span><br><span class="line">plt.xticks([<span class="number">10</span>, <span class="number">20</span>, <span class="number">40</span>, <span class="number">70</span>, <span class="number">80</span>], months)</span><br></pre></td></tr></table></figure>
+<p>如果从传入标签的角度来看，先传入的一个列表相当于指定了标签在坐标轴上对应的刻度，比如<code>plt.xticks([1,2,3], ['A','B','C'])</code>则表示在原图刻度为 1 2 3 的位置分别生成标签 A B C，<em>plt.xticks()</em> 和 <em>plt.yticks()</em> 支持二者同时设置</p>
+<p>而 <em>ax.set_xticks()</em> 和 <em>ax.set_yticks()</em> 则只支持设置在原图上<strong>要保留的刻度</strong>，而设置这些刻度对应的标签则需要通过 <em>ax.set_xtickslabel()</em> 和 <em>ax.set_ytickslabel()</em> 方法实现，即需要分两步实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">ax.set_xticks([<span class="number">20</span>, <span class="number">40</span>, <span class="number">50</span>])</span><br><span class="line">ax.set_stickslabel([<span class="string">&#x27;二月&#x27;</span>, <span class="string">&#x27;四月&#x27;</span>, <span class="string">&#x27;五月&#x27;</span>])</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>此外，<em>plt.sticks()</em> 和 <em>ax.set_xtickslabel()</em> 还支持传入一个 <em>rotation</em> 参数，用于表示将轴刻度标签进行一定角度的旋转，这主要是为了防止标签之间重叠，提升可读性</p>
+<ul>
+<li>注意，<em>ax.set_xticks()</em> 并不支持接收 <em>rotation</em> 参数，对应 <em>y</em> 轴操作的函数都同理</li>
+</ul>
+<h4 id="水平垂直线-axvline-axhline-hlines-vlines"><strong>水平垂直线 axvline，axhline，hlines，vlines</strong></h4>
+<p>在图表中标记特定的 <em>Y/X</em> 值的位置，用户标记关键时间点或事件：</p>
+<ul>
+<li><em>ax.axvline()</em>，<em>ax.axjline()</em>：面向对象的实现方式</li>
+<li><em>plt.axvline()</em>，<em>plt.axhline()</em>：单张图标的实现方式</li>
+</ul>
+<p>其中 <em>v</em> 表示 <em>vertical</em>，即绘制垂直线，<em>h</em> 表示 <em>horizontal</em>，即绘制水平线，上述方法接收以下参数：</p>
+<ul>
+<li>位置参数 <em>x</em> 或 <em>y</em>：坐标轴上的位置，基于某个坐标进行绘制</li>
+<li>线型 <em>linestyle</em>，线宽 <em>linewidth</em>，透明度 <em>alpha</em>，颜色 <em>color</em> 等</li>
+<li>标记 <em>label</em>，用于在图例中进行展示</li>
+</ul>
+<p>这是相对于整张子图绘制水平、垂直线的方法，如果我们仅想在<strong>某段区间</strong>内进行绘制，则对应需要使用 <em>ax.hlines</em> 和 <em>ax.vlines</em> 方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制水平线</span></span><br><span class="line">ax.hlines(y, xmin, xmax, linestyle, color, linewidth)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制垂直线</span></span><br><span class="line">ax.vlines(x, ymin, ymax, linestyle, color, linewidth)</span><br></pre></td></tr></table></figure>
+<p>以水平线为例：</p>
+<ul>
+<li><em>y</em>（必填）：线的高度，对齐 <em>y</em> 轴的哪个刻度</li>
+<li><em>xmin</em>（可选）：线的左端点横坐标</li>
+<li><em>xmax</em>（可选）：线的右端点横坐标</li>
+</ul>
+<p><strong>注意</strong>：<em>Matplotlib</em> 中所有和线条绘制有关的函数，都接收类似线型 <em>linestyle</em>，线宽 <em>linewidth</em>，透明度 <em>alpha</em>，颜色 <em>color</em> 等参数，用于调整绘图曲线的风格</p>
+<h4 id="文本-text"><strong>文本 text</strong></h4>
+<p>用于在图表中添加自定义注释或解释：</p>
+<ul>
+<li><em>ax.text()</em>：面向对象的实现方式</li>
+<li><em>plt.text()</em>：单张图表的实现方式</li>
+</ul>
+<p>该方法接收如下的常见参数：</p>
+<ul>
+<li><em>x, y, s</em>：分别表示要添加的文字所处的横坐标，纵坐标，以及文字内容</li>
+<li><em>transform</em>：决定 <em>x, y</em> 用什么参考系来定位文本
+<ul>
+<li><em>ax.transData</em>：数据坐标系（默认），即 <em>x, y</em> 对应图表中<strong>实际</strong>的数据刻度</li>
+<li><em>ax.transAxes</em>：子图百分比坐标系，<em>x, y</em> 取值范围为 0~1，代表文本所处在子图百分比的位置</li>
+</ul>
+</li>
+<li><em>ha</em>：<em>horizontal-alignment</em>，水平对齐方式，以传入的 <em>x</em> 坐标为基准，<em>left</em> 表示文本左侧和 <em>x</em> 对齐，<em>right</em> 表示文本右侧和 <em>x</em> 对齐，<em>center</em> 表示文本中部和 <em>x</em> 对齐</li>
+<li><em>va</em>：<em>vertical-alignment</em>：竖直对齐方式，以传入的 <em>y</em> 坐标为基准，同理</li>
+<li>字号 <em>fontsize</em>，子型 <em>fontweight</em>，字体颜色 <em>color</em> 等参数</li>
+</ul>
+<p><strong>注意</strong>：<em>Matplotlib</em> 中所有和文字绘制有关的函数，都接收类似字号 <em>fontsize</em>，子型 <em>fontweight</em>，字体颜色 <em>color</em> 等参数，用于调整文字的风格</p>
+<h4 id="注释与箭头-annotate"><strong>注释与箭头 annotate</strong></h4>
+<p>注释用于在 <em>Matplotlib</em> 图表中标记重要数据点，可以通过带箭头的文本，清晰突出关键信息（比如特定时间点，峰值等），使用如下方法实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.annotate(string, datapoint coordinate, text coordinate, arrow style dictionary, text formating)</span><br></pre></td></tr></table></figure>
+<p>各参数含义如下：</p>
+<ul>
+<li><em>string</em>：用于显示的文本</li>
+<li><em>datapoint coordinate</em>：对应 <em>xy</em> 参数，传入一个 <em>(x, y)</em> 元组，表示被注释的数据点的坐标，即箭头指向的位置</li>
+<li><em>text coordinate</em>：对应 <em>xytext</em> 参数，传入一个 <em>(x, y)</em> 元组，表示注释文本的坐标，即箭头起始的位置</li>
+<li><em>arrow style dictionary</em>：箭头样式设置，建议直接复制官网模版，比如<code>arrowprops=dict(arrowstyle=&quot;-&gt;&quot;, connectionstyle=&quot;angle3,angleA=0,angleB=-90&quot;))</code></li>
+<li><em>text formatting</em>：文本格式设置，用于定义字号，字型，颜色等</li>
+</ul>
+<h3 id="边框隐藏与轴关闭"><strong>边框隐藏与轴关闭</strong></h3>
+<h4 id="边框隐藏-spines"><strong>边框隐藏 spines</strong></h4>
+<p>边框用于控制图表四周的边界线（<em>top</em>，<em>right</em>，<em>left</em>，<em>bottom</em>），移除特定边框可以简化图标外观，使得图标更加简洁：</p>
+<ul>
+<li><em>ax.spines[side]</em>：面向对象实现方式</li>
+<li><em>plt.spines[side]</em>：单张图表实现方式</li>
+</ul>
+<p>可以通过设置 <code>ax.spines[边框位置].set_visible(False)</code> 实现边框隐藏</p>
+<h4 id="轴关闭-axis"><strong>轴关闭 axis</strong></h4>
+<p>通过设置 <em>ax.axis</em>(‘off’)* 即可关闭坐标轴，即坐标轴上不会显示任何刻度和标签</p>
+<h2 id="matplotlib-样式"><strong>Matplotlib 样式</strong></h2>
+<h2 id="matplotlib-布局"><strong>Matplotlib 布局</strong></h2>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/')">数据可视化</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=数据可视化&amp;url=https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A210.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://agilawood4.github.io" target="_blank">Destiny Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Python与机器学习<span class="tagsPageCount">49</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A211.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/03/12/(%E8%AE%A1%E7%BD%91)%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%AE%BA/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A21.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计算机网络体系结构</div></div></a></div><div class="next-post pull-right"><a href="/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A211.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">常用图表绘制</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/08/11/(NN)%E7%BD%91%E7%BB%9C%E6%A6%82%E5%BF%B5%E5%9F%BA%E7%A1%80/" title="神经网络基础概念"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A247.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-11</div><div class="title">神经网络基础概念</div></div></a></div><div><a href="/2025/09/14/(NN)%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/" title="梯度下降算法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A277.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-14</div><div class="title">梯度下降算法</div></div></a></div><div><a href="/2025/09/14/(NN)%E7%BD%91%E7%BB%9C%E6%A6%82%E5%BF%B5%E8%A1%A5%E5%85%85/" title="神经网络补充概念"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A278.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-14</div><div class="title">神经网络补充概念</div></div></a></div><div><a href="/2025/09/15/(CNN)%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" title="卷积神经网络基础"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A284.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-15</div><div class="title">卷积神经网络基础</div></div></a></div><div><a href="/2025/09/24/(ML)%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/" title="聚类算法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A292.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-24</div><div class="title">聚类算法</div></div></a></div><div><a href="/2025/08/20/(RNN)%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="基础循环神经网络"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A256.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-20</div><div class="title">基础循环神经网络</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">数据可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#matplotlib-%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.</span> <span class="toc-text">Matplotlib 基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BB%98%E5%9B%BE"><span class="toc-number">1.1.1.</span> <span class="toc-text">面向对象绘图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%80%89%E9%A1%B9"><span class="toc-number">1.2.</span> <span class="toc-text">格式化选项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E9%A2%98-%E7%BD%91%E6%A0%BC%E7%BA%BF%E4%B8%8E%E8%BD%B4%E6%A0%87%E7%AD%BE"><span class="toc-number">1.2.1.</span> <span class="toc-text">标题、网格线与轴标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%BB%E5%B8%83%E6%A0%87%E9%A2%98-suptitle"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">画布标题 suptitle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E5%9B%BE%E6%A0%87%E9%A2%98-title"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">子图标题 title</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%B4%E6%A0%87%E7%AD%BE-xylabel"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">轴标签 xylabel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E6%A0%BC%E7%BA%BF-grid"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">网格线 grid</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%9D%A1%E6%A0%B7%E5%BC%8F%E4%B8%8E%E5%9B%BE%E4%BE%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">线条样式与图例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E6%9D%A1%E6%A0%B7%E5%BC%8F%E4%BF%AE%E6%94%B9"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">线条样式修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E4%BE%8B-legend"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">图例 legend</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%B4%E8%8C%83%E5%9B%B4-%E8%BD%B4%E5%88%BB%E5%BA%A6%E4%B8%8E%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E7%BA%BF"><span class="toc-number">1.2.3.</span> <span class="toc-text">轴范围、轴刻度与水平垂直线</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%B4%E8%8C%83%E5%9B%B4-xylim"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">轴范围 xylim</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%B4%E5%88%BB%E5%BA%A6-xyticks"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">轴刻度 xyticks</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E7%BA%BF-axvline-axhline-hlines-vlines"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">水平垂直线 axvline，axhline，hlines，vlines</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%9C%AC-text"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">文本 text</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A%E4%B8%8E%E7%AE%AD%E5%A4%B4-annotate"><span class="toc-number">1.2.3.5.</span> <span class="toc-text">注释与箭头 annotate</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%B9%E6%A1%86%E9%9A%90%E8%97%8F%E4%B8%8E%E8%BD%B4%E5%85%B3%E9%97%AD"><span class="toc-number">1.2.4.</span> <span class="toc-text">边框隐藏与轴关闭</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%B9%E6%A1%86%E9%9A%90%E8%97%8F-spines"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">边框隐藏 spines</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%B4%E5%85%B3%E9%97%AD-axis"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">轴关闭 axis</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#matplotlib-%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">Matplotlib 样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#matplotlib-%E5%B8%83%E5%B1%80"><span class="toc-number">1.4.</span> <span class="toc-text">Matplotlib 布局</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/" title="常用图表绘制"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A211.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="常用图表绘制"/></a><div class="content"><a class="title" href="/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/" title="常用图表绘制">常用图表绘制</a><time datetime="2026-03-13T00:39:35.000Z" title="发表于 2026-03-13 08:39:35">2026-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" title="数据可视化"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A210.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据可视化"/></a><div class="content"><a class="title" href="/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" title="数据可视化">数据可视化</a><time datetime="2026-03-13T00:39:35.000Z" title="发表于 2026-03-13 08:39:35">2026-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/12/(%E8%AE%A1%E7%BD%91)%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%AE%BA/" title="计算机网络体系结构"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A21.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络体系结构"/></a><div class="content"><a class="title" href="/2026/03/12/(%E8%AE%A1%E7%BD%91)%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%AE%BA/" title="计算机网络体系结构">计算机网络体系结构</a><time datetime="2026-03-12T02:01:23.425Z" title="发表于 2026-03-12 10:01:23">2026-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/08/(ST)%E5%A5%87%E5%A6%99%E6%95%85%E4%BA%8B5/" title="(ST)任元思传"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2200.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="(ST)任元思传"/></a><div class="content"><a class="title" href="/2026/03/08/(ST)%E5%A5%87%E5%A6%99%E6%95%85%E4%BA%8B5/" title="(ST)任元思传">(ST)任元思传</a><time datetime="2026-03-08T02:45:26.000Z" title="发表于 2026-03-08 10:45:26">2026-03-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/08/%EF%BC%88%E7%BC%96%E8%AF%919%EF%BC%89%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%84%E7%BB%87%E5%8F%8A%E7%AE%A1%E7%90%86/" title="(编译9)运行时的存储组织及管理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2151.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="(编译9)运行时的存储组织及管理"/></a><div class="content"><a class="title" href="/2026/03/08/%EF%BC%88%E7%BC%96%E8%AF%919%EF%BC%89%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%84%E7%BB%87%E5%8F%8A%E7%AE%A1%E7%90%86/" title="(编译9)运行时的存储组织及管理">(编译9)运行时的存储组织及管理</a><time datetime="2026-03-08T00:53:15.002Z" title="发表于 2026-03-08 08:53:15">2026-03-08</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">126</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">5</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>4</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>49</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>35</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://www.bilibili.com/video/BV1Ji4y1N7tK?spm_id_from=333.788.videopod.episodes&amp;vd_source=3ceb705961537c0a458a0c7955359e9b&amp;p=12&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

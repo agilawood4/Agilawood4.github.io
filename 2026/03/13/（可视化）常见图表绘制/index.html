@@ -1,0 +1,825 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>常用图表绘制 | Destiny Blog</title><meta name="keywords" content="Python与机器学习"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="常用图表绘制"><meta name="application-name" content="常用图表绘制"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="常用图表绘制"><meta property="og:url" content="https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/index.html"><meta property="og:site_name" content="Destiny Blog"><meta property="og:description" content="常用图表绘制 折线图 常规折线图 plot  常规折线图用于呈现时间维度趋势，比如分析收入、库存等数据随时间的升降变化，在业务分析中，聚焦时间序列数据的趋势洞察，x 轴统称为时间 &amp;#x2F; 日期类型数据 绘制方法： 1ax.plot(x, y, linestyle, linewidth, color, m"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A211.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A211.jpg"><meta name="description" content="常用图表绘制 折线图 常规折线图 plot  常规折线图用于呈现时间维度趋势，比如分析收入、库存等数据随时间的升降变化，在业务分析中，聚焦时间序列数据的趋势洞察，x 轴统称为时间 &amp;#x2F; 日期类型数据 绘制方法： 1ax.plot(x, y, linestyle, linewidth, color, m"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: Destiny Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Destiny Blog',
+  title: '常用图表绘制',
+  postAI: '',
+  pageFillDescription: '常用图表绘制, 折线图, 常规折线图 plot, 堆叠折线图 stackplot, 双轴折线图 twinx, 折线图填充 fill_between, 柱状图, 垂直柱状图 bar, 水平条形图 barh, 堆叠柱状图, 分组柱状图, 组合图表, 饼图 pie, 散点图, 散点图 scatter, 颜色条 colorbar, 分类颜色条, 散点图信息表示, 直方图 hist, 盒须图 / 箱型图, 数据分布基本概念, 数据分布形态, 盒须图绘制 boxplot, 小提琴图, 小提琴图绘制 violinplot, 绘图样式修改, 热力图 imshow/matshow, imshow 绘制, matchow 绘制, 树地图, 树地图绘制 squarify.plot, 颜色关联数值, 添加颜色条, 极坐标图, 极坐标图绘制 subplot_kw, 细节美化常用图表绘制折线图常规折线图常规折线图用于呈现时间维度趋势比如分析收入库存等数据随时间的升降变化在业务分析中聚焦时间序列数据的趋势洞察轴统称为时间日期类型数据绘制方法各个参数前面都讲过这里不再赘述堆叠折线图通过将系列堆叠能呈现总量与各个系列占比的情况绘制方法其中时间维度数据如年份日期等作为轴坐标要堆叠的系列数据可以传入多个一维数组的若干列或直接传入一个二维数组需要注意传入每个一维数组的长度以及二维数组的列数需要和的长度相同绘图颜色列表长度长度即可会取前个颜色绘图从前往后顺序与中堆叠系列顺序相同绘图标签列表同理透明度双轴折线图如果在同一张图内绘制的两条曲线数值差距过大数值范围较小的那条线就会近似呈现为一条水平的直线难以体现真正的变化无法展示二者有效的关联主要原因在于二者共用同一条轴我们可以使用方法创建次坐标轴在次坐标轴上进行绘制绘制在子图上进行绘制在子图上进行绘制统一设置图例使用的本质是重新生成了另一张子图该子图与原子图共享轴但是有自己的轴空间上二者布局也完全重叠同时因为数据分轴绘制单轴无法涵盖所有系列需要使用画布图例即进行展示折线图填充折线图填充可以使得图标更加美观同时帮助读者更直观地理解数据之间的关系和变化趋势可以通过方法实现其中必填定义填充区域的横向范围一般是由轴上的数值点所组成的数组或必填定义填充区域的纵向范围具体是作为上边界还是下边界需要取决于的设置可选定义填充区域纵向的另一个边界缺省时默认为即表示从曲线填充到水平线可选指明填充的条件区域只有满足条件的部分才会被填充可选默认为是否在边界线交叉处插值确保填充区域完整覆盖交叉点可选填充区域的颜色可选填充区域的透明度示例代码从到曲线进行填充从曲线到填充数据保证曲线全在下方在曲线和之间填充曲线的区域填蓝色曲线的区域填黄色为不同区域也设置图例下层区域上层区域根据轴的范围进行筛选通过掩码同时设置轴和轴的信息柱状图垂直柱状图垂直柱状图用于对比不同类别的数据值通过以下方法进行绘制其中必填柱状图的坐标位置通常为类别名称或索引必填柱子的高度分别对应数据值可选每个柱子的宽度默认值为可选每个柱子的颜色这里虽然参数叫但实际上接收的是一个颜色的列表我们在执行的时候同时会返回一个包含所有柱子对象的容器列表中每个元素都是一个的对象可以通过以下方法调用得到每个柱子的属性每个柱子左下角点的横坐标每个柱子左下角点的纵坐标柱子宽度柱子高度为柱状图中的每个柱子都在其顶端设置高度值显示可以用以下模版实现横坐标位置纵坐标位置高度值横坐标居中规则水平条形图水平条形图可以看成是垂直条形图的转置标签序列对应轴每个标签的值序列对应轴绘制方法如下其中必填每个条在轴的坐标通常为类别名和索引必填每个条的长度对应每条数据的值可选每个条的宽度对应原始中的参数可选每个条的颜色同样需要传入一个颜色值列表同理在使用绘制水平条形图时会返回一个包含所有条形对象的容器可以访问每个条形对象的如下属性每个条的长度每个条左下角点在轴上的坐标每个条左下角点在轴上的坐标每个条的宽度为条形图中的每个条都在其最右侧设置数值显示可以用以下模版实现文字横坐标文字纵坐标文字内容纵向居中对齐堆叠柱状图堆叠柱状图用于直观展示多类别数据总和以及类别构成可以在方法中设置一个参数传入一个长度和相同的列表该参数用于指定在某一次绘制时每一列的柱子起始的纵坐标我们将其值指定为先前每一列柱子的高度和即可这样即可让新柱子基于下方柱子的顶部堆叠而非从坐标轴起始开始绘制实现版本一第列具体实现思路为在循环的过程中累加每一列已经绘制的柱子的高度和存在数组中实现版本二在每个柱子的居中位置填入该柱子的高度用于存放各个柱子容器的二维列表第列具体实现思路为把所有对象存成二维列表然后逐个遍历取出每个柱子左下角的坐标以及对应的即可计算得到该柱子中心的坐标在该位置填写文字设置对齐规则都居中即可实现版本三在每个柱子的居中位置填写它占自己所在那一列的百分比这种堆叠柱状图也称为堆叠柱状图第列具体实现思路为对原始按列求和在计算每个柱子高度时对应高度除以该列的高度总和即可得到这个柱子占这一列高度的百分比分组柱状图分组柱状图可以为每个类别单独绘制柱子确保柱子之间不会重叠这里的规律是每一组柱子的个数每一条柱子的宽度用总宽度柱子的个数即得每一组内每一条柱子的索引第一条为第二条为第三条为依次类推索引重排后按照上述方法绘制的分组柱形图会导致所有柱子相对于横轴坐标都向右偏移了个的宽度因此需要使用方法把横为的位置从而保证标签在组内居中最后在使用方法把横轴标签设置回确保标签值不变柱子总个数总宽度为每个柱子宽度为第组设置标签组内居中设置标签为原始此外如果每一组内只有三条柱子还有一个简单的实现方式如下组合图表组合图表通常指的是折线图和柱状图在同一张画布内的组合柱状图直观表示数值折线图表示变化趋势可以通过构建双轴坐标系其中来分别实现饼图饼图用于对比占比总和为的各类别比例展现各部分在整体中所在的份额绘制方法如下其中必填用于绘制饼图的数据传入数值列表本身即可饼图会依据这些数值自动计算比例同时确定切片大小但是比例不会显示在饼图上可选为各个切片添加标签说明各个切片对应的类别可选设置饼图第一个切片的起始角度缺省时默认是点钟方向设置则从点钟方向开始可选用于格式化显示切片对应的百分比标签比如设置表示整数至少保留一位小数保留一位可选设置百分比标签距离饼图中心的位置值域在之间数值越大标签越靠近边缘可选用于炸开指定切片将其突出显示需要传入一个元组元组长度和切片数量一直每个元素表示对应切片炸开的距离可选用于设置饼图扇形的属性需要传入一个参数字典常见参数如下每个扇形边缘线的颜色如果想让扇形之间看起来不那么紧凑可以将边缘线设置为白色每个扇形边缘线的宽度仅在绘制环形图的时候使用值域在之间值越小对应环形镂空越大可选用于控制饼图的绘制方向缺省时默认为饼图将按逆时针方向绘制扇区设置为饼图将按顺时针方向绘制扇区注意绘制饼图时一般建议切片数量在个左右如果切片过多会降低可读性此时可以将若干个次要类别统一归纳为其他类别切片聚焦关键类别展示散点图散点图散点图用于呈现两个数值变量之间的关联比如销售价格和销售额之间的关系即可用散点图来呈现散点图绘制方法如下其中必填传入数值型的轴数据序列必填传入数值型的轴数据序列可选设置散点大小可以统一传入固定数值表示所有散点大小相同也可以传入对应的列表乘上一个缩放系数表示散点大小和纵坐标相关可选设置散点颜色注意该参数和下面提到的参数不能同时使用可选设置透明度调整重叠点之间的可见性可选设置散点边缘颜色用于提升点的区分度可选设置散点形状默认为圆形还可以设置为正方形三角形菱形叉形加号星形颜色条如果想为散点图添加颜色条即为每个点都设置一个对应的颜色则需要在中传入以下参数可选散点颜色不能与参数同时使用需要传入一个和列表长度相同的数值数组为每个点指定不同的颜色此时需要配合参数进行颜色映射可选颜色映射仅在传入为数值数组时有效将数值映射到指定的颜色空间提供了多种颜色映射类别可以通过进行访问比如表示连续变化的数值用渐变色表示数值大小如温度利润率可以选用表示分类数据用不同颜色表示不同类别如产品类别地区可以选用表示有中心值的数据通过颜色密度展示数据密集程度可以选用在设置以上两个参数的基础上可以通过调用以下方法完成颜色条的绘制数值其中调用返回的结果作为散点图对象子图对象颜色条的标签这里可以认为创建相当于是创建了另一个子图传入和参数即把散点图和颜色条这两个子图进行绑定使二者共同显示在一张画布上一个具体的实现案例颜色映射规则颜色条分类颜色条有些情况下每个散点都会属于一个特定的类别我们想根据这个类别进行分类并绘制颜色条需要用到以下知识点我们可以自定义中的颜色映射字典只需要初始化类对构造函数传入一个列表每个元素都是一类颜色需要注意这里列表的长度需要和我们待分出的类别个数相等使用在构造颜色条时本身也会返回一个类型的对象上面我们说到它本身也是一个子图这个说法其实不严谨应该是这个对象中包含一个类型的子图对象可以通过调用得到这才是一个真正的子图对于调用得到的子图对象我们可以像访问一般的子图对象一样设置其相关属性比如可以通过设置其轴的刻度和类别数相同再通过进一步修改为类别标签代码实现如下颜色映射规则颜色条重置轴刻度为恰好对应四个类别替换为类别标签散点图信息表示在目前所学中散点图最多可以表示四类信息横轴标签表示信息纵轴标签表示信息散点大小表示信息散点颜色结合颜色条表示信息直方图直方图用于可视化数值变量的分布情况绘制方法如下其中必填用于绘图的数值序列取值构成横轴的值域可选控制是否用相对频率缺省时默认为此时轴为处于横轴某区间的频次如果设置为则轴变为相对频率即百分比可选透明度绘制多个分布时为了使得重叠的分布更加清晰的显示可以设置透明度小于可选指定直方图的分箱数量即对横轴值域划分的段数划分段数越多粒度越细越少则粒度越粗可选每个分布的边界颜色当各个分布挤在一起难以分清边界的时候可以设置进行美化可选分布的颜色一组分布的颜色相同可选分布的图例一组分布共享一个图例盒须图箱型图盒须图又称为箱型图用于展示数据分布中位数上下四分位数以及离群值的统计图表盒须图的适用场景比较多组数据的分布差异如不同品牌地区时间的数据对比快速识别数据中的异常值展示数据的偏态和离散程度数据分布基本概念对于下面一组数据下四分位数位于数据前位置的数即第百分位数中位数位于数据中间位置的数即第百分位数将数据分为两半上四分位数位于数据后位置的数即第百分位数对于上面的数据四分位间距表示数据中间部分的跨度衡量数据的离散程度越大说明数据中间部分的波动越大须线从箱体延伸出来的线段通常表示数据的正常范围左边界为右边界为一般认为范围内都是正常数据研究表明倍的足以覆盖将近的正态分布数据既能过滤掉极端异常值又不会误判正常数据须线越长表示数据整体离散程度越大数据分布形态通过观察箱型图我们可以先简单对数据的分布形态进行分析对称数据数据左右两侧分布均匀无明显长尾巴中位数均值盒子左右两侧长度接近须线左右对称中位数位于盒子中间左偏数据数据左侧有长尾巴大部分数据集中在右侧大值区中位数均值因为左值极端小值拉低了均值盒子左侧到中位数长度右侧中位数到须线左侧更长右偏数据数据右侧有长尾巴大部分数据集中在左侧小值区中位数均值因为右侧极端大值拉高了均值盒子右侧中位数到长度左侧到中位数须线右侧更长盒须图信息判断离散程度盒子长度越长表示数据中间的波动更大须线长度越长表示数据整体的离散程度越大判断偏态中间偏左是右偏偏右是左偏居中是对称异常值数量单点都是超出的异常值盒须图绘制盒须图可以使用以下方法绘制其中必填用于绘图的输入数据可以是一维列表绘制一个箱型图也可以是多维列表绘制多个箱型图注意如果是多维列表需要按列进行划分比如如果想绘制组箱型图每组箱型图有条数据需要组织数据为每一列对应一个箱型图可选为每组数据添加标签对应轴刻度传入时必须显式指定参数名可选是否允许设置盒子的颜色缺省默认为只有设置为时才能自定义盒子样式可选是否在箱体上显示凹槽凹槽包含中位数的置信区间缺省时默认为可选是否垂直绘制设置为可绘制水平箱线图可选设置为时展示数据均值一个具体的绘制样例均值中位数小提琴图小提琴图同样可以用于展示数据分布相较于箱线图的核心是分位数统计展示四分位数和异常值小提琴图的核心是密度估计展示数据分布密度其核心用途如下比较多组数据的分布形态如均值离散程度偏度等展示数据的整体分布密度发现异常值或多峰分布适用于样本量较大的数据集相比于箱线图能传递更丰富的分布信息小提琴图能展示的信息数据分布轮廓小提琴图的琴身形状反应数据的分布密度琴身宽的区域数据在该值附近更密集琴身窄的区域数据在该值附近更稀疏中心轴贯穿琴身的竖线代表数据的分布范围顶端和底端分别对应数据的最大值和最小值小提琴图绘制使用以下方法绘制小提琴图其中必填用于绘图的输入数据可以是一维数组或多维数组注意对于多维数组同样是以列为单位进行绘制比如形状的多维数组则可以绘制三组小提琴图每组中有个数据点可选指定每组数据在轴上的位置默认为可选小提琴的宽度默认为可选是否显示均值中位数极值线可选核密度估计的带宽方法影响琴身的平滑度默认值基于数据标准差和样本量自动计算带宽适用于近似正态分布的数据计算速度快使用的经验公式适用于单峰对称分布比更保守生成的曲线更平滑适合噪声较大的数据如果是多峰有可能把峰值抹平可选设置颜色属性包括琴身颜色和边框颜色可选设置透明度避免多组数据重叠时遮挡一个简单的绘图示例绘图样式修改观察可知我们上面绘制的小提琴图比较简单如果想对图中的每个琴体都进行个性化修改我们需要对返回的字典容器进行操作首先拿到中包含构成小提琴图的各个组件其中小提琴图的主体部分一个列表列表中每个元素对应一组数据的小提琴图主体对象可以用于设置小提琴的颜色透明度边框等属性贯穿小提琴主体连接极值上下须线端点的那条线对象表示每组数据均值的水平线表示每组数据中位数的水平线表示每组数据最大值最小值的水平线对于琴体我们通过字段得到对于琴线我们通过字段得到对于小提琴图上的水平线我们同样可以由相关字段索引得到并设置等参数均值中位数添加分位数线如果我们希望小提琴图能和箱线图一样也把四分位线显示出来可以手动进行绘制这里用到我们之前见过的方法计算计算计算绘制上下须线的水平线热力图热力图是一种通过颜色深浅来显示数据密度或者数据相关性的图标其利用颜色映射将数值转化为视觉编码便于快速识别数据模式热点区域和异常值和其他图表不同热力图的横轴是从左到右纵轴却是从上到下的即热力图的原点在左上角绘制可以使用方法绘制热力图其中必填二维数组或矩阵数据长宽可以保持不等可选颜色映射方案控制数据到颜色的转换这里推荐使用之前散点图中介绍的中心值的数据映射即通过颜色密度展示数据密集程度可以选用可选插值方法控制像素之间的过渡效果比如表示块状表示平滑表示高质量平滑可选设置图像宽高比表示自动适应缺省时即为表示每个方格保持正方形在绘制热力图时方法也会返回一个热力图对象在此基础上我们通常还需要加入以下两个元素颜色条热力图绘制颜色条比散点图更简单前者不需要设置参数为数值权重只需要设置的颜色映射规则即可因为热力图会自动把位置的二维矩阵作为数值权重在此基础上直接调用传入和对象即可后者必须显式指出参数名称矩阵数值显示我们希望能够把每个矩阵的数值显示在对应位置的方格上这里可以通过两重循环结合方法实现一份简单实现的案例第天第组颜色条绘制是专门针对矩阵绘制热力图的方法相当于的简化版本其中必填矩阵数据可选和不同这里的默认值是即默认按照每个方格为正方形来绘制除此之外该方法和完全相同树地图树地图是一种用矩形区块显示层级数据的可视化图表通过矩形面积大小表示某一维度的数值比例颜色编码表示另一个维度通过颜色条映射到具体的数值范围核心价值高效率利用空间直观展示多层级数据的占比关系快速识别重要区块面积大或颜色特殊的区域对比同层级子类别可以发现数据异常或模式树地图绘制树地图的绘制不再使用原生图表需要额外引入库实现具体绘制需要调用方法实现其中必填决定矩形面积的数值序列通常是一个一维列表可选每个矩形对应的标签文本形状和相同顺序根据下标索引一一对应可选矩形颜色设置目前我们只考虑传入一个颜色列表先不和具体数值挂钩即不考虑颜色条和数值颜色映射可选指定绘图的轴对象面向对象绘图时需要传入实现多图布局可选每个格子的边界线颜色通常设置为一个简单的实现案例属性属性属性绘图用的一维列表和一维列表等长的标签颜色列表随机映射联系子图关闭坐标轴注意这里传参只是随机分配颜色颜色的深浅并不会和中的数值相对应下面我们会给出将颜色映射真正和某个属性对应的做法不一定是传入绘图的颜色关联数值如果想把树地图的颜色分配和某个参考具体数值关联起来比如大数值对应深色小数值对应浅色相近的数值颜色相同我们需要首先找到一个参考数值列表要求长度和以及列表都相同接着需要对列表进行归一化即将其中元素范围处理到这里最简单的归一化方法即得到归一化后的序列接着把这个序列传入方法中即可构建数值和颜色映射的字典也即在使用进行绘图时在位置传入该颜色映射字典即可使用风格也可以替换为其他风格比如风格把颜色和数值列表实现关联完整代码实现如下属性添加颜色条在颜色关联数值的基础上如果我们还想在树地图边上添加颜色条则首先我们需要创建一个标量映射对象其中这是中负责将数值映射到颜色的基础类使用中的某个颜色映射字典比如我们创建的归一化函数注意这里不能再使用的形式进行创建必须使用进行创建该函数接收两个参数待归一化列表的最小值待归一化列表的最大值该函数自带方法因此可以直接调用即可得到归一化序列这里在初始化的时候传入的归一化函数必须是返回的结果初始化会得到一个翻译器把之前归一化后的数值列表对应到色带上的颜色或者其他风格均可有了这个颜色映射器就可以传入对应的参数中完成颜色条的创建完整代码如下属性绘制颜色条极坐标图如果想描述风向和风速之间的关系或者一天之内车流量的变化这类具有周期性方向性或者环形分布的数据则可以考虑使用极坐标图来表示极坐标图是一种用极坐标系统展示数据的图表类型通过角度和半径两个维度来表达数据关系极坐标图绘制极坐标图本质上也是折线图只不过横轴变成了的极坐标因此同样可以使用方法绘制其中对应普通折线图的只不过在原横坐标的基础上要进行乘以再除以将横坐标均分份对应极坐标圆周上的坐标刻度即对应普通折线图的这里不需要做任何修改把待绘制的原始数据传入即可此外我们还需要设置坐标系为极坐标系也就是在调用构建画布和子图的时候需要设置字典参数为用于设置底层的为极坐标系或者用下面这种形式完整代码实现如下所示横轴坐标角度化创建极坐标画布填充颜色重置坐标轴刻度时设置网格线细节美化目前我们绘制的极坐标图还比较粗糙可以继续调整以下参数进行修改和美化其中设置极坐标度的位置即起始角度的位置表示北方表示南方表示东方表示西方设置角度增加的方向缺省时默认为表示逆时针方向增加设置为则表示顺时针方向增加设置半径标签刻度值的角度位置单位为角度值弧度和度数均可缺省时默认为点钟方向我们可以设置为除此之外我们上面绘制的极坐标图还有一个问题在于折线的起点和终点没有闭合解决方法也很简单只需要在原本的序列中把位置的元素复制到末尾位置即可使得折线首尾相连折线首尾相连不论长度为多少还是均分为份这里需要排除掉否则和刻度会重合时',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-03-17 09:51:13',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Destiny Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>4</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>49</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>35</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">24</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">19</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">25</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url">Python与机器学习</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Python与机器学习</span></a></span></div></div><h1 class="post-title" itemprop="name headline">常用图表绘制</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-03-13T00:39:35.000Z" title="发表于 2026-03-13 08:39:35">2026-03-13</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-03-17T01:51:13.792Z" title="更新于 2026-03-17 09:51:13">2026-03-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A211.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/"><header><a class="post-meta-categories" href="/categories/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url">Python与机器学习</a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" tabindex="-1" itemprop="url">Python与机器学习</a><h1 id="CrawlerTitle" itemprop="name headline">常用图表绘制</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2026-03-13T00:39:35.000Z" title="发表于 2026-03-13 08:39:35">2026-03-13</time><time itemprop="dateCreated datePublished" datetime="2026-03-17T01:51:13.792Z" title="更新于 2026-03-17 09:51:13">2026-03-17</time></header><h1><strong>常用图表绘制</strong></h1>
+<h2 id="折线图"><strong>折线图</strong></h2>
+<h3 id="常规折线图-plot"><strong>常规折线图 plot</strong></h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317093756100.png" alt="image-20260317093756100"></p>
+<p>常规折线图用于呈现时间维度趋势，比如分析收入、库存等数据随时间的升降变化，在业务分析中，聚焦时间序列数据的趋势洞察，<em>x</em> 轴统称为时间 / 日期类型数据</p>
+<p>绘制方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.plot(x, y, linestyle, linewidth, color, marker, label)</span><br></pre></td></tr></table></figure>
+<p>各个参数前面都讲过，这里不再赘述</p>
+<h3 id="堆叠折线图-stackplot"><strong>堆叠折线图 stackplot</strong></h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317093834267.png" alt="image-20260317093834267"></p>
+<p>通过将系列堆叠，能呈现<strong>总量</strong>与各个系列占比的情况</p>
+<p>绘制方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.stackplot(x, *args, labels, colors, alpha)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>x</em>：时间维度数据，如年份、日期等，作为 <em>x</em> 轴坐标</li>
+<li>*<em>args</em>：要堆叠的系列数据，可以传入多个一维数组（<em>DataFrame</em> 的若干列），或直接传入一个二维数组
+<ul>
+<li>需要<strong>注意</strong>，传入每个一维数组的长度，以及二维数组的列数，需要和 <em>x</em> 的长度相同</li>
+</ul>
+</li>
+<li><em>colors</em>：绘图颜色列表，长度 &gt;= <em>x</em> 长度即可，会取前 <em>len(x)</em> 个颜色绘图，从前往后顺序与 *<em>args</em> 中堆叠系列顺序相同</li>
+<li><em>labels</em>：绘图标签列表，同理</li>
+<li><em>alpha</em>：透明度</li>
+</ul>
+<h3 id="双轴折线图-twinx"><strong>双轴折线图 twinx</strong></h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317093856897.png" alt="image-20260317093856897"></p>
+<p>如果在同一张图内绘制的两条曲线数值差距过大，数值范围较小的那条线就会近似呈现为一条水平的直线，难以体现真正的变化，无法展示二者有效的关联</p>
+<p>主要原因在于二者共用<strong>同一条</strong> <em>y</em> 轴，我们可以使用 <em>twinx()</em> 方法创建<strong>次坐标轴</strong>，在次坐标轴上进行绘制绘制：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fig, ax1 = plt.subplots()</span><br><span class="line"><span class="comment"># 在 ax1 子图上进行绘制</span></span><br><span class="line">...</span><br><span class="line">ax2 = ax1.twinx()</span><br><span class="line"><span class="comment"># 在 ax2 子图上进行绘制</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># 统一设置图例</span></span><br><span class="line">fig.legend()</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>使用 <em>twinx()</em> 的本质是重新生成了另一张子图，该子图与原子图共享 <em>x</em> 轴，但是有自己的 <em>y</em> 轴，空间上二者布局也完全重叠，同时因为数据<strong>分轴绘制</strong>，单轴 <em>legend()</em> 无法涵盖所有系列，需要使用画布图例，即 <em>fig.legend()</em> 进行展示</p>
+<h3 id="折线图填充-fill-between"><strong>折线图填充 fill_between</strong></h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317093927961.png" alt="image-20260317093927961"></p>
+<p>折线图填充可以使得图标更加美观，同时帮助读者更直观地理解数据之间的关系和变化趋势，可以通过 <em>fill_between()</em> 方法实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.fill_between(x, y1, y2, where, interpolate, color, alpha)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li>
+<p><em>x</em>（必填）：定义填充区域的横向范围，一般是由 <em>x</em> 轴上的数值点所组成的数组或 <em>Series</em></p>
+</li>
+<li>
+<p><em>y~1~</em>（必填）：定义填充区域的纵向范围，具体 <em>y~2~</em> 是作为上边界还是下边界需要取决于 <em>y~2~</em> 的设置</p>
+</li>
+<li>
+<p><em>y~2~</em>（可选）：定义填充区域纵向的另一个边界，缺省时默认为 0，即表示从曲线填充到 <em>y=0</em> 水平线</p>
+</li>
+<li>
+<p><em>where</em>（可选）：指明填充的条件区域，只有满足条件的部分才会被填充</p>
+</li>
+<li>
+<p><em>interpolate</em>（可选）：默认为 <em>False</em>，是否在边界线交叉处插值，确保填充区域完整覆盖交叉点</p>
+</li>
+<li>
+<p><em>color</em>（可选）：，填充区域的颜色</p>
+</li>
+<li>
+<p><em>alpha</em>（可选）：，填充区域的透明度，<em>[0, 1]</em></p>
+</li>
+</ul>
+<p>示例代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.plot(x, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 从 0 到曲线进行填充</span></span><br><span class="line">ax.fill_between(x, y)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 从曲线到 y=20 填充（数据保证曲线全在 y=20 下方）</span></span><br><span class="line">ax.fill_between(x, y1=y, y2=<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 在曲线和 y=10 之间填充，曲线&gt;10 的区域填蓝色，曲线&lt;10 的区域填黄色</span></span><br><span class="line">ax.fill_between(x, y1=y, y2=<span class="number">10</span>, where=(y&lt;=<span class="number">10</span>), color=<span class="string">&#x27;yellow&#x27;</span>, interpolate=<span class="literal">True</span>)</span><br><span class="line">ax.fill_between(x, y1=y, y2=<span class="number">10</span>, where=(y&gt;<span class="number">10</span>), color=<span class="string">&#x27;blue&#x27;</span>, interpolate=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 为不同区域也设置图例</span></span><br><span class="line">ax.fill_between(x, y1=y, y2=<span class="number">10</span>, where=(y&lt;=<span class="number">10</span>), color=<span class="string">&#x27;yellow&#x27;</span>, interpolate=<span class="literal">True</span>, label=<span class="string">&#x27;下层区域&#x27;</span>)</span><br><span class="line">ax.fill_between(x, y1=y, y2=<span class="number">10</span>, where=(y&gt;<span class="number">10</span>), color=<span class="string">&#x27;blue&#x27;</span>, interpolate=<span class="literal">True</span>, label=<span class="string">&#x27;上层区域&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 根据 x 轴的范围进行筛选</span></span><br><span class="line">mask = ((x &gt; <span class="number">4</span>) &amp; (x &lt; <span class="number">8</span>)) </span><br><span class="line">ax.fill_between(x[mask], y[mask]) <span class="comment"># 通过掩码同时设置 x 轴和 y 轴的信息</span></span><br></pre></td></tr></table></figure>
+<h2 id="柱状图"><strong>柱状图</strong></h2>
+<h3 id="垂直柱状图-bar"><strong>垂直柱状图 bar</strong></h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094008383.png" alt="image-20260317094008383"></p>
+<p>垂直柱状图用于对比不同类别的数据值，通过以下方法进行绘制：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.bar(x, height, width, color)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>x</em>（必填）：柱状图的 <em>x</em> 坐标位置，通常为类别名称或索引</li>
+<li><em>height</em>（必填）：柱子的高度，分别对应数据值</li>
+<li><em>width</em>（可选）：每个柱子的宽度，默认值为 0.8</li>
+<li><em>color</em>（可选）：每个柱子的颜色，这里虽然参数叫 <em>color</em>，但实际上接收的是一个颜色的列表</li>
+</ul>
+<p>我们在执行 <em>ax.bar()</em> 的时候同时会返回一个包含所有柱子对象的<strong>容器</strong>，列表中每个元素都是一个 <em>bar</em> 的对象，可以通过以下方法调用得到每个柱子的属性：</p>
+<ul>
+<li><em>get_x()</em>：每个柱子左下角点的横坐标</li>
+<li><em>get_y()</em>：每个柱子左下角点的纵坐标</li>
+<li><em>get_width()</em>：柱子宽度</li>
+<li><em>get_height()</em>：柱子高度</li>
+</ul>
+<p>为柱状图中的每个柱子都在其顶端设置高度值显示，可以用以下模版实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bars = ax.bar(...)</span><br><span class="line"><span class="keyword">for</span> bar <span class="keyword">in</span> bars:</span><br><span class="line">    height = bar.get_height()</span><br><span class="line">    ax.text(</span><br><span class="line">        bar.get_X() + bar.get_width()/<span class="number">2</span>, <span class="comment"># 横坐标位置 </span></span><br><span class="line">        height+<span class="number">0.5</span>, <span class="comment"># 纵坐标位置</span></span><br><span class="line">        <span class="string">f&quot;<span class="subst">&#123;height:<span class="number">.2</span>f&#125;</span>&quot;</span>,  <span class="comment"># 高度值</span></span><br><span class="line">        ha=<span class="string">&#x27;center&#x27;</span>, <span class="comment"># 横坐标居中规则</span></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<h3 id="水平条形图-barh"><strong>水平条形图 barh</strong></h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094100310.png" alt="image-20260317094100310"></p>
+<p>水平条形图可以看成是垂直条形图的转置，标签序列对应 <em>y</em> 轴，每个标签的值序列对应 <em>x</em> 轴，绘制方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.barh(y, width, height, color)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>y</em>（必填）：每个条在 <em>y</em> 轴的坐标，通常为类别名和索引</li>
+<li><em>width</em>（必填）：每个条的长度，对应每条数据的值</li>
+<li><em>height</em>（可选）：每个条的宽度，对应原始 <em>bar()</em> 中的 <em>width</em> 参数</li>
+<li><em>color</em>（可选）：每个条的颜色，同样需要传入一个颜色值列表</li>
+</ul>
+<p>同理，在使用 <em>ax.barh()</em> 绘制水平条形图时，会返回一个包含所有<strong>条形对象</strong>的容器，可以访问每个条形对象 <em>barh</em> 的如下属性：</p>
+<ul>
+<li><em>barh.get_width()</em>：每个条的长度</li>
+<li><em>barh.get_y()</em>：每个条<strong>左下角点</strong>在 <em>y</em> 轴上的坐标</li>
+<li><em>barh.get_x()</em>：每个条左下角点在 <em>x</em> 轴上的坐标</li>
+<li><em>barh.get_Height()</em>：每个条的宽度</li>
+</ul>
+<p>为条形图中的每个条都在其最右侧设置数值显示，可以用以下模版实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">barhs = ax.barh(...)</span><br><span class="line"><span class="keyword">for</span> barh <span class="keyword">in</span> barhs:</span><br><span class="line">    width = barh.get_width()</span><br><span class="line">    ax.text(</span><br><span class="line">    	bar.get_width()+<span class="number">0.5</span>, <span class="comment"># 文字横坐标 </span></span><br><span class="line">        barh.get_y() + barh.get_height()/<span class="number">2</span>, <span class="comment"># 文字纵坐标 </span></span><br><span class="line">        <span class="string">f&quot;<span class="subst">&#123;width:<span class="number">.2</span>f&#125;</span>&quot;</span>, <span class="comment"># 文字内容</span></span><br><span class="line">        va=<span class="string">&#x27;center&#x27;</span> <span class="comment"># 纵向居中对齐</span></span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<h3 id="堆叠柱状图"><strong>堆叠柱状图</strong></h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094129449.png" alt="image-20260317094129449"></p>
+<p>堆叠柱状图用于直观展示多类别数据总和以及类别构成，可以在 <em>ax.bar()</em> 方法中设置一个 <em>bottom</em> 参数，传入一个长度和 <em>x</em> 相同的列表，该参数用于指定在某一次绘制时，每一列的柱子<strong>起始</strong>的纵坐标，我们将其值指定为先前每一列柱子的高度和即可</p>
+<p>这样即可让新柱子基于下方柱子的顶部堆叠，而非从坐标轴起始开始绘制</p>
+<p>（1）实现版本一：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x = np.arange(<span class="number">1</span>, <span class="number">11</span>)</span><br><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">5</span>, <span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">bottom = np.zeros(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">for</span> i, y <span class="keyword">in</span> <span class="built_in">enumerate</span>(data):</span><br><span class="line">    ax.bar(x, y, color=colors[i], width=<span class="number">0.6</span>, bottom=bottom, alpha=<span class="number">0.5</span>, label=<span class="string">f&quot;第<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>列&quot;</span>)</span><br><span class="line">    bottom = bottom + y</span><br><span class="line"></span><br><span class="line">ax.legend()</span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<p>具体实现思路为：在循环的过程中，累加每一列已经绘制的柱子的高度和，存在 <em>bottom</em> 数组中</p>
+<p>（2）实现版本二：在每个柱子的居中位置填入该柱子的<strong>高度</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x = np.arange(<span class="number">1</span>, <span class="number">11</span>)</span><br><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">5</span>, <span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">barss = [] <span class="comment"># 用于存放各个柱子容器的二维列表</span></span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">bottom = np.zeros(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">for</span> i, y <span class="keyword">in</span> <span class="built_in">enumerate</span>(data):</span><br><span class="line">    barss.append(ax.bar(x, y, color=colors[i], width=<span class="number">0.6</span>, bottom=bottom, alpha=<span class="number">0.5</span>, label=<span class="string">f&quot;第<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>列&quot;</span>))</span><br><span class="line">    bottom = bottom + y</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> bars <span class="keyword">in</span> barss:</span><br><span class="line">    <span class="keyword">for</span> bar <span class="keyword">in</span> bars:</span><br><span class="line">        x = bar.get_x() + bar.get_width()/<span class="number">2</span></span><br><span class="line">        y = bar.get_y() + bar.get_height()/<span class="number">2</span></span><br><span class="line">        height = bar.get_height()</span><br><span class="line">        ax.text(x, y, <span class="string">f&quot;<span class="subst">&#123;height:<span class="number">.2</span>f&#125;</span>&quot;</span>, va=<span class="string">&#x27;center&#x27;</span>, ha=<span class="string">&#x27;center&#x27;</span>, fontsize=<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line">ax.spines[<span class="string">&#x27;top&#x27;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">ax.spines[<span class="string">&#x27;right&#x27;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">ax.legend()</span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<p>具体实现思路为：把所有 <em>bar</em> 对象存成二维列表，然后逐个遍历，取出每个柱子左下角的 <em>x, y</em> 坐标，以及对应的 <em>height, width</em>，即可计算得到该柱子中心的坐标，在该位置填写文字，设置对齐规则 <em>va, ha</em> 都居中即可</p>
+<p>（3）实现版本三：在每个柱子的居中位置填写它占自己所在那一列的<strong>百分比</strong>，这种堆叠柱状图也称为 <strong>100% 堆叠柱状图</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x = np.arange(<span class="number">1</span>, <span class="number">11</span>)</span><br><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">5</span>, <span class="number">10</span>])</span><br><span class="line">sums = data.<span class="built_in">sum</span>(axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">barss = []</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">bottom = np.zeros(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">for</span> i, y <span class="keyword">in</span> <span class="built_in">enumerate</span>(data):</span><br><span class="line">    barss.append(ax.bar(x, y, color=colors[i], width=<span class="number">0.6</span>, bottom=bottom, alpha=<span class="number">0.5</span>, label=<span class="string">f&quot;第<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>列&quot;</span>))</span><br><span class="line">    bottom = bottom + y</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> bars <span class="keyword">in</span> barss:</span><br><span class="line">    <span class="keyword">for</span> i, bar <span class="keyword">in</span> <span class="built_in">enumerate</span>(bars):</span><br><span class="line">        x = bar.get_x() + bar.get_width()/<span class="number">2</span></span><br><span class="line">        y = bar.get_y() + bar.get_height()/<span class="number">2</span></span><br><span class="line">        pct = bar.get_height() / sums[i]</span><br><span class="line">        ax.text(x, y, <span class="string">f&quot;<span class="subst">&#123;pct*<span class="number">100</span>:<span class="number">.1</span>f&#125;</span>%&quot;</span>, va=<span class="string">&#x27;center&#x27;</span>, ha=<span class="string">&#x27;center&#x27;</span>, fontsize=<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line">ax.spines[<span class="string">&#x27;top&#x27;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">ax.spines[<span class="string">&#x27;right&#x27;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">ax.legend()</span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<p>具体实现思路为：对原始 <em>data</em> 按列求和，在计算每个柱子高度时，对应高度除以该列的高度总和，即可得到这个柱子占这一列高度的百分比</p>
+<h3 id="分组柱状图"><strong>分组柱状图</strong></h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094154103.png" alt="image-20260317094154103"></p>
+<p>分组柱状图可以为每个类别单独绘制柱子，确保柱子之间不会重叠，这里的规律是：</p>
+<ul>
+<li><em>n</em>：每一组柱子的个数</li>
+<li><em>width</em>：每一条柱子的宽度，用总宽度 / 柱子的个数即得</li>
+<li><em>index</em>：每一组内，每一条柱子的索引，第一条为 <em>x</em>，第二条为 <em>x+width</em>，第三条为 <em>x+2width</em>，依次类推…</li>
+<li>索引重排后：按照上述方法绘制的分组柱形图，会导致所有柱子相对于横轴坐标都向右偏移了 <em>n/2-0.5</em> 个 <em>width</em> 的宽度，因此需要使用 <em>ax.set_xticks()</em> 方法把横为 <em>x+(n/2-0.5)width</em> 的位置，从而保证标签在组内居中，最后在使用 <em>ax.set_xticklabels()</em> 方法把横轴标签设置回 <em>x</em> 确保标签值不变</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">x = np.arange(<span class="number">1</span>, <span class="number">11</span>)</span><br><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">5</span>, <span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">n = data.shape[<span class="number">0</span>] <span class="comment"># 柱子总个数</span></span><br><span class="line">width = <span class="number">0.75</span>/n <span class="comment"># 总宽度为 0.75，每个柱子宽度为 width</span></span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i, y <span class="keyword">in</span> <span class="built_in">enumerate</span>(data):</span><br><span class="line">    ax.bar(x + i * width, y, width=width, color=colors[i], alpha=<span class="number">0.5</span>, label=<span class="string">f&#x27;第<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>组&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ax.set_xticks(x)</span><br><span class="line">ax.set_xticks(x+width*(-<span class="number">0.5</span>+n/<span class="number">2</span>)) <span class="comment"># 设置标签组内居中</span></span><br><span class="line">ax.set_xticklabels(x) <span class="comment"># 设置标签为原始 x</span></span><br><span class="line"></span><br><span class="line">ax.legend()</span><br><span class="line">fig.tight_layout()</span><br><span class="line"></span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<p>此外，如果每一组内只有三条柱子，还有一个简单的实现方式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ax.bar(x-<span class="number">0.25</span>, y[<span class="number">0</span>], <span class="number">0.75</span>/<span class="number">3</span>, colors[<span class="number">0</span>])</span><br><span class="line">ax.bar(x, y[<span class="number">0</span>], <span class="number">0.75</span>/<span class="number">3</span>, colors[<span class="number">0</span>])</span><br><span class="line">ax.bar(x+<span class="number">0.25</span>, y[<span class="number">0</span>], <span class="number">0.75</span>/<span class="number">3</span>, colors[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="组合图表"><strong>组合图表</strong></h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094217685.png" alt="image-20260317094217685"></p>
+<p>组合图表通常指的是折线图和柱状图在同一张画布内的组合，柱状图直观表示数值，折线图表示变化趋势，可以通过 <em>ax2 = ax1.twinx()</em> 构建双轴坐标系，其中 <em>ax1.bar()</em>，<em>ax2.plot()</em> 来分别实现</p>
+<h2 id="饼图-pie"><strong>饼图 pie</strong></h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094240560.png" alt="image-20260317094240560"></p>
+<p>饼图用于对比占比总和为 100% 的各类别比例，展现各部分在整体中所在的份额，绘制方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.pie(series_values, labels, startangle, autopct, pctdistance, explode, wedgeprops, counterclock)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>series_values</em>（必填）：用于绘制饼图的数据，传入数值列表本身即可，饼图会依据这些数值<strong>自动计算比例</strong>，同时确定切片大小（但是比例不会显示在饼图上）</li>
+<li><em>labels</em>（可选）：为各个切片添加标签，说明各个切片对应的类别</li>
+<li><em>startangle</em>（可选）：设置饼图第一个切片的起始角度，缺省时默认是 3 点钟方向，设置 <em>startangle=90</em> 则从 12 点钟方向开始</li>
+<li><em>autopct</em>（可选）：用于格式化显示切片对应的百分比标签，比如设置 <em>%1.1f%%</em> 表示整数至少保留一位，小数保留一位</li>
+<li><em>pctdistance</em>（可选）：设置百分比标签距离饼图中心的位置，值域在 0~1 之间，数值越大标签越靠近边缘</li>
+<li><em>explode</em>（可选）：用于 “炸开” 指定切片，将其突出显示，需要传入一个元组，元组长度和切片数量一直，每个元素表示对应切片 “炸开” 的距离</li>
+<li><em>wedgeprops</em>（可选）：用于设置饼图扇形的属性，需要传入一个<strong>参数字典</strong>，常见参数如下
+<ul>
+<li><em>“edgecolor”: “white”</em>：每个扇形边缘线的颜色，如果想让扇形之间看起来不那么紧凑，可以将边缘线设置为白色</li>
+<li><em>“linewidth”: 1</em>：每个扇形边缘线的宽度</li>
+<li><em>“width”: 0.5</em>：仅在绘制<strong>环形图</strong>的时候使用，值域在 0~1 之间，值越小对应环形镂空越大</li>
+</ul>
+</li>
+<li><em>counterclock</em>（可选）：用于控制饼图的绘制方向，缺省时默认为 <em>True</em>，饼图将按逆时针方向绘制扇区；设置为 <em>False</em>，饼图将按顺时针方向绘制扇区</li>
+</ul>
+<p><strong>注意</strong>：绘制饼图时，一般建议切片数量在 <strong>5 个</strong>左右，如果切片过多会降低可读性，此时可以将若干个次要类别统一归纳为 “其他” 类别切片，聚焦关键类别展示</p>
+<h2 id="散点图"><strong>散点图</strong></h2>
+<h3 id="散点图-scatter"><strong>散点图 scatter</strong></h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094314989.png" alt="image-20260317094314989"></p>
+<p>散点图用于呈现两个数值变量之间的关联，比如销售价格和销售额之间的关系，即可用散点图来呈现，散点图绘制方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.scatter(x, y, s, c, alpha, edgecolors)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>x</em>（必填）：传入数值型的 <em>x</em> 轴数据序列</li>
+<li><em>y</em>（必填）：传入数值型的 <em>y</em> 轴数据序列</li>
+<li><em>s</em>（可选）：设置散点大小，可以统一传入固定数值，表示所有散点大小相同；也可以传入 <em>y</em> 对应的列表（乘上一个缩放系数），表示散点大小和纵坐标相关</li>
+<li><em>color</em>（可选）：设置散点颜色，<strong>注意</strong>，该参数和下面提到的 <em>c</em> 参数不能同时使用</li>
+<li><em>alpha</em>（可选）：设置透明度，调整重叠点之间的可见性</li>
+<li><em>edgecolors</em>（可选）：设置散点边缘颜色，用于提升点的区分度</li>
+<li><em>marker</em>（可选）：设置散点形状，默认为 ’o‘ 圆形，还可以设置为 ’s‘ 正方形，’^‘ 三角形，’D‘ 菱形，’x‘ 叉形，’+‘ 加号，’*‘ 星形</li>
+</ul>
+<h3 id="颜色条-colorbar"><strong>颜色条 colorbar</strong></h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094501992.png" alt="image-20260317094501992"></p>
+<p>如果想为散点图添加颜色条，即为每个点都设置一个对应的颜色，则需要在 <em>ax.scatter()</em> 中传入以下参数：</p>
+<ul>
+<li><em>c</em>（可选）：散点颜色，不能与 <em>color</em> 参数同时使用，需要传入一个和 <em>x</em>，<em>y</em> 列表长度相同的<strong>数值数组</strong>，为每个点指定不同的颜色，此时需要配合 <em>cmap</em> 参数进行颜色映射</li>
+<li><em>cmap</em>（可选）：颜色映射，仅在传入 <em>c</em> 为数值数组时有效，将数值映射到指定的颜色空间，<em>Matplotlib</em> 提供了多种颜色映射类别，可以通过 <em><a target="_blank" rel="noopener external nofollow noreferrer" href="http://plt.cm">plt.cm</a></em> 进行访问，比如 <em>plt.cm.viridis</em>
+<ul>
+<li>表示连续变化的数值：用渐变色表示数值大小，如温度，利润率，可以选用 <em>viridis</em>，<em>plasma</em>，<em>infemo</em>，<em>magma</em>，<em>cividis</em></li>
+<li>表示分类数据：用不同颜色表示不同类别，如产品类别，地区，可以选用 <em>tab10</em>，<em>tab20</em>，<em>Set1</em>，<em>Pastel1</em></li>
+<li>表示有中心值的数据：通过颜色密度展示数据密集程度，可以选用 <em>coolwarm</em>，<em>bwr</em>，<em>seismic</em></li>
+</ul>
+</li>
+</ul>
+<p>在设置以上两个参数的基础上，可以通过调用以下方法完成<strong>颜色条</strong>的绘制：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig.colorbar(scatter, ax, label=<span class="string">&#x27;数值&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>scatter</em>：调用 <em>ax.scatter()</em> 返回的结果，作为散点图对象</li>
+<li><em>ax</em>：子图对象</li>
+<li><em>label</em>：颜色条的标签</li>
+</ul>
+<p>这里可以认为创建 <em>fig.colorbar()</em> 相当于是创建了另一个子图，传入 <em>scatter</em> 和 <em>ax</em> 参数即把散点图和颜色条这两个子图进行绑定，使二者共同显示在一张画布上</p>
+<p>一个具体的实现案例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x = np.arange(<span class="number">1</span>, <span class="number">101</span>)</span><br><span class="line">y = np.random.randint(<span class="number">1</span>, <span class="number">50</span>, [<span class="number">100</span>])</span><br><span class="line">cmp = np.random.randint(<span class="number">1</span>, <span class="number">50</span>, [<span class="number">100</span>]) <span class="comment"># 颜色映射规则</span></span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line"></span><br><span class="line">scatter = ax.scatter(x, y, c=cmp, cmap=plt.cm.viridis, alpha=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">fig.colorbar(mappable=scatter, ax=ax, label=<span class="string">&#x27;颜色条&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ax.spines[<span class="string">&#x27;top&#x27;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">ax.spines[<span class="string">&#x27;right&#x27;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<h3 id="分类颜色条"><strong>分类颜色条</strong></h3>
+<p>有些情况下，每个散点都会属于一个特定的类别，我们想根据这个类别进行分类，并绘制颜色条，需要用到以下知识点“</p>
+<ul>
+<li>我们可以自定义 <em><a target="_blank" rel="noopener external nofollow noreferrer" href="http://plt.cm">plt.cm</a></em> 中的颜色映射字典 <em>cmap</em>，只需要初始化 <em>plt.cm.colors.ListColormap</em> 类，对构造函数传入一个 <em>colors</em> 列表，每个元素都是一类颜色，需要<strong>注意</strong>，这里 <em>colors</em> 列表的长度需要和我们待分出的类别个数相等</li>
+<li>使用 <em>fig.colorbar()</em> 在构造颜色条时，本身也会返回一个 <em>ColorBar</em> 类型的对象 <em>cbar</em>，上面我们说到它本身也是一个子图，这个说法其实不严谨，应该是这个对象中包含一个 <em>Axes</em> 类型的子图对象，可以通过调用 <em><a target="_blank" rel="noopener external nofollow noreferrer" href="http://cbar.ax">cbar.ax</a></em> 得到，这才是一个真正的子图</li>
+<li>对于调用 <em><a target="_blank" rel="noopener external nofollow noreferrer" href="http://cbar.ax">cbar.ax</a></em> 得到的子图对象，我们可以像访问一般的子图对象一样，设置其相关属性，比如可以通过 <em>set_yticks()</em> 设置其 <em>y</em> 轴的刻度和类别数相同，再通过 <em>set_yticklabels()</em> 进一步修改为类别标签</li>
+</ul>
+<p>代码实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">x = np.arange(<span class="number">1</span>, <span class="number">101</span>)</span><br><span class="line">y = np.random.randint(<span class="number">1</span>, <span class="number">50</span>, [<span class="number">100</span>])</span><br><span class="line">cmp = np.random.randint(<span class="number">1</span>, <span class="number">5</span>, [<span class="number">100</span>]) <span class="comment"># 颜色映射规则</span></span><br><span class="line"></span><br><span class="line">selected_colors = plt.cm.colors.ListedColormap(colors[:<span class="number">4</span>])</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line"></span><br><span class="line">scatter = ax.scatter(x, y, c=cmp, cmap=selected_colors, alpha=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">cbar = fig.colorbar(mappable=scatter, ax=ax, label=<span class="string">&#x27;颜色条&#x27;</span>)</span><br><span class="line"></span><br><span class="line">cbar.ax.set_yticks(np.arange(<span class="number">1</span>,<span class="number">5</span>)) <span class="comment"># 重置 y 轴刻度为 1 2 3 4，恰好对应四个类别</span></span><br><span class="line">cbar.ax.set_yticklabels([<span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;II&#x27;</span>, <span class="string">&#x27;III&#x27;</span>, <span class="string">&#x27;IV&#x27;</span>]) <span class="comment"># 替换为类别标签</span></span><br><span class="line"></span><br><span class="line">ax.spines[<span class="string">&#x27;top&#x27;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">ax.spines[<span class="string">&#x27;right&#x27;</span>].set_visible(<span class="literal">False</span>)</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<h3 id="散点图信息表示"><strong>散点图信息表示</strong></h3>
+<p>在目前所学中，散点图最多可以表示四类信息：</p>
+<ul>
+<li>横轴标签表示信息 I</li>
+<li>纵轴标签表示信息 II</li>
+<li>散点大小表示信息 III</li>
+<li>散点颜色，结合颜色条，表示信息 IV</li>
+</ul>
+<h2 id="直方图-hist"><strong>直方图 hist</strong></h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094529756.png" alt="image-20260317094529756"></p>
+<p>直方图用于可视化数值变量的分布情况，绘制方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.hist(series, density, alpha, bins)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>series</em>（必填）：用于绘图的数值序列，取值构成横轴的值域</li>
+<li><em>density</em>（可选）：控制是否用相对频率，缺省时默认为 <em>False</em>，此时 <em>y</em> 轴为处于横轴某区间的频次，如果设置为 <em>True</em>，则 <em>y</em> 轴变为相对频率即百分比</li>
+<li><em>alpha</em>（可选）：透明度，绘制多个分布时，为了使得重叠的分布更加清晰的显示，可以设置透明度小于 1</li>
+<li><em>bins</em>（可选）：指定直方图的分箱数量，即对横轴值域划分的段数，划分段数越多粒度越细，越少则粒度越粗</li>
+<li><em>edgecolor</em>（可选）：每个分布的边界颜色，当各个分布挤在一起难以分清边界的时候，可以设置 <em>edgecolor=‘white’</em> 进行美化</li>
+<li><em>color</em>（可选）：分布的颜色，一组分布的颜色相同</li>
+<li><em>label</em>（可选）：分布的图例，一组分布共享一个图例</li>
+</ul>
+<h2 id="盒须图-箱型图"><strong>盒须图 / 箱型图</strong></h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094559376.png" alt="image-20260317094559376"></p>
+<p>盒须图又称为箱型图，用于展示数据分布、中位数、上下四分位数以及离群值的统计图表</p>
+<p>盒须图的适用场景：</p>
+<ul>
+<li>比较多组数据的分布差异（如不同品牌，地区，时间的数据对比）</li>
+<li>快速识别数据中的异常值</li>
+<li>展示数据的偏态和离散程度</li>
+</ul>
+<h3 id="数据分布基本概念"><strong>数据分布基本概念</strong></h3>
+<p>（1）对于下面一组数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">13</span>,<span class="number">15</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>下四分位数（Q1）：位于数据前 25% 位置的数，即第 25 百分位数</li>
+<li>中位数（Q2）：位于数据中间位置的数，即第 50 百分位数，将数据分为两半</li>
+<li>上四分位数（Q3）：位于数据后 25% 位置的数，即第 75 百分位数</li>
+</ul>
+<p>对于上面的数据，Q1=4，Q2=8，Q3=12</p>
+<p>（2）四分位间距（IQR，Interquartile Range）</p>
+<ul>
+<li>IQR=Q3-Q1，表示数据中间 50% 部分的跨度</li>
+<li>衡量数据的离散程度，IQR<strong>越大</strong>，说明数据中间部分的<strong>波动越大</strong></li>
+</ul>
+<p>（3）须线（whiskers）</p>
+<ul>
+<li>从箱体延伸出来的线段，通常表示数据的正常范围，左边界为 Q1-1.5IQR，右边界为 Q3+1.5IQR，一般认为 <em>[Q1-1.5IQR, Q3+1.5IQR]</em> 范围内都是正常数据</li>
+<li>研究表明，1.5 倍的 IQR 足以覆盖将近 99.3% 的<strong>正态分布</strong>数据，既能过滤掉极端异常值，又不会误判正常数据</li>
+<li>须线越长，表示数据整体<strong>离散程度</strong>越大</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260315221958260.png" alt="image-20260315221958260"></p>
+<h3 id="数据分布形态"><strong>数据分布形态</strong></h3>
+<p>通过观察箱型图，我们可以先简单对数据的分布形态进行分析：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260315230652496.png" alt="image-20260315230652496"></p>
+<p>（1）对称（<em>Symmetric</em>）</p>
+<ul>
+<li>数据：<em>[1, 3, 5, 7, 9, 11, 13, 15, 17, 19]</em></li>
+<li>数据左右两侧分布均匀，无明显长尾巴</li>
+<li>中位数 ≈ 均值，盒子左右两侧长度接近</li>
+<li>须线左右对称，中位数位于盒子中间</li>
+</ul>
+<p>（2）左偏（<em>Left-Skewed</em>）</p>
+<ul>
+<li>数据：<em>[-40, -30, -20, 1, 2, 3, 4, 5, 6, 7, 8, 9]</em></li>
+<li>数据左侧有长尾巴，大部分数据集中在右侧（大值区）</li>
+<li>中位数 &gt; 均值（因为左值极端小值拉低了均值）</li>
+<li>盒子左侧（Q1 到中位数）长度 &gt; 右侧（中位数到 Q3），须线左侧更长</li>
+</ul>
+<p>（3）右偏（<em>Right-Skewed</em>）</p>
+<ul>
+<li>数据：<em>[1, 2, 3, 4, 5, 6, 7, 8, 9, 20, 30, 40]</em></li>
+<li>数据右侧有长尾巴，大部分数据集中在左侧（小值区）</li>
+<li>中位数 &lt; 均值（因为右侧极端大值拉高了均值）</li>
+<li>盒子右侧（中位数到 Q3）长度 &gt; 左侧（Q1 到中位数），须线右侧更长</li>
+</ul>
+<p>（4）盒须图信息</p>
+<ul>
+<li>判断离散程度：盒子长度（IQR）越长表示数据中间 50% 的波动更大</li>
+<li>须线长度：越长表示数据整体的离散程度越大</li>
+<li>判断偏态：中间偏左是右偏，偏右是左偏，居中是对称</li>
+<li>异常值数量：单点都是超出 1.5 IQR 的异常值</li>
+</ul>
+<h3 id="盒须图绘制-boxplot"><strong>盒须图绘制 boxplot</strong></h3>
+<p>盒须图可以使用以下方法绘制：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.boxplot(x, notch, vert, patch_artist, tick_labels)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>x</em>（必填）：用于绘图的输入数据，可以是一维列表（绘制一个箱型图），也可以是多维列表（绘制多个箱型图）
+<ul>
+<li><strong>注意</strong>：如果是多维列表，需要按列进行划分，比如如果想绘制 3 组箱型图，每组箱型图有 100 条数据，需要组织数据为 <em>(100, 3)</em>，每一列对应一个箱型图</li>
+</ul>
+</li>
+<li><em>tick_labels</em>（可选）：为每组数据添加标签，对应 <em>x</em> 轴刻度，传入时必须显式指定参数名</li>
+<li><em>patch_artist</em>（可选）：是否允许设置盒子的颜色，缺省默认为 <em>False</em>，只有设置为 <em>True</em> 时才能自定义盒子样式</li>
+<li><em>notch</em>（可选）：是否在箱体上显示凹槽，凹槽包含中位数的置信区间，缺省时默认为 <em>False</em></li>
+<li><em>vert</em>（可选）：是否垂直绘制（<em>vert=True</em>），设置为 <em>False</em> 可绘制水平箱线图</li>
+<li><em>showmeans</em>（可选）：设置为 <em>True</em> 时，展示数据均值</li>
+</ul>
+<p>一个具体的绘制样例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">100</span>, <span class="number">3</span>])</span><br><span class="line">labels = [<span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;II&#x27;</span>, <span class="string">&#x27;III&#x27;</span>]</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line"></span><br><span class="line">ax.boxplot(x=data, tick_labels=labels, showmeans=<span class="literal">True</span>, notch=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i, labels <span class="keyword">in</span> <span class="built_in">enumerate</span>(labels):</span><br><span class="line">    mean_data = np.mean(data[:,i])</span><br><span class="line">    median_data = np.median(data[:,i])</span><br><span class="line">    ax.text(i+<span class="number">1</span>, mean_data+<span class="number">0.5</span>, <span class="string">f&quot;均值:<span class="subst">&#123;mean_data&#125;</span>&quot;</span>, va=<span class="string">&#x27;bottom&#x27;</span>, ha=<span class="string">&#x27;center&#x27;</span>, color=colors[<span class="number">0</span>], fontsize=<span class="number">8</span>)</span><br><span class="line">    ax.text(i+<span class="number">1</span>, mean_data+<span class="number">1</span>, <span class="string">f&quot;中位数:<span class="subst">&#123;median_data&#125;</span>&quot;</span>, va=<span class="string">&#x27;bottom&#x27;</span>, ha=<span class="string">&#x27;center&#x27;</span>, color=colors[<span class="number">1</span>], fontsize=<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<h2 id="小提琴图"><strong>小提琴图</strong></h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094620892.png" alt="image-20260317094620892"></p>
+<p>小提琴图同样可以用于展示数据分布，相较于箱线图的核心是分位数统计（展示四分位数和异常值），小提琴图的核心是<strong>密度估计</strong>（展示数据分布密度）</p>
+<p>其核心用途如下：</p>
+<ul>
+<li>比较多组数据的分布形态，如均值，离散程度，偏度等</li>
+<li>展示数据的整体分布密度，发现异常值或多峰分布</li>
+<li>适用于样本量较大的数据集，相比于箱线图能传递更丰富的分布信息</li>
+</ul>
+<p>小提琴图能展示的信息：</p>
+<ul>
+<li>数据分布轮廓：小提琴图的 “琴身” 形状反应数据的分布密度，琴身宽的区域，数据在该值附近更密集；琴身窄的区域，数据在该值附近更稀疏</li>
+<li>中心轴（贯穿琴身的竖线）：代表数据的分布范围，顶端和底端分别对应数据的最大值和最小值</li>
+</ul>
+<h3 id="小提琴图绘制-violinplot"><strong>小提琴图绘制 violinplot</strong></h3>
+<p>使用以下方法绘制小提琴图：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.violinplot(dataset, positions, widths, showmeans, showmedians, showextrema, bw_method)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>dataset</em>（必填）：用于绘图的输入数据，可以是一维数组或多维数组
+<ul>
+<li><strong>注意</strong>：对于多维数组，同样是以列为单位进行绘制，比如 <em>(100, 3)</em> 形状的多维数组，则可以绘制三组小提琴图，每组中有 100 个数据点</li>
+</ul>
+</li>
+<li><em>positions</em>（可选）：指定每组数据在 <em>x</em> 轴上的位置，默认为 <em>[1, 2, 3,…]</em></li>
+<li><em>widths</em>（可选）：小提琴的宽度，默认为 0.5</li>
+<li><em>showmeans / showmedians / showextrema</em>（可选）：是否显示均值，中位数，极值线</li>
+<li><em>bw_method</em>（可选）：核密度估计的带宽方法，影响琴身的平滑度
+<ul>
+<li>“scott”（默认值）：基于数据标准差和样本量自动计算带宽，适用于近似正态分布的数据，计算速度快</li>
+<li>“silverman”：使用 Silverman 的经验公式，适用于单峰对称分布，比 “scott” 更保守，生成的曲线更平滑，适合噪声较大的数据；如果是多峰，有可能把峰值抹平</li>
+</ul>
+</li>
+<li><em>color / facecolor / edgecolor</em>（可选）：设置颜色属性，包括琴身颜色和边框颜色</li>
+<li><em>alpha</em>（可选）：设置透明度，避免多组数据重叠时遮挡</li>
+</ul>
+<p>一个简单的绘图示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">100</span>, <span class="number">3</span>])</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line"></span><br><span class="line">ax.violinplot(dataset=data, positions=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], showmeans=<span class="literal">True</span>, showmedians=<span class="literal">True</span>, showextrema=<span class="literal">True</span>, bw_method=<span class="string">&#x27;scott&#x27;</span>)</span><br><span class="line"></span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<h3 id="绘图样式修改"><strong>绘图样式修改</strong></h3>
+<p>观察可知，我们上面绘制的小提琴图比较简单，如果想对图中的每个琴体都进行个性化修改，我们需要对 <em>ax.violinplot()</em> 返回的字典容器进行操作，首先：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">violin_parts = ax.violinplot(...)</span><br></pre></td></tr></table></figure>
+<p>拿到 <em>violin_parts</em> 中包含构成小提琴图的各个组件，其中：</p>
+<ul>
+<li><em>bodies</em>：小提琴图的主体部分，一个列表，列表中每个元素u对应一组数据的小提琴图主体（<em>PolyCollection</em> 对象），可以用于设置小提琴的颜色，透明度，边框等属性</li>
+<li><em>cbars</em>：贯穿小提琴主体，连接极值（上下须线端点）的那条线（<em>LineCollection</em> 对象）</li>
+<li><em>cmeans</em>：表示每组数据均值的水平线</li>
+<li><em>cmedians</em>：表示每组数据中位数的水平线</li>
+<li><em>cmins，cmaxs</em>：表示每组数据最大值，最小值的水平线</li>
+</ul>
+<p>（1）对于琴体 <em>bodies</em>，我们通过 <em>violin_parts[‘bodies’]</em> 字段得到</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i, pc <span class="keyword">in</span> <span class="built_in">enumerate</span>(violin_parts[<span class="string">&#x27;bodies&#x27;</span>]):</span><br><span class="line">	pc.set_facecolor(colors[i])</span><br><span class="line">    pc.set_edgecolor(<span class="string">&#x27;black&#x27;</span>)</span><br><span class="line">    pc.set_alpha(<span class="number">0.5</span>)</span><br></pre></td></tr></table></figure>
+<p>（2）对于琴线 <em>cbars</em>，我们通过 <em>vioin_parts[‘cbars’]</em> 字段得到</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">violin_parts[<span class="string">&#x27;cbars&#x27;</span>].set_color[<span class="string">&#x27;black&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<p>（3）对于小提琴图上的水平线，我们同样可以由相关字段索引得到，并设置 <em>linestyle</em>，<em>linewidth</em>，<em>label</em> 等参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">line_colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;black&#x27;</span>, <span class="string">&#x27;black&#x27;</span>]</span><br><span class="line">line_styles = [<span class="string">&#x27;--&#x27;</span>, <span class="string">&#x27;-&#x27;</span>, <span class="string">&#x27;-&#x27;</span>, <span class="string">&#x27;-&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i, line <span class="keyword">in</span> <span class="built_in">enumerate</span>([<span class="string">&#x27;cmeans&#x27;</span>, <span class="string">&#x27;cmedians&#x27;</span>, <span class="string">&#x27;cmins&#x27;</span>, <span class="string">&#x27;cmaxs&#x27;</span>]):</span><br><span class="line">    violin_parts[line].set_color(line_colors[i])</span><br><span class="line">    violin_parts[line].set_linestype(line_styles[i])</span><br><span class="line">    violin_parts[line].set_linewidth(<span class="number">1.5</span>)</span><br><span class="line"></span><br><span class="line">violin_parts[<span class="string">&#x27;cmeans&#x27;</span>].set_label(<span class="string">&#x27;均值&#x27;</span>)</span><br><span class="line">violin_parts[<span class="string">&#x27;cmedians&#x27;</span>].set_label(<span class="string">&#x27;中位数&#x27;</span>)    </span><br></pre></td></tr></table></figure>
+<p>（4）添加分位数线</p>
+<p>如果我们希望小提琴图能和箱线图一样，也把四分位线显示出来，可以手动进行绘制，这里用到我们之前见过的 <em>ax.hlines()</em> 方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(data)):</span><br><span class="line">    sub_data = data[:,i]</span><br><span class="line">    <span class="comment"># 计算 Q1</span></span><br><span class="line">    q1 = np.percentile(sub_data, <span class="number">25</span>)</span><br><span class="line">    <span class="comment"># 计算 Q3</span></span><br><span class="line">    q3 = np.percentile(sub_data, <span class="number">75</span>)</span><br><span class="line">    <span class="comment"># 计算 IQR</span></span><br><span class="line">    iqr = q3 - q1</span><br><span class="line">    whisker_low = q1 - <span class="number">1.5</span>*IQR</span><br><span class="line">    whisker_high = q3 + <span class="number">1.5</span>*IQR</span><br><span class="line">    <span class="comment"># 绘制 Q1，Q3，上下须线的水平线</span></span><br><span class="line">    ax.hlines(y=q1, xmin=i-<span class="number">0.3</span>, xmax=i+<span class="number">0.3</span>, linestyle=<span class="string">&#x27;-.&#x27;</span>, color=<span class="string">&#x27;gray&#x27;</span>, linewidth=<span class="number">1</span>)</span><br><span class="line">    ax.hlines(y=q3, xmin=i-<span class="number">0.3</span>, xmax=i+<span class="number">0.3</span>, linestyle=<span class="string">&#x27;-.&#x27;</span>, color=<span class="string">&#x27;gray&#x27;</span>, linewidth=<span class="number">1</span>)</span><br><span class="line">    ax.hlines(y=whisker_low, xmin=i-<span class="number">0.3</span>, xmax=i+<span class="number">0.3</span>, linestyle=<span class="string">&#x27;-.&#x27;</span>, color=<span class="string">&#x27;gray&#x27;</span>, linewidth=<span class="number">1</span>)</span><br><span class="line">    ax.hlines(y=whisker_high, xmin=i-<span class="number">0.3</span>, xmax=i+<span class="number">0.3</span>, linestyle=<span class="string">&#x27;-.&#x27;</span>, color=<span class="string">&#x27;gray&#x27;</span>, linewidth=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="热力图-imshow-matshow"><strong>热力图 imshow/matshow</strong></h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094648191.png" alt="image-20260317094648191"></p>
+<p>热力图是一种通过颜色深浅来显示数据<strong>密度</strong>或者数据<strong>相关性</strong>的图标，其利用颜色映射（<em>Color Map</em>）将数值转化为视觉编码，便于快速识别数据模式，热点区域和异常值</p>
+<p>和其他图表不同，热力图的横轴是从左到右，纵轴却是<strong>从上到下</strong>的，即热力图的原点在<strong>左上角</strong></p>
+<h3 id="imshow-绘制"><strong>imshow 绘制</strong></h3>
+<p>可以使用 <em>ax.imshow()</em> 方法绘制热力图：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.imshow(x, cmp, interpolation, aspect, alpha)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>x</em>（必填）：二维数组或矩阵数据，长宽可以保持不等</li>
+<li><em>cmap</em>（可选）：颜色映射方案，控制数据到颜色的转换，这里推荐使用之前散点图中介绍的中心值的数据映射，即通过颜色密度展示数据密集程度，可以选用 <em>coolwarm</em>，<em>bwr</em>，<em>seismic</em></li>
+<li><em>interpolation</em>（可选）：插值方法，控制像素之间的过渡效果，比如 <em>nearest</em> 表示<strong>块状</strong>，<em>bilinear</em> 表示<strong>平滑</strong>，<em>bicubic</em> 表示<strong>高质量平滑</strong></li>
+<li><em>aspect</em>（可选）：设置图像宽高比，<em>auto</em> 表示自动适应，缺省时即为 <em>auto</em>，<em>equal</em> 表示每个方格保持正方形</li>
+</ul>
+<p>在绘制热力图时，<em>ax.imshow()</em> 方法也会返回一个热力图对象 <em>im</em>，在此基础上，我们通常还需要加入以下两个元素：</p>
+<ul>
+<li>颜色条 <em>cbar</em>：热力图绘制颜色条比散点图更简单，前者不需要设置 <em>color</em> 参数为数值权重，只需要设置 <em>cmap</em> 的颜色映射规则即可，因为热力图会自动把 <em>x</em> 位置的二维矩阵作为数值权重，在此基础上，直接调用 <em>fig.colorbar()</em> 传入 <em>im</em> 和 <em>ax=ax</em> 对象即可（后者必须显式指出参数名称）</li>
+<li>矩阵数值显示：我们希望能够把每个矩阵的数值显示在对应位置的方格上，这里可以通过两重 <em>for</em> 循环，结合 <em>ax.text()</em> 方法实现</li>
+</ul>
+<p>一份简单实现的案例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">5</span>, <span class="number">10</span>])</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">im = ax.imshow(data, cmap=<span class="string">&#x27;coolwarm&#x27;</span>, interpolation=<span class="string">&#x27;nearest&#x27;</span>, aspect=<span class="string">&#x27;auto&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ax.set_xticks(np.arange(<span class="number">0</span>, data.shape[<span class="number">1</span>]))</span><br><span class="line">ax.set_xticklabels([<span class="string">f&#x27;第<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>天&#x27;</span> <span class="keyword">for</span> i <span class="keyword">in</span> np.arange(<span class="number">0</span>, data.shape[<span class="number">1</span>])])</span><br><span class="line">ax.set_yticks(np.arange(<span class="number">0</span>, data.shape[<span class="number">0</span>]))</span><br><span class="line">ax.set_yticklabels([<span class="string">f&#x27;第<span class="subst">&#123;i+<span class="number">1</span>&#125;</span>组&#x27;</span> <span class="keyword">for</span> i <span class="keyword">in</span> np.arange(<span class="number">0</span>, data.shape[<span class="number">0</span>])])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(data.shape[<span class="number">0</span>]):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(data.shape[<span class="number">1</span>]):</span><br><span class="line">        sub_data = data[i, j]</span><br><span class="line">        ax.text(j, i, <span class="string">f&#x27;<span class="subst">&#123;sub_data:<span class="number">.1</span>f&#125;</span>&#x27;</span>, va=<span class="string">&#x27;center&#x27;</span>, ha=<span class="string">&#x27;center&#x27;</span>)</span><br><span class="line"></span><br><span class="line">cbar = fig.colorbar(im, ax=ax, label=<span class="string">&#x27;颜色条&#x27;</span>)</span><br><span class="line"></span><br><span class="line">fig.legend()</span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<h3 id="matchow-绘制"><strong>matchow 绘制</strong></h3>
+<p><em>ax.matshow()</em> 是专门针对矩阵绘制热力图的方法，相当于 <em>imshow</em> 的简化版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.matshow(a, cmap, aspect, interpolation, alpha)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>a</em>（必填）：矩阵数据</li>
+<li><em>aspect</em>（可选）：和 <em>imshow</em> 不同，这里 <em>aspect</em> 的默认值是 <em>equal</em>，即默认按照每个方格为正方形来绘制</li>
+</ul>
+<p>除此之外，该方法和 <em>imshow</em> 完全相同</p>
+<h2 id="树地图"><strong>树地图</strong></h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094714520.png" alt="image-20260317094714520"></p>
+<p>树地图是一种用矩形区块显示层级数据的可视化图表，通过矩形面积大小表示某一维度的数值比例，颜色编码表示另一个维度，通过颜色条映射到具体的数值范围</p>
+<p>核心价值：</p>
+<ul>
+<li>高效率利用空间，直观展示多层级数据的占比关系</li>
+<li>快速识别重要区块（面积大，或颜色特殊的区域）</li>
+<li>对比同层级子类别，可以发现数据异常或模式</li>
+</ul>
+<h3 id="树地图绘制-squarify-plot"><strong>树地图绘制 squarify.plot</strong></h3>
+<p>树地图的绘制不再使用 <em>Matplotlib</em> 原生图表，需要额外引入 <em>squarfy</em> 库实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install squarify</span><br><span class="line"><span class="keyword">import</span> squarify</span><br></pre></td></tr></table></figure>
+<p>具体绘制需要调用 <em>squary.plot()</em> 方法实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">squary.plot(sizes, label, color, ax)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>sizes</em>（必填）：决定矩形面积的数值序列，通常是一个一维列表</li>
+<li><em>label</em>（可选）：每个矩形对应的标签文本，形状和 <em>sizes</em> 相同，顺序根据下标索引一一对应</li>
+<li><em>color</em>（可选）：矩形颜色设置，目前我们只考虑传入一个颜色列表 <em>colors</em>，先不和具体数值挂钩，即不考虑颜色条和 “数值-颜色” 映射</li>
+<li><em>ax</em>（可选）：指定绘图的轴对象（面向对象绘图时需要传入 <em>ax=ax</em>），实现多图布局</li>
+<li><em>edgecolor</em>（可选）：每个格子的边界线颜色，通常设置为 ‘white’</li>
+</ul>
+<p>一个简单的实现案例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> squarify</span><br><span class="line"></span><br><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">50</span>])</span><br><span class="line">contains1 = np.random.random([<span class="number">50</span>])</span><br><span class="line">contains2 = np.random.random([<span class="number">50</span>])</span><br><span class="line">contains3 = np.random.random([<span class="number">50</span>])</span><br><span class="line"></span><br><span class="line">labels = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">50</span>):</span><br><span class="line">    labels.append(<span class="string">f&#x27;属性1:<span class="subst">&#123;contains1[i]:<span class="number">.2</span>f&#125;</span>\n属性2:<span class="subst">&#123;contains2[i]:<span class="number">.2</span>f&#125;</span>\n属性3:<span class="subst">&#123;contains3[i]:<span class="number">.2</span>f&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots(figsize=(<span class="number">10</span>, <span class="number">8</span>))</span><br><span class="line"></span><br><span class="line">squarify.plot(</span><br><span class="line">    sizes=data, <span class="comment"># 绘图用的一维列表</span></span><br><span class="line">    label=labels, <span class="comment"># 和一维列表等长的标签</span></span><br><span class="line">    color=colors, <span class="comment"># 颜色列表(随机映射)</span></span><br><span class="line">    ax=ax, <span class="comment"># 联系子图</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">ax.axis(<span class="literal">False</span>) <span class="comment"># 关闭坐标轴</span></span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<p>注意，这里传参 <em>cmp=‘coolwarm’</em> 只是随机分配颜色，颜色的深浅并不会和 <em>data</em> 中的数值相对应，下面我们会给出将颜色映射真正和某个属性对应的做法（不一定是传入绘图的 <em>data</em>）</p>
+<h3 id="颜色关联数值"><strong>颜色关联数值</strong></h3>
+<p>如果想把树地图的颜色分配和某个参考具体数值关联起来（比如大数值对应深色，小数值对应浅色，相近的数值颜色相同），我们需要首先找到一个参考数值列表 <em>ref</em>，要求长度和 <em>labels</em> 以及 <em>data</em> 列表都相同</p>
+<p>接着需要对 <em>ref</em> 列表进行归一化，即将其中元素范围处理到 <em>[0, 1]</em>，这里最简单的归一化方法即：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(x - <span class="built_in">min</span>(x)) / (<span class="built_in">max</span>(x) - <span class="built_in">min</span>(x))</span><br></pre></td></tr></table></figure>
+<p>得到归一化后的 <em>norm</em> 序列，接着把这个 <em>norm</em> 序列传入 <em>plt.cm.viridis()</em> 方法中，即可构建数值和颜色映射的<strong>字典</strong>，也即：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">norm_colors = plt.cm.viridis(norm)</span><br></pre></td></tr></table></figure>
+<p>在使用 <em>squarify.plot()</em> 进行绘图时，在 <em>color</em> 位置传入该颜色映射字典，即可使用 <em>viridis</em> 风格（也可以替换为其他风格，比如 <em>coolwarm</em> 风格），把颜色和数值列表 <em>ref</em> 实现关联，完整代码实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">30</span>])</span><br><span class="line">ref = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">30</span>])</span><br><span class="line">norm = (ref - np.<span class="built_in">min</span>(ref)) / (np.<span class="built_in">max</span>(ref) - np.<span class="built_in">min</span>(ref))</span><br><span class="line">labels = []</span><br><span class="line"><span class="keyword">for</span> subdata <span class="keyword">in</span> data:</span><br><span class="line">    labels.append(<span class="string">f&#x27;属性:<span class="subst">&#123;subdata:<span class="number">.2</span>f&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">norm_colors = plt.cm.viridis(norm)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line"></span><br><span class="line">squarify.plot(</span><br><span class="line">    sizes=data,</span><br><span class="line">    label=labels,</span><br><span class="line">    color=norm_colors,</span><br><span class="line">    ax=ax,</span><br><span class="line">    edgecolor=<span class="string">&#x27;white&#x27;</span>,</span><br><span class="line">    linewidth=<span class="number">2</span>,</span><br><span class="line">    alpha=<span class="number">0.7</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">ax.axis(<span class="literal">False</span>)</span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<h3 id="添加颜色条"><strong>添加颜色条</strong></h3>
+<p>在颜色关联数值的基础上，如果我们还想在树地图边上添加颜色条，则首先我们需要创建一个标量映射对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sm = plt.cm.ScalarMappable(cmp, norm)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li>
+<p><em>ScalarMappable</em>：这是 <em>Matplotlib</em> 中负责将数值映射到颜色的基础类</p>
+</li>
+<li>
+<p><em>cmp</em>：使用 <em><a target="_blank" rel="noopener external nofollow noreferrer" href="http://plt.cm">plt.cm</a></em> 中的某个颜色映射字典，比如 <em>viridis</em></p>
+</li>
+<li>
+<p><em>norm</em>：我们创建的归一化函数，<strong>注意</strong>这里不能再使用 <em>numpy</em> 的形式进行创建，必须使用 <em>matplotlib.Normalize()</em> 进行创建</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 该函数接收两个参数，待归一化列表的最小值，待归一化列表的最大值</span></span><br><span class="line">Norm = matplotlib.Normalize(np.<span class="built_in">min</span>(ref), np.<span class="built_in">max</span>(ref))</span><br><span class="line"><span class="comment"># 该函数自带 __call__() 方法，因此可以直接调用，即可得到归一化序列</span></span><br><span class="line">norm = Norm(ref)</span><br></pre></td></tr></table></figure>
+<p>这里在初始化 <em>ScalarMappble</em> 的时候，传入的归一化函数必须是 <em>matplotlib.Normalize()</em> 返回的结果，初始化会得到一个翻译器 <em>sm</em>，把之前归一化后的数值列表 <em>norm</em> 对应到 <em>viridis</em> 色带上的颜色（或者其他风格均可）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sm = plt.cm.ScalarMappble(cmap=plt.cm.viridis, norm=Norm)</span><br></pre></td></tr></table></figure>
+<p>有了这个颜色映射器，就可以传入 <em>plt.colorbar()</em> 对应的 <em>cmap</em> 参数中，完成颜色条的创建，完整代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">30</span>])</span><br><span class="line">ref = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">30</span>])</span><br><span class="line">Norm = plt.Normalize(np.<span class="built_in">min</span>(ref), np.<span class="built_in">max</span>(ref))</span><br><span class="line">norm = Norm(ref)</span><br><span class="line"></span><br><span class="line">labels = []</span><br><span class="line"><span class="keyword">for</span> subdata <span class="keyword">in</span> data:</span><br><span class="line">    labels.append(<span class="string">f&#x27;属性:<span class="subst">&#123;subdata:<span class="number">.2</span>f&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">norm_colors = plt.cm.coolwarm(norm)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line"></span><br><span class="line">squarify.plot(</span><br><span class="line">    sizes=data,</span><br><span class="line">    label=labels,</span><br><span class="line">    color=norm_colors,</span><br><span class="line">    ax=ax,</span><br><span class="line">    edgecolor=<span class="string">&#x27;white&#x27;</span>,</span><br><span class="line">    linewidth=<span class="number">2</span>,</span><br><span class="line">    alpha=<span class="number">0.7</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">sm = plt.cm.ScalarMappable(cmap=plt.cm.coolwarm, norm=Norm)</span><br><span class="line"></span><br><span class="line">plt.colorbar(mappable=sm, ax=ax) <span class="comment"># 绘制颜色条</span></span><br><span class="line"></span><br><span class="line">ax.axis(<span class="literal">False</span>)</span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<h2 id="极坐标图"><strong>极坐标图</strong></h2>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/image-20260317094747423.png" alt="image-20260317094747423"></p>
+<p>如果想描述风向和风速之间的关系，或者一天 24h 之内车流量的变化，这类具有周期性，方向性或者环形分布的数据，则可以考虑使用极坐标图来表示</p>
+<p>极坐标图是一种用极坐标系统展示数据的图表类型，通过角度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span></span></span>  和半径 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span> 两个维度来表达数据关系</p>
+<h3 id="极坐标图绘制-subplot-kw"><strong>极坐标图绘制 subplot_kw</strong></h3>
+<p>极坐标图本质上也是折线图，只不过横轴变成了 360° 的极坐标，因此同样可以使用 <em>ax.plot()</em> 方法绘制：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.plot(theta, r, ...)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>theta</em>：对应普通折线图的 <em>x</em>，只不过在原横坐标的基础上要进行 <em>x</em> 乘以 2π 再除以 24，将横坐标均分 24 份对应极坐标圆周上的坐标刻度，即<code>x = x * 2 * np.pi / 24</code></li>
+<li><em>r</em>：对应普通折线图的 <em>y</em>，这里不需要做任何修改，把待绘制的原始数据传入即可</li>
+</ul>
+<p>此外，我们还需要设置坐标系为<strong>极坐标系</strong>，也就是在调用 <em>plt.subplots()</em> 构建画布和子图的时候，需要设置字典参数 <em>subplot_kw</em> 为 <em>dict(projection=‘polar’)</em> 用于设置底层的 <em>Axes</em> 为极坐标系</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots(subplot_kw=(projection=<span class="string">&#x27;polar&#x27;</span>))</span><br><span class="line"><span class="comment"># 或者用下面这种形式</span></span><br><span class="line">fig, ax = plt.subplots(subplot_kw=&#123;<span class="string">&#x27;projection&#x27;</span>:<span class="string">&#x27;polar&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>完整代码实现如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">24</span>])</span><br><span class="line">x = np.arange(<span class="number">0</span>, <span class="number">24</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 横轴坐标角度化</span></span><br><span class="line">x = x * <span class="number">2</span> * np.pi / <span class="number">24</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建极坐标画布</span></span><br><span class="line">fig, ax = plt.subplots(subplot_kw=<span class="built_in">dict</span>(projection=<span class="string">&#x27;polar&#x27;</span>))</span><br><span class="line"></span><br><span class="line">ax.plot(x, data, color=colors[<span class="number">0</span>], alpha=<span class="number">0.7</span>)</span><br><span class="line">ax.plot(x, np.sqrt(data), color=colors[<span class="number">1</span>], alpha=<span class="number">0.7</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 填充颜色</span></span><br><span class="line">ax.fill_between(x, data, color=colors[<span class="number">0</span>], alpha=<span class="number">0.5</span>)</span><br><span class="line">ax.fill_between(x, np.sqrt(data), color=colors[<span class="number">1</span>], alpha=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置坐标轴刻度</span></span><br><span class="line">ax.set_xticks(x[::<span class="number">3</span>])</span><br><span class="line">ax.set_xticklabels(<span class="string">f&#x27;<span class="subst">&#123;t&#125;</span> 时&#x27;</span> <span class="keyword">for</span> t <span class="keyword">in</span> np.arange(<span class="number">0</span>, <span class="number">24</span>, <span class="number">3</span>))</span><br><span class="line">ax.set_yticks(np.arange(<span class="number">2</span>, <span class="number">7</span>, <span class="number">2</span>))</span><br><span class="line">ax.set_yticklabels(<span class="string">f&#x27;<span class="subst">&#123;t:<span class="number">.1</span>f&#125;</span>mg&#x27;</span> <span class="keyword">for</span> t <span class="keyword">in</span> np.arange(<span class="number">2</span>, <span class="number">7</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置网格线</span></span><br><span class="line">ax.grid(linestyle=<span class="string">&#x27;--&#x27;</span>, color=<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line"></span><br><span class="line">fig.tight_layout()</span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<h3 id="细节美化"><strong>细节美化</strong></h3>
+<p>目前我们绘制的极坐标图还比较粗糙，可以继续调整以下参数进行修改和美化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.plot(theta, r, theta_zero_location, theta_direction, rlabel_position)</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><em>theta_zero_location</em>：设置极坐标 0 度的位置，即起始角度的位置，‘N’ 表示北方，‘S’ 表示南方，‘E’ 表示东方，‘W’ 表示西方</li>
+<li><em>theta_direction</em>：设置角度增加的方向，缺省时默认为 1，表示逆时针方向增加；设置为 -1 则表示顺时针方向增加</li>
+<li><em>rlabel_position</em>：设置半径标签（刻度值）的角度位置，单位为角度值（弧度和度数均可），缺省时默认为 22.5（2 点钟方向），我们可以设置为 45</li>
+</ul>
+<p>除此之外，我们上面绘制的极坐标图还有一个问题，在于折线的起点和终点没有闭合，解决方法也很简单，只需要在原本的 <em>data</em> 序列中，把 0 位置的元素复制到末尾位置，即可使得折线首尾相连：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, [<span class="number">25</span>])</span><br><span class="line">data[<span class="number">24</span>] = data[<span class="number">0</span>] <span class="comment"># 折线首尾相连</span></span><br><span class="line">x = np.arange(<span class="number">0</span>, <span class="number">25</span>)</span><br><span class="line"></span><br><span class="line">x = x * <span class="number">2</span> * np.pi / <span class="number">24</span> <span class="comment"># 不论 x 长度为多少，还是均分为 24 份</span></span><br><span class="line">fig, ax = plt.subplots(subplot_kw=<span class="built_in">dict</span>(projection=<span class="string">&#x27;polar&#x27;</span>))</span><br><span class="line"></span><br><span class="line">ax.plot(x, data, color=colors[<span class="number">0</span>], alpha=<span class="number">0.7</span>)</span><br><span class="line">ax.plot(x, np.sqrt(data), color=colors[<span class="number">1</span>], alpha=<span class="number">0.7</span>)</span><br><span class="line"></span><br><span class="line">ax.fill_between(x, data, color=colors[<span class="number">0</span>], alpha=<span class="number">0.5</span>)</span><br><span class="line">ax.fill_between(x, np.sqrt(data), color=colors[<span class="number">1</span>], alpha=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">ax.set_xticks(x[:-<span class="number">1</span>:<span class="number">3</span>]) <span class="comment"># 这里需要排除掉 24，否则 360 和 0 刻度会重合</span></span><br><span class="line">ax.set_xticklabels(<span class="string">f&#x27;<span class="subst">&#123;t&#125;</span>时&#x27;</span> <span class="keyword">for</span> t <span class="keyword">in</span> np.arange(<span class="number">0</span>, <span class="number">24</span>, <span class="number">3</span>))</span><br><span class="line">ax.set_yticks(np.arange(<span class="number">2</span>, <span class="number">7</span>, <span class="number">2</span>))</span><br><span class="line">ax.set_yticklabels(<span class="string">f&#x27;<span class="subst">&#123;t:<span class="number">.1</span>f&#125;</span>mg&#x27;</span> <span class="keyword">for</span> t <span class="keyword">in</span> np.arange(<span class="number">2</span>, <span class="number">7</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">ax.grid(linestyle=<span class="string">&#x27;--&#x27;</span>, color=<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line"></span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<hr>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/')">常用图表绘制</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=常用图表绘制&amp;url=https://agilawood4.github.io/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A211.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://agilawood4.github.io" target="_blank">Destiny Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Python与机器学习<span class="tagsPageCount">49</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A211.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A210.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">数据可视化</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/08/11/(NN)%E7%BD%91%E7%BB%9C%E6%A6%82%E5%BF%B5%E5%9F%BA%E7%A1%80/" title="神经网络基础概念"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A247.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-11</div><div class="title">神经网络基础概念</div></div></a></div><div><a href="/2025/09/14/(NN)%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/" title="梯度下降算法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A277.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-14</div><div class="title">梯度下降算法</div></div></a></div><div><a href="/2025/09/14/(NN)%E7%BD%91%E7%BB%9C%E6%A6%82%E5%BF%B5%E8%A1%A5%E5%85%85/" title="神经网络补充概念"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A278.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-14</div><div class="title">神经网络补充概念</div></div></a></div><div><a href="/2025/09/15/(CNN)%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" title="卷积神经网络基础"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A284.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-15</div><div class="title">卷积神经网络基础</div></div></a></div><div><a href="/2025/09/24/(ML)%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95/" title="聚类算法"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A292.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-24</div><div class="title">聚类算法</div></div></a></div><div><a href="/2025/08/20/(RNN)%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="基础循环神经网络"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A256.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-20</div><div class="title">基础循环神经网络</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">常用图表绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%98%E7%BA%BF%E5%9B%BE"><span class="toc-number">1.1.</span> <span class="toc-text">折线图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%84%E6%8A%98%E7%BA%BF%E5%9B%BE-plot"><span class="toc-number">1.1.1.</span> <span class="toc-text">常规折线图 plot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E5%8F%A0%E6%8A%98%E7%BA%BF%E5%9B%BE-stackplot"><span class="toc-number">1.1.2.</span> <span class="toc-text">堆叠折线图 stackplot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E8%BD%B4%E6%8A%98%E7%BA%BF%E5%9B%BE-twinx"><span class="toc-number">1.1.3.</span> <span class="toc-text">双轴折线图 twinx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%98%E7%BA%BF%E5%9B%BE%E5%A1%AB%E5%85%85-fill-between"><span class="toc-number">1.1.4.</span> <span class="toc-text">折线图填充 fill_between</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%B1%E7%8A%B6%E5%9B%BE"><span class="toc-number">1.2.</span> <span class="toc-text">柱状图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9E%82%E7%9B%B4%E6%9F%B1%E7%8A%B6%E5%9B%BE-bar"><span class="toc-number">1.2.1.</span> <span class="toc-text">垂直柱状图 bar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B0%B4%E5%B9%B3%E6%9D%A1%E5%BD%A2%E5%9B%BE-barh"><span class="toc-number">1.2.2.</span> <span class="toc-text">水平条形图 barh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E5%8F%A0%E6%9F%B1%E7%8A%B6%E5%9B%BE"><span class="toc-number">1.2.3.</span> <span class="toc-text">堆叠柱状图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E6%9F%B1%E7%8A%B6%E5%9B%BE"><span class="toc-number">1.2.4.</span> <span class="toc-text">分组柱状图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E5%9B%BE%E8%A1%A8"><span class="toc-number">1.2.5.</span> <span class="toc-text">组合图表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A5%BC%E5%9B%BE-pie"><span class="toc-number">1.3.</span> <span class="toc-text">饼图 pie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-number">1.4.</span> <span class="toc-text">散点图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE-scatter"><span class="toc-number">1.4.1.</span> <span class="toc-text">散点图 scatter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2%E6%9D%A1-colorbar"><span class="toc-number">1.4.2.</span> <span class="toc-text">颜色条 colorbar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E9%A2%9C%E8%89%B2%E6%9D%A1"><span class="toc-number">1.4.3.</span> <span class="toc-text">分类颜色条</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE%E4%BF%A1%E6%81%AF%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.4.4.</span> <span class="toc-text">散点图信息表示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE-hist"><span class="toc-number">1.5.</span> <span class="toc-text">直方图 hist</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%92%E9%A1%BB%E5%9B%BE-%E7%AE%B1%E5%9E%8B%E5%9B%BE"><span class="toc-number">1.6.</span> <span class="toc-text">盒须图 &#x2F; 箱型图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.6.1.</span> <span class="toc-text">数据分布基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E5%B8%83%E5%BD%A2%E6%80%81"><span class="toc-number">1.6.2.</span> <span class="toc-text">数据分布形态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%92%E9%A1%BB%E5%9B%BE%E7%BB%98%E5%88%B6-boxplot"><span class="toc-number">1.6.3.</span> <span class="toc-text">盒须图绘制 boxplot</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E6%8F%90%E7%90%B4%E5%9B%BE"><span class="toc-number">1.7.</span> <span class="toc-text">小提琴图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E6%8F%90%E7%90%B4%E5%9B%BE%E7%BB%98%E5%88%B6-violinplot"><span class="toc-number">1.7.1.</span> <span class="toc-text">小提琴图绘制 violinplot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%98%E5%9B%BE%E6%A0%B7%E5%BC%8F%E4%BF%AE%E6%94%B9"><span class="toc-number">1.7.2.</span> <span class="toc-text">绘图样式修改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%AD%E5%8A%9B%E5%9B%BE-imshow-matshow"><span class="toc-number">1.8.</span> <span class="toc-text">热力图 imshow&#x2F;matshow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#imshow-%E7%BB%98%E5%88%B6"><span class="toc-number">1.8.1.</span> <span class="toc-text">imshow 绘制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#matchow-%E7%BB%98%E5%88%B6"><span class="toc-number">1.8.2.</span> <span class="toc-text">matchow 绘制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E5%9C%B0%E5%9B%BE"><span class="toc-number">1.9.</span> <span class="toc-text">树地图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E5%9C%B0%E5%9B%BE%E7%BB%98%E5%88%B6-squarify-plot"><span class="toc-number">1.9.1.</span> <span class="toc-text">树地图绘制 squarify.plot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2%E5%85%B3%E8%81%94%E6%95%B0%E5%80%BC"><span class="toc-number">1.9.2.</span> <span class="toc-text">颜色关联数值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E9%A2%9C%E8%89%B2%E6%9D%A1"><span class="toc-number">1.9.3.</span> <span class="toc-text">添加颜色条</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%81%E5%9D%90%E6%A0%87%E5%9B%BE"><span class="toc-number">1.10.</span> <span class="toc-text">极坐标图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%9D%90%E6%A0%87%E5%9B%BE%E7%BB%98%E5%88%B6-subplot-kw"><span class="toc-number">1.10.1.</span> <span class="toc-text">极坐标图绘制 subplot_kw</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%86%E8%8A%82%E7%BE%8E%E5%8C%96"><span class="toc-number">1.10.2.</span> <span class="toc-text">细节美化</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/" title="常用图表绘制"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A211.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="常用图表绘制"/></a><div class="content"><a class="title" href="/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/" title="常用图表绘制">常用图表绘制</a><time datetime="2026-03-13T00:39:35.000Z" title="发表于 2026-03-13 08:39:35">2026-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" title="数据可视化"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A210.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据可视化"/></a><div class="content"><a class="title" href="/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" title="数据可视化">数据可视化</a><time datetime="2026-03-13T00:39:35.000Z" title="发表于 2026-03-13 08:39:35">2026-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/12/(%E8%AE%A1%E7%BD%91)%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%AE%BA/" title="计算机网络体系结构"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A21.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络体系结构"/></a><div class="content"><a class="title" href="/2026/03/12/(%E8%AE%A1%E7%BD%91)%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%A6%82%E8%AE%BA/" title="计算机网络体系结构">计算机网络体系结构</a><time datetime="2026-03-12T02:01:23.425Z" title="发表于 2026-03-12 10:01:23">2026-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/08/(ST)%E5%A5%87%E5%A6%99%E6%95%85%E4%BA%8B5/" title="(ST)任元思传"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2200.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="(ST)任元思传"/></a><div class="content"><a class="title" href="/2026/03/08/(ST)%E5%A5%87%E5%A6%99%E6%95%85%E4%BA%8B5/" title="(ST)任元思传">(ST)任元思传</a><time datetime="2026-03-08T02:45:26.000Z" title="发表于 2026-03-08 10:45:26">2026-03-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/03/08/%EF%BC%88%E7%BC%96%E8%AF%919%EF%BC%89%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%84%E7%BB%87%E5%8F%8A%E7%AE%A1%E7%90%86/" title="(编译9)运行时的存储组织及管理"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2151.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="(编译9)运行时的存储组织及管理"/></a><div class="content"><a class="title" href="/2026/03/08/%EF%BC%88%E7%BC%96%E8%AF%919%EF%BC%89%E8%BF%90%E8%A1%8C%E6%97%B6%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%84%E7%BB%87%E5%8F%8A%E7%AE%A1%E7%90%86/" title="(编译9)运行时的存储组织及管理">(编译9)运行时的存储组织及管理</a><time datetime="2026-03-08T00:53:15.002Z" title="发表于 2026-03-08 08:53:15">2026-03-08</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">126</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">5</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>4</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>49</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>35</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://www.bilibili.com/video/BV1Ji4y1N7tK?spm_id_from=333.788.videopod.episodes&amp;vd_source=3ceb705961537c0a458a0c7955359e9b&amp;p=12&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
