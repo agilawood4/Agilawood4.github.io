@@ -1,0 +1,655 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>软工作业II | Destiny Blog</title><meta name="keywords" content="专业课"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="软工作业II"><meta name="application-name" content="软工作业II"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="软工作业II"><meta property="og:url" content="https://agilawood4.github.io/2026/03/17/%EF%BC%88%E8%BD%AF%E5%B7%A5%EF%BC%89%E8%BD%AF%E5%B7%A5%E4%BD%9C%E4%B8%9AII/index.html"><meta property="og:site_name" content="Destiny Blog"><meta property="og:description" content="[I.2] 个人作业：软件案例分析    项目 内容     这个作业属于哪个课程 26春软件工程   这个作业的要求在哪里 [I.2] 个人作业：软件案例分析   我在这个课程的目标是 系统学习软件开发过程，评估当前已有的开源软件功能，了解软件评估指标，为后续项目开发做准备工作   这个作业在哪个"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A214.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A214.jpg"><meta name="description" content="[I.2] 个人作业：软件案例分析    项目 内容     这个作业属于哪个课程 26春软件工程   这个作业的要求在哪里 [I.2] 个人作业：软件案例分析   我在这个课程的目标是 系统学习软件开发过程，评估当前已有的开源软件功能，了解软件评估指标，为后续项目开发做准备工作   这个作业在哪个"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://agilawood4.github.io/2026/03/17/%EF%BC%88%E8%BD%AF%E5%B7%A5%EF%BC%89%E8%BD%AF%E5%B7%A5%E4%BD%9C%E4%B8%9AII/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: Destiny Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Destiny Blog',
+  title: '软工作业II',
+  postAI: '',
+  pageFillDescription: '[I.2] 个人作业：软件案例分析, （一）选题简述, （二）调研与评测, 2.1 项目简介, 2.2 使用说明, 2.3 改进意见, 2.4 社区与受众调研, 最终评分, （三）Bug 排查与分析, 3.1 博客文章页图片右键复制图片 / 下载图片提示成功但实际并未生效, 3.2 当博客标题中存在英文单引号  时会导致图片无法解析, 3.3 当文章过长或节标题过多时目录会从中截断后续节标题无法正常显示, （四）开发分析, 4.1 工作量估算, 4.2 软件质量分析, （五）规划建议, 5.1 市场现状调研, 5.2 市场与产品生态, （六）产品规划个人作业软件案例分析项目内容这个作业属于哪个课程春软件工程这个作业的要求在哪里个人作业软件案例分析我在这个课程的目标是系统学习软件开发过程评估当前已有的开源软件功能了解软件评估指标为后续项目开发做准备工作这个作业在哪个具体方面帮助我实现目标对开源软件功能需求和用户体验进行初步调研和分析从用户的角度评估软件性能为后续自己作为开发者进行软件设计时提供参考和辅助一选题简述本次软件工程作业我选择的分析对象为是一个运行在博客框架之上的开源主题开源链接如下官方主题列表将其描述为该主题是基于修改而来它既不是单纯的配色皮肤也不只是几个页面模板而是一个集成了页面布局主题配置交互动画评论系统统计功能摘要音乐球右键菜单等功能的完整前端主题工程作为计算机学院的学生我们平时会接触到博客搭建个人主页展示课程笔记整理项目记录等需求对于大部分新手而言有一个成熟操作简单容易上手且美观的的主题将使得我们的博客搭建事半功倍评估一款博客主题是否优秀可能会涉及安装体验配置复杂度可扩展性稳定性和长期维护成本等多个软件工程问题正好处在这样一个很适合分析的位置它功能丰富风格鲜明文档较完整社区真实存在同时也暴露出配置复杂边界场景较多升级同步成本较高等问题因此本次作业我选择以它作为分析目标二调研与评测项目简介作为一个运行在之上的开源博客主题其官方说明中已经给出了完备的配置流程在博客根目录下通过克隆主题将中的主题名修改为并在缺少渲染器时安装与此外作者还专门强调了覆盖配置机制即将主题配置复制到博客根目录下的中以避免升级主题时丢失自定义配置作为一个设计风格鲜明的博客主题的功能特性非常丰富目前作者已经实现的功能包括但不限于页面组件懒加载图片懒加载多种代码高亮方案多语言配置多评论插件网页访问统计暗色模式脚注语法自定义定制化右键菜单主色调跟随封面图变化沉浸式状态栏图片大图查看瀑布流即刻说说瀑布流相册集摘要音乐球全局中控台和快捷键选项等也就是说相比于一些传统的博客主题它越来越朝着一个智能化的前端方案方向发展而不再是一个只负责显示文章列表的极简模板作为一个博客主题其界面如下我们也可以对其进行美化和自定义变成下面的样子可以看出其主体由首页头图导航栏文章卡片区侧边栏页脚文章页目录评论区以及多种交互组件组成具体而言导航栏负责站点级别的页面切换如首页分类标签相册页关于页等文章卡片区负责展示博客内容本身包括封面图标题摘要和元信息侧边栏承担公告个人信息最近文章标签云等辅助展示作用可以展示作者的联系方式文章页目录与评论区承担阅读导航与互动功能右键菜单音乐球暗色模式沉浸式状态栏等组件则负责强化整体使用体验与个性化风格比如可以设置作者喜欢的音乐或者推荐几篇作者认为不错的文章进行快速跳转使用说明对于其使用的核心流程非常简单基础组件完全通过即可完成配置而扩展功能则可以通过修改本地主题的文件进行配置安装博客框架在主题目录中安装或克隆修改根目录中的将主题改为复制主题配置文件为在根目录中进行覆盖配置通过本地预览查看首页文章页分类页相册页等实际效果根据需要继续配置评论系统统计服务音乐组件摘要等个性化扩展功能命令行操作界面如下而在完成主题配置后博客的书写配置与端侧部署也完全可以由简单的命令行完成整个过程在逻辑上是清晰的负责内容生成负责前端展示与交互增强对于希望搭建一个具有较强视觉表现力和个性化风格的博客站点的用户来说它确实能够较好地解决需求尤其是在个人主页技术博客生活展示这种混合场景下的表现是很有竞争力的该软件的优点如下视觉风格鲜明区别于许多偏极简的博客主题更适合希望建立个人辨识度的用户支持深度个性化开发功能覆盖范围广从基础文章展示到评论统计摘要音乐球等都有支持兼顾专业性和娱乐化官方文档较详细中也给出了安装覆盖配置和部分功能展示开源体系较为完善用户广泛形成社区可通过简单命令行进行部署和操作对新手友好操作简单容易上手同时其强大的功能与高度可定制性也带来了如下缺点升级成本相对较高已明确提醒用户每次更新主题时可能需要手动同步主题对应的配置文件长达上千行且部分高级配置配置繁琐比如公式的显示缺乏对应的开源教程如果想深度修改博客主题或完善功能可能需要花一番功夫功能较多带来了更高的边界错误概率公开中长期存在渲染布局搜索移动端适配等问题相比成熟度更高的和在社区规模和工程稳定性上仍有差距改进意见基于我在使用过程中的个人体验在此提出如下仅代表个人的改进意见增加一键切换新手模式例如提供极简博客展示让初学者不需要第一次就面对完整配置树而是先保证能够使得博客正确部署与展示后再逐步探索更多的配置增加配置体检与升级迁移助手动扫描中失效弃用或冲突的配置项提示用户应如何同步升级增加对于配置文件的说明文档或者简化配置文件的格式目前的配置文件有大量字段缺乏说明用户难以精确操作对语法边界场景搜索组件图片组件移动端布局等高风险区域增加自动化回归测试在文档中进一步强化常见错误排查与版本升级说明减少用户反复翻的成本社区与受众调研为对在实际建站过程中的应用进行更加详细的了解我选择在其社区群中随机抽取了几位积极用户与开发大佬进行讨论与调研他在日常生活中有个人博客搭建与维护经验并尝试过及不同主题的切换覆盖了从只会用现成模板到会进行一定程度自定义配置的流程因此对于分析用户为何选择某个主题以及主题真正满足了什么需求具有较强的参考价值采访用户一一位鱼主题的初学者采访用户二一位资深开发者采访结果显示的长处主要体现在以下几点第一页面辨识度高适合做个人主页和展示型博客第二功能多很多展示效果不需要自己重复造轮子第三整体观感比极简主题更有氛围与此同时其问题也很集中配置项过多很多功能不是装上就能用而是还需要继续查文档配服务调参数对于没有前端经验的同学来说上手门槛明显偏高由此可知的优势来自高度自由与设计表达缺点也来自这种自由度带来的复杂性最终评分经过以上分析我给出的评价是好不错凭借其鲜明的设计风格丰富的功能特性和较强的个性化表达能力已经成为主题生态中非常有辨识度的一个开源项目尽管它在配置复杂度升级迁移和部分边界场景稳定性上还存在改进空间但这并不妨碍它成为许多有建站需求希望打造高颜值个人博客用户的一个优秀选择三排查与分析在使用过程中为客观评估的严重程度我们采用课程给出的评价标准从功能完成度性能与效率和用户体验感三个维度综合考量按照致命性严重一般轻微难以察觉的顺序顺次分配五星至一星博客文章页图片右键复制图片下载图片提示成功但实际并未生效测试环境操作系统浏览器出现位置文章页图片右键菜单现象描述点击复制图片与下载图片后页面会提示复制成功或正在下载中但图片既没有被复制也没有真正下载该是我尝试从博客上下载或复制相关图片时发现的可在特定页面与特定操作下复现复现过程如下打开使用主题的博客文章页找到正文中的一张图片在图片上点击右键选择复制图片或下载图片观察页面提示与实际结果观察到页面顶部会给出复制成功的提示但图片实际上既没有被成功复制到剪贴板也没有被浏览器正确下载通过测试发现该问题不仅出现在自己的站点中在官方演示博客中也能观察到因此可以排除单个站点配置问题的可能从功能角度看这属于典型的前端提示状态与真实执行结果不一致的缺陷它并非核心文章渲染错误但会明显误导用户系统给出了成功反馈用户却没有得到任何有效结果这种问题在交互体验上尤其具有破坏性因为它会直接损害用户对整套提示系统的信任综合考虑我将其严重性评价为星其可能成因如下右键菜单在点击后先执行了提示逻辑而真正的复制或下载动作要么没有正确绑定到浏览器要么受到了跨域权限图片资源来源或剪贴板安全策略的限制但前端却没有根据实际返回值区分成功提示和失败提示目前该问题已通过个人站点添加到官方主题的留言板中当博客标题中存在英文单引号时会导致图片无法解析测试环境操作系统使用方式本地预览与生成页面触发条件文章标题中包含英文单引号该是我在实际写博客时发现的当文章标题中包含英文单引号时比如文章页面中的图片会出现无法正常解析或显示异常的现象如下图所示去掉标题中的单引号后图片又能恢复正常显示该在我的环境中同样具备较强可复现性复现步骤如下新建一篇文章在的字段中写入包含英文单引号的标题在正文中插入图片本地预览或生成静态页面打开文章页面观察图片显示异常将标题中的英文单引号去掉再次预览图片恢复正常显示这个问题比上一条更隐蔽因为普通用户很难第一时间想到为什么标题里的一个字符会影响正文图片显示从使用体验上看这种最糟糕的地方在于它跨越了用户的直觉边界标题和图片在概念上明明是两个模块但最终却发生了相互影响导致排错成本大幅上升综合评价为星我曾花费大量时间查找这个通过查看对应文章的配置文件我们发现对应的和等字段如下所示这里所有的字符串开发者都默认使用英文单引号进行包裹因此当一个字符串中出现单引号时会导致这部分字符串被提前异常截断从而导致后面的内容匹配错误最终造成了这个问题该在本地即可修复通过修改配置文件的设置比如把单引号改成双引号或者尽量不在标题中使用即可避免当文章过长或节标题过多时目录会从中截断后续节标题无法正常显示测试环境操作系统使用方式本地预览与长文写作触发条件文章较长节标题较多目录层级较深该是在撰写长篇文章时发现的当文章比较长或者标题数量较多时右侧目录会出现从中间截断的现象后续部分节标题无法继续显示导致目录失去应有的导航作用该在长文场景下稳定出现复现步骤如下新建一篇较长文章在文章中连续设置大量二级三级标题本地预览页面观察右侧目录区域发现目录显示到中间某处后不再继续展示后续标题如图所示子标题已经阅读到方差阈值法时目录标题还停留在上一节的相关性分析对于一些正在阅读其他博主博客的用户而言如果目录在文章较长时发生截断这会明显影响技术博客教程课程笔记和论文笔记类文章的阅读体验经过查阅相关资料其可能成因如下目录容器可能设置了固定高度或但滚动行为没有正确适配当节标题数量较多时目录生成逻辑正常但显示层发生裁切可能存在目录更新逻辑只计算了前半部分节点后续节点没有完整挂载考虑到该问题会在长文写作这一常见场景中明显影响导航体验但不会影响文章正文本身显示因此综合评价其严重性为星目前比较好的解决方法即减少子目录的嵌套在实际应用中发现如果在文章中多次应用一到五级目录的嵌套则很有可能触发目录显示截断同时该问题已通过个人站点添加到官方主题的留言板中并且在官方社区的群进行了反馈四开发分析工作量估算作为一个功能较丰富设计风格明确并整合了多种前端交互与第三方服务的主题若从零开始由一个人团队计算机专业本科毕业生并配备专业支持开发出当前版本的核心功能进行理想化分析时其工程量测算可按功能模块进行分条分析基础主题框架首页文章页归档页分类页标签页关于页等基础模板设计与渲染逻辑约需人月配置系统与覆盖配置机制主题配置项定义解析优先级覆盖升级兼容约需人月页面交互组件暗色模式右键菜单沉浸式状态栏图片灯箱音乐球全局中控台快捷键等约需人月第三方服务整合评论系统统计系统广告挂载摘要自定义主色调等约需人月文档与预览站建设功能说明安装教程配置文档演示站维护约需人月样式与视觉设计打磨卡片式设计响应式布局深浅色模式协调细节动画约需人月测试与调试渲染测试兼容性测试移动端测试视觉回归测试约需人月项目管理与维护需求分析版本规划处理社区支持文档更新约占整体的左右各模块之间并行开发但部分模块之间存在强依赖关系例如基础模板完成后方可大规模接入交互组件配置系统成熟后才能降低后续维护成本综合考虑后我认为该主题若由人团队从零实现到当前成熟度大约需要个月总工作量约为人月如果再考虑持续迭代社区答疑版本兼容与文档维护实际成本还会更高软件质量分析我们将与其同类产品进行对比如其他常见的博客优秀主题这里我选择和可以得出如下的优势和不足优势视觉风格鲜明在主题中辨识度很高更适合个人展示与设计风格较强的博客功能丰富覆盖从基础博客展示到评论统计摘要音乐球等多种扩展需求官方文档较完整中给出了预览文档和安装配置方法已被收录进官方主题列表说明其具备一定代表性也被业界所认可劣势相较于和配置复杂度更高对初学者不够友好当前公开中仍有较多与渲染搜索布局移动端适配相关的问题说明边界稳定性仍需加强官方所给出的文档中已明确提醒升级时可能需要同步修改维护成本高于普通极简主题社区规模和工程成熟度仍弱于与当前页面显示约约而约从个人体验感而言在同类产品中的综合质量大致可以评为中文主题第一梯队但未必进入前二如果以工程成熟度安装清晰度社区规模为标准和更占优势如果以视觉个性页面氛围和个人展示效果为标准则非常突出综合来看我认为它在同类产品中大致可以排在第名左右针对上述描述在软件工程方面可以尝试把配置演进管理与边界场景测试提升为更高优先级尤其是配置升级迁移渲染快照测试图片与搜索组件的回归测试等应该被纳入更系统的质量保证流程中五规划建议市场现状调研静态博客主题市场虽然不像移动应用市场那样面向大众用户但它依然是开发者工具生态中的一个稳定细分市场有一部分自己稳定的受众和群体官方将自己定位为一个并强调其支持插件扩展和一键部署页面显示当前仍有约次说明它对应的博客与建站生态依然活跃目前的主要竞争对手主要分为两大类以为代表的成熟多功能主题其特点是社区大文档成熟长期维护稳定这类主题发展时间久有庞大的受众和维护团队以为代表的偏稳健偏规范风格的主题其特点是安装路径清晰对新手更友好这类博客的通过保守化功能最大程度上降低了用户使用过程中的配置失误与出错风险对于上述产品而言的定位是设计风格鲜明适合打造个人数字空间的个性化博客主题优势是氛围感强展示效果突出劣势是配置复杂维护成本较高的定位更偏成熟稳定的全能型主题优势在于社区规模大生态成熟文档和支持都更强有完善的说明与设计文档和大量的新手教程的定位更偏优雅规范适合技术博客和文档站的稳健型主题优势是逻辑清晰上手友好同时由于其技术的保守性降低了用户在个性化开发过程中的出错风险目前来看想在竞争中持续保持吸引力不能只依赖页面更好看的优势而应在配置体验升级迁移测试保障这些更偏工程质量的方向上进一步补强需要进一步扩大社区与团队规模吸纳更多爱好者加入维护与文档设计工作使得整个博客主题对用户更加友好市场与产品生态的核心用户大致可以涵盖计算机软件工程网络安全设计数字媒体等相关专业或兴趣背景本科及以上学历占比较高其表面需求是想搭一个好看功能多可展示自己的博客站点潜在需求则包括建立个人品牌沉淀作品长期维护个人主页把博客做成数字身份的一部分用户群体之间存在一定的关系以为中心实际上形成了一条比较完整的生态链提供博客框架主题作者提供前端方案插件作者补充功能模块站长根据需求组合主题与插件再通过博客教程文章相互传播自身中也展示出其与评论系统统计系统主色调等外部能力的耦合关系因此它并不是一个孤立产品而是生态中的一个前端整合层的子产品和相关产品之间同样存在明显联系其本体之外还有预览站文档站示例功能展示评论服务接入统计服务接入等外围内容还提到如果用户想要类似的后台编辑体验可以参考同作者的相关项目这说明其产品思路本身已经不局限于单纯的博客主题而是朝着更完整的博客工具链延展六产品规划基于对用户的测评调研以及其所在市场的分析我认为一种最值得优先推进的新功能是配置体检与升级迁移助手因为这两项功能是在版本更新与迭代中留住大部分新手用户的关键要点根据方法对该功能的升级与后续发展说明如下当前用户在使用时最真实的痛点不是没有更多炫酷组件而是配置项太多升级后容易失效不知道哪些配置冲突出现页面异常时不知道应该查哪里官方文档已明确提醒升级时可能需要手动同步这说明配置迁移已经是用户的常见维护成本在主题中接入一个智能体作为官方的配置诊断工具它可以扫描识别弃用键缺失键冲突键和高风险组合在用户升级主题版本时自动给出迁移建议并指出哪些页面或功能可能受影响对于评论系统搜索系统统计系统这类常见外部依赖还可以增加专项检查项这么做可以明显降低新手上手成本减少因配置错误导致的数量降低版本升级时的维护压力也能让整个主题在软件工程意义上显得更成熟更专业和的优势之一并不只是功能多而是它们在安装与使用路径上更成熟更稳健若想在竞争中胜出必须在开发者体验和配置管理上形成自己的差异化竞争力而不能只继续卷视觉特效需要落地到一些具体的用户体验层面这一功能可先以命令行检测器的方式交付再逐步集成到本地预览页或文档站中最终形成发现问题解释问题给出修复建议的闭环体验最终完成闭环若要完成上述功能开发角色配置可以如下产品经理人负责需求细化用户调研功能验收协调进度前端开发人负责诊断面板配置提示展示本地预览可视化配置集成工程师人负责配置版本迁移逻辑第三方服务检查主题功能开发人负责将诊断器接入主题现有结构测试人负责编写测试用例进行配置兼容测试渲染测试视觉回归测试具体的周路线规划如下阶段周次主要任务需求与设计梳理现有访谈真实用户识别安装升级配置三类高频痛点产出文档设计诊断工具信息架构定义的规则完成原型核心开发开发配置扫描器支持识别缺失键弃用键与冲突键实现命令行版输出接入评论统计搜索等常见依赖的专项检查开发可视化诊断页面测试与完善内部测试补充渲染与页面布局回归测试修复主要问题招募志愿者公测收集反馈优化错误提示文案与迁移建议准确性发布与迭代准备发布说明升级文档进行最终回归测试发布功能并同步文档站与观察社区反馈规划下一阶段迭代',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-03-17 23:33:10',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Destiny Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>6</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>50</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>45</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/04/"><span class="card-archive-list-date">四月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">8</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">32</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>专业课</span></a></span></div></div><h1 class="post-title" itemprop="name headline">软工作业II</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-03-17T07:55:08.000Z" title="发表于 2026-03-17 15:55:08">2026-03-17</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-03-17T15:33:10.057Z" title="更新于 2026-03-17 23:33:10">2026-03-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A214.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://agilawood4.github.io/2026/03/17/%EF%BC%88%E8%BD%AF%E5%B7%A5%EF%BC%89%E8%BD%AF%E5%B7%A5%E4%BD%9C%E4%B8%9AII/"><header><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url">专业课</a><h1 id="CrawlerTitle" itemprop="name headline">软工作业II</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2026-03-17T07:55:08.000Z" title="发表于 2026-03-17 15:55:08">2026-03-17</time><time itemprop="dateCreated datePublished" datetime="2026-03-17T15:33:10.057Z" title="更新于 2026-03-17 23:33:10">2026-03-17</time></header><h1><strong>[I.2] 个人作业：软件案例分析</strong></h1>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>这个作业属于哪个课程</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://edu.cnblogs.com/campus/buaa/BUAA_SE_2026_LR?filter=homework">26春软件工程</a></td>
+</tr>
+<tr>
+<td>这个作业的要求在哪里</td>
+<td>[<a target="_blank" rel="noopener external nofollow noreferrer" href="https://edu.cnblogs.com/campus/buaa/BUAA_SE_2026_LR/homework/15609">I.2] 个人作业：软件案例分析</a></td>
+</tr>
+<tr>
+<td>我在这个课程的目标是</td>
+<td>系统学习软件开发过程，评估当前已有的开源软件功能，了解软件评估指标，为后续项目开发做准备工作</td>
+</tr>
+<tr>
+<td>这个作业在哪个具体方面帮助我实现目标</td>
+<td>对开源软件功能、需求和用户体验进行初步调研和分析，从用户的角度评估软件性能，为后续自己作为开发者进行软件设计时提供参考和辅助</td>
+</tr>
+</tbody>
+</table>
+<h2 id="一-选题简述"><strong>（一）选题简述</strong></h2>
+<p>本次软件工程作业，我选择的分析对象为 <strong>AnZhiYu（hexo-theme-anzhiyu）</strong></p>
+<p>AnZhiYu 是一个运行在 Hexo 博客框架之上的开源主题（github 开源链接如下：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu%EF%BC%89%EF%BC%8CHexo">https://github.com/anzhiyu-c/hexo-theme-anzhiyu），Hexo</a> 官方主题列表将其描述为 <strong>“Simple &amp; clean theme for Hexo, A designer-style theme”</strong>；该主题是<strong>基于 hexo-theme-butterfly 修改</strong>而来，它既不是单纯的配色皮肤，也不只是几个页面模板，而是一个集成了页面布局、主题配置、交互动画、评论系统、统计功能、PWA、AI 摘要、音乐球、右键菜单等功能的完整前端主题工程</p>
+<p>作为计算机学院的学生，我们平时会接触到博客搭建、个人主页展示、课程笔记整理、项目记录等需求，对于大部分新手而言，有一个成熟、操作简单、容易上手且美观的的主题将使得我们的博客搭建事半功倍，评估一款博客主题是否优秀，可能会涉及安装体验、配置复杂度、可扩展性、稳定性和长期维护成本等多个软件工程问题，AnZhiYu 正好处在这样一个很适合分析的位置：它功能丰富、风格鲜明、文档较完整、社区真实存在，同时也暴露出配置复杂、边界场景 bug 较多、升级同步成本较高等问题，因此本次作业我选择以它作为分析目标</p>
+<h2 id="二-调研与评测"><strong>（二）调研与评测</strong></h2>
+<h3 id="2-1-项目简介"><strong>2.1 项目简介</strong></h3>
+<p>作为一个运行在 Hexo 之上的开源博客主题，其官方说明中已经给出了完备的配置流程：在博客根目录下通过 Git 克隆主题，将 <code>_config.yml</code> 中的主题名修改为 <code>anzhiyu</code>，并在缺少渲染器时安装 <code>hexo-renderer-pug</code> 与 <code>hexo-renderer-stylus</code>，此外，作者还专门强调了<strong>覆盖配置</strong>机制，即将主题配置复制到博客根目录下的 <code>_config.anzhiyu.yml</code> 中，以避免升级主题时丢失自定义配置</p>
+<p>作为一个设计风格鲜明的博客主题，AnZhiYu 的功能特性非常丰富，目前作者已经实现的功能包括但不限于：页面组件懒加载、图片懒加载、多种代码高亮方案、多语言配置、多评论插件、网页访问统计、暗色模式、脚注语法、自定义 CDN、定制化右键菜单、主色调跟随封面图变化、沉浸式状态栏、图片大图查看、瀑布流即刻说说、瀑布流相册集、PWA、AI 摘要、音乐球、全局中控台和快捷键选项等，也就是说，相比于一些传统的博客主题，它越来越朝着一个智能化的前端方案方向发展，而不再是一个只负责显示文章列表的极简模板</p>
+<p>作为一个博客主题，其界面如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="..../images/image-20260317161900813.png" alt="image-20260317161900813"></p>
+<p>我们也可以对其进行美化和自定义，变成下面的样子：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="..../images/image-20260317162201378.png" alt="image-20260317162201378"></p>
+<p>可以看出，其主体由首页头图、导航栏、文章卡片区、侧边栏、页脚、文章页目录、评论区以及多种交互组件组成。具体而言：</p>
+<ul>
+<li>导航栏负责站点级别的页面切换，如首页、分类、标签、相册页、关于页等</li>
+<li>文章卡片区负责展示博客内容本身，包括封面图、标题、摘要和元信息</li>
+<li>侧边栏承担公告、个人信息、最近文章、标签云等辅助展示作用，可以展示作者的联系方式</li>
+<li>文章页目录与评论区承担阅读导航与互动功能</li>
+<li>右键菜单、音乐球、暗色模式、沉浸式状态栏等组件则负责强化整体使用体验与个性化风格，比如可以设置作者喜欢的音乐，或者推荐几篇作者认为不错的文章进行快速跳转</li>
+</ul>
+<h3 id="2-2-使用说明"><strong>2.2 使用说明</strong></h3>
+<p>对于 AnZhiYu，其使用的核心流程非常简单，基础组件完全通过 Git Bash 即可完成配置，而扩展功能则可以通过修改本地主题的<code>config</code>文件进行配置：</p>
+<ol>
+<li>安装 Hexo 博客框架</li>
+<li>在主题目录中安装或克隆 <code>hexo-theme-anzhiyu</code></li>
+<li>修改 Hexo 根目录中的 <code>_config.yml</code>，将主题改为 <code>anzhiyu</code></li>
+<li>复制主题配置文件为 <code>_config.anzhiyu.yml</code>，在根目录中进行覆盖配置</li>
+<li>通过 <code>hexo s</code> 本地预览，查看首页、文章页、分类页、相册页等实际效果</li>
+<li>根据需要继续配置评论系统、统计服务、音乐组件、PWA、AI 摘要等个性化扩展功能</li>
+</ol>
+<p>AnZhiYu 命令行操作界面如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="..../images/image-20260317162426790.png" alt="image-20260317162426790"></p>
+<p>而在完成 AnZhiYu 主题配置后，博客的书写、配置与端侧部署也完全可以由简单的 Git Bash 命令行完成：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="..../images/image-20260317155609384.png" alt="image-20260317155609384"></p>
+<p>整个过程在逻辑上是清晰的：Hexo 负责内容生成，AnZhiYu 负责前端展示与交互增强，对于希望搭建一个具有较强视觉表现力和个性化风格的博客站点的用户来说，它确实能够较好地解决需求，尤其是在 “个人主页 + 技术博客 + 生活展示” 这种混合场景下，AnZhiYu 的表现是很有竞争力的</p>
+<p>该软件的优点如下：</p>
+<ul>
+<li>视觉风格鲜明，区别于许多偏极简的博客主题，更适合希望建立个人辨识度的用户，支持深度个性化开发</li>
+<li>功能覆盖范围广，从基础文章展示到评论、统计、PWA、AI 摘要、音乐球等都有支持，兼顾专业性和娱乐化</li>
+<li>官方文档较详细，README 中也给出了安装、覆盖配置和部分功能展示，开源体系较为完善，用户广泛形成社区</li>
+<li>可通过简单命令行进行部署和操作，对新手友好，操作简单，容易上手</li>
+</ul>
+<p>同时，其强大的功能与高度可定制性也带来了如下缺点：</p>
+<ul>
+<li>升级成本相对较高，README 已明确提醒用户：每次更新主题时，可能需要手动同步 <code>_config.anzhiyu.yml</code></li>
+<li>AnZhiYu 主题对应的配置文件长达上千行，且部分高级配置配置繁琐（比如 LaTeX 公式的显示），缺乏对应的开源教程，如果想深度修改博客主题或完善功能，可能需要花一番功夫</li>
+<li>功能较多带来了更高的边界错误概率，公开 issue 中长期存在渲染、布局、搜索、移动端适配等问题</li>
+<li>相比成熟度更高的 Butterfly 和 Fluid，AnZhiYu 在社区规模和工程稳定性上仍有差距</li>
+</ul>
+<h3 id="2-3-改进意见"><strong>2.3 改进意见</strong></h3>
+<p>基于我在使用过程中的个人体验，在此提出如下仅代表个人的改进意见：</p>
+<ul>
+<li>增加一键切换新手模式，例如提供极简博客展示，让初学者不需要第一次就面对完整配置树，而是先保证能够使得博客正确部署与展示后，再逐步探索更多的配置</li>
+<li>增加配置体检与升级迁移助手，动扫描 <code>_config.anzhiyu.yml</code> 中失效、弃用或冲突的配置项，提示用户应如何同步升级</li>
+<li>增加对于配置文件的说明文档，或者简化配置文件的格式，目前的配置文件有大量字段缺乏说明，用户难以精确操作</li>
+<li>对 Markdown 语法边界场景、搜索组件、图片组件、移动端布局等高风险区域增加自动化回归测试</li>
+<li>在文档中进一步强化“常见错误排查”与“版本升级说明”，减少用户反复翻 issue 的成本</li>
+</ul>
+<h3 id="2-4-社区与受众调研"><strong>2.4 社区与受众调研</strong></h3>
+<p>为对 AnZhiYu 在实际建站过程中的应用进行更加详细的了解，我选择在其社区 QQ 群（464636182）中随机抽取了几位积极用户与开发大佬进行讨论与调研</p>
+<p>他在日常生活中有个人博客搭建与维护经验，并尝试过 Hexo 及不同主题的切换，覆盖了从“只会用现成模板”到“会进行一定程度自定义配置”的流程，因此对于分析用户为何选择某个主题，以及主题真正满足了什么需求，具有较强的参考价值</p>
+<p>采访用户一：一位 AnZhiYu 鱼主题的初学者</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="..../images/image-20260317164024005.png" alt="image-20260317164024005"></p>
+<p>采访用户二：一位资深开发者</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="..../images/image-20260317164502959.png" alt="image-20260317164502959"></p>
+<p>采访结果显示，AnZhiYu 的长处主要体现在以下几点：第一，页面辨识度高，适合做个人主页和展示型博客；第二，功能多，很多展示效果不需要自己重复造轮子；第三，整体观感比极简主题更有氛围，与此同时，其问题也很集中：配置项过多，很多功能不是“装上就能用”，而是还需要继续查文档、配服务、调参数；对于没有前端经验的同学来说，上手门槛明显偏高。由此可知，AnZhiYu 的优势来自高度自由与设计表达，缺点也来自这种自由度带来的复杂性。</p>
+<h3 id="最终评分"><strong>最终评分</strong></h3>
+<p>经过以上分析，我给出的评价是：<strong>d) 好，不错</strong></p>
+<p>AnZhiYu 凭借其鲜明的设计风格、丰富的功能特性和较强的个性化表达能力，已经成为 Hexo 主题生态中非常有辨识度的一个开源项目，尽管它在配置复杂度、升级迁移和部分边界场景稳定性上还存在改进空间，但这并不妨碍它成为许多有建站需求、希望打造高颜值个人博客用户的一个优秀选择</p>
+<h2 id="三-bug-排查与分析"><strong>（三）Bug 排查与分析</strong></h2>
+<p>在使用过程中，为客观评估 Bug 的严重程度，我们采用课程给出的评价标准，从功能完成度、性能与效率和用户体验感三个维度综合考量，按照 “致命性，严重，一般，轻微，难以察觉” 的顺序，顺次分配五星至一星</p>
+<h3 id="3-1-博客文章页图片右键-复制图片-下载图片-提示成功-但实际并未生效"><strong>3.1 博客文章页图片右键“复制图片 / 下载图片”提示成功，但实际并未生效</strong></h3>
+<p>测试环境：</p>
+<ul>
+<li>操作系统：Windows</li>
+<li>浏览器：Google、Edge</li>
+<li>出现位置：文章页图片右键菜单</li>
+<li>现象描述：点击“复制图片”与“下载图片”后，页面会提示“复制成功”或“正在下载中”，但图片既没有被复制，也没有真正下载</li>
+</ul>
+<p>该 bug 是我尝试从博客上下载或复制相关图片时发现的，可在特定页面与特定操作下复现，复现过程如下：</p>
+<ol>
+<li>打开使用 AnZhiYu 主题的博客文章页</li>
+<li>找到正文中的一张图片</li>
+<li>在图片上点击右键</li>
+<li>选择“复制图片”或“下载图片”</li>
+<li>观察页面提示与实际结果</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="..../images/image-20260317164940347.png" alt="image-20260317164940347"></p>
+<p>观察到页面顶部会给出<strong>复制成功</strong>的提示，但图片实际上既没有被成功复制到剪贴板，也没有被浏览器正确下载，通过测试发现，该问题不仅出现在自己的站点中，在官方演示博客中也能观察到，因此可以排除单个站点配置问题的可能</p>
+<p>从功能角度看，这属于典型的前端提示状态与真实执行结果不一致的缺陷，它并非核心文章渲染错误，但会明显误导用户：系统给出了成功反馈，用户却没有得到任何有效结果。这种问题在交互体验上尤其具有破坏性，因为它会直接损害用户对整套 UI 提示系统的信任，综合考虑，我将其严重性评价为 <strong>2 星</strong></p>
+<p>其可能成因如下：右键菜单在点击后先执行了提示逻辑，而真正的复制或下载动作要么没有正确绑定到浏览器 API，要么受到了跨域、权限、图片资源来源或剪贴板安全策略的限制，但前端却没有根据实际返回值区分<strong>成功提示</strong>和<strong>失败提示</strong>，目前，该问题已通过个人站点添加到官方主题的 Q&amp;A 留言板中：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="..../images/image-20260317165510404.png" alt="image-20260317165510404"></p>
+<h3 id="3-2-当博客标题中存在英文单引号-时-会导致图片无法解析"><strong>3.2 当博客标题中存在英文单引号 <code>'</code> 时，会导致图片无法解析</strong></h3>
+<p>测试环境：</p>
+<ul>
+<li>操作系统：Windows</li>
+<li>使用方式：Hexo + AnZhiYu 本地预览与生成页面</li>
+<li>触发条件：文章标题中包含英文单引号 <code>'</code></li>
+</ul>
+<p>该 bug 是我在实际写博客时发现的，当文章标题中包含英文单引号 <code>'</code> 时（比如 <em>Somebody’ Blog</em>），文章页面中的图片会出现无法正常解析或显示异常的现象（如下图所示）；去掉标题中的单引号后，图片又能恢复正常显示</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="..../images/image-20260317160653816.png" alt="image-20260317160653816"></p>
+<p>该 bug 在我的环境中同样具备<strong>较强可复现性</strong>。复现步骤如下：</p>
+<ol>
+<li>新建一篇文章</li>
+<li>在 front-matter 的 <code>title</code> 字段中写入包含英文单引号的标题</li>
+<li>在正文中插入图片</li>
+<li>本地预览或生成静态页面</li>
+<li>打开文章页面，观察图片显示异常</li>
+<li>将标题中的英文单引号去掉，再次预览，图片恢复正常显示</li>
+</ol>
+<p>这个问题比上一条更隐蔽，因为普通用户很难第一时间想到：为什么标题里的一个字符，会影响正文图片显示？从使用体验上看，这种 bug 最糟糕的地方在于它<strong>跨越了用户的直觉边界</strong>：标题和图片在概念上明明是两个模块，但最终却发生了相互影响，导致排错成本大幅上升，综合评价为 <strong>2 星</strong>（我曾花费大量时间查找这个 Bug）</p>
+<p>通过查看对应文章的配置文件，我们发现对应的 configTitle 和 title 等字段如下所示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">&quot;config-diff&quot;</span>&gt;</span>var GLOBAL_CONFIG_SITE = &#123; </span><br><span class="line">        configTitle: &#x27;Destiny&#x27;s Blog&#x27;, </span><br><span class="line">        title: &#x27;Destiny\&#x27;s Blog&#x27;, </span><br><span class="line">        postAI: &#x27;&#x27;, </span><br><span class="line">        pageFillDescription: &#x27;&#x27;, </span><br><span class="line">        isPost: false, </span><br><span class="line">        isHome: true, </span><br><span class="line">        isHighlightShrink: false, </span><br><span class="line">        isToc: false, </span><br><span class="line">        postUpdate: &#x27;2026-03-08 09:31:43&#x27;, </span><br><span class="line">        postMainColor: &#x27;&#x27;, </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这里所有的字符串，开发者都默认使用英文单引号进行包裹，因此当一个字符串中出现单引号时，会导致这部分字符串被提前异常截断，从而导致后面的内容匹配错误，最终造成了这个问题，该 Bug 在本地即可修复，通过修改配置文件的设置（比如把单引号改成双引号，或者尽量不在标题中使用<code>'</code>），即可避免</p>
+<h3 id="3-3-当文章过长或节标题过多时-目录会从中截断-后续节标题无法正常显示"><strong>3.3 当文章过长或节标题过多时，目录会从中截断，后续节标题无法正常显示</strong></h3>
+<p>测试环境：</p>
+<ul>
+<li>操作系统：Windows</li>
+<li>使用方式：Hexo + AnZhiYu 本地预览与长文写作</li>
+<li>触发条件：文章较长、节标题较多、目录层级较深</li>
+</ul>
+<p>该 Bug 是在撰写长篇文章时发现的，当文章比较长，或者标题数量较多时，右侧目录会出现<strong>从中间截断</strong>的现象，后续部分节标题无法继续显示，导致目录失去应有的导航作用</p>
+<p>该 Bug 在长文场景下<strong>稳定出现</strong>。复现步骤如下：</p>
+<ol>
+<li>新建一篇较长文章</li>
+<li>在文章中连续设置大量二级、三级标题</li>
+<li>本地预览页面</li>
+<li>观察右侧目录区域</li>
+<li>发现目录显示到中间某处后不再继续展示后续标题</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="..../images/image-20260317170416013.png" alt="image-20260317170416013"></p>
+<p>如图所示，子标题已经阅读到<strong>方差阈值法</strong>时，目录标题还停留在上一节的<strong>相关性分析</strong>，对于一些正在阅读其他博主博客的用户而言，如果目录在文章较长时发生截断，这会明显影响技术博客、教程、课程笔记和论文笔记类文章的阅读体验。</p>
+<p>经过查阅相关资料，其可能成因如下：</p>
+<ul>
+<li>目录容器可能设置了固定高度或 <code>max-height</code>，但滚动行为没有正确适配</li>
+<li>当节标题数量较多时，目录生成逻辑正常，但 CSS 显示层发生裁切</li>
+<li>可能存在目录更新逻辑只计算了前半部分节点，后续节点没有完整挂载</li>
+</ul>
+<p>考虑到该问题会在长文写作这一常见场景中明显影响导航体验，但不会影响文章正文本身显示，因此综合评价其严重性为 <strong>3 星</strong>，目前，比较好的<strong>解决方法</strong>即减少子目录的嵌套，在实际应用中发现，如果在文章中多次应用一到五级目录的嵌套，则很有可能触发目录显示截断，同时，该问题已通过个人站点添加到官方主题的 Q&amp;A 留言板中，并且在官方社区的 QQ 群进行了反馈</p>
+<h2 id="四-开发分析"><strong>（四）开发分析</strong></h2>
+<h3 id="4-1-工作量估算"><strong>4.1 工作量估算</strong></h3>
+<p>作为一个功能较丰富、设计风格明确、并整合了多种前端交互与第三方服务的 Hexo 主题，若从零开始，由一个 6 人团队（计算机专业本科毕业生，并配备专业 UI 支持）开发出当前版本的核心功能，进行理想化分析时，其工程量测算可按功能模块进行分条分析：</p>
+<ul>
+<li><strong>基础主题框架</strong>：首页、文章页、归档页、分类页、标签页、关于页等基础模板设计与渲染逻辑，约需 5 人月</li>
+<li><strong>配置系统与覆盖配置机制</strong>：主题配置项定义、解析、优先级覆盖、升级兼容，约需 4 人月</li>
+<li><strong>页面交互组件</strong>：暗色模式、右键菜单、沉浸式状态栏、图片灯箱、音乐球、全局中控台、快捷键等，约需 6 人月</li>
+<li><strong>第三方服务整合</strong>：评论系统、统计系统、广告挂载、AI 摘要、PWA、CDN、自定义主色调等，约需 6 人月</li>
+<li><strong>文档与预览站建设</strong>：README、功能说明、安装教程、配置文档、演示站维护，约需 3 人月</li>
+<li><strong>样式与视觉设计打磨</strong>：卡片式设计、响应式布局、深浅色模式协调、细节动画，约需 4 人月</li>
+<li><strong>测试与调试</strong>：Markdown 渲染测试、兼容性测试、移动端测试、视觉回归测试，约需 4～6 人月</li>
+<li><strong>项目管理与维护</strong>：需求分析、版本规划、issue 处理、社区支持、文档更新，约占整体的 20% 左右</li>
+</ul>
+<p>各模块之间并行开发，但部分模块之间存在强依赖关系，例如基础模板完成后方可大规模接入交互组件，配置系统成熟后才能降低后续维护成本，综合考虑后，我认为该主题若由 6 人团队从零实现到当前成熟度，大约需要 <strong>8～10 个月</strong>，总工作量约为 <strong>40～48 人月</strong>，如果再考虑持续迭代、社区答疑、版本兼容与文档维护，实际成本还会更高</p>
+<h3 id="4-2-软件质量分析"><strong>4.2 软件质量分析</strong></h3>
+<p>我们将 AnZhiYu 与其同类产品进行对比（如其他常见的博客优秀主题，这里我选择 Butterfly 和 Fluid），可以得出如下的优势和不足：</p>
+<p><strong>优势：</strong></p>
+<ul>
+<li>视觉风格鲜明，在 Hexo 主题中辨识度很高，更适合个人展示与设计风格较强的博客</li>
+<li>功能丰富，覆盖从基础博客展示到评论、统计、PWA、AI 摘要、音乐球等多种扩展需求</li>
+<li>官方文档较完整，README 中给出了预览、文档和安装配置方法</li>
+<li>已被收录进 Hexo 官方主题列表，说明其具备一定代表性，也被业界所认可</li>
+</ul>
+<p><strong>劣势：</strong></p>
+<ul>
+<li>相较于 Butterfly 和 Fluid，配置复杂度更高，对初学者不够友好</li>
+<li>当前公开 issue 中仍有较多与渲染、搜索、布局、移动端适配相关的问题，说明边界稳定性仍需加强</li>
+<li>官方所给出的README 文档中已明确提醒升级时可能需要同步修改 <code>_config.anzhiyu.yml</code>，维护成本高于普通极简主题</li>
+<li>社区规模和工程成熟度仍弱于 Butterfly 与 Fluid，当前 GitHub 页面显示，Butterfly 约 8.2k stars、1.4k forks，Fluid 约 8.1k stars、1.2k forks，而 AnZhiYu 约 2.4k stars、384 forks</li>
+</ul>
+<p>从个人体验感而言，在同类产品中，AnZhiYu 的综合质量大致可以评为<strong>中文 Hexo 主题第一梯队，但未必进入前二</strong>，如果以工程成熟度、安装清晰度、社区规模为标准，Butterfly 和 Fluid 更占优势；如果以视觉个性、页面氛围和个人展示效果为标准，AnZhiYu 则非常突出，综合来看，我认为它在同类产品中大致可以排在 <strong>第 3 名左右</strong></p>
+<p>针对上述描述，在软件工程方面，可以尝试把<strong>配置演进管理与边界场景测试</strong>提升为更高优先级，尤其是配置升级迁移、Markdown 渲染快照测试、图片与搜索组件的回归测试等，应该被纳入更系统的质量保证流程中</p>
+<h2 id="五-规划建议"><strong>（五）规划建议</strong></h2>
+<h3 id="5-1-市场现状调研"><strong>5.1 市场现状调研</strong></h3>
+<p>静态博客主题市场虽然不像移动应用市场那样面向大众用户，但它依然是开发者工具生态中的一个稳定细分市场，有一部分自己稳定的受众和群体，Hexo 官方将自己定位为一个 <strong>fast, simple and powerful blog framework</strong>，并强调其支持 GitHub Flavored Markdown、插件扩展和一键部署；npm 页面显示，Hexo 当前仍有约 <strong>41,295 次 weekly downloads</strong>，说明它对应的博客与建站生态依然活跃</p>
+<p>目前，AnZhiYu 的主要竞争对手主要分为两大类：</p>
+<ul>
+<li>以 <strong>Butterfly</strong> 为代表的成熟多功能 Hexo 主题，其特点是社区大、文档成熟、长期维护稳定，这类主题发展时间久，有庞大的受众和维护团队</li>
+<li>以 <strong>Fluid</strong> 为代表的偏稳健、偏规范、Material Design 风格的 Hexo 主题，其特点是安装路径清晰，对新手更友好，这类博客的通过保守化功能，最大程度上降低了用户使用过程中的配置失误与出错风险</li>
+</ul>
+<p>对于上述产品而言：</p>
+<ul>
+<li><strong>AnZhiYu</strong> 的定位是设计风格鲜明、适合打造个人数字空间的个性化博客主题，优势是氛围感强、展示效果突出，劣势是配置复杂、维护成本较高</li>
+<li><strong>Butterfly</strong> 的定位更偏成熟稳定的全能型主题，优势在于社区规模大、生态成熟、文档和支持都更强，有完善的说明与设计文档和大量的新手教程</li>
+<li><strong>Fluid</strong> 的定位更偏优雅、规范、适合技术博客和文档站的稳健型主题，优势是逻辑清晰、上手友好，同时由于其技术的保守性，降低了用户在个性化开发过程中的出错风险</li>
+</ul>
+<p>目前来看，AnZhiYu 想在竞争中持续保持吸引力，不能只依赖页面更好看的优势，而应在配置体验、升级迁移、测试保障这些更偏工程质量的方向上进一步补强，需要进一步扩大社区与团队规模，吸纳更多爱好者加入维护与文档设计工作，使得整个博客主题对用户更加友好</p>
+<h3 id="5-2-市场与产品生态"><strong>5.2 市场与产品生态</strong></h3>
+<p>AnZhiYu 的核心用户大致可以涵盖计算机、软件工程、网络安全、设计、数字媒体等相关专业或兴趣背景，本科及以上学历占比较高，其表面需求是 “想搭一个好看、功能多、可展示自己的博客站点”，潜在需求则包括 “建立个人品牌、沉淀作品、长期维护个人主页、把博客做成数字身份的一部分”</p>
+<p>用户群体之间存在一定的关系，以 Hexo 为中心，实际上形成了一条比较完整的生态链：Hexo 提供博客框架，主题作者提供前端方案，插件作者补充功能模块，站长根据需求组合主题与插件，再通过博客、教程、issue、文章相互传播。AnZhiYu 自身 README 中也展示出其与评论系统、统计系统、主色调 API、PWA 等外部能力的耦合关系，因此它并不是一个孤立产品，而是 Hexo 生态中的一个 “前端整合层”</p>
+<p>AnZhiYu 的子产品和相关产品之间同样存在明显联系，其本体之外，还有预览站、文档站、示例功能展示、评论服务接入、统计服务接入等外围内容。README 还提到如果用户想要类似 WordPress 的后台编辑体验，可以参考同作者的相关项目，这说明其产品思路本身已经不局限于“单纯的博客主题”，而是朝着更完整的博客工具链延展</p>
+<h2 id="六-产品规划"><strong>（六）产品规划</strong></h2>
+<p>基于对 AnZhiYu 用户的测评调研，以及其所在市场的分析，我认为一种最值得优先推进的新功能是：<strong>配置体检与升级迁移助手（AnZhiYu Doctor）</strong>，因为这两项功能是在版本更新与迭代中留住大部分新手用户的关键要点，根据 NABCD 方法，对该功能的升级与后续发展说明如下：</p>
+<p><strong>（1）Need：</strong></p>
+<ul>
+<li>当前用户在使用 AnZhiYu 时，最真实的痛点不是没有更多炫酷组件，而是配置项太多、升级后容易失效、不知道哪些配置冲突、出现页面异常时不知道应该查哪里，官方 README 文档已明确提醒升级时可能需要手动同步 <code>_config.anzhiyu.yml</code>，这说明配置迁移已经是用户的常见维护成本</li>
+</ul>
+<p><strong>（2）Approach：</strong></p>
+<ul>
+<li>在主题中接入一个智能体，作为官方的配置诊断工具，它可以扫描 <code>_config.anzhiyu.yml</code>，识别弃用键、缺失键、冲突键和高风险组合；在用户升级主题版本时，自动给出迁移建议，并指出哪些页面或功能可能受影响。对于评论系统、搜索系统、统计系统这类常见外部依赖，还可以增加专项检查项</li>
+</ul>
+<p><strong>（3）Benefit：</strong></p>
+<ul>
+<li>这么做可以明显降低新手上手成本，减少因配置错误导致的 issue 数量，降低版本升级时的维护压力，也能让整个主题在软件工程意义上显得更成熟、更专业</li>
+</ul>
+<p><strong>（4）Competitors：</strong></p>
+<ul>
+<li>Butterfly 和 Fluid 的优势之一并不只是功能多，而是它们在安装与使用路径上更成熟、更稳健，AnZhiYu 若想在竞争中胜出，必须在开发者体验和配置管理上形成自己的差异化竞争力，而不能只继续卷视觉特效，需要落地到一些具体的用户体验层面</li>
+</ul>
+<p><strong>（5）Delivery：</strong></p>
+<ul>
+<li>这一功能可先以命令行检测器的方式交付，再逐步集成到本地预览页或文档站中，最终形成发现问题 - 解释问题 - 给出修复建议的闭环体验，最终完成闭环</li>
+</ul>
+<p>若要完成上述功能开发，角色配置可以如下：</p>
+<ul>
+<li>产品经理（1 人）：负责需求细化、用户调研、功能验收、协调进度</li>
+<li>前端开发（2 人）：负责诊断面板 UI、配置提示展示、本地预览可视化</li>
+<li>配置/集成工程师（1 人）：负责配置 schema、版本迁移逻辑、第三方服务检查</li>
+<li>主题功能开发（1 人）：负责将诊断器接入主题现有结构</li>
+<li>测试（1 人）：负责编写测试用例，进行配置兼容测试、Markdown 渲染测试、视觉回归测试</li>
+</ul>
+<p>具体的 <strong>16 周</strong>路线规划如下：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>周次</th>
+<th>主要任务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需求与设计</td>
+<td>1-2</td>
+<td>梳理现有 issue，访谈真实用户，识别安装、升级、配置三类高频痛点；产出 PRD 文档</td>
+</tr>
+<tr>
+<td></td>
+<td>3-4</td>
+<td>设计诊断工具信息架构，定义 <code>_config.anzhiyu.yml</code> 的 schema 规则；完成 UI 原型</td>
+</tr>
+<tr>
+<td>核心开发</td>
+<td>5-7</td>
+<td>开发配置扫描器，支持识别缺失键、弃用键与冲突键；实现命令行版输出</td>
+</tr>
+<tr>
+<td></td>
+<td>8-10</td>
+<td>接入评论、统计、搜索、PWA 等常见依赖的专项检查；开发可视化诊断页面</td>
+</tr>
+<tr>
+<td>测试与完善</td>
+<td>11-12</td>
+<td>内部测试（Alpha），补充 Markdown 渲染与页面布局回归测试，修复主要问题</td>
+</tr>
+<tr>
+<td></td>
+<td>13-14</td>
+<td>招募志愿者公测（Beta），收集反馈；优化错误提示文案与迁移建议准确性</td>
+</tr>
+<tr>
+<td>发布与迭代</td>
+<td>15</td>
+<td>准备发布说明、升级文档、FAQ；进行最终回归测试</td>
+</tr>
+<tr>
+<td></td>
+<td>16</td>
+<td>发布功能并同步文档站与 README；观察社区反馈，规划下一阶段迭代</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://agilawood4.github.io/2026/03/17/%EF%BC%88%E8%BD%AF%E5%B7%A5%EF%BC%89%E8%BD%AF%E5%B7%A5%E4%BD%9C%E4%B8%9AII/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://agilawood4.github.io/2026/03/17/%EF%BC%88%E8%BD%AF%E5%B7%A5%EF%BC%89%E8%BD%AF%E5%B7%A5%E4%BD%9C%E4%B8%9AII/')">软工作业II</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://agilawood4.github.io/2026/03/17/%EF%BC%88%E8%BD%AF%E5%B7%A5%EF%BC%89%E8%BD%AF%E5%B7%A5%E4%BD%9C%E4%B8%9AII/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=软工作业II&amp;url=https://agilawood4.github.io/2026/03/17/%EF%BC%88%E8%BD%AF%E5%B7%A5%EF%BC%89%E8%BD%AF%E5%B7%A5%E4%BD%9C%E4%B8%9AII/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A214.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://agilawood4.github.io" target="_blank">Destiny Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>专业课<span class="tagsPageCount">45</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/picture.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/03/13/%EF%BC%88%E5%8F%AF%E8%A7%86%E5%8C%96%EF%BC%89%E5%B8%B8%E8%A7%81%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A211.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">常用图表绘制</div></div></a></div><div class="next-post pull-right"><a href="/2026/03/17/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2142.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">(SQL12)数据库知识点整理</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/12/06/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" title="(SQL10)数据库复习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2140.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-06</div><div class="title">(SQL10)数据库复习</div></div></a></div><div><a href="/2025/11/15/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BE%8B%E9%A2%98%E9%80%89%E8%AE%B2/" title="(SQL11)数据库例题选讲"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2141.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-15</div><div class="title">(SQL11)数据库例题选讲</div></div></a></div><div><a href="/2025/12/04/(SQL)%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF/" title="(SQL9)事务处理技术"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2139.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-04</div><div class="title">(SQL9)事务处理技术</div></div></a></div><div><a href="/2026/03/17/(SQL1)%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%AE%BA/" title="(SQL1)数据库概论"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2130.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-03-17</div><div class="title">(SQL1)数据库概论</div></div></a></div><div><a href="/2025/11/15/(SQL2)%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" title="(SQL2)关系数据库"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2131.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-15</div><div class="title">(SQL2)关系数据库</div></div></a></div><div><a href="/2025/09/25/(SQL3)SQL%E8%AF%AD%E5%8F%A5%E8%AF%BE%E4%B8%8A/" title="(SQL3)SQL语句课上"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2133.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-25</div><div class="title">(SQL3)SQL语句课上</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">[I.2] 个人作业：软件案例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%80%89%E9%A2%98%E7%AE%80%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">（一）选题简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E8%B0%83%E7%A0%94%E4%B8%8E%E8%AF%84%E6%B5%8B"><span class="toc-number">1.2.</span> <span class="toc-text">（二）调研与评测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 项目简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 使用说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E6%94%B9%E8%BF%9B%E6%84%8F%E8%A7%81"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 改进意见</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E7%A4%BE%E5%8C%BA%E4%B8%8E%E5%8F%97%E4%BC%97%E8%B0%83%E7%A0%94"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 社区与受众调研</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E8%AF%84%E5%88%86"><span class="toc-number">1.2.5.</span> <span class="toc-text">最终评分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-bug-%E6%8E%92%E6%9F%A5%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">（三）Bug 排查与分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E9%A1%B5%E5%9B%BE%E7%89%87%E5%8F%B3%E9%94%AE-%E5%A4%8D%E5%88%B6%E5%9B%BE%E7%89%87-%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87-%E6%8F%90%E7%A4%BA%E6%88%90%E5%8A%9F-%E4%BD%86%E5%AE%9E%E9%99%85%E5%B9%B6%E6%9C%AA%E7%94%9F%E6%95%88"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 博客文章页图片右键“复制图片 &#x2F; 下载图片”提示成功，但实际并未生效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%BD%93%E5%8D%9A%E5%AE%A2%E6%A0%87%E9%A2%98%E4%B8%AD%E5%AD%98%E5%9C%A8%E8%8B%B1%E6%96%87%E5%8D%95%E5%BC%95%E5%8F%B7-%E6%97%B6-%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 当博客标题中存在英文单引号 &#39; 时，会导致图片无法解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%BD%93%E6%96%87%E7%AB%A0%E8%BF%87%E9%95%BF%E6%88%96%E8%8A%82%E6%A0%87%E9%A2%98%E8%BF%87%E5%A4%9A%E6%97%B6-%E7%9B%AE%E5%BD%95%E4%BC%9A%E4%BB%8E%E4%B8%AD%E6%88%AA%E6%96%AD-%E5%90%8E%E7%BB%AD%E8%8A%82%E6%A0%87%E9%A2%98%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E6%98%BE%E7%A4%BA"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 当文章过长或节标题过多时，目录会从中截断，后续节标题无法正常显示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E5%BC%80%E5%8F%91%E5%88%86%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text">（四）开发分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%B7%A5%E4%BD%9C%E9%87%8F%E4%BC%B0%E7%AE%97"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 工作量估算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 软件质量分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E8%A7%84%E5%88%92%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.5.</span> <span class="toc-text">（五）规划建议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%B8%82%E5%9C%BA%E7%8E%B0%E7%8A%B6%E8%B0%83%E7%A0%94"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 市场现状调研</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%B8%82%E5%9C%BA%E4%B8%8E%E4%BA%A7%E5%93%81%E7%94%9F%E6%80%81"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 市场与产品生态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E4%BA%A7%E5%93%81%E8%A7%84%E5%88%92"><span class="toc-number">1.6.</span> <span class="toc-text">（六）产品规划</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/06/%E8%AE%A1%E7%BD%91%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/" title="无题">无题</a><time datetime="2026-05-06T02:53:30.525Z" title="发表于 2026-05-06 10:53:30">2026-05-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/03/(ST)%E5%A5%87%E5%A6%99%E6%95%85%E4%BA%8B11/" title="奇妙故事11">奇妙故事11</a><time datetime="2026-05-03T15:45:42.000Z" title="发表于 2026-05-03 23:45:42">2026-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/24/SGA-IRLS%20%E6%96%B9%E6%B3%95/" title="无题">无题</a><time datetime="2026-04-24T15:41:51.146Z" title="发表于 2026-04-24 23:41:51">2026-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/23/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%A1%A5%E5%85%85%E5%86%85%E5%AE%B9/" title="补充内容"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A235.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="补充内容"/></a><div class="content"><a class="title" href="/2026/04/23/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%A1%A5%E5%85%85%E5%86%85%E5%AE%B9/" title="补充内容">补充内容</a><time datetime="2026-04-23T13:40:54.000Z" title="发表于 2026-04-23 21:40:54">2026-04-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/21/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%BE%80%E5%B9%B4%E9%A2%98%E4%B8%B2%E8%AE%B2/" title="往年题串讲"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A234.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="往年题串讲"/></a><div class="content"><a class="title" href="/2026/04/21/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%BE%80%E5%B9%B4%E9%A2%98%E4%B8%B2%E8%AE%B2/" title="往年题串讲">往年题串讲</a><time datetime="2026-04-21T08:27:35.000Z" title="发表于 2026-04-21 16:27:35">2026-04-21</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">145</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">5</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>6</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>50</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>45</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://www.bilibili.com/video/BV1Ji4y1N7tK?spm_id_from=333.788.videopod.episodes&amp;vd_source=3ceb705961537c0a458a0c7955359e9b&amp;p=12&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

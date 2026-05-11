@@ -1,0 +1,571 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>应用层 | Destiny Blog</title><meta name="keywords" content="专业课"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="应用层"><meta name="application-name" content="应用层"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="应用层"><meta property="og:url" content="https://agilawood4.github.io/2026/04/16/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%BA%94%E7%94%A8%E5%B1%82/index.html"><meta property="og:site_name" content="Destiny Blog"><meta property="og:description" content="应用层 应用层协议是为了解决某一类应用问题  由于网络应用的多样性，应用层协议的一大特定就是种类多  应用层的许多协议都是基于客户 &amp;#x2F; 服务器方式实现的  客户（client）和服务器（server）都是指通信中所涉及的两个应用进程 客户 &amp;#x2F; 服务器方式所描述的是进程之间服务和被服务的关系 客户是服"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A231.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A231.jpg"><meta name="description" content="应用层 应用层协议是为了解决某一类应用问题  由于网络应用的多样性，应用层协议的一大特定就是种类多  应用层的许多协议都是基于客户 &amp;#x2F; 服务器方式实现的  客户（client）和服务器（server）都是指通信中所涉及的两个应用进程 客户 &amp;#x2F; 服务器方式所描述的是进程之间服务和被服务的关系 客户是服"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://agilawood4.github.io/2026/04/16/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%BA%94%E7%94%A8%E5%B1%82/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: Destiny Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Destiny Blog',
+  title: '应用层',
+  postAI: '',
+  pageFillDescription: '应用层, 套接字编程接口, 域名系统 DNS, Internet 的域名结构, 域名服务器, 文件传输协议, 万维网, 统一资源定位符 URL, 超文本传送协议 http, http 版本演进, http 报文, 万维网文档, https 协议, 电子邮件应用层应用层协议是为了解决某一类应用问题由于网络应用的多样性应用层协议的一大特定就是种类多应用层的许多协议都是基于客户服务器方式实现的客户和服务器都是指通信中所涉及的两个应用进程客户服务器方式所描述的是进程之间服务和被服务的关系客户是服务请求方服务器是服务提供方套接字编程接口网络子系统作为操作系统的一部分以应用编程接口的形式向应用程序提供调用接口套接字是最常用的应用层编程接口经典的编程接口采用同步调用方式又称阻塞式例如调用时调用进程将被阻塞直到收到数据为止这种基于事件驱动的系统中程序的执行由事件驱动需要异步事件驱动方式的套接字编程接口常用的套接字接口如下其中协议的发送和接收函数分别是和需要显式指出目标地址或源地址而协议的发送和接收函数分别是和不需要显式传入地址因为可能是多对多但是一定是一对一所以后者不传地址也无所谓基于的系统调用流程基于的系统调用流程协议在建立连接时客户端不需要调用把本地地址与套接字绑定因此此时客户端可能是通过某个虚拟的地址访问服务端但相对于多了一步连接建立的过程套接字的创建通过方法实现系统会维护一个套接字描述符表每个进程都会与一个对应的数据结构相对应域名系统域名系统是使用的命名系统采用层次结构的命名树作为主机的名字并使用分布式的域名系统多个域名服务器上运行专门的域名服务器程序完成从域名到地址的解析域名系统基于协议实现应用进程需要进行域名解析时就调用域名解析程序它成为的一个客户向本地域名服务器发送域名解析请求报文其中包含待解析的域名本地域名服务器在查找域名后返回应答报文其中就包含待解析域名对应的地址具体过程应用进程调用域名解析程序称为域名系统的客户向域名服务器发送域名解析请求报文报文中包含待解析的域名获得应答报文应答报文中有待解析域名对应的地址的域名结构采用层次树结构的命名方法域名不区分大小写域名长度不超过字符级别越高的域名越靠后其中是顶级域名是二级域名是三级域名以此类推顶级域名又分为国家顶级域名等和通用顶级域名等域名空间形成的层次树结构如下所示域名服务器域名服务器用于把域名解析成地址因为网络之间通信需要地址但用户有时候可能只提供域名因此需要解析根域名服务器根域名服务器知道所有的顶级域名服务器的域名和地址当本地域名服务器无法解析域名时就求助于根域名服务器顶级域名服务器负责管理在该顶级域名服务器注册的所有二级域名权限域名服务器负责一个区的域名服务器本地域名服务器有时也称为默认域名服务器域名服务器定期把数据复制到多个域名服务器中保存其中一个是主域名服务器其它的是辅助域名服务器域名服务器的组织方式也是树状结构域名的查询过程主机向本地域名服务器的查询一般采用递归查询如果本地域名服务器不知道被查询域名的地址那么它就以客户的身份向根域名服务器继续发出查询请求报文本地域名服务器向根域名服务器的查询一般采用迭代查询当根域名服务器收到本地域名服务器的迭代查询请求报文时它要么直接给出要查询的地址要么告诉本地域名服务器下一步要向哪个域名服务器查询本地域名服务器根据根域名服务器的提示继续后续的查询本地域名服务器的迭代查询本地域名服务器也可以使用递归查询较少使用本地域名服务器向上层查询域名的过程对于客户端来讲是不可见的客户端只知道自己和本地域名服务器发生了一次交互但不知道本地域名服务器拿到地址的具体策略一些不常见的域名在跳转到对应的网页速度很慢可能是因为解析这个域名花费了较长的时间文件传输协议文件传输协议使用客户服务器方式一个服务器进程可以同时服务多个用户进程服务器进程由两大部分组成一个主进程负责接受新的请求若干个从属进程负责处理单个请求使用两个连接控制连接和数据连接控制连接在会话期间一直保持打开客户发出的传送请求通过控制连接发送给服务器端的控制进程但控制连接不用来传送文件数据连接收到客户发送来的文件传输请求后服务器端的控制进程创建数据传送进程和数据连接数据传送进程实际完成文件的传送传送完毕后关闭数据传送连接并结束运行万维网万维网解决的三个问题标识分布在上的万维网文档实现万维网上各种超链的链接存储和表示万维网文档统一资源定位符是对上资源位置和访问方法的一种简洁表示的一般形式为协议主机端口路径协议主机端口路径协议主机端口路径其中协议常见的有文件传输协议超文本传送协议新闻主机存放资源的主机在中的域名端口和路径有时可以省略如果是协议如果缺省端口字段则使用端口号如果缺省路径字段则指主页不区分大小写超文本传送协议基于协议实现是万维网上可靠地址交换文件的重要基础是面向事务的客户服务器协议是无状态的服务器不记录客户端的访问状态登录未登录基本工作原理服务的熟知端口号是服务器通常在该端口上监听客户端需要请求某个页面时与服务器建立连接之后请求传送文件并进行文件的传送传送完毕后释放连接协议鼠标点击超链接后发生的事件浏览器分析超链指向页面的浏览器向请求解析地址域名系统解析出服务器的地址浏览器和服务器建立连接浏览器发出取文件命令服务器给出响应把文件发给浏览器连接释放浏览器显示中所有文本版本演进每传送一个文件都需要建立一次连接使用持续连接服务器发送响应后在一段时间内保持连接使客户与服务器可以继续传送后续的请求报文和响应报文这并不局限于传送同一个页面上链接的文档只要保证这些文档都在同一个服务器上就行目前主流的浏览器都支持增加了同时传输多个流的支持基于协议建立报文有两类报文类型请求报文从客户向服务器发送请求报文响应报文从服务器到客户的回答是面向正文的报文中的字段都是码串低效但简单因而每个字段的长度都是不确定的每个报文都由三部分组成开始行首部行实体主体在请求报文中开始行就是请求行其中方法本质上就是一些命令即所请求资源的版本即的版本而对于应答报文即把请求报文中字段替换成状态码字段即开始行变成状态行其余保持不变目前大部分手机端的和后端服务器的通信仍然采用协议万维网文档万维网文档即其中定义了许多用于排版的命令即标签把各种标签嵌入到万维网的页面中构成文档文档为文本格式浏览器从服务器读取文档后按照其中嵌入的各种标签根据显示器尺寸和分辨率显示页面仅当文档是以或者为后缀时浏览器才对此文档的各种标签进行解释协议安全的协议表示建立在基础上目前已被浏览器广泛支持很多应用利用协议实现安全传输的熟知端口号为指的是为协议提供信息加密和完整性由此可以推断协议也是基于协议实现的而是在基础上实现的进阶版数字证书生成支持的加密算法和支持的加密算法取交集在其中取一个算法作为约定的加密算法用这个算法生成公钥同时包含持有者信息以及网络中的权威机构进行签名数字证书持有者信息公钥权威机构的数字签名之所以要有数字签名是为了防止公钥被攻击当发生攻击时公钥中的签名随之发生改变可以被检测出来由此检测受到攻击加密算法分成通用加密算法和公钥加密算法两种通用加密算法对称加密算法使用密码本加密加密方和解密方使用同一个秘钥速度快适合大量数据加密公钥加密算法使用公钥和私钥加密公钥与私钥成对出现数学相关但不可推速度慢电子邮件发送邮件的协议早期的邮件只支持的编码后面又提出了标准后者可以在邮件首部说明数据类型支持在邮件中传输文本声音图像等多模态数据读取邮件的协议和邮件发送也是基于协议实现的电子邮件系统中的两类实体用户代理用户与电子邮件系统的接口即电子邮件客户端软件邮件服务器用于发送和接收邮件按照客户服务器方式工作发送邮件和接收邮件使用不同的协议分别为和协议一个邮件服务器既可以作为客户也可以作为服务器通信的三个阶段建立连接连接在发送主机的客户和接收主机的服务器之间建立不使用中间邮件服务器邮件发送释放连接邮件完成发送后释放连接',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-04-23 21:39:24',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Destiny Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>6</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>50</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>45</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/04/"><span class="card-archive-list-date">四月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">8</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">32</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>专业课</span></a></span></div></div><h1 class="post-title" itemprop="name headline">应用层</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-04-16T08:58:56.000Z" title="发表于 2026-04-16 16:58:56">2026-04-16</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-04-23T13:39:24.114Z" title="更新于 2026-04-23 21:39:24">2026-04-23</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A231.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://agilawood4.github.io/2026/04/16/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%BA%94%E7%94%A8%E5%B1%82/"><header><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url">专业课</a><h1 id="CrawlerTitle" itemprop="name headline">应用层</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2026-04-16T08:58:56.000Z" title="发表于 2026-04-16 16:58:56">2026-04-16</time><time itemprop="dateCreated datePublished" datetime="2026-04-23T13:39:24.114Z" title="更新于 2026-04-23 21:39:24">2026-04-23</time></header><h1><strong>应用层</strong></h1>
+<p>应用层协议是为了解决某一类应用问题</p>
+<ul>
+<li>由于网络应用的多样性，应用层协议的一大特定就是<strong>种类多</strong></li>
+</ul>
+<p>应用层的许多协议都是基于<strong>客户 / 服务器</strong>方式实现的</p>
+<ul>
+<li>客户（<em>client</em>）和服务器（<em>server</em>）都是指通信中所涉及的两个应用进程</li>
+<li>客户 / 服务器方式所描述的是进程之间服务和被服务的关系</li>
+<li>客户是服务请求方，服务器是服务提供方</li>
+</ul>
+<h2 id="套接字编程接口"><strong>套接字编程接口</strong></h2>
+<p>网络子系统作为操作系统的一部分，以<strong>应用编程接口</strong>的形式向应用程序提供调用接口</p>
+<p>套接字（<em>socket</em>）是最常用的应用层编程接口</p>
+<p>经典的 <em>socket</em> 编程接口采用<strong>同步</strong>调用方式（又称阻塞式），例如调用 <em>recv()</em> 时，调用进程将被阻塞，直到收到数据为止</p>
+<p><em>Windows</em> 这种基于事件驱动的系统中，程序的执行由事件驱动，需要<strong>异步</strong>事件驱动方式的套接字编程接口</p>
+<p>常用的套接字接口如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417090353405.png" alt="image-20260417090353405"></p>
+<p>其中 <em>UDP</em> 协议的发送和接收函数分别是 <em>sendto</em> 和 <em>recvfrom</em>，需要显式指出目标 <em>IP</em> 地址或源 <em>IP</em> 地址；而 <em>TCP</em> 协议的发送和接收函数分别是 <em>send</em> 和 <em>recv</em>，不需要显式传入地址（因为 <em>UDP</em> 可能是多对多，但是 <em>TCP</em> 一定是一对一，所以后者不传地址也无所谓）</p>
+<p>基于 <em>UDP</em> 的系统调用流程：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417090558339.png" alt="image-20260417090558339"></p>
+<p>基于 <em>TCP</em> 的系统调用流程：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417090623975.png" alt="image-20260417090623975"></p>
+<p><em>TCP</em> 协议在建立连接时，客户端不需要调用 <em>bind</em> 把本地地址与套接字绑定，因此此时客户端可能是通过某个<strong>虚拟的 <em>IP</em> 地址</strong>访问服务端，但 <em>TCP</em> 相对于 <em>UDP</em> 多了一步连接建立（<em>connect - accept</em>）的过程</p>
+<p>套接字的创建通过 <em>socket</em> 方法实现，系统会维护一个套接字描述符表，每个进程都会与一个对应的 <em>socket</em> 数据结构相对应：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417090845370.png" alt="image-20260417090845370"></p>
+<h2 id="域名系统-dns"><strong>域名系统 DNS</strong></h2>
+<p>域名系统（<em>DNS，Domain Name System</em>）是 <em>Internet</em> 使用的命名系统</p>
+<ul>
+<li><em>Internet</em> 采用层次结构的<strong>命名树</strong>作为主机的名字，并使用分布式的域名系统 <em>DNS</em></li>
+<li>多个域名服务器上运行专门的域名服务器程序，完成从域名到 <em>IP</em> 地址的解析</li>
+<li>域名系统 <em>DNS</em> 基于 <strong>UDP 协议</strong>实现
+<ul>
+<li>应用进程需要进行域名解析时，就调用域名解析程序（<em>resolver</em>），它成为 <em>DNS</em> 的一个客户</li>
+<li>向<strong>本地</strong>域名服务器发送域名解析请求（<em>UDP</em> 报文），其中包含待解析的域名</li>
+<li>本地域名服务器在查找域名后，返回应答报文，其中就包含待解析域名对应的 <em>IP</em> 地址</li>
+</ul>
+</li>
+</ul>
+<p>具体过程：应用进程 → 调用<strong>域名解析程序</strong> → 称为域名系统的<strong>客户</strong> → 向域名服务器发送域名解析请求报文（<em><strong>UDP</strong></em>）→ 报文中包含待解析的域名 → 获得应答报文 → 应答报文中有待解析域名对应的 <strong><em>IP</em> 地址</strong></p>
+<h3 id="internet-的域名结构"><strong>Internet 的域名结构</strong></h3>
+<p><em>Internet</em> 采用<strong>层次树结构</strong>的命名方法，域名不区分大小写，域名长度不超过 <em>255</em> 字符，级别越高的域名越靠后</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>…</mo><mi>b</mi><mi>u</mi><mi>a</mi><mi>a</mi><mi mathvariant="normal">.</mi><mi>e</mi><mi>d</mi><mi>u</mi><mi mathvariant="normal">.</mi><mi>c</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">\dots buaa.edu.cn
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mord mathdefault">u</span><span class="mord mathdefault">a</span><span class="mord mathdefault">a</span><span class="mord">.</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mord mathdefault">u</span><span class="mord">.</span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span></span></span></span></span></p>
+<p>其中 <em>cn</em> 是顶级域名，<em>edu</em> 是二级域名，<em>buaa</em> 是三级域名，以此类推</p>
+<p>顶级域名 <em>TLD，Top Level Domain</em> 又分为国家顶级域名（<em>cn</em> 等）和通用顶级域名（<em>com</em> 等）：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417091919043.png" alt="image-20260417091919043"></p>
+<p><em>Internet</em> 域名空间形成的层次树结构如下所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417092002343.png" alt="image-20260417092002343"></p>
+<h3 id="域名服务器"><strong>域名服务器</strong></h3>
+<p>域名服务器用于把域名解析成 <em>IP</em> 地址，因为网络之间通信需要 <em>IP</em> 地址，但用户有时候可能只提供域名，因此需要解析</p>
+<p>（1）根域名服务器</p>
+<ul>
+<li>根域名服务器知道所有的顶级域名服务器的域名和 <em>IP</em> 地址</li>
+<li>当本地域名服务器无法解析域名时，就求助于根域名服务器</li>
+</ul>
+<p>（2）顶级域名服务器</p>
+<ul>
+<li>负责管理在该顶级域名服务器注册的所有二级域名</li>
+</ul>
+<p>（3）权限域名服务器</p>
+<ul>
+<li>负责一个区（<em>zone</em>）的域名服务器</li>
+</ul>
+<p>（4）本地域名服务器</p>
+<ul>
+<li>有时也称为默认域名服务器</li>
+</ul>
+<p>域名服务器定期把数据复制到多个域名服务器中保存，其中一个是<strong>主域名服务器</strong>，其它的是辅助域名服务器</p>
+<p>域名服务器的组织方式也是<strong>树状结构</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417092432758.png" alt="image-20260417092432758"></p>
+<p>域名的查询过程：</p>
+<ul>
+<li>主机向本地域名服务器的查询一般采用<strong>递归查询</strong>
+<ul>
+<li>如果本地域名服务器不知道被查询域名的 <em>IP</em> 地址，那么它就以 <em>DNS</em> 客户的身份，向根域名服务器继续发出查询请求报文</li>
+</ul>
+</li>
+<li>本地域名服务器向根域名服务器的查询一般采用<strong>迭代查询</strong>
+<ul>
+<li>当根域名服务器收到本地域名服务器的迭代查询请求报文时，它要么直接给出要查询的 <em>IP</em> 地址，要么告诉本地域名服务器下一步要向哪个域名服务器查询</li>
+<li>本地域名服务器根据根域名服务器的提示继续后续的查询</li>
+</ul>
+</li>
+</ul>
+<p>本地域名服务器的迭代查询：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417092910683.png" alt="image-20260417092910683"></p>
+<p>本地域名服务器也可以使用递归查询（较少使用）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417092939777.png" alt="image-20260417092939777"></p>
+<p>本地域名服务器向上层查询域名的过程对于客户端来讲是不可见的，客户端只知道自己和本地域名服务器发生了一次交互，但不知道本地域名服务器拿到 <em>IP</em> 地址的具体策略</p>
+<ul>
+<li>一些不常见的域名在跳转到对应的网页速度很慢，可能是因为解析这个域名花费了较长的时间</li>
+</ul>
+<h2 id="文件传输协议"><strong>文件传输协议</strong></h2>
+<p>文件传输协议（<em>FTP，File Transfer Protocol</em>）使用客户 / 服务器方式：</p>
+<ul>
+<li>一个 <em>FTP</em> 服务器进程可以同时服务多个用户进程</li>
+<li><em>FTP</em> 服务器进程由两大部分组成：一个主进程，负责接受新的请求；若干个从属进程，负责处理单个请求</li>
+</ul>
+<p><em>FTP</em> 使用两个 <em><strong>TCP</strong></em> 连接：<strong>控制连接</strong>和<strong>数据连接</strong></p>
+<ul>
+<li>控制连接：在会话期间一直保持打开，<em>FTP</em> 客户发出的传送请求通过控制连接发送给服务器端的控制进程，但控制连接不用来传送文件</li>
+<li>数据连接：收到 <em>FTP</em> 客户发送来的文件传输请求后，服务器端的控制进程创建数据传送进程和数据连接，数据传送进程实际完成文件的传送，传送完毕后关闭数据传送连接并结束运行</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417101429570.png" alt="image-20260417101429570"></p>
+<h2 id="万维网"><strong>万维网</strong></h2>
+<p>万维网解决的三个问题：</p>
+<ul>
+<li><em>URL</em>：标识分布在 <em>Internet</em> 上的万维网文档</li>
+<li><em>HTTP</em>：实现万维网上各种超链的链接</li>
+<li><em>HTML</em>：存储和表示万维网文档</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417101659917.png" alt="image-20260417101659917"></p>
+<h3 id="统一资源定位符-url"><strong>统一资源定位符 URL</strong></h3>
+<p><em>URL</em>（<em>Uniform Resource Locator</em>）是对 <em>Internet</em> 上资源位置和访问方法的一种简洁表示</p>
+<p><em>URL</em> 的一般形式为：</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>&lt;协议&gt;://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;</mtext></mrow><annotation encoding="application/x-tex">\text{&lt;协议&gt;://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">&lt;</span><span class="mord cjk_fallback">协议</span><span class="mord">&gt;://&lt;</span><span class="mord cjk_fallback">主机</span><span class="mord">&gt;:&lt;</span><span class="mord cjk_fallback">端口</span><span class="mord">&gt;/&lt;</span><span class="mord cjk_fallback">路径</span><span class="mord">&gt;</span></span></span></span></span></span></p>
+<p>其中：</p>
+<ul>
+<li>协议：常见的有 <em>ftp</em> 文件传输协议，<em>http</em> 超文本传送协议，<em>News</em> <em>USENET</em> 新闻</li>
+<li>主机：存放资源的主机在 <em>Internet</em> 中的域名</li>
+<li>端口和路径有时可以省略，如果是 <em>http</em> 协议，如果缺省端口字段，则使用端口号 <em>80</em>，如果缺省路径字段，则指主页（<em>home page</em>）</li>
+<li><em>URL</em> 不区分大小写</li>
+</ul>
+<h3 id="超文本传送协议-http"><strong>超文本传送协议 http</strong></h3>
+<p><em>HTTP</em>（<em>HyperText Transfer Protocol</em>）基于 <em><strong>TCP</strong></em> 协议实现，是万维网上可靠地址交换文件的重要基础</p>
+<ul>
+<li><em>HTTP</em> 是面向<strong>事务</strong>的客户 / 服务器协议</li>
+<li><em>HTTP</em> 是无状态的（<em>stateless</em>），服务器不记录客户端的访问状态（登录 or 未登录）</li>
+<li>基本工作原理：<em>Web</em> 服务的熟知端口号是 <em>80</em>，服务器通常在该端口上监听，客户端需要请求某个页面时，与服务器建立 <em>TCP</em> <strong>连接</strong>，之后<strong>请求</strong>传送文件，并进行文件的<strong>传送</strong>，传送完毕后<strong>释放</strong> <em>TCP</em> 连接</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417102337268.png" alt="image-20260417102337268"></p>
+<p><em>HTTP</em> 协议鼠标点击超链接后发生的事件：</p>
+<ul>
+<li>浏览器分析超链指向页面的 <em>URL</em></li>
+<li>浏览器向 <em>DNS</em> 请求解析 <em>IP</em> 地址</li>
+<li>域名系统 <em>DNS</em> 解析出服务器的 <em>IP</em> 地址</li>
+<li>浏览器和服务器建立 <em>TCP</em> 连接</li>
+<li>浏览器发出取文件命令：<em>GET/chn/yxsz/index.htm</em></li>
+<li>服务器给出响应，把文件 <em>index.htm</em> 发给浏览器</li>
+<li><em>TCP</em> 连接释放</li>
+<li>浏览器显示 <em>index.htm</em> 中所有文本</li>
+</ul>
+<h3 id="http-版本演进"><strong>http 版本演进</strong></h3>
+<p><em>http 1.0</em> 每传送一个文件都需要建立一次 <em>TCP</em> 连接</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417102742177.png" alt="image-20260417102742177"></p>
+<p><em>http 1.1</em> 使用<strong>持续连接</strong>（<em>persistent connection</em>）</p>
+<ul>
+<li>服务器发送响应后，在一段时间内保持连接，使客户与服务器可以继续传送后续的 <em>HTTP</em> 请求报文和响应报文</li>
+<li>这并不局限于传送同一个页面上链接的文档，只要保证这些文档都在同一个服务器上就行</li>
+<li>目前主流的浏览器都支持 <em>http 1.1</em></li>
+</ul>
+<p><em>http 2.1</em> 增加了同时传输多个流的支持</p>
+<p><em>http 3.1</em> 基于 <em>UDP</em> 协议建立</p>
+<h3 id="http-报文"><strong>http 报文</strong></h3>
+<p><em>http</em> 有两类报文类型：</p>
+<ul>
+<li>请求报文：从客户向服务器发送请求报文</li>
+<li>响应报文：从服务器到客户的回答</li>
+</ul>
+<p><em>http</em> 是<strong>面向正文</strong>（<em>text-oriented</em>）的，报文中的字段都是 <em>ASCII</em> 码串（低效但简单），因而每个字段的长度都是不确定的</p>
+<p>每个 <em>http</em> 报文都由三部分组成：开始行，首部行，实体主体，在请求报文中，开始行就是<strong>请求行</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417103239299.png" alt="image-20260417103239299"></p>
+<p>其中<strong>方法</strong>本质上就是一些命令，<em><strong>URL</strong></em> 即所请求资源的 <em>URL</em>，版本即 <em>http</em> 的版本</p>
+<p>而对于应答报文，即把请求报文中 <em>URL</em> 字段替换成<strong>状态码</strong>字段，即开始行变成<strong>状态行</strong>，其余保持不变</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260417103437289.png" alt="image-20260417103437289"></p>
+<p>目前大部分手机端的 <em>APP</em> 和后端服务器的通信仍然采用 <em>http</em> 协议</p>
+<h3 id="万维网文档"><strong>万维网文档</strong></h3>
+<p>万维网文档即 <em>HTML</em>（<em>HyperText Markup Language</em>），其中定义了许多用于排版的命令，即<strong>标签</strong>（<em>tag</em>）</p>
+<p><em>HTML</em> 把各种标签嵌入到万维网的页面中，构成 <em>HTML</em> 文档</p>
+<ul>
+<li><em>HTML</em> 文档为文本格式</li>
+<li>浏览器从服务器读取 <em>HTML</em> 文档后，按照其中嵌入的各种标签，根据显示器尺寸和分辨率显示页面，仅当 <em>HTML</em> 文档是以 <em>.html</em> 或者 <em>.htm</em> 为后缀时，浏览器才对此文档的各种标签进行解释</li>
+</ul>
+<h3 id="https-协议"><strong>https 协议</strong></h3>
+<p><em>HTTPS</em>：安全的 <em>HTTP</em> 协议（<em>S</em> 表示 <em>Security</em>），建立在 <em>SSL</em> 基础上</p>
+<ul>
+<li>目前 <em>SSL / TLS</em> 已被浏览器广泛支持，很多 <em>Web</em> 应用利用 <em>HTTPS</em> 协议实现安全传输</li>
+<li><em>HTTPS</em> 的熟知端口号为 <em>80</em></li>
+</ul>
+<p><em>SSL</em>：指的是 <em>Secyre Socket Layer</em>，为 <em>TCP</em> 协议提供信息加密和完整性（由此可以推断 <em>HTTPS</em> 协议也是基于 <em>TCP</em> 协议实现的）；而 <em>TLS</em> 是在 <em>SSL</em> 基础上实现的进阶版</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260423212225937.png" alt="image-20260423212225937"></p>
+<p>数字证书生成：<em>A</em> 支持的加密算法和 <em>B</em> 支持的加密算法取交集，在其中取一个算法作为约定的加密算法，用这个算法生成公钥，同时包含持有者信息，以及网络中的权威机构进行签名</p>
+<ul>
+<li>数字证书 = 持有者信息 + 公钥 + 权威机构的数字签名</li>
+<li>之所以要有数字签名，是为了防止公钥被攻击，当发生攻击时，公钥中的签名随之发生改变，可以被检测出来，由此检测受到攻击</li>
+</ul>
+<p>加密算法分成<strong>通用加密算法</strong>和<strong>公钥加密算法</strong>两种：</p>
+<ul>
+<li>通用加密算法 / 对称加密算法：使用密码本加密，加密方和解密方使用同一个秘钥，速度快，适合大量数据加密</li>
+<li>公钥加密算法：使用公钥和私钥加密，公钥与私钥成对出现，数学相关但不可推，速度慢</li>
+</ul>
+<h2 id="电子邮件"><strong>电子邮件</strong></h2>
+<p><strong>发送邮件</strong>的协议：<em>SMTP</em></p>
+<p>早期的邮件只支持 <em>7bit</em> 的 <em>ASCII</em> 编码，后面又提出了 <em>MIME</em> 标准，后者可以在邮件首部说明数据类型，支持在邮件中传输文本，声音，图像等多模态数据</p>
+<p><strong>读取邮件</strong>的协议：<em>POP3</em> 和 <em>IMAP</em></p>
+<ul>
+<li><em>POP3</em>：<em>Post Office Protocol</em></li>
+<li><em>IMAP</em>：<em>Internet Message Access Protocol</em></li>
+</ul>
+<p>邮件发送也是基于 <em>TCP</em> 协议实现的</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../images/image-20260423213520155.png" alt="image-20260423213520155"></p>
+<p>电子邮件系统中的两类实体：</p>
+<ul>
+<li>用户代理 <em>UA</em>（<em>User Agent</em>）：用户与电子邮件系统的<strong>接口</strong>，即电子邮件客户端软件</li>
+<li>邮件服务器：用于发送和接收邮件，按照客户 / 服务器方式工作，发送邮件和接收邮件使用不同的协议，分别为 <em>SMTP</em> 和 <em>POP3</em> 协议</li>
+</ul>
+<p>一个邮件服务器既可以作为客户，也可以作为服务器</p>
+<p><em>SMTP</em> 通信的三个阶段：</p>
+<ul>
+<li>建立连接：连接在发送主机的 <em>SMTP</em> 客户和接收主机的 <em>SMTP</em> 服务器之间建立，不使用中间邮件服务器</li>
+<li>邮件发送</li>
+<li>释放连接：邮件完成发送后，<em>SMTP</em> 释放 <em>TCP</em> 连接</li>
+</ul>
+<hr>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://agilawood4.github.io/2026/04/16/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%BA%94%E7%94%A8%E5%B1%82/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://agilawood4.github.io/2026/04/16/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%BA%94%E7%94%A8%E5%B1%82/')">应用层</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://agilawood4.github.io/2026/04/16/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%BA%94%E7%94%A8%E5%B1%82/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=应用层&amp;url=https://agilawood4.github.io/2026/04/16/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%BA%94%E7%94%A8%E5%B1%82/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A231.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://agilawood4.github.io" target="_blank">Destiny Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>专业课<span class="tagsPageCount">45</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/picture.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/04/13/%E7%BB%84%E5%90%88%E5%AF%BC%E8%88%AA/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A230.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">组合导航</div></div></a></div><div class="next-post pull-right"><a href="/2026/04/21/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A233.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计网知识点总结</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/12/06/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0/" title="(SQL10)数据库复习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2140.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-06</div><div class="title">(SQL10)数据库复习</div></div></a></div><div><a href="/2025/11/15/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BE%8B%E9%A2%98%E9%80%89%E8%AE%B2/" title="(SQL11)数据库例题选讲"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2141.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-15</div><div class="title">(SQL11)数据库例题选讲</div></div></a></div><div><a href="/2025/12/04/(SQL)%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF/" title="(SQL9)事务处理技术"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2139.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-04</div><div class="title">(SQL9)事务处理技术</div></div></a></div><div><a href="/2026/03/17/(SQL1)%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%AE%BA/" title="(SQL1)数据库概论"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2130.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-03-17</div><div class="title">(SQL1)数据库概论</div></div></a></div><div><a href="/2025/11/15/(SQL2)%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" title="(SQL2)关系数据库"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2131.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-15</div><div class="title">(SQL2)关系数据库</div></div></a></div><div><a href="/2025/09/25/(SQL3)SQL%E8%AF%AD%E5%8F%A5%E8%AF%BE%E4%B8%8A/" title="(SQL3)SQL语句课上"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2133.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-25</div><div class="title">(SQL3)SQL语句课上</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">应用层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%97%E6%8E%A5%E5%AD%97%E7%BC%96%E7%A8%8B%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.1.</span> <span class="toc-text">套接字编程接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F-dns"><span class="toc-number">1.2.</span> <span class="toc-text">域名系统 DNS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#internet-%E7%9A%84%E5%9F%9F%E5%90%8D%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.1.</span> <span class="toc-text">Internet 的域名结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">域名服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text">文件传输协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%87%E7%BB%B4%E7%BD%91"><span class="toc-number">1.4.</span> <span class="toc-text">万维网</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6-url"><span class="toc-number">1.4.1.</span> <span class="toc-text">统一资源定位符 URL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E9%80%81%E5%8D%8F%E8%AE%AE-http"><span class="toc-number">1.4.2.</span> <span class="toc-text">超文本传送协议 http</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-%E7%89%88%E6%9C%AC%E6%BC%94%E8%BF%9B"><span class="toc-number">1.4.3.</span> <span class="toc-text">http 版本演进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-%E6%8A%A5%E6%96%87"><span class="toc-number">1.4.4.</span> <span class="toc-text">http 报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%87%E7%BB%B4%E7%BD%91%E6%96%87%E6%A1%A3"><span class="toc-number">1.4.5.</span> <span class="toc-text">万维网文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#https-%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.4.6.</span> <span class="toc-text">https 协议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6"><span class="toc-number">1.5.</span> <span class="toc-text">电子邮件</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/06/%E8%AE%A1%E7%BD%91%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/" title="无题">无题</a><time datetime="2026-05-06T02:53:30.525Z" title="发表于 2026-05-06 10:53:30">2026-05-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/03/(ST)%E5%A5%87%E5%A6%99%E6%95%85%E4%BA%8B11/" title="奇妙故事11">奇妙故事11</a><time datetime="2026-05-03T15:45:42.000Z" title="发表于 2026-05-03 23:45:42">2026-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/24/SGA-IRLS%20%E6%96%B9%E6%B3%95/" title="无题">无题</a><time datetime="2026-04-24T15:41:51.146Z" title="发表于 2026-04-24 23:41:51">2026-04-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/23/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%A1%A5%E5%85%85%E5%86%85%E5%AE%B9/" title="补充内容"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A235.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="补充内容"/></a><div class="content"><a class="title" href="/2026/04/23/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%A1%A5%E5%85%85%E5%86%85%E5%AE%B9/" title="补充内容">补充内容</a><time datetime="2026-04-23T13:40:54.000Z" title="发表于 2026-04-23 21:40:54">2026-04-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/21/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%BE%80%E5%B9%B4%E9%A2%98%E4%B8%B2%E8%AE%B2/" title="往年题串讲"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A234.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="往年题串讲"/></a><div class="content"><a class="title" href="/2026/04/21/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%BE%80%E5%B9%B4%E9%A2%98%E4%B8%B2%E8%AE%B2/" title="往年题串讲">往年题串讲</a><time datetime="2026-04-21T08:27:35.000Z" title="发表于 2026-04-21 16:27:35">2026-04-21</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">145</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">5</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>6</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>50</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>45</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://www.bilibili.com/video/BV1Ji4y1N7tK?spm_id_from=333.788.videopod.episodes&amp;vd_source=3ceb705961537c0a458a0c7955359e9b&amp;p=12&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
