@@ -1,0 +1,898 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>计网实验复习 | Destiny Blog</title><meta name="keywords" content="专业课"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="计网实验复习"><meta name="application-name" content="计网实验复习"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="计网实验复习"><meta property="og:url" content="https://agilawood4.github.io/2026/05/26/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E5%A4%8D%E4%B9%A0/index.html"><meta property="og:site_name" content="Destiny Blog"><meta property="og:description" content="计网实验复习指南  北航机房用的指令系统有的是 H3C Comware V7，有的是 H3C Comware V5，这里是按照 V7 整理的 说明：这是一份很全的指令总结，有的指令未必会考得到，如果你的时间来不及，可以去看另一份简化版的重点指令总结  0. 上机考试总体流程 拿到题目后建议按这个顺序"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A230.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A230.jpg"><meta name="description" content="计网实验复习指南  北航机房用的指令系统有的是 H3C Comware V7，有的是 H3C Comware V5，这里是按照 V7 整理的 说明：这是一份很全的指令总结，有的指令未必会考得到，如果你的时间来不及，可以去看另一份简化版的重点指令总结  0. 上机考试总体流程 拿到题目后建议按这个顺序"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://agilawood4.github.io/2026/05/26/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E5%A4%8D%E4%B9%A0/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: Destiny Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Destiny Blog',
+  title: '计网实验复习',
+  postAI: '',
+  pageFillDescription: '计网实验复习指南, 0. 上机考试总体流程, 一、基础通用命令, 1. 进入系统视图与修改设备名, 2. 查看配置, 3. 查看帮助, 4. 保存、清空配置与重启, 5. 清空 ARP 与 MAC 表, 二、接口配置, 1. 路由器物理接口配置 IP, 2. 开启和关闭接口, 3. 配置 MTU, 4. 查看接口状态, 三、交换机 VLAN 与端口配置, 1. VLAN 基本概念, 2. 创建和删除 VLAN, 3. Access 端口配置, 4. Trunk 端口配置, 5. Hybrid 端口配置, 四、三层交换机 VLAN 间通信, 1. 配置 VLAN 接口作为网关, 2. VLAN 间通信典型配置, 五、静态路由与默认路由, 1. 静态路由格式, 2. 默认路由, 3. 查看路由表, 六、NAT 地址转换, 1. NAT 作用, 2. 配置 ACL 匹配内网地址, 3. 配置 NAT 地址池, 4. 在出接口启用 NAT, 5. NAT 常用排查, 七、生成树 STP 与广播风暴, 1. 广播风暴概念, 2. 开启 STP, 3. 查看 STP 状态, 八、端口聚合 LACP, 1. 端口聚合作用, 2. 动态链路聚合配置, 3. 查看端口聚合状态, 九、PPP 与 PAP 认证, 1. PPP 基本配置, 2. PPP 调试, 3. LCP 工作过程, 4. PAP 认证配置, 5. PAP 调试, 十、ARP、ICMP、Ping 与 Tracert, 1. ARP 原理, 2. ARP 命令, 3. ICMP 原理, 4. Ping 原理, 5. Tracert 原理, 十一、RIP 与 RIPng/RIPv2, 1. RIP 基本概念, 2. RIP 基本配置, 3. RIPv2 配置, 4. RIP 认证, 5. RIP 查询, 十二、Loopback 接口, 1. Loopback 概念, 2. 配置 Loopback, 十三、OSPF 协议实验, 1. OSPF 基本概念, 2. OSPF 报文类型, 3. OSPF 基本配置, 4. 删除 OSPF 配置, 5. 配置 OSPF Cost, 6. OSPF 引入静态路由, 7. OSPF 查询命令, 8. OSPF LSA 类型, 9. OSPF 调试, 10. OSPF 简答题常用表述, 十四、BGP 配置, 1. BGP 基本配置, 2. IBGP 使用 Loopback 建邻, 3. BGP 注入路由, 4. BGP 引入 OSPF, 5. BGP 聚合, 6. BGP 查询, 十五、ACL 基本配置, 1. 基本 ACL, 十六、DHCP 原理与常用配置, 1. DHCP 工作过程, 2. DHCP 服务器配置模板, 十七、TCP/UDP 与传输层实验背诵, 1. TCP 基本特点, 2. TCP 三次握手, 3. TCP 四次挥手, 4. TCP 滑动窗口, 5. TCP 慢启动与拥塞避免, 6. TCP 窗口探查, 7. UDP, 十八、应用层协议背诵, 1. DNS, 2. HTTP, 3. 电子邮件协议, 4. FTP, 5. DHCP, 二十、考试高频配置模板, 模板 1：交换机划 VLAN + 配网关, 模板 2：路由器接口 + 静态路由, 模板 3：OSPF 单区域, 模板 4：NAT 上网, 二十、考试最后必须做的事计网实验复习指南北航机房用的指令系统有的是有的是这里是按照整理的说明这是一份很全的指令总结有的指令未必会考得到如果你的时间来不及可以去看另一份简化版的重点指令总结上机考试总体流程拿到题目后建议按这个顺序做看拓扑图先确定设备数量接口连接关系地址规划正确接线确认每根线两端接口配置的地址子网掩码默认网关配置交换机端口配置三层接口或路由器物理接口配置静态路由默认路由或动态路由协议配置认证等附加功能用命令检查接口路由表和协议邻居用和验证连通性和路径最后保存配置一基础通用命令进入系统视图与修改设备名进入系统视图修改设备名为退出当前视图回到用户视图简写常用的简写修改设备名为查看配置查看当前视图下的配置查看当前运行配置的简写常用场景查看当前接口配置查看当前配置查看帮助查看当前视图下可用命令查看后面可接的参数查看可进入的接口类型考试时不会命令时多用保存清空配置与重启保存当前配置清空已保存配置删除启动配置文件重启设备注意后必须重启后配置才会恢复为空清空与表清空缓存表三层交换机也可清空缓存查看查看表查看地址表查看交换机地址表清空动态地址表推荐写法清空动态地址表说明牢学长笔记里的不建议作为清空表的通用写法它更多用于删除静态或特定配置考试排查时推荐用二接口配置路由器物理接口配置常见接口名千兆以太网物理接口是接口编号千兆以太网物理接口是接口编号串行接口常用于路由器之间的点到点链路实验如等实验是接口编号回环接口是接口编号端口号的选择根据题目组网的拓扑图可以得到比如题目中会给出如下信息拓扑图写法完整接口名所在设备含义的第一个千兆以太网口的第二个千兆以太网口的串行接口的第个千兆以太网口配置以太网接口进入系统视图进入接口配置这个路由器上接口的地址退出接口视图也可以写掩码长度配置掩码删除删除接口上指定的删除接口上所有的通常情况下一个接口我们只配置一个地址因此这两条命令大部分情况下等价开启和关闭接口关闭接口开启接口修改后经常需要重启接口关闭串口重新开启串口使配置生效配置将接口设置为字节恢复默认用于分片实验发送数据部分大小为字节的报文查看接口状态查看所有接口简要状态查看接口详细信息判断标准只有物理状态和协议状态都接口才能正常转发数据三交换机与端口配置基本概念端口类型含义常见用途一般只属于一个收发不带标签的普通帧接路由器单接口可通过多个通常用于交换机之间交换机互连可灵活设置高级场景端口通常接主机端口通常接交换机端口既可接交换机也可接特殊终端创建和删除创建并进入视图创建删除删除批量创建创建部分设备也支持端口配置推荐写法设置为端口加入这一组命令的作用是把交换机上的物理端口配置成接入口并划入在后面的操作中凡是接在的这个端口上的设备都属于这个局域网也可以在视图下批量划分端口将到加入从中移除端口端口配置交换机之间互连一般用设置为端口允许和通过这段命令的作用是把交换机上的端口配置成干道端口并允许和的数据通过如果是要允许到通过设置缺省设置为删除允许删除恢复端口默认链路类型端口配置设置为端口设置缺省为报文不打标签报文打标签说明端口一般只有缺省的报文不带标签端口可以允许多个的报文不带标签配置更灵活四三层交换机间通信配置接口作为网关标准写法是这段命令的作用是在三层交换机上创建进入的三层接口并给这个接口配置地址间通信典型配置假设网关网关下面这段命令就是在做一个三层交换机实现间通信的典型配置整体作用是在交换机上创建和把两个物理端口分别划入不同然后给和分别配置三层网关地址使两个中的主机可以通过进行三层转发进入系统视图创建两个虚拟局域网和把划分入把划分入给配三层网关地址给配三层网关地址配置网关网关整体网络拓扑对应如下网关网关五静态路由与默认路由静态路由格式目的网络子网掩码下一跳地址示例到的下一跳是也可以带优先级设置静态路由优先级为说明直连路由优先级默认优先级静态路由默认优先级默认优先级优先级数值越小路由越优先默认路由默认路由用于把未知目的网络转发给上级路由器默认路由下一跳为常用于连接出口路由器下一跳查看路由表查看完整路由表只查看静态路由查看指定目的网络路由六地址转换作用用于将内网私有地址转换为公网地址解决公网地址不足问题也常用于让内网访问配置匹配内网地址标准写法允许做拒绝其他流量可选有些设备也支持考试时用判断设备支持哪种配置地址池定义公网地址池在出接口启用匹配转换为地址池中的地址同时配置默认路由指向外网网关常用排查查看查看地址池查看配置是否挂到正确出接口查看是否有默认路由七生成树与广播风暴广播风暴概念广播风暴是由于二层网络中存在环路广播帧在网络中不断复制和转发导致网络拥塞而开启生成树协议以后即可避免因为二层环路而产生的广播风暴开启推荐写法全局开启全局开启部分设备支持开启关闭或考试时以查询为准查看状态查看简要状态查看详细信息八端口聚合端口聚合作用端口聚合可以把多个物理接口捆绑成一个逻辑接口提高链路带宽和可靠性也可避免二层环路动态链路聚合配置创建并进入二层聚合接口相当于创建一个逻辑聚合端口将聚合模式设为动态模式由协议自动协商聚合链路退出聚合接口视图返回系统视图进入物理接口将物理接口加入聚合组使其成为的成员端口退出接口视图进入物理接口将物理接口加入聚合组使其与一起组成一条逻辑链路退出接口视图做类似配置查看端口聚合状态查看聚合组摘要正常状态应看到成员端口处于九与认证基本配置串口链路协议设置为重启接口另一端也要配置调试打开终端调试显示开启终端监控打开调试关闭所有调试工作过程可考试背诵完整理解发送和收到认证配置作为认证方指定用户服务类型为设置密码启用认证作为被认证方向对端发送用户名和密码调试认证方状态被认证方状态十与原理是地址解析协议用于在同一网段中根据地址解析地址同网段通信源主机先查缓存若没有目标则广播目标主机收到后返回源主机得到后发送数据帧不同网段通信源主机不直接解析目的主机而是把数据交给默认网关因此源主机解析的是默认网关的地址命令设备上查看表清空表上查看的缓存清空的缓存原理是网际控制报文协议用于报告差错和提供网络诊断信息常见报文类型用于请求类型用于应答类型用于超时目的不可达原理考试可写用于检测主机或网络的连通性源主机向目的主机发送报文目的主机收到后返回报文若源主机收到应答则说明网络可达若超时则说明链路路由防火墙或主机配置可能存在问题命令指定数据部分大小为字节原理考试可写用于确定数据包到达目的主机经过的路径源主机依次发送为的数据包路径上的路由器每转发一次将减当减为时丢弃该包并返回报文源主机据此获得每一跳路由器地址到达目的主机后由于访问的是高端口目的主机会返回报文源主机据此判断路径探测结束设备默认可能不回应需要开启允许回应超时报文允许回应目的不可达报文十一与基本概念是距离向量路由协议以跳数作为度量值最大跳数为表示不可达周期性发送路由更新容易产生路由环路通过水平分割毒性逆转触发更新等机制缓解环路基本配置在上启动进程进入配置视图在所属主类网段的接口上启用并发布该网段路由退出配置视图注意的后通常写主类网络不写子网掩码示例配置在接口下配置版本接口启用或者在进程中进程使用版本关闭自动汇总支持认证接口下配置认证使用认证三层交换机接口注意不同设备对参数位置要求可能略有差异考试时用查询确认查询查看运行信息查看路由查看写入全局路由表的路由十二接口概念是一种纯软件虚拟接口一旦创建通常一直处于状态常用于配置建立稳定邻居模拟网段作为测试地址配置配置主机地址删除注意路由器推荐用地址例如十三协议实验基本概念是开放最短路径优先协议是链路状态路由协议它通过交换链路状态信息建立再使用算法计算最短路径重要概念自治系统由同一机构管理采用统一路由策略的一组路由器区域同一区域内路由器拥有相同的链路状态数据库路由器在中的唯一标识路径代价根据总代价选择最优路径报文类型报文作用发现和维护邻居选举交换链路状态数据库摘要请求本端缺少或较旧的发送确认收到的补充报文使用组播地址相关通信使用组播地址基本配置配置全局启动进程进入宣告网段使用反掩码精确宣告说明后面写地址和反掩码反掩码子网掩码按位取反对应对应删除配置删除进程删除全局重启进程重启进程部分设备可能支持配置在路由器物理接口上设置该接口代价为在三层交换机接口上设置接口代价引入静态路由先配置静态路由配置默认静态路由再引入将静态路由引入查询命令查看邻居摘要查看邻居详细信息查看路由表查看链路状态数据库查看全局路由表中的路由邻居正常状态如果停留在说明邻居建立异常需要检查掩码认证接口状态等类型类型名称产生者传播范围作用类每台路由器本区域描述路由器链路状态和类本区域描述广播网络中连接的路由器类跨区域描述到其他区域网段的路由类跨区域描述到的路由类整个描述外部路由查询命令查看所有查看类查看类查看类查看类查看类调试开启终端调试显示开启终端监控调试事件调试报文关闭全部调试考试排查时调试信息太多时一定要及时简答题常用表述通过报文发现和维护邻居关系通过报文交换链路状态数据库摘要通过请求缺少的通过发送并通过进行确认所有路由器同步后使用算法计算最短路径并将最优路由写入路由表十四配置是边界网关协议常用于之间比如协议也可用于内部的基本配置设置建立邻居进入单播地址族并启用邻居启用单播邻居使用建邻邻居号相同指定源接口为将下一跳改为本地注意用建邻时必须保证双方地址通过或静态路由可达注入路由将已存在于路由表的网段注入注意的命令要求该路由已经存在于本机路由表中否则后不会真正发布该路由引入将路由引入聚合聚合并抑制明细查询查看邻居状态查看路由表查看全局路由表中的路由正常状态路由表中表示有效路由表示最优路由表示有效且最优十五基本配置基本匹配源地址允许源地址拒绝其他流量查看十六原理与常用配置工作过程考试可写客户端获取地址通常经历四个阶段客户端首先广播寻找服务器服务器返回提供地址客户端广播选择其中一个地址服务器返回确认分配客户端随后使用该地址服务器配置模板全局开启创建地址池地址池网段默认网关服务器若在接口上作为网关接口应用地址池十七与传输层实验背诵基本特点是传输控制协议工作在之上是面向连接端到端可靠的传输层协议通过序号确认重传流量控制和拥塞控制保证可靠传输三次握手考试可写建立连接采用三次握手第一次客户端发送的连接请求报文选择初始序号第二次服务器收到后返回的确认报文确认号为同时选择自己的初始序号第三次客户端收到后再发送的确认报文确认号为序号为三次握手完成后连接建立四次挥手考试可写连接释放采用四次挥手首先主动关闭方发送的连接释放报文序号为其次被动关闭方返回确认号为随后被动关闭方也发送的连接释放报文序号为最后主动关闭方返回确认号为连接释放完成滑动窗口考试可写采用大小可变的滑动窗口进行流量控制接收端根据接收缓存大小通告接收窗口发送端根据网络拥塞程度维护拥塞窗口发送窗口的上限值为窗口左边沿右移表示已发送数据被确认右边沿右移表示允许发送更多数据慢启动与拥塞避免考试可写慢启动是在连接开始或拥塞后从较小的拥塞窗口开始收到新的后逐渐增大使发送速率逐步提高拥塞避免是在达到慢启动门限后使线性增长避免网络再次拥塞当检测到拥塞时设置并将重新减小然后重新执行慢启动和拥塞避免判断使用慢启动使用拥塞避免二者均可窗口探查考试可写当接收端缓存已满时会向发送端通告零窗口发送端暂停发送为避免窗口更新报文丢失导致双方长期等待使用坚持定时器周期性发送窗口探查报文以确认接收窗口是否已经重新打开考试可写是用户数据报协议工作在之上是无连接不可靠面向报文的传输层协议不建立连接不提供确认重传和拥塞控制机制首部开销小适用于实时性要求高允许少量丢包的应用如视频语音等十八应用层协议背诵考试可写是域名系统用于将域名解析为地址系统由域名空间和资源记录域名服务器解析器组成主机查询域名时通常先向本地域名服务器发起递归查询本地域名服务器若没有结果则向根域名服务器顶级域名服务器和权限域名服务器进行迭代查询最终将解析结果返回给主机递归查询主机把查询请求交给本地域名服务器并要求其返回最终答案迭代查询本地域名服务器逐级向根顶级权限域名服务器查询每级服务器返回下一步应查询的服务器信息直到得到最终答案通常使用查询报文通常较短要求响应快因此一般使用当区域传送或响应报文过大时也可使用考试可写是超文本传送协议是万维网客户程序和服务器程序之间通信所遵守的应用层协议通常使用提供可靠传输默认端口号为访问网页过程浏览器分析浏览器向请求解析域名对应返回服务器浏览器与服务器建立连接浏览器发送请求服务器返回网页文件连接释放浏览器显示页面注意是应用层协议是传输层协议使用连接传输数据电子邮件协议考试可写电子邮件系统由用户代理邮件服务器和邮件协议组成是邮件发送协议负责将邮件从用户代理发送到发送方邮件服务器以及从发送方邮件服务器传送到接收方邮件服务器或用于用户从接收方邮件服务器读取邮件过程建立连接服务器返回服务就绪客户端发送服务器返回客户端发送客户端发送客户端发送邮件正文以结束服务器返回客户端发送服务器返回连接释放考试可写是文件传输协议使用两个连接控制连接和数据连接控制连接使用服务器号端口用于传输命令和应答并在整个会话期间保持数据连接用于实际传输文件每传输一个文件通常建立一次数据连接考试可写是动态主机配置协议用于自动为主机分配地址子网掩码默认网关和等参数地址获取过程包括四个阶段二十考试高频配置模板模板交换机划配网关进入系统视图开始配置交换机将设备名称修改为方便识别当前配置的设备创建并进入视图退出视图返回系统视图创建并进入视图退出视图返回系统视图进入的物理接口准备配置该端口将设置为接入口通常用于连接主机将加入接在该端口上的主机属于退出接口视图返回系统视图进入的物理接口准备配置该端口将设置为接入口通常用于连接主机将加入接在该端口上的主机属于退出接口视图返回系统视图创建并进入的三层接口也就是的网关接口给的三层接口配置地址通常作为主机的默认网关退出三层接口视图返回系统视图创建并进入的三层接口也就是的网关接口给的三层接口配置地址通常作为主机的默认网关退出三层接口视图返回系统视图模板路由器接口静态路由进入系统视图开始配置路由器将设备名称修改为方便在命令行中识别当前设备进入的物理接口配置视图给的接口配置地址通常作为网段的网关退出接口视图返回系统视图进入的物理接口配置视图给的接口配置地址通常用于连接另一台路由器退出接口视图返回系统视图配置静态路由去往远端网段的数据包下一跳交给模板单区域进入系统视图开始配置配置的全局为用于在中唯一标识该路由器启动进程并进入配置视图进入区域即骨干区域将网段宣告进使该网段对应接口运行并发布该直连路由将网段宣告进使该网段对应接口运行并发布该直连路由退出区域视图返回进程视图退出进程视图返回系统视图模板上网进入系统视图开始配置路由器创建基本用于匹配允许进行转换的内网源地址允许源地址为网段的报文通过即这些内网主机可以进行转换退出视图返回系统视图创建地址池用于存放转换后的公网地址范围配置地址池范围为到内网地址将被转换成这些地址退出地址池视图返回系统视图进入的接口通常该接口是连接外网或上级路由器的出口接口在出接口启用将匹配的内网源地址转换为地址池中的地址退出接口视图返回系统视图配置默认路由凡是路由表中没有更具体匹配的外部目的地址都转发给下一跳二十考试最后必须做的事确认接口确认路由完整确认正常题确认邻居题确认目标地址验证连通性目标地址验证路径最终检查配置保存配置最重要的一句做完一定要否则重启或评分时配置可能丢失',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-06-10 19:34:53',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Destiny Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>6</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>51</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>51</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">六月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/04/"><span class="card-archive-list-date">四月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">31</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">8</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>专业课</span></a></span></div></div><h1 class="post-title" itemprop="name headline">计网实验复习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-05-26T12:36:57.342Z" title="发表于 2026-05-26 20:36:57">2026-05-26</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-06-10T11:34:53.971Z" title="更新于 2026-06-10 19:34:53">2026-06-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A230.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://agilawood4.github.io/2026/05/26/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E5%A4%8D%E4%B9%A0/"><header><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE/" itemprop="url">专业课</a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" tabindex="-1" itemprop="url">专业课</a><h1 id="CrawlerTitle" itemprop="name headline">计网实验复习</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2026-05-26T12:36:57.342Z" title="发表于 2026-05-26 20:36:57">2026-05-26</time><time itemprop="dateCreated datePublished" datetime="2026-06-10T11:34:53.971Z" title="更新于 2026-06-10 19:34:53">2026-06-10</time></header><h1><strong>计网实验复习指南</strong></h1>
+<blockquote>
+<p>北航机房用的指令系统有的是 H3C Comware V7，有的是 H3C Comware V5，这里是按照 V7 整理的</p>
+<p>说明：这是一份很全的指令总结，有的指令未必会考得到，如果你的时间来不及，可以去看另一份简化版的重点指令总结</p>
+</blockquote>
+<h2 id="0-上机考试总体流程"><strong>0. 上机考试总体流程</strong></h2>
+<p>拿到题目后建议按这个顺序做：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1. 看拓扑图，先确定设备数量、接口连接关系、IP 地址规划;</span><br><span class="line">2. 正确接线，确认每根线两端接口;</span><br><span class="line">3. 配置 PC 的 IP 地址、子网掩码、默认网关;</span><br><span class="line">4. 配置交换机 VLAN、Access/Trunk/Hybrid 端口;</span><br><span class="line">5. 配置三层 VLAN 接口或路由器物理接口 IP;</span><br><span class="line">6. 配置静态路由、默认路由或动态路由协议 RIP/OSPF/BGP;</span><br><span class="line">7. 配置 NAT、PPP、认证、ACL 等附加功能;</span><br><span class="line">8. 用 display 命令检查接口、ARP、MAC、路由表和协议邻居;</span><br><span class="line">9. 用 ping 和 tracert 验证连通性和路径;</span><br><span class="line">10. 最后 save 保存配置.</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="一-基础通用命令"><strong>一、基础通用命令</strong></h2>
+<h3 id="1-进入系统视图与修改设备名"><strong>1. 进入系统视图与修改设备名</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;H3C&gt; system-view              // 进入系统视图</span><br><span class="line">[H3C] sysname R1               // 修改设备名为 R1</span><br><span class="line">[R1] quit                      // 退出当前视图</span><br><span class="line">&lt;R1&gt;                           // 回到用户视图</span><br></pre></td></tr></table></figure>
+<p>简写常用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;H3C&gt; sys                      // system-view 的简写</span><br><span class="line">[H3C] sysname S1               // 修改设备名为 S1</span><br></pre></td></tr></table></figure>
+<h3 id="2-查看配置"><strong>2. 查看配置</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[R1] display this              // 查看当前视图下的配置</span><br><span class="line">&lt;R1&gt; display current-configuration   // 查看当前运行配置</span><br><span class="line">&lt;R1&gt; dis cur                   // display current-configuration 的简写</span><br></pre></td></tr></table></figure>
+<p>常用场景：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R1-GigabitEthernet0/0] display this    // 查看当前接口配置</span><br><span class="line">[R1-ospf-1] display this                // 查看当前 OSPF 配置</span><br></pre></td></tr></table></figure>
+<h3 id="3-查看帮助"><strong>3. 查看帮助</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[R1] ?                         // 查看当前视图下可用命令</span><br><span class="line">[R1] display ?                 // 查看 display 后面可接的参数</span><br><span class="line">[R1] interface ?               // 查看可进入的接口类型</span><br></pre></td></tr></table></figure>
+<p>考试时不会命令时，多用 <code>?</code></p>
+<h3 id="4-保存-清空配置与重启"><strong>4. 保存、清空配置与重启</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; save                      // 保存当前配置</span><br><span class="line">The current configuration will be written to the device. Are you sure? [Y/N]: y</span><br></pre></td></tr></table></figure>
+<p>清空已保存配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; reset saved-configuration // 删除启动配置文件</span><br><span class="line">&lt;R1&gt; reboot                    // 重启设备</span><br></pre></td></tr></table></figure>
+<p>注意：<code>reset saved-configuration</code> 后必须 <code>reboot</code>，重启后配置才会恢复为空</p>
+<h3 id="5-清空-arp-与-mac-表"><strong>5. 清空 ARP 与 MAC 表</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; reset arp all             // 清空 ARP 缓存表</span><br><span class="line">&lt;S1&gt; reset arp all             // 三层交换机也可清空 ARP 缓存</span><br></pre></td></tr></table></figure>
+<p>查看 ARP：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; display arp               // 查看 ARP 表</span><br></pre></td></tr></table></figure>
+<p>查看 MAC 地址表：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;S1&gt; display mac-address       // 查看交换机 MAC 地址表</span><br></pre></td></tr></table></figure>
+<p>清空动态 MAC 地址表，推荐写法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;S1&gt; reset mac-address dynamic // 清空动态 MAC 地址表</span><br></pre></td></tr></table></figure>
+<p>说明：牢学长笔记里的 <code>undo mac-address</code> 不建议作为清空 MAC 表的通用写法，它更多用于删除静态 MAC 或特定配置，考试排查时推荐用 <code>reset mac-address dynamic</code></p>
+<h2 id="二-接口配置"><strong>二、接口配置</strong></h2>
+<h3 id="1-路由器物理接口配置-ip"><strong>1. 路由器物理接口配置 IP</strong></h3>
+<p>Comware V7 常见接口名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GigabitEthernet0/0 // 千兆以太网物理接口，0/0 是接口编号</span><br><span class="line">GigabitEthernet0/1 // 千兆以太网物理接口，0/1 是接口编号</span><br><span class="line">Serial1/0 // 串行接口，常用于路由器之间的点到点链路实验，如 PPP、PAP、CHAP 等实验，1/0 是接口编号</span><br><span class="line">LoopBack0 // 回环接口，0 是接口编号</span><br></pre></td></tr></table></figure>
+<p>端口号的选择根据题目组网的拓扑图可以得到，比如题目中会给出如下信息：</p>
+<table>
+<thead>
+<tr>
+<th>拓扑图写法</th>
+<th>完整接口名</th>
+<th>所在设备</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>R1 G0/0</code></td>
+<td><code>GigabitEthernet0/0</code></td>
+<td>R1</td>
+<td>R1 的第一个千兆以太网口</td>
+</tr>
+<tr>
+<td><code>R1 G0/1</code></td>
+<td><code>GigabitEthernet0/1</code></td>
+<td>R1</td>
+<td>R1 的第二个千兆以太网口</td>
+</tr>
+<tr>
+<td><code>R2 S1/0</code></td>
+<td><code>Serial1/0</code></td>
+<td>R2</td>
+<td>R2 的串行接口</td>
+</tr>
+<tr>
+<td><code>S1 G1/0/1</code></td>
+<td><code>GigabitEthernet1/0/1</code></td>
+<td>S1</td>
+<td>S1 的第 1 个千兆以太网口</td>
+</tr>
+</tbody>
+</table>
+<p>配置以太网接口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; system-view                         // 进入系统视图</span><br><span class="line">[R1] interface GigabitEthernet 0/0       // 进入 GE0/0 接口</span><br><span class="line">[R1-GigabitEthernet0/0] ip address 192.168.2.1 255.255.255.0  // 配置 R1 这个路由器上 GE0/0 接口的 IP 地址</span><br><span class="line">[R1-GigabitEthernet0/0] quit             // 退出接口视图</span><br></pre></td></tr></table></figure>
+<p>也可以写掩码长度：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1-GigabitEthernet0/0] ip address 192.168.2.1 24  // 配置 /24 掩码</span><br></pre></td></tr></table></figure>
+<p>删除 IP：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R1-GigabitEthernet0/0] undo ip address 192.168.2.1 24  // 删除接口 GE0/0 上指定的 IP</span><br><span class="line">[R1-GigabitEthernet0/0] undo ip address                 // 删除接口 GE0/0 上所有的 IP</span><br></pre></td></tr></table></figure>
+<p>通常情况下，一个接口我们只配置一个 <em>IP</em> 地址，因此这两条命令大部分情况下等价</p>
+<h3 id="2-开启和关闭接口"><strong>2. 开启和关闭接口</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R1-GigabitEthernet0/0] shutdown         // 关闭接口</span><br><span class="line">[R1-GigabitEthernet0/0] undo shutdown    // 开启接口</span><br></pre></td></tr></table></figure>
+<p>PPP、PAP、MTU 修改后经常需要重启接口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R1-Serial1/0] shutdown                  // 关闭串口</span><br><span class="line">[R1-Serial1/0] undo shutdown             // 重新开启串口，使配置生效</span><br></pre></td></tr></table></figure>
+<h3 id="3-配置-mtu"><strong>3. 配置 MTU</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[R1] interface GigabitEthernet 0/0</span><br><span class="line">[R1-GigabitEthernet0/0] mtu 100          // 将接口 MTU 设置为 100 字节</span><br><span class="line">[R1-GigabitEthernet0/0] undo mtu         // 恢复默认 MTU</span><br></pre></td></tr></table></figure>
+<p>用于分片实验：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; ping -s 300 192.168.1.2             // 发送数据部分大小为 300 字节的 ICMP 报文</span><br></pre></td></tr></table></figure>
+<h3 id="4-查看接口状态"><strong>4. 查看接口状态</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; display interface brief             // 查看所有接口简要状态</span><br><span class="line">&lt;R1&gt; display interface GigabitEthernet 0/0  // 查看 GE0/0 接口详细信息</span><br></pre></td></tr></table></figure>
+<p>判断标准：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Link: UP</span><br><span class="line">Protocol: UP</span><br></pre></td></tr></table></figure>
+<p>只有物理状态和协议状态都 UP，接口才能正常转发数据。</p>
+<h2 id="三-交换机-vlan-与端口配置"><strong>三、交换机 VLAN 与端口配置</strong></h2>
+<h3 id="1-vlan-基本概念"><strong>1. VLAN 基本概念</strong></h3>
+<table>
+<thead>
+<tr>
+<th>端口类型</th>
+<th>含义</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access</td>
+<td>一般只属于一个 VLAN，收发不带标签的普通帧</td>
+<td>接 PC、路由器单 VLAN 接口</td>
+</tr>
+<tr>
+<td>Trunk</td>
+<td>可通过多个 VLAN，通常用于交换机之间</td>
+<td>交换机互连</td>
+</tr>
+<tr>
+<td>Hybrid</td>
+<td>可灵活设置 tagged/untagged VLAN</td>
+<td>高级 VLAN 场景</td>
+</tr>
+</tbody>
+</table>
+<p>Access 端口通常接主机，Trunk 端口通常接交换机，Hybrid 端口既可接交换机也可接特殊终端</p>
+<h3 id="2-创建和删除-vlan"><strong>2. 创建和删除 VLAN</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;S1&gt; system-view</span><br><span class="line">[S1] vlan 2                         // 创建 VLAN 2，并进入 VLAN 视图</span><br><span class="line">[S1-vlan2] quit</span><br><span class="line"></span><br><span class="line">[S1] vlan 3                         // 创建 VLAN 3</span><br><span class="line">[S1-vlan3] quit</span><br></pre></td></tr></table></figure>
+<p>删除 VLAN：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[S1] undo vlan 2                    // 删除 VLAN 2</span><br></pre></td></tr></table></figure>
+<p>批量创建 VLAN：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[S1] vlan 2 to 4                    // 创建 VLAN 2、3、4</span><br></pre></td></tr></table></figure>
+<p>部分设备也支持：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[S1] vlan 2</span><br><span class="line">[S1] vlan 3</span><br><span class="line">[S1] vlan 4</span><br></pre></td></tr></table></figure>
+<h3 id="3-access-端口配置"><strong>3. Access 端口配置</strong></h3>
+<p>推荐写法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[S1] interface GigabitEthernet 1/0/1				  </span><br><span class="line">[S1-GigabitEthernet1/0/1] port link-type access       // 设置为 Access 端口</span><br><span class="line">[S1-GigabitEthernet1/0/1] port access vlan 2          // 加入 VLAN 2</span><br><span class="line">[S1-GigabitEthernet1/0/1] quit</span><br></pre></td></tr></table></figure>
+<p>这一组命令的作用是：把交换机 S1 上的物理端口 <code>GigabitEthernet1/0/1</code> 配置成 Access 接入口，并划入 VLAN 2，在后面的操作中，凡是接在 S1 的 GE1/0/1 这个端口上的设备，都属于 VLAN 2 这个局域网</p>
+<p>也可以在 VLAN 视图下批量划分端口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[S1] vlan 2</span><br><span class="line">[S1-vlan2] port GigabitEthernet 1/0/1 to GigabitEthernet 1/0/3  // 将 GE1/0/1 到 GE1/0/3 加入 VLAN 2</span><br><span class="line">[S1-vlan2] quit</span><br></pre></td></tr></table></figure>
+<p>从 VLAN 中移除端口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[S1-vlan2] undo port GigabitEthernet 1/0/1 to GigabitEthernet 1/0/3</span><br></pre></td></tr></table></figure>
+<h3 id="4-trunk-端口配置"><strong>4. Trunk 端口配置</strong></h3>
+<p>交换机之间互连一般用 Trunk</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[S1] interface GigabitEthernet 1/0/13</span><br><span class="line">[S1-GigabitEthernet1/0/13] port link-type trunk       // 设置为 Trunk 端口</span><br><span class="line">[S1-GigabitEthernet1/0/13] port trunk permit vlan 2 3 // 允许 VLAN 2 和 VLAN 3 通过</span><br><span class="line">[S1-GigabitEthernet1/0/13] quit</span><br></pre></td></tr></table></figure>
+<p>这段命令的作用是：把交换机 S1 上的 <code>GigabitEthernet1/0/13</code> 端口配置成 Trunk 干道端口，并允许 VLAN 2 和 VLAN 3 的数据通过</p>
+<p>如果是要允许 VLAN 2 到 VLAN 10 通过：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[S1-GigabitEthernet1/0/13] port trunk permit vlan 2 to 10</span><br></pre></td></tr></table></figure>
+<p>设置 Trunk 缺省 VLAN：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[S1-GigabitEthernet1/0/13] port trunk pvid vlan 2     // 设置 PVID 为 VLAN 2</span><br></pre></td></tr></table></figure>
+<p>删除 Trunk 允许 VLAN：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[S1-GigabitEthernet1/0/13] undo port trunk permit vlan 2 to 10</span><br></pre></td></tr></table></figure>
+<p>删除 PVID：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[S1-GigabitEthernet1/0/13] undo port trunk pvid</span><br></pre></td></tr></table></figure>
+<p>恢复端口默认链路类型：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[S1-GigabitEthernet1/0/13] undo port link-type</span><br></pre></td></tr></table></figure>
+<h3 id="5-hybrid-端口配置"><strong>5. Hybrid 端口配置</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[S1] interface GigabitEthernet 1/0/1</span><br><span class="line">[S1-GigabitEthernet1/0/1] port link-type hybrid       // 设置为 Hybrid 端口</span><br><span class="line">[S1-GigabitEthernet1/0/1] port hybrid pvid vlan 2     // 设置缺省 VLAN 为 2</span><br><span class="line">[S1-GigabitEthernet1/0/1] port hybrid vlan 2 untagged // VLAN 2 报文不打标签</span><br><span class="line">[S1-GigabitEthernet1/0/1] port hybrid vlan 3 tagged   // VLAN 3 报文打标签</span><br><span class="line">[S1-GigabitEthernet1/0/1] quit</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Trunk 端口一般只有缺省 VLAN 的报文不带标签。</span><br><span class="line">Hybrid 端口可以允许多个 VLAN 的报文不带标签，配置更灵活。</span><br></pre></td></tr></table></figure>
+<h2 id="四-三层交换机-vlan-间通信"><strong>四、三层交换机 VLAN 间通信</strong></h2>
+<h3 id="1-配置-vlan-接口作为网关"><strong>1. 配置 VLAN 接口作为网关</strong></h3>
+<p>Comware V7 标准写法是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[S1] interface vlan-interface 2</span><br><span class="line">[S1-Vlan-interface2] ip address 192.168.1.10 255.255.255.0</span><br><span class="line">[S1-Vlan-interface2] quit</span><br></pre></td></tr></table></figure>
+<p>这段命令的作用是：在三层交换机 S1 上创建/进入 VLAN 2 的三层接口，并给这个 VLAN 接口配置 IP 地址 <code>192.168.1.10/24</code></p>
+<h3 id="2-vlan-间通信典型配置"><strong>2. VLAN 间通信典型配置</strong></h3>
+<p>假设：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VLAN 2：192.168.1.0/24，网关 192.168.1.1</span><br><span class="line">VLAN 3：192.168.2.0/24，网关 192.168.2.1</span><br></pre></td></tr></table></figure>
+<p>下面这段命令就是在做一个<strong>三层交换机实现 VLAN 间通信</strong>的典型配置，整体作用是：在交换机 S1 上创建 VLAN 2 和 VLAN 3，把两个物理端口分别划入不同 VLAN，然后给 VLAN 2 和 VLAN 3 分别配置三层网关地址，使两个 VLAN 中的主机可以通过 S1 进行三层转发</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入系统视图</span></span><br><span class="line">&lt;S1&gt; system-view</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建两个虚拟局域网 VLAN 2 和 VLAN 3</span></span><br><span class="line">[S1] vlan 2</span><br><span class="line">[S1-vlan2] quit</span><br><span class="line">[S1] vlan 3</span><br><span class="line">[S1-vlan3] quit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把 GE1/0/1 划分入 VLAN2</span></span><br><span class="line">[S1] interface GigabitEthernet 1/0/1</span><br><span class="line">[S1-GigabitEthernet1/0/1] port link-type access</span><br><span class="line">[S1-GigabitEthernet1/0/1] port access vlan 2</span><br><span class="line">[S1-GigabitEthernet1/0/1] quit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把 GE1/0/2 划分入 VLAN3</span></span><br><span class="line">[S1] interface GigabitEthernet 1/0/2</span><br><span class="line">[S1-GigabitEthernet1/0/2] port link-type access</span><br><span class="line">[S1-GigabitEthernet1/0/2] port access vlan 3</span><br><span class="line">[S1-GigabitEthernet1/0/2] quit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 给 VLAN 2 配三层网关地址</span></span><br><span class="line">[S1] interface vlan-interface 2</span><br><span class="line">[S1-Vlan-interface2] ip address 192.168.1.1 255.255.255.0</span><br><span class="line">[S1-Vlan-interface2] quit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 给 VLAN 3 配三层网关地址</span></span><br><span class="line">[S1] interface vlan-interface 3</span><br><span class="line">[S1-Vlan-interface3] ip address 192.168.2.1 255.255.255.0</span><br><span class="line">[S1-Vlan-interface3] quit</span><br></pre></td></tr></table></figure>
+<p>PC 配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PCA: 192.168.1.2/24, 网关 192.168.1.1</span><br><span class="line">PCB: 192.168.2.2/24, 网关 192.168.2.1</span><br></pre></td></tr></table></figure>
+<p>整体网络拓扑对应如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PCA —— GE1/0/1  S1  GE1/0/2 —— PCB</span><br><span class="line">        VLAN 2        VLAN 3</span><br><span class="line"></span><br><span class="line">VLAN 2 网关：192.168.1.1</span><br><span class="line">VLAN 3 网关：192.168.2.1</span><br></pre></td></tr></table></figure>
+<h2 id="五-静态路由与默认路由"><strong>五、静态路由与默认路由</strong></h2>
+<h3 id="1-静态路由格式"><strong>1. 静态路由格式</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1] ip route-static 目的网络 子网掩码 下一跳地址</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1] ip route-static 10.1.2.0 255.255.255.0 168.1.1.2  // 到 10.1.2.0/24 的下一跳是 168.1.1.2</span><br></pre></td></tr></table></figure>
+<p>也可以带优先级：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1] ip route-static 10.1.2.0 255.255.255.0 168.1.1.2 preference 80  // 设置静态路由优先级为 80</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">直连路由优先级：0</span><br><span class="line">OSPF 默认优先级：10</span><br><span class="line">静态路由默认优先级：60</span><br><span class="line">RIP 默认优先级：100</span><br></pre></td></tr></table></figure>
+<p>优先级数值越小，路由越优先</p>
+<h3 id="2-默认路由"><strong>2. 默认路由</strong></h3>
+<p>默认路由用于把未知目的网络转发给上级路由器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1] ip route-static 0.0.0.0 0.0.0.0 192.168.5.1  // 默认路由，下一跳为 192.168.5.1</span><br></pre></td></tr></table></figure>
+<p>常用于连接 Internet：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1] ip route-static 0.0.0.0 0.0.0.0 出口路由器下一跳IP</span><br></pre></td></tr></table></figure>
+<h3 id="3-查看路由表"><strong>3. 查看路由表</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; display ip routing-table                 // 查看完整 IPv4 路由表</span><br><span class="line">&lt;R1&gt; display ip routing-table protocol static // 只查看静态路由</span><br><span class="line">&lt;R1&gt; display ip routing-table 10.1.2.0        // 查看指定目的网络路由</span><br></pre></td></tr></table></figure>
+<h3 id="六-nat-地址转换"><strong>六、NAT 地址转换</strong></h3>
+<h3 id="1-nat-作用"><strong>1. NAT 作用</strong></h3>
+<p>NAT 用于将内网私有地址转换为公网地址，解决公网地址不足问题，也常用于让内网访问 Internet</p>
+<h3 id="2-配置-acl-匹配内网地址"><strong>2. 配置 ACL 匹配内网地址</strong></h3>
+<p>标准写法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[R1] acl basic 2001</span><br><span class="line">[R1-acl-ipv4-basic-2001] rule permit <span class="built_in">source</span> 10.0.0.0 0.0.0.255  // 允许 10.0.0.0/24 做 NAT</span><br><span class="line">[R1-acl-ipv4-basic-2001] rule deny any                          // 拒绝其他流量，可选</span><br><span class="line">[R1-acl-ipv4-basic-2001] quit</span><br></pre></td></tr></table></figure>
+<p>有些设备也支持：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[R1] acl number 2001</span><br><span class="line">[R1-acl-2001] rule permit <span class="built_in">source</span> 10.0.0.0 0.0.0.255</span><br><span class="line">[R1-acl-2001] rule deny any</span><br></pre></td></tr></table></figure>
+<p>考试时用 <code>?</code> 判断设备支持哪种：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1] acl ?</span><br></pre></td></tr></table></figure>
+<h3 id="3-配置-nat-地址池"><strong>3. 配置 NAT 地址池</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[R1] nat address-group 1</span><br><span class="line">[R1-address-group-1] address 192.168.5.105 192.168.5.109  // 定义公网地址池</span><br><span class="line">[R1-address-group-1] quit</span><br></pre></td></tr></table></figure>
+<h3 id="4-在出接口启用-nat"><strong>4. 在出接口启用 NAT</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[R1] interface GigabitEthernet 0/1</span><br><span class="line">[R1-GigabitEthernet0/1] nat outbound 2001 address-group 1  // 匹配 ACL 2001，转换为地址池 1 中的地址</span><br><span class="line">[R1-GigabitEthernet0/1] quit</span><br></pre></td></tr></table></figure>
+<p>同时配置默认路由：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1] ip route-static 0.0.0.0 0.0.0.0 192.168.5.1  // 指向外网网关</span><br></pre></td></tr></table></figure>
+<h3 id="5-nat-常用排查"><strong>5. NAT 常用排查</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; display acl all                 // 查看 ACL</span><br><span class="line">&lt;R1&gt; display nat address-group       // 查看 NAT 地址池</span><br><span class="line">&lt;R1&gt; display current-configuration   // 查看 NAT 配置是否挂到正确出接口</span><br><span class="line">&lt;R1&gt; display ip routing-table        // 查看是否有默认路由</span><br></pre></td></tr></table></figure>
+<h2 id="七-生成树-stp-与广播风暴"><strong>七、生成树 STP 与广播风暴</strong></h2>
+<h3 id="1-广播风暴概念"><strong>1. 广播风暴概念</strong></h3>
+<p>广播风暴是由于二层网络中存在环路，广播帧在网络中不断复制和转发，导致网络拥塞，而开启 <em>STP</em> 生成树协议以后，即可避免因为二层环路而产生的广播风暴</p>
+<h3 id="2-开启-stp"><strong>2. 开启 STP</strong></h3>
+<p>Comware V7 推荐写法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[S1] stp global <span class="built_in">enable</span>     // 全局开启 STP</span><br><span class="line">[S2] stp global <span class="built_in">enable</span>     // 全局开启 STP</span><br></pre></td></tr></table></figure>
+<p>部分设备支持：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[S1] stp <span class="built_in">enable</span>            // 开启 STP</span><br><span class="line">[S2] stp <span class="built_in">enable</span></span><br></pre></td></tr></table></figure>
+<p>关闭 STP：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[S1] undo stp global <span class="built_in">enable</span></span><br></pre></td></tr></table></figure>
+<p>或：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[S1] undo stp <span class="built_in">enable</span></span><br></pre></td></tr></table></figure>
+<p>考试时以 <code>?</code> 查询为准</p>
+<h3 id="3-查看-stp-状态"><strong>3. 查看 STP 状态</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;S1&gt; display stp brief      // 查看 STP 简要状态</span><br><span class="line">&lt;S1&gt; display stp            // 查看 STP 详细信息</span><br></pre></td></tr></table></figure>
+<h2 id="八-端口聚合-lacp"><strong>八、端口聚合 LACP</strong></h2>
+<h3 id="1-端口聚合作用"><strong>1. 端口聚合作用</strong></h3>
+<p>端口聚合可以把多个物理接口捆绑成一个逻辑接口，提高链路带宽和可靠性，也可避免二层环路</p>
+<h3 id="2-动态链路聚合配置"><strong>2. 动态链路聚合配置</strong></h3>
+<p>S1：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[S1] interface bridge-aggregation 1 // 创建并进入二层聚合接口 Bridge-Aggregation 1，相当于创建一个逻辑聚合端口</span><br><span class="line">[S1-Bridge-Aggregation1] link-aggregation mode dynamic // 将聚合模式设为动态 LACP 模式，由 LACP 协议自动协商聚合链路</span><br><span class="line">[S1-Bridge-Aggregation1] quit // 退出聚合接口视图，返回系统视图</span><br><span class="line"></span><br><span class="line">[S1] interface GigabitEthernet 1/0/1 // 进入物理接口 GE1/0/1</span><br><span class="line">[S1-GigabitEthernet1/0/1] port link-aggregation group 1 // 将物理接口 GE1/0/1 加入聚合组 1，使其成为 Bridge-Aggregation 1 的成员端口</span><br><span class="line">[S1-GigabitEthernet1/0/1] quit // 退出 GE1/0/1 接口视图</span><br><span class="line"></span><br><span class="line">[S1] interface GigabitEthernet 1/0/2 // 进入物理接口 GE1/0/2</span><br><span class="line">[S1-GigabitEthernet1/0/2] port link-aggregation group 1 // 将物理接口 GE1/0/2 加入聚合组 1，使其与 GE1/0/1 一起组成一条逻辑链路</span><br><span class="line">[S1-GigabitEthernet1/0/2] quit // 退出 GE1/0/2 接口视图</span><br></pre></td></tr></table></figure>
+<p>S2 做类似配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[S2] interface bridge-aggregation 1</span><br><span class="line">[S2-Bridge-Aggregation1] link-aggregation mode dynamic</span><br><span class="line">[S2-Bridge-Aggregation1] quit</span><br><span class="line"></span><br><span class="line">[S2] interface GigabitEthernet 1/0/1</span><br><span class="line">[S2-GigabitEthernet1/0/1] port link-aggregation group 1</span><br><span class="line">[S2-GigabitEthernet1/0/1] quit</span><br><span class="line"></span><br><span class="line">[S2] interface GigabitEthernet 1/0/2</span><br><span class="line">[S2-GigabitEthernet1/0/2] port link-aggregation group 1</span><br><span class="line">[S2-GigabitEthernet1/0/2] quit</span><br></pre></td></tr></table></figure>
+<h3 id="3-查看端口聚合状态"><strong>3. 查看端口聚合状态</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;S1&gt; display link-aggregation summary  // 查看聚合组摘要</span><br></pre></td></tr></table></figure>
+<p>正常状态应看到成员端口处于 <code>Selected</code></p>
+<h2 id="九-ppp-与-pap-认证"><strong>九、PPP 与 PAP 认证</strong></h2>
+<h3 id="1-ppp-基本配置"><strong>1. PPP 基本配置</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[R1] interface Serial 1/0</span><br><span class="line">[R1-Serial1/0] link-protocol ppp       // 串口链路协议设置为 PPP</span><br><span class="line">[R1-Serial1/0] shutdown                // 重启接口</span><br><span class="line">[R1-Serial1/0] undo shutdown</span><br></pre></td></tr></table></figure>
+<p>另一端也要配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[R2] interface Serial 1/0</span><br><span class="line">[R2-Serial1/0] link-protocol ppp</span><br><span class="line">[R2-Serial1/0] shutdown</span><br><span class="line">[R2-Serial1/0] undo shutdown</span><br></pre></td></tr></table></figure>
+<h3 id="2-ppp-调试"><strong>2. PPP 调试</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; terminal debugging       // 打开终端调试显示</span><br><span class="line">&lt;R1&gt; terminal monitor         // 开启终端监控</span><br><span class="line">&lt;R1&gt; debugging ppp all        // 打开 PPP 调试</span><br><span class="line">&lt;R1&gt; undo debugging all       // 关闭所有调试</span><br></pre></td></tr></table></figure>
+<h3 id="3-lcp-工作过程"><strong>3. LCP 工作过程</strong></h3>
+<p>可考试背诵：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Initial → Starting → Req-Sent → Ack-Sent → Opened</span><br></pre></td></tr></table></figure>
+<p>完整理解：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Initial --open--&gt; Starting --lower up--&gt; Req-Sent --发送 Request 和 ACK--&gt; Ack-Sent --收到 Configure-Ack--&gt; Opened</span><br></pre></td></tr></table></figure>
+<h3 id="4-pap-认证配置"><strong>4. PAP 认证配置</strong></h3>
+<p><strong>R1 作为认证方</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[R1] local-user RTB class network</span><br><span class="line">[R1-luser-network-RTB] service-type ppp            // 指定用户服务类型为 PPP</span><br><span class="line">[R1-luser-network-RTB] password simple aaa         // 设置密码 aaa</span><br><span class="line">[R1-luser-network-RTB] quit</span><br><span class="line"></span><br><span class="line">[R1] interface Serial 1/0</span><br><span class="line">[R1-Serial1/0] ppp authentication-mode pap         // 启用 PAP 认证</span><br><span class="line">[R1-Serial1/0] shutdown</span><br><span class="line">[R1-Serial1/0] undo shutdown</span><br></pre></td></tr></table></figure>
+<p><strong>R2 作为被认证方</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[R2] interface Serial 1/0</span><br><span class="line">[R2-Serial1/0] ppp pap local-user RTB password simple aaa  // 向对端发送用户名和密码</span><br><span class="line">[R2-Serial1/0] shutdown</span><br><span class="line">[R2-Serial1/0] undo shutdown</span><br></pre></td></tr></table></figure>
+<h3 id="5-pap-调试"><strong>5. PAP 调试</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; terminal debugging</span><br><span class="line">&lt;R1&gt; terminal monitor</span><br><span class="line">&lt;R1&gt; debugging ppp pap all</span><br></pre></td></tr></table></figure>
+<p>PAP 认证方状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Initial → ServerListen → WaitAAA → ServerSuccess</span><br></pre></td></tr></table></figure>
+<p>PAP 被认证方状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Initial → SendRequest → ClientSuccess</span><br></pre></td></tr></table></figure>
+<h2 id="十-arp-icmp-ping-与-tracert"><strong>十、ARP、ICMP、Ping 与 Tracert</strong></h2>
+<h3 id="1-arp-原理"><strong>1. ARP 原理</strong></h3>
+<p>ARP 是地址解析协议，用于在同一网段中根据 IP 地址解析 MAC 地址</p>
+<p>同网段通信：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">源主机先查 ARP 缓存;</span><br><span class="line">若没有目标 MAC，则广播 ARP Request;</span><br><span class="line">目标主机收到后返回 ARP Reply;</span><br><span class="line">源主机得到 MAC 后发送数据帧.</span><br></pre></td></tr></table></figure>
+<p>不同网段通信：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">源主机不直接解析目的主机 MAC，而是把数据交给默认网关;</span><br><span class="line">因此源主机 ARP 解析的是默认网关的 MAC 地址.</span><br></pre></td></tr></table></figure>
+<h3 id="2-arp-命令"><strong>2. ARP 命令</strong></h3>
+<p>设备上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; display arp       // 查看 ARP 表</span><br><span class="line">&lt;R1&gt; reset arp all     // 清空 ARP 表</span><br></pre></td></tr></table></figure>
+<p>PC 上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arp -a                 // 查看 PC 的 ARP 缓存</span><br><span class="line">arp -d                 // 清空 PC 的 ARP 缓存</span><br></pre></td></tr></table></figure>
+<h3 id="3-icmp-原理"><strong>3. ICMP 原理</strong></h3>
+<p>ICMP 是网际控制报文协议，用于报告差错和提供网络诊断信息</p>
+<p>常见 ICMP 报文：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Echo Request：类型 8，用于 Ping 请求</span><br><span class="line">Echo Reply：类型 0，用于 Ping 应答</span><br><span class="line">Time Exceeded：类型 11，用于 TTL 超时</span><br><span class="line">Destination Unreachable：目的不可达</span><br></pre></td></tr></table></figure>
+<h3 id="4-ping-原理"><strong>4. Ping 原理</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ping 用于检测主机或网络的连通性。源主机向目的主机发送 ICMP Echo Request 报文，目的主机收到后返回 ICMP Echo Reply 报文。若源主机收到应答，则说明网络可达；若超时，则说明链路、路由、防火墙或主机配置可能存在问题。</span><br></pre></td></tr></table></figure>
+<p>命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; ping 192.168.1.2</span><br><span class="line">&lt;R1&gt; ping -s 300 192.168.1.2     // 指定 ICMP 数据部分大小为 300 字节</span><br></pre></td></tr></table></figure>
+<h3 id="5-tracert-原理"><strong>5. Tracert 原理</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Tracert 用于确定 IP 数据包到达目的主机经过的路径。源主机依次发送 TTL 为 1、2、3……的数据包。路径上的路由器每转发一次将 TTL 减 1，当 TTL 减为 0 时丢弃该包并返回 ICMP Time Exceeded 报文，源主机据此获得每一跳路由器地址。到达目的主机后，由于访问的是高端口 UDP，目的主机会返回 ICMP Port Unreachable 报文，源主机据此判断路径探测结束。</span><br></pre></td></tr></table></figure>
+<p>设备默认可能不回应 tracert，需要开启：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[S1] ip ttl-expires <span class="built_in">enable</span>       // 允许回应 TTL 超时报文</span><br><span class="line">[S1] ip unreachables <span class="built_in">enable</span>      // 允许回应目的不可达报文</span><br></pre></td></tr></table></figure>
+<h2 id="十一-rip-与-ripng-ripv2"><strong>十一、RIP 与 RIPng/RIPv2</strong></h2>
+<h3 id="1-rip-基本概念"><strong>1. RIP 基本概念</strong></h3>
+<p>RIP 是距离向量路由协议，以跳数作为度量值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">最大跳数为 15;</span><br><span class="line">16 表示不可达;</span><br><span class="line">周期性发送路由更新;</span><br><span class="line">容易产生路由环路;</span><br><span class="line">通过水平分割、毒性逆转、触发更新等机制缓解环路.</span><br></pre></td></tr></table></figure>
+<h3 id="2-rip-基本配置"><strong>2. RIP 基本配置</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[R1] rip 1 // 在 R1 上启动 RIP 进程 1，进入 RIP 配置视图</span><br><span class="line"></span><br><span class="line">[R1-rip-1] network 192.168.1.0 // 在 192.168.1.0 所属主类网段的接口上启用 RIP，并发布该网段路由</span><br><span class="line"></span><br><span class="line">[R1-rip-1] quit // 退出 RIP 配置视图</span><br></pre></td></tr></table></figure>
+<p>注意：RIP 的 <code>network</code> 后通常写主类网络，不写子网掩码</p>
+<p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[R1] rip 1</span><br><span class="line">[R1-rip-1] network 192.168.1.0</span><br><span class="line">[R1-rip-1] network 10.0.0.0</span><br><span class="line">[R1-rip-1] quit</span><br></pre></td></tr></table></figure>
+<h3 id="3-ripv2-配置"><strong>3. RIPv2 配置</strong></h3>
+<p>在接口下配置版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R1] interface GigabitEthernet 0/0</span><br><span class="line">[R1-GigabitEthernet0/0] rip version 2      // 接口启用 RIPv2</span><br></pre></td></tr></table></figure>
+<p>或者在 RIP 进程中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[R1] rip 1</span><br><span class="line">[R1-rip-1] version 2                       // RIP 进程使用版本 2</span><br><span class="line">[R1-rip-1] undo summary                    // 关闭自动汇总，支持 VLSM</span><br></pre></td></tr></table></figure>
+<h3 id="4-rip-认证"><strong>4. RIP 认证</strong></h3>
+<p>接口下配置 MD5 认证：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R1] interface GigabitEthernet 0/0</span><br><span class="line">[R1-GigabitEthernet0/0] rip authentication-mode md5 rfc2082 plain buaa 1  // 使用 MD5 认证</span><br></pre></td></tr></table></figure>
+<p>三层交换机 VLAN 接口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[S1] interface vlan-interface 1</span><br><span class="line">[S1-Vlan-interface1] rip version 2</span><br><span class="line">[S1-Vlan-interface1] rip authentication-mode md5 rfc2082 plain buaa 1</span><br></pre></td></tr></table></figure>
+<p>注意：不同设备对 <code>plain</code> 参数位置要求可能略有差异，考试时用 <code>?</code> 查询确认</p>
+<h3 id="5-rip-查询"><strong>5. RIP 查询</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; display rip              // 查看 RIP 运行信息</span><br><span class="line">&lt;R1&gt; display rip route        // 查看 RIP 路由</span><br><span class="line">&lt;R1&gt; display ip routing-table protocol rip  // 查看写入全局路由表的 RIP 路由</span><br></pre></td></tr></table></figure>
+<h2 id="十二-loopback-接口"><strong>十二、Loopback 接口</strong></h2>
+<h3 id="1-loopback-概念"><strong>1. Loopback 概念</strong></h3>
+<p>Loopback 是一种纯软件虚拟接口，一旦创建通常一直处于 UP 状态，常用于：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 配置 Router ID;</span><br><span class="line">2. 建立 BGP/OSPF 稳定邻居;</span><br><span class="line">3. 模拟网段;</span><br><span class="line">4. 作为测试地址.</span><br></pre></td></tr></table></figure>
+<h3 id="2-配置-loopback"><strong>2. 配置 Loopback</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[R1] interface LoopBack 1</span><br><span class="line">[R1-LoopBack1] ip address 192.168.1.1 255.255.255.255  // 配置 /32 主机地址</span><br><span class="line">[R1-LoopBack1] quit</span><br></pre></td></tr></table></figure>
+<p>删除 Loopback：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1] undo interface LoopBack 1</span><br></pre></td></tr></table></figure>
+<p>注意：路由器 ID 推荐用 /32 Loopback 地址，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.1.1.1/32</span><br><span class="line">2.2.2.2/32</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="十三-ospf-协议实验"><strong>十三、OSPF 协议实验</strong></h2>
+<h3 id="1-ospf-基本概念"><strong>1. OSPF 基本概念</strong></h3>
+<p>OSPF 是开放最短路径优先协议，是链路状态路由协议。它通过交换链路状态信息建立 LSDB，再使用 SPF 算法计算最短路径</p>
+<p>重要概念：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AS：自治系统，由同一机构管理、采用统一路由策略的一组路由器;</span><br><span class="line">Area：区域，同一区域内路由器拥有相同的链路状态数据库;</span><br><span class="line">Router ID：路由器在 OSPF 中的唯一标识;</span><br><span class="line">Cost：路径代价，OSPF 根据总代价选择最优路径.</span><br></pre></td></tr></table></figure>
+<h3 id="2-ospf-报文类型"><strong>2. OSPF 报文类型</strong></h3>
+<table>
+<thead>
+<tr>
+<th>报文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hello</td>
+<td>发现和维护邻居，选举 DR/BDR</td>
+</tr>
+<tr>
+<td>DD</td>
+<td>交换链路状态数据库摘要</td>
+</tr>
+<tr>
+<td>LSR</td>
+<td>请求本端缺少或较旧的 LSA</td>
+</tr>
+<tr>
+<td>LSU</td>
+<td>发送 LSA</td>
+</tr>
+<tr>
+<td>LSAck</td>
+<td>确认收到的 LSA</td>
+</tr>
+</tbody>
+</table>
+<p>补充：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hello 报文使用组播地址 224.0.0.5</span><br><span class="line">DR/BDR 相关通信使用组播地址 224.0.0.6</span><br></pre></td></tr></table></figure>
+<h3 id="3-ospf-基本配置"><strong>3. OSPF 基本配置</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[R1] router <span class="built_in">id</span> 1.1.1.1             // 配置全局 Router ID</span><br><span class="line">[R1] ospf 1                        // 启动 OSPF 进程 1</span><br><span class="line">[R1-ospf-1] area 0                 // 进入 Area 0</span><br><span class="line">[R1-ospf-1-area-0.0.0.0] network 192.168.1.0 0.0.0.255  // 宣告网段，使用反掩码</span><br><span class="line">[R1-ospf-1-area-0.0.0.0] network 1.1.1.1 0.0.0.0        // 精确宣告 Loopback</span><br><span class="line">[R1-ospf-1-area-0.0.0.0] quit</span><br><span class="line">[R1-ospf-1] quit</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">network 后面写 IP 地址和反掩码</span><br><span class="line">反掩码 = 子网掩码按位取反</span><br><span class="line">255.255.255.0 对应 0.0.0.255</span><br><span class="line">255.255.255.255 对应 0.0.0.0</span><br></pre></td></tr></table></figure>
+<h3 id="4-删除-ospf-配置"><strong>4. 删除 OSPF 配置</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[R1] undo ospf 1                   // 删除 OSPF 进程 1</span><br><span class="line">[R1] undo router <span class="built_in">id</span>                // 删除全局 Router ID</span><br></pre></td></tr></table></figure>
+<p>重启 OSPF 进程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; reset ospf process            // 重启 OSPF 进程</span><br></pre></td></tr></table></figure>
+<p>部分设备可能支持：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; reset ospf all process</span><br></pre></td></tr></table></figure>
+<h3 id="5-配置-ospf-cost"><strong>5. 配置 OSPF Cost</strong></h3>
+<p>在路由器物理接口上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[R1] interface GigabitEthernet 0/0</span><br><span class="line">[R1-GigabitEthernet0/0] ospf cost 100   // 设置该接口 OSPF 代价为 100</span><br><span class="line">[R1-GigabitEthernet0/0] quit</span><br></pre></td></tr></table></figure>
+<p>在三层交换机 VLAN 接口上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[S1] interface vlan-interface 3</span><br><span class="line">[S1-Vlan-interface3] ospf cost 100      // 设置 VLAN 接口 OSPF 代价</span><br><span class="line">[S1-Vlan-interface3] quit</span><br></pre></td></tr></table></figure>
+<h3 id="6-ospf-引入静态路由"><strong>6. OSPF 引入静态路由</strong></h3>
+<p>先配置静态路由：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[R1] ip route-static 0.0.0.0 0.0.0.0 192.168.5.1  // 配置默认静态路由</span><br></pre></td></tr></table></figure>
+<p>再引入 OSPF：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[R1] ospf 1</span><br><span class="line">[R1-ospf-1] import-route static        // 将静态路由引入 OSPF</span><br><span class="line">[R1-ospf-1] quit</span><br></pre></td></tr></table></figure>
+<h3 id="7-ospf-查询命令"><strong>7. OSPF 查询命令</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; display ospf peer brief       // 查看 OSPF 邻居摘要</span><br><span class="line">&lt;R1&gt; display ospf peer             // 查看 OSPF 邻居详细信息</span><br><span class="line">&lt;R1&gt; display ospf routing          // 查看 OSPF 路由表</span><br><span class="line">&lt;R1&gt; display ospf lsdb             // 查看链路状态数据库</span><br><span class="line">&lt;R1&gt; display ip routing-table protocol ospf  // 查看全局路由表中的 OSPF 路由</span><br></pre></td></tr></table></figure>
+<p>邻居正常状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Full</span><br></pre></td></tr></table></figure>
+<p>如果停留在：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Init</span><br><span class="line">ExStart</span><br><span class="line">Exchange</span><br></pre></td></tr></table></figure>
+<p>说明邻居建立异常，需要检查 IP、掩码、Area、认证、MTU、接口状态等</p>
+<h3 id="8-ospf-lsa-类型"><strong>8. OSPF LSA 类型</strong></h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>产生者</th>
+<th>传播范围</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 类</td>
+<td>Router-LSA</td>
+<td>每台路由器</td>
+<td>本区域</td>
+<td>描述路由器链路状态和 Cost</td>
+</tr>
+<tr>
+<td>2 类</td>
+<td>Network-LSA</td>
+<td>DR</td>
+<td>本区域</td>
+<td>描述广播网络中连接的路由器</td>
+</tr>
+<tr>
+<td>3 类</td>
+<td>Network Summary LSA</td>
+<td>ABR</td>
+<td>跨区域</td>
+<td>描述到其他区域网段的路由</td>
+</tr>
+<tr>
+<td>4 类</td>
+<td>ASBR Summary LSA</td>
+<td>ABR</td>
+<td>跨区域</td>
+<td>描述到 ASBR 的路由</td>
+</tr>
+<tr>
+<td>5 类</td>
+<td>AS External LSA</td>
+<td>ASBR</td>
+<td>整个 AS</td>
+<td>描述外部路由</td>
+</tr>
+</tbody>
+</table>
+<p>查询命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; display ospf lsdb             // 查看所有 LSA</span><br><span class="line">&lt;R1&gt; display ospf lsdb router      // 查看 1 类 LSA</span><br><span class="line">&lt;R1&gt; display ospf lsdb network     // 查看 2 类 LSA</span><br><span class="line">&lt;R1&gt; display ospf lsdb summary     // 查看 3 类 LSA</span><br><span class="line">&lt;R1&gt; display ospf lsdb asbr        // 查看 4 类 LSA</span><br><span class="line">&lt;R1&gt; display ospf lsdb ase         // 查看 5 类 LSA</span><br></pre></td></tr></table></figure>
+<h3 id="9-ospf-调试"><strong>9. OSPF 调试</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; terminal debugging            // 开启终端调试显示</span><br><span class="line">&lt;R1&gt; terminal monitor              // 开启终端监控</span><br><span class="line">&lt;R1&gt; debugging ospf event          // 调试 OSPF 事件</span><br><span class="line">&lt;R1&gt; debugging ospf packet         // 调试 OSPF 报文</span><br><span class="line">&lt;R1&gt; undo debugging all            // 关闭全部调试</span><br></pre></td></tr></table></figure>
+<p>考试排查时，调试信息太多时一定要及时：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">undo debugging all</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="10-ospf-简答题常用表述"><strong>10. OSPF 简答题常用表述</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OSPF 通过 Hello 报文发现和维护邻居关系，通过 DD 报文交换链路状态数据库摘要，通过 LSR 请求缺少的 LSA，通过 LSU 发送 LSA，并通过 LSAck 进行确认。所有路由器同步 LSDB 后，使用 SPF 算法计算最短路径，并将最优路由写入路由表。</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="十四-bgp-配置"><strong>十四、BGP 配置</strong></h2>
+<p>BGP 是边界网关协议，常用于 AS 之间（比如 BGP-4 协议），也可用于 AS 内部的 IBGP</p>
+<h3 id="1-bgp-基本配置"><strong>1. BGP 基本配置</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[R1] bgp 65001</span><br><span class="line">[R1-bgp-default] router-id 1.1.1.1       // 设置 BGP Router ID</span><br><span class="line">[R1-bgp-default] peer 192.168.12.2 as-number 65002  // 建立 EBGP 邻居</span><br><span class="line">[R1-bgp-default] quit</span><br></pre></td></tr></table></figure>
+<p>进入 IPv4 单播地址族并启用邻居：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[R1] bgp 65001</span><br><span class="line">[R1-bgp-default] address-family ipv4 unicast</span><br><span class="line">[R1-bgp-default-ipv4] peer 192.168.12.2 <span class="built_in">enable</span>      // 启用 IPv4 单播邻居</span><br><span class="line">[R1-bgp-default-ipv4] quit</span><br><span class="line">[R1-bgp-default] quit</span><br></pre></td></tr></table></figure>
+<h3 id="2-ibgp-使用-loopback-建邻"><strong>2. IBGP 使用 Loopback 建邻</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[R1] bgp 65001</span><br><span class="line">[R1-bgp-default] router-id 1.1.1.1</span><br><span class="line">[R1-bgp-default] peer 2.2.2.2 as-number 65001        // IBGP 邻居，AS 号相同</span><br><span class="line">[R1-bgp-default] peer 2.2.2.2 connect-interface LoopBack 0  // 指定源接口为 LoopBack0</span><br><span class="line">[R1-bgp-default] address-family ipv4 unicast</span><br><span class="line">[R1-bgp-default-ipv4] peer 2.2.2.2 <span class="built_in">enable</span></span><br><span class="line">[R1-bgp-default-ipv4] peer 2.2.2.2 next-hop-local    // 将下一跳改为本地</span><br><span class="line">[R1-bgp-default-ipv4] quit</span><br><span class="line">[R1-bgp-default] quit</span><br></pre></td></tr></table></figure>
+<p>注意：IBGP 用 Loopback 建邻时，必须保证双方 Loopback 地址通过 IGP 或静态路由可达</p>
+<h3 id="3-bgp-注入路由"><strong>3. BGP 注入路由</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[R1] bgp 65001</span><br><span class="line">[R1-bgp-default] address-family ipv4 unicast</span><br><span class="line">[R1-bgp-default-ipv4] network 10.1.1.0 255.255.255.0  // 将已存在于路由表的网段注入 BGP</span><br><span class="line">[R1-bgp-default-ipv4] quit</span><br><span class="line">[R1-bgp-default] quit</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BGP 的 network 命令要求该路由已经存在于本机 IP 路由表中。</span><br><span class="line">否则 network 后不会真正发布该路由。</span><br></pre></td></tr></table></figure>
+<h3 id="4-bgp-引入-ospf"><strong>4. BGP 引入 OSPF</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[R1] bgp 65001</span><br><span class="line">[R1-bgp-default] address-family ipv4 unicast</span><br><span class="line">[R1-bgp-default-ipv4] import-route ospf 1      // 将 OSPF 路由引入 BGP</span><br><span class="line">[R1-bgp-default-ipv4] quit</span><br><span class="line">[R1-bgp-default] quit</span><br></pre></td></tr></table></figure>
+<h3 id="5-bgp-聚合"><strong>5. BGP 聚合</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[R1] bgp 65001</span><br><span class="line">[R1-bgp-default] address-family ipv4 unicast</span><br><span class="line">[R1-bgp-default-ipv4] aggregate 10.1.0.0 255.255.0.0 detail-suppressed  // 聚合并抑制明细</span><br><span class="line">[R1-bgp-default-ipv4] quit</span><br><span class="line">[R1-bgp-default] quit</span><br></pre></td></tr></table></figure>
+<h3 id="6-bgp-查询"><strong>6. BGP 查询</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; display bgp peer ipv4 unicast              // 查看 BGP 邻居状态</span><br><span class="line">&lt;R1&gt; display bgp routing-table ipv4 unicast     // 查看 BGP 路由表</span><br><span class="line">&lt;R1&gt; display ip routing-table protocol bgp      // 查看全局路由表中的 BGP 路由</span><br></pre></td></tr></table></figure>
+<p>BGP 正常状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Established</span><br></pre></td></tr></table></figure>
+<p>BGP 路由表中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 表示有效路由</span><br><span class="line">&gt; 表示最优路由</span><br><span class="line">*&gt; 表示有效且最优</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="十五-acl-基本配置"><strong>十五、ACL 基本配置</strong></h2>
+<h3 id="1-基本-acl"><strong>1. 基本 ACL</strong></h3>
+<p>匹配源地址：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[R1] acl basic 2001</span><br><span class="line">[R1-acl-ipv4-basic-2001] rule permit <span class="built_in">source</span> 10.0.0.0 0.0.0.255  // 允许源地址 10.0.0.0/24</span><br><span class="line">[R1-acl-ipv4-basic-2001] rule deny any                          // 拒绝其他流量</span><br><span class="line">[R1-acl-ipv4-basic-2001] quit</span><br></pre></td></tr></table></figure>
+<p>查看 ACL：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; display acl all</span><br></pre></td></tr></table></figure>
+<h2 id="十六-dhcp-原理与常用配置"><strong>十六、DHCP 原理与常用配置</strong></h2>
+<h3 id="1-dhcp-工作过程"><strong>1. DHCP 工作过程</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DHCP 客户端获取 IP 地址通常经历 Discover、Offer、Request、Ack 四个阶段。客户端首先广播 DHCP Discover 寻找服务器；服务器返回 DHCP Offer 提供地址；客户端广播 DHCP Request 选择其中一个地址；服务器返回 DHCP Ack 确认分配，客户端随后使用该地址。</span><br></pre></td></tr></table></figure>
+<h3 id="2-dhcp-服务器配置模板"><strong>2. DHCP 服务器配置模板</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[R1] dhcp <span class="built_in">enable</span>                              // 全局开启 DHCP</span><br><span class="line"></span><br><span class="line">[R1] dhcp server ip-pool vlan10               // 创建地址池</span><br><span class="line">[R1-dhcp-pool-vlan10] network 192.168.10.0 mask 255.255.255.0  // 地址池网段</span><br><span class="line">[R1-dhcp-pool-vlan10] gateway-list 192.168.10.1                // 默认网关</span><br><span class="line">[R1-dhcp-pool-vlan10] dns-list 8.8.8.8                         // DNS 服务器</span><br><span class="line">[R1-dhcp-pool-vlan10] quit</span><br></pre></td></tr></table></figure>
+<p>若在 VLAN 接口上作为网关：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[S1] dhcp <span class="built_in">enable</span></span><br><span class="line">[S1] interface vlan-interface 10</span><br><span class="line">[S1-Vlan-interface10] ip address 192.168.10.1 255.255.255.0</span><br><span class="line">[S1-Vlan-interface10] dhcp server apply ip-pool vlan10          // 接口应用 DHCP 地址池</span><br><span class="line">[S1-Vlan-interface10] quit</span><br></pre></td></tr></table></figure>
+<h2 id="十七-tcp-udp-与传输层实验背诵"><strong>十七、TCP/UDP 与传输层实验背诵</strong></h2>
+<h3 id="1-tcp-基本特点"><strong>1. TCP 基本特点</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TCP 是传输控制协议，工作在 IP 之上，是面向连接、端到端、可靠的传输层协议。TCP 通过序号、确认、重传、流量控制和拥塞控制保证可靠传输。</span><br></pre></td></tr></table></figure>
+<h3 id="2-tcp-三次握手"><strong>2. TCP 三次握手</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TCP 建立连接采用三次握手。第一次，客户端发送 SYN=1 的连接请求报文，选择初始序号 x。第二次，服务器收到后返回 SYN=1、ACK=1 的确认报文，确认号为 x+1，同时选择自己的初始序号 y。第三次，客户端收到后再发送 ACK=1 的确认报文，确认号为 y+1，序号为 x+1。三次握手完成后，TCP 连接建立。</span><br></pre></td></tr></table></figure>
+<h3 id="3-tcp-四次挥手"><strong>3. TCP 四次挥手</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TCP 连接释放采用四次挥手。首先，主动关闭方发送 FIN=1 的连接释放报文，序号为 x。其次，被动关闭方返回 ACK，确认号为 x+1。随后，被动关闭方也发送 FIN=1、ACK=1 的连接释放报文，序号为 y。最后，主动关闭方返回 ACK，确认号为 y+1，连接释放完成。</span><br></pre></td></tr></table></figure>
+<h3 id="4-tcp-滑动窗口"><strong>4. TCP 滑动窗口</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TCP 采用大小可变的滑动窗口进行流量控制。接收端根据接收缓存大小通告接收窗口 rwnd，发送端根据网络拥塞程度维护拥塞窗口 cwnd。发送窗口的上限值为 min(cwnd, rwnd)。窗口左边沿右移表示已发送数据被确认，右边沿右移表示允许发送更多数据。</span><br></pre></td></tr></table></figure>
+<h3 id="5-tcp-慢启动与拥塞避免"><strong>5. TCP 慢启动与拥塞避免</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">慢启动是在连接开始或拥塞后从较小的拥塞窗口开始，收到新的 ACK 后逐渐增大 cwnd，使发送速率逐步提高。拥塞避免是在 cwnd 达到慢启动门限 ssthresh 后，使 cwnd 线性增长，避免网络再次拥塞。当检测到拥塞时，设置 ssthresh=max(cwnd/2, 2MSS)，并将 cwnd 重新减小，然后重新执行慢启动和拥塞避免。</span><br></pre></td></tr></table></figure>
+<p>判断：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cwnd &lt; ssthresh：使用慢启动；</span><br><span class="line">cwnd &gt; ssthresh：使用拥塞避免；</span><br><span class="line">cwnd = ssthresh：二者均可。</span><br></pre></td></tr></table></figure>
+<h3 id="6-tcp-窗口探查"><strong>6. TCP 窗口探查</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当接收端缓存已满时，会向发送端通告零窗口，发送端暂停发送。为避免窗口更新报文丢失导致双方长期等待，TCP 使用坚持定时器周期性发送窗口探查报文，以确认接收窗口是否已经重新打开。</span><br></pre></td></tr></table></figure>
+<h3 id="7-udp"><strong>7. UDP</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UDP 是用户数据报协议，工作在 IP 之上，是无连接、不可靠、面向报文的传输层协议。UDP 不建立连接，不提供确认、重传和拥塞控制机制，首部开销小，适用于实时性要求高、允许少量丢包的应用，如 DNS、视频、语音等。</span><br></pre></td></tr></table></figure>
+<h2 id="十八-应用层协议背诵"><strong>十八、应用层协议背诵</strong></h2>
+<h3 id="1-dns"><strong>1. DNS</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DNS 是域名系统，用于将域名解析为 IP 地址。DNS 系统由域名空间和资源记录、域名服务器、DNS 解析器组成。主机查询域名时，通常先向本地域名服务器发起递归查询；本地域名服务器若没有结果，则向根域名服务器、顶级域名服务器和权限域名服务器进行迭代查询，最终将解析结果返回给主机。</span><br></pre></td></tr></table></figure>
+<p>递归查询：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">主机把查询请求交给本地域名服务器，并要求其返回最终答案。</span><br></pre></td></tr></table></figure>
+<p>迭代查询：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本地域名服务器逐级向根、顶级、权限域名服务器查询，每级服务器返回下一步应查询的服务器信息，直到得到最终答案。</span><br></pre></td></tr></table></figure>
+<p>DNS 通常使用 UDP：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DNS 查询报文通常较短，要求响应快，因此一般使用 UDP；当区域传送或响应报文过大时，也可使用 TCP。</span><br></pre></td></tr></table></figure>
+<h3 id="2-http"><strong>2. HTTP</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTTP 是超文本传送协议，是万维网客户程序和服务器程序之间通信所遵守的应用层协议。HTTP 通常使用 TCP 提供可靠传输，默认端口号为 80。</span><br></pre></td></tr></table></figure>
+<p>访问网页过程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1. 浏览器分析 URL；</span><br><span class="line">2. 浏览器向 DNS 请求解析域名对应 IP；</span><br><span class="line">3. DNS 返回服务器 IP；</span><br><span class="line">4. 浏览器与服务器建立 TCP 连接；</span><br><span class="line">5. 浏览器发送 HTTP GET 请求；</span><br><span class="line">6. 服务器返回网页文件；</span><br><span class="line">7. TCP 连接释放；</span><br><span class="line">8. 浏览器显示页面。</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HTTP 是应用层协议；</span><br><span class="line">TCP 是传输层协议；</span><br><span class="line">HTTP 使用 TCP 连接传输数据。</span><br></pre></td></tr></table></figure>
+<h3 id="3-电子邮件协议"><strong>3. 电子邮件协议</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">电子邮件系统由用户代理、邮件服务器和邮件协议组成。SMTP 是邮件发送协议，负责将邮件从用户代理发送到发送方邮件服务器，以及从发送方邮件服务器传送到接收方邮件服务器。POP3 或 IMAP 用于用户从接收方邮件服务器读取邮件。</span><br></pre></td></tr></table></figure>
+<p>SMTP 过程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. 建立 TCP 连接；</span><br><span class="line">2. 服务器返回 220 服务就绪；</span><br><span class="line">3. 客户端发送 HELO；</span><br><span class="line">4. 服务器返回 250 OK；</span><br><span class="line">5. 客户端发送 MAIL FROM；</span><br><span class="line">6. 客户端发送 RCPT TO；</span><br><span class="line">7. 客户端发送 DATA；</span><br><span class="line">8. 邮件正文以 &lt;CRLF&gt;.&lt;CRLF&gt; 结束；</span><br><span class="line">9. 服务器返回 250 OK；</span><br><span class="line">10. 客户端发送 QUIT；</span><br><span class="line">11. 服务器返回 221，连接释放。</span><br></pre></td></tr></table></figure>
+<h3 id="4-ftp"><strong>4. FTP</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FTP 是文件传输协议，使用两个 TCP 连接：控制连接和数据连接。控制连接使用服务器 21 号端口，用于传输命令和应答，并在整个会话期间保持；数据连接用于实际传输文件，每传输一个文件通常建立一次数据连接。</span><br></pre></td></tr></table></figure>
+<h3 id="5-dhcp"><strong>5. DHCP</strong></h3>
+<p>考试可写：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DHCP 是动态主机配置协议，用于自动为主机分配 IP 地址、子网掩码、默认网关和 DNS 等参数。DHCP 地址获取过程包括 Discover、Offer、Request、Ack 四个阶段。</span><br></pre></td></tr></table></figure>
+<h2 id="二十-考试高频配置模板"><strong>二十、考试高频配置模板</strong></h2>
+<h3 id="模板-1：交换机划-vlan-配网关"><strong>模板 1：交换机划 VLAN + 配网关</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;S1&gt; system-view // 进入系统视图，开始配置交换机 S1</span><br><span class="line"></span><br><span class="line">[S1] sysname S1 // 将设备名称修改为 S1，方便识别当前配置的设备</span><br><span class="line">[S1] vlan 2 // 创建 VLAN 2，并进入 VLAN 2 视图</span><br><span class="line">[S1-vlan2] quit // 退出 VLAN 2 视图，返回系统视图</span><br><span class="line"></span><br><span class="line">[S1] vlan 3 // 创建 VLAN 3，并进入 VLAN 3 视图</span><br><span class="line">[S1-vlan3] quit // 退出 VLAN 3 视图，返回系统视图</span><br><span class="line"></span><br><span class="line">[S1] interface GigabitEthernet 1/0/1 // 进入 S1 的物理接口 GE1/0/1，准备配置该端口</span><br><span class="line">[S1-GigabitEthernet1/0/1] port link-type access // 将 GE1/0/1 设置为 Access 接入口，通常用于连接 PC 主机</span><br><span class="line">[S1-GigabitEthernet1/0/1] port access vlan 2 // 将 GE1/0/1 加入 VLAN 2，接在该端口上的主机属于 VLAN 2</span><br><span class="line">[S1-GigabitEthernet1/0/1] quit // 退出 GE1/0/1 接口视图，返回系统视图</span><br><span class="line"></span><br><span class="line">[S1] interface GigabitEthernet 1/0/2// 进入 S1 的物理接口 GE1/0/2，准备配置该端口</span><br><span class="line">[S1-GigabitEthernet1/0/2] port link-type access// 将 GE1/0/2 设置为 Access 接入口，通常用于连接 PC 主机</span><br><span class="line">[S1-GigabitEthernet1/0/2] port access vlan 3// 将 GE1/0/2 加入 VLAN 3，接在该端口上的主机属于 VLAN 3</span><br><span class="line">[S1-GigabitEthernet1/0/2] quit// 退出 GE1/0/2 接口视图，返回系统视图</span><br><span class="line"></span><br><span class="line">[S1] interface vlan-interface 2 // 创建并进入 VLAN 2 的三层接口，也就是 VLAN 2 的网关接口</span><br><span class="line">[S1-Vlan-interface2] ip address 192.168.1.1 255.255.255.0 // 给 VLAN 2 的三层接口配置 IP 地址 192.168.1.1/24，通常作为 VLAN 2 主机的默认网关</span><br><span class="line">[S1-Vlan-interface2] quit // 退出 VLAN 2 三层接口视图，返回系统视图</span><br><span class="line"></span><br><span class="line">[S1] interface vlan-interface 3// 创建并进入 VLAN 3 的三层接口，也就是 VLAN 3 的网关接口</span><br><span class="line">[S1-Vlan-interface3] ip address 192.168.2.1 255.255.255.0 // 给 VLAN 3 的三层接口配置 IP 地址 192.168.2.1/24，通常作为 VLAN 3 主机的默认网关</span><br><span class="line">[S1-Vlan-interface3] quit // 退出 VLAN 3 三层接口视图，返回系统视图</span><br></pre></td></tr></table></figure>
+<h3 id="模板-2：路由器接口-静态路由"><strong>模板 2：路由器接口 + 静态路由</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; system-view // 进入系统视图，开始配置路由器 R1</span><br><span class="line">[R1] sysname R1 // 将设备名称修改为 R1，方便在命令行中识别当前设备</span><br><span class="line"></span><br><span class="line">[R1] interface GigabitEthernet 0/0 // 进入 R1 的 GE0/0 物理接口配置视图</span><br><span class="line">[R1-GigabitEthernet0/0] ip address 192.168.1.1 255.255.255.0 // 给 R1 的 GE0/0 接口配置 IP 地址 192.168.1.1/24，通常作为 192.168.1.0/24 网段的网关</span><br><span class="line">[R1-GigabitEthernet0/0] quit // 退出 GE0/0 接口视图，返回系统视图</span><br><span class="line"></span><br><span class="line">[R1] interface GigabitEthernet 0/1 // 进入 R1 的 GE0/1 物理接口配置视图</span><br><span class="line">[R1-GigabitEthernet0/1] ip address 192.168.12.1 255.255.255.0 // 给 R1 的 GE0/1 接口配置 IP 地址 192.168.12.1/24，通常用于连接另一台路由器 R2</span><br><span class="line">[R1-GigabitEthernet0/1] quit // 退出 GE0/1 接口视图，返回系统视图</span><br><span class="line"></span><br><span class="line">[R1] ip route-static 192.168.2.0 255.255.255.0 192.168.12.2 // 配置静态路由：去往远端网段 192.168.2.0/24 的数据包，下一跳交给 192.168.12.2</span><br></pre></td></tr></table></figure>
+<h3 id="模板-3：ospf-单区域"><strong>模板 3：OSPF 单区域</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; system-view // 进入系统视图，开始配置 R1</span><br><span class="line">[R1] router <span class="built_in">id</span> 1.1.1.1 // 配置 R1 的全局 Router ID 为 1.1.1.1，用于在 OSPF 中唯一标识该路由器</span><br><span class="line">[R1] ospf 1 // 启动 OSPF 进程 1，并进入 OSPF 配置视图</span><br><span class="line">[R1-ospf-1] area 0 // 进入 OSPF 区域 0，即骨干区域 Area 0</span><br><span class="line">[R1-ospf-1-area-0.0.0.0] network 192.168.1.0 0.0.0.255 // 将 192.168.1.0/24 网段宣告进 OSPF，使该网段对应接口运行 OSPF 并发布该直连路由</span><br><span class="line">[R1-ospf-1-area-0.0.0.0] network 192.168.12.0 0.0.0.255 // 将 192.168.12.0/24 网段宣告进 OSPF，使该网段对应接口运行 OSPF 并发布该直连路由</span><br><span class="line">[R1-ospf-1-area-0.0.0.0] quit // 退出 OSPF Area 0 区域视图，返回 OSPF 进程视图</span><br><span class="line">[R1-ospf-1] quit // 退出 OSPF 进程视图，返回系统视图</span><br></pre></td></tr></table></figure>
+<h3 id="模板-4：nat-上网"><strong>模板 4：NAT 上网</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;R1&gt; system-view // 进入系统视图，开始配置路由器 R1</span><br><span class="line"></span><br><span class="line">[R1] acl basic 2001 // 创建基本 ACL 2001，用于匹配允许进行 NAT 转换的内网源地址</span><br><span class="line">[R1-acl-ipv4-basic-2001] rule permit <span class="built_in">source</span> 10.0.0.0 0.0.0.255 // 允许源地址为 10.0.0.0/24 网段的报文通过 ACL，即这些内网主机可以进行 NAT 转换</span><br><span class="line">[R1-acl-ipv4-basic-2001] quit // 退出 ACL 视图，返回系统视图</span><br><span class="line"></span><br><span class="line">[R1] nat address-group 1 // 创建 NAT 地址池 1，用于存放转换后的公网地址范围</span><br><span class="line">[R1-address-group-1] address 192.168.5.105 192.168.5.109 // 配置 NAT 地址池范围为 192.168.5.105 到 192.168.5.109，内网地址将被转换成这些地址</span><br><span class="line">[R1-address-group-1] quit // 退出 NAT 地址池视图，返回系统视图</span><br><span class="line"></span><br><span class="line">[R1] interface GigabitEthernet 0/1 // 进入 R1 的 GE0/1 接口，通常该接口是连接外网或上级路由器的出口接口</span><br><span class="line">[R1-GigabitEthernet0/1] nat outbound 2001 address-group 1 // 在 GE0/1 出接口启用 NAT，将匹配 ACL 2001 的内网源地址转换为地址池 1 中的地址</span><br><span class="line">[R1-GigabitEthernet0/1] quit // 退出 GE0/1 接口视图，返回系统视图</span><br><span class="line"></span><br><span class="line">[R1] ip route-static 0.0.0.0 0.0.0.0 192.168.5.1 // 配置默认路由：凡是路由表中没有更具体匹配的外部目的地址，都转发给下一跳 192.168.5.1</span><br></pre></td></tr></table></figure>
+<h2 id="二十-考试最后必须做的事"><strong>二十、考试最后必须做的事</strong></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">display interface brief        // 确认接口 UP</span><br><span class="line">display ip routing-table       // 确认路由完整</span><br><span class="line">display arp                    // 确认 ARP 正常</span><br><span class="line">display ospf peer brief        // OSPF 题确认邻居 Full</span><br><span class="line">display bgp peer ipv4 unicast  // BGP 题确认 Established</span><br><span class="line">ping 目标地址                  // 验证连通性</span><br><span class="line">tracert 目标地址               // 验证路径</span><br><span class="line">display current-configuration  // 最终检查配置</span><br><span class="line">save                           // 保存配置</span><br></pre></td></tr></table></figure>
+<p>最重要的一句：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">做完一定要 save，否则重启或评分时配置可能丢失</span><br></pre></td></tr></table></figure>
+<hr>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://agilawood4.github.io/2026/05/26/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E5%A4%8D%E4%B9%A0/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://agilawood4.github.io/2026/05/26/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E5%A4%8D%E4%B9%A0/')">计网实验复习</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://agilawood4.github.io/2026/05/26/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E5%A4%8D%E4%B9%A0/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=计网实验复习&amp;url=https://agilawood4.github.io/2026/05/26/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E5%A4%8D%E4%B9%A0/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A230.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://agilawood4.github.io" target="_blank">Destiny Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>专业课<span class="tagsPageCount">51</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/images/picture.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/05/06/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%AE%A1%E7%BD%91%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A220.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">计网知识点整理(nr学长)</div></div></a></div><div class="next-post pull-right"><a href="/2026/05/26/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E6%A0%B7%E9%A2%98/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A250.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">计网实验模拟题题解</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/11/15/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BE%8B%E9%A2%98%E9%80%89%E8%AE%B2/" title="(SQL11)数据库例题选讲"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2141.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-15</div><div class="title">(SQL11)数据库例题选讲</div></div></a></div><div><a href="/2025/12/04/(SQL)%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF/" title="(SQL9)事务处理技术"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2139.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-04</div><div class="title">(SQL9)事务处理技术</div></div></a></div><div><a href="/2026/03/17/(SQL1)%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%AE%BA/" title="(SQL1)数据库概论"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2130.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-03-17</div><div class="title">(SQL1)数据库概论</div></div></a></div><div><a href="/2026/03/17/(SQL)%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89/" title="(SQL12)数据库知识点整理"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2142.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-03-17</div><div class="title">(SQL12)数据库知识点整理</div></div></a></div><div><a href="/2025/11/15/(SQL2)%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" title="(SQL2)关系数据库"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2131.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-15</div><div class="title">(SQL2)关系数据库</div></div></a></div><div><a href="/2025/09/25/(SQL3)SQL%E8%AF%AD%E5%8F%A5%E8%AF%BE%E4%B8%8A/" title="(SQL3)SQL语句课上"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2133.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-09-25</div><div class="title">(SQL3)SQL语句课上</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">计网实验复习指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E4%B8%8A%E6%9C%BA%E8%80%83%E8%AF%95%E6%80%BB%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">0. 上机考试总体流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">一、基础通用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F%E8%A7%86%E5%9B%BE%E4%B8%8E%E4%BF%AE%E6%94%B9%E8%AE%BE%E5%A4%87%E5%90%8D"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 进入系统视图与修改设备名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9F%A5%E7%9C%8B%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 查看配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9F%A5%E7%9C%8B%E5%B8%AE%E5%8A%A9"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 查看帮助</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BF%9D%E5%AD%98-%E6%B8%85%E7%A9%BA%E9%85%8D%E7%BD%AE%E4%B8%8E%E9%87%8D%E5%90%AF"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. 保存、清空配置与重启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%B8%85%E7%A9%BA-arp-%E4%B8%8E-mac-%E8%A1%A8"><span class="toc-number">1.2.5.</span> <span class="toc-text">5. 清空 ARP 与 MAC 表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%8E%A5%E5%8F%A3%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.</span> <span class="toc-text">二、接口配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%B7%AF%E7%94%B1%E5%99%A8%E7%89%A9%E7%90%86%E6%8E%A5%E5%8F%A3%E9%85%8D%E7%BD%AE-ip"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 路由器物理接口配置 IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BC%80%E5%90%AF%E5%92%8C%E5%85%B3%E9%97%AD%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 开启和关闭接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE-mtu"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 配置 MTU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E6%8E%A5%E5%8F%A3%E7%8A%B6%E6%80%81"><span class="toc-number">1.3.4.</span> <span class="toc-text">4. 查看接口状态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E4%BA%A4%E6%8D%A2%E6%9C%BA-vlan-%E4%B8%8E%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.</span> <span class="toc-text">三、交换机 VLAN 与端口配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-vlan-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. VLAN 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4-vlan"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 创建和删除 VLAN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-access-%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. Access 端口配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-trunk-%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.4.</span> <span class="toc-text">4. Trunk 端口配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-hybrid-%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.5.</span> <span class="toc-text">5. Hybrid 端口配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA-vlan-%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-number">1.5.</span> <span class="toc-text">四、三层交换机 VLAN 间通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AE-vlan-%E6%8E%A5%E5%8F%A3%E4%BD%9C%E4%B8%BA%E7%BD%91%E5%85%B3"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. 配置 VLAN 接口作为网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-vlan-%E9%97%B4%E9%80%9A%E4%BF%A1%E5%85%B8%E5%9E%8B%E9%85%8D%E7%BD%AE"><span class="toc-number">1.5.2.</span> <span class="toc-text">2. VLAN 间通信典型配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E4%B8%8E%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1"><span class="toc-number">1.6.</span> <span class="toc-text">五、静态路由与默认路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. 静态路由格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. 默认路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9F%A5%E7%9C%8B%E8%B7%AF%E7%94%B1%E8%A1%A8"><span class="toc-number">1.6.3.</span> <span class="toc-text">3. 查看路由表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD-nat-%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.6.4.</span> <span class="toc-text">六、NAT 地址转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-nat-%E4%BD%9C%E7%94%A8"><span class="toc-number">1.6.5.</span> <span class="toc-text">1. NAT 作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE-acl-%E5%8C%B9%E9%85%8D%E5%86%85%E7%BD%91%E5%9C%B0%E5%9D%80"><span class="toc-number">1.6.6.</span> <span class="toc-text">2. 配置 ACL 匹配内网地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE-nat-%E5%9C%B0%E5%9D%80%E6%B1%A0"><span class="toc-number">1.6.7.</span> <span class="toc-text">3. 配置 NAT 地址池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%9C%A8%E5%87%BA%E6%8E%A5%E5%8F%A3%E5%90%AF%E7%94%A8-nat"><span class="toc-number">1.6.8.</span> <span class="toc-text">4. 在出接口启用 NAT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-nat-%E5%B8%B8%E7%94%A8%E6%8E%92%E6%9F%A5"><span class="toc-number">1.6.9.</span> <span class="toc-text">5. NAT 常用排查</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83-%E7%94%9F%E6%88%90%E6%A0%91-stp-%E4%B8%8E%E5%B9%BF%E6%92%AD%E9%A3%8E%E6%9A%B4"><span class="toc-number">1.7.</span> <span class="toc-text">七、生成树 STP 与广播风暴</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%B9%BF%E6%92%AD%E9%A3%8E%E6%9A%B4%E6%A6%82%E5%BF%B5"><span class="toc-number">1.7.1.</span> <span class="toc-text">1. 广播风暴概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BC%80%E5%90%AF-stp"><span class="toc-number">1.7.2.</span> <span class="toc-text">2. 开启 STP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9F%A5%E7%9C%8B-stp-%E7%8A%B6%E6%80%81"><span class="toc-number">1.7.3.</span> <span class="toc-text">3. 查看 STP 状态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB-%E7%AB%AF%E5%8F%A3%E8%81%9A%E5%90%88-lacp"><span class="toc-number">1.8.</span> <span class="toc-text">八、端口聚合 LACP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E8%81%9A%E5%90%88%E4%BD%9C%E7%94%A8"><span class="toc-number">1.8.1.</span> <span class="toc-text">1. 端口聚合作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8A%A8%E6%80%81%E9%93%BE%E8%B7%AF%E8%81%9A%E5%90%88%E9%85%8D%E7%BD%AE"><span class="toc-number">1.8.2.</span> <span class="toc-text">2. 动态链路聚合配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3%E8%81%9A%E5%90%88%E7%8A%B6%E6%80%81"><span class="toc-number">1.8.3.</span> <span class="toc-text">3. 查看端口聚合状态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D-ppp-%E4%B8%8E-pap-%E8%AE%A4%E8%AF%81"><span class="toc-number">1.9.</span> <span class="toc-text">九、PPP 与 PAP 认证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ppp-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">1.9.1.</span> <span class="toc-text">1. PPP 基本配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ppp-%E8%B0%83%E8%AF%95"><span class="toc-number">1.9.2.</span> <span class="toc-text">2. PPP 调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-lcp-%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="toc-number">1.9.3.</span> <span class="toc-text">3. LCP 工作过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-pap-%E8%AE%A4%E8%AF%81%E9%85%8D%E7%BD%AE"><span class="toc-number">1.9.4.</span> <span class="toc-text">4. PAP 认证配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-pap-%E8%B0%83%E8%AF%95"><span class="toc-number">1.9.5.</span> <span class="toc-text">5. PAP 调试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81-arp-icmp-ping-%E4%B8%8E-tracert"><span class="toc-number">1.10.</span> <span class="toc-text">十、ARP、ICMP、Ping 与 Tracert</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-arp-%E5%8E%9F%E7%90%86"><span class="toc-number">1.10.1.</span> <span class="toc-text">1. ARP 原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-arp-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.10.2.</span> <span class="toc-text">2. ARP 命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-icmp-%E5%8E%9F%E7%90%86"><span class="toc-number">1.10.3.</span> <span class="toc-text">3. ICMP 原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ping-%E5%8E%9F%E7%90%86"><span class="toc-number">1.10.4.</span> <span class="toc-text">4. Ping 原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-tracert-%E5%8E%9F%E7%90%86"><span class="toc-number">1.10.5.</span> <span class="toc-text">5. Tracert 原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80-rip-%E4%B8%8E-ripng-ripv2"><span class="toc-number">1.11.</span> <span class="toc-text">十一、RIP 与 RIPng&#x2F;RIPv2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-rip-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.11.1.</span> <span class="toc-text">1. RIP 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rip-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">1.11.2.</span> <span class="toc-text">2. RIP 基本配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ripv2-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.11.3.</span> <span class="toc-text">3. RIPv2 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-rip-%E8%AE%A4%E8%AF%81"><span class="toc-number">1.11.4.</span> <span class="toc-text">4. RIP 认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-rip-%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.11.5.</span> <span class="toc-text">5. RIP 查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C-loopback-%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.12.</span> <span class="toc-text">十二、Loopback 接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-loopback-%E6%A6%82%E5%BF%B5"><span class="toc-number">1.12.1.</span> <span class="toc-text">1. Loopback 概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE-loopback"><span class="toc-number">1.12.2.</span> <span class="toc-text">2. 配置 Loopback</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%89-ospf-%E5%8D%8F%E8%AE%AE%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.13.</span> <span class="toc-text">十三、OSPF 协议实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ospf-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.13.1.</span> <span class="toc-text">1. OSPF 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ospf-%E6%8A%A5%E6%96%87%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.13.2.</span> <span class="toc-text">2. OSPF 报文类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ospf-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">1.13.3.</span> <span class="toc-text">3. OSPF 基本配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%88%A0%E9%99%A4-ospf-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.13.4.</span> <span class="toc-text">4. 删除 OSPF 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%85%8D%E7%BD%AE-ospf-cost"><span class="toc-number">1.13.5.</span> <span class="toc-text">5. 配置 OSPF Cost</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-ospf-%E5%BC%95%E5%85%A5%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1"><span class="toc-number">1.13.6.</span> <span class="toc-text">6. OSPF 引入静态路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-ospf-%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4"><span class="toc-number">1.13.7.</span> <span class="toc-text">7. OSPF 查询命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-ospf-lsa-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.13.8.</span> <span class="toc-text">8. OSPF LSA 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-ospf-%E8%B0%83%E8%AF%95"><span class="toc-number">1.13.9.</span> <span class="toc-text">9. OSPF 调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-ospf-%E7%AE%80%E7%AD%94%E9%A2%98%E5%B8%B8%E7%94%A8%E8%A1%A8%E8%BF%B0"><span class="toc-number">1.13.10.</span> <span class="toc-text">10. OSPF 简答题常用表述</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B-bgp-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.14.</span> <span class="toc-text">十四、BGP 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-bgp-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">1.14.1.</span> <span class="toc-text">1. BGP 基本配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ibgp-%E4%BD%BF%E7%94%A8-loopback-%E5%BB%BA%E9%82%BB"><span class="toc-number">1.14.2.</span> <span class="toc-text">2. IBGP 使用 Loopback 建邻</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-bgp-%E6%B3%A8%E5%85%A5%E8%B7%AF%E7%94%B1"><span class="toc-number">1.14.3.</span> <span class="toc-text">3. BGP 注入路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-bgp-%E5%BC%95%E5%85%A5-ospf"><span class="toc-number">1.14.4.</span> <span class="toc-text">4. BGP 引入 OSPF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-bgp-%E8%81%9A%E5%90%88"><span class="toc-number">1.14.5.</span> <span class="toc-text">5. BGP 聚合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-bgp-%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.14.6.</span> <span class="toc-text">6. BGP 查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%94-acl-%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">1.15.</span> <span class="toc-text">十五、ACL 基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC-acl"><span class="toc-number">1.15.1.</span> <span class="toc-text">1. 基本 ACL</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%85%AD-dhcp-%E5%8E%9F%E7%90%86%E4%B8%8E%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">1.16.</span> <span class="toc-text">十六、DHCP 原理与常用配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-dhcp-%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="toc-number">1.16.1.</span> <span class="toc-text">1. DHCP 工作过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-dhcp-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.16.2.</span> <span class="toc-text">2. DHCP 服务器配置模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%83-tcp-udp-%E4%B8%8E%E4%BC%A0%E8%BE%93%E5%B1%82%E5%AE%9E%E9%AA%8C%E8%83%8C%E8%AF%B5"><span class="toc-number">1.17.</span> <span class="toc-text">十七、TCP&#x2F;UDP 与传输层实验背诵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-tcp-%E5%9F%BA%E6%9C%AC%E7%89%B9%E7%82%B9"><span class="toc-number">1.17.1.</span> <span class="toc-text">1. TCP 基本特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-number">1.17.2.</span> <span class="toc-text">2. TCP 三次握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B"><span class="toc-number">1.17.3.</span> <span class="toc-text">3. TCP 四次挥手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-tcp-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-number">1.17.4.</span> <span class="toc-text">4. TCP 滑动窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-tcp-%E6%85%A2%E5%90%AF%E5%8A%A8%E4%B8%8E%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D"><span class="toc-number">1.17.5.</span> <span class="toc-text">5. TCP 慢启动与拥塞避免</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-tcp-%E7%AA%97%E5%8F%A3%E6%8E%A2%E6%9F%A5"><span class="toc-number">1.17.6.</span> <span class="toc-text">6. TCP 窗口探查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-udp"><span class="toc-number">1.17.7.</span> <span class="toc-text">7. UDP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%85%AB-%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E8%83%8C%E8%AF%B5"><span class="toc-number">1.18.</span> <span class="toc-text">十八、应用层协议背诵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-dns"><span class="toc-number">1.18.1.</span> <span class="toc-text">1. DNS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-http"><span class="toc-number">1.18.2.</span> <span class="toc-text">2. HTTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.18.3.</span> <span class="toc-text">3. 电子邮件协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ftp"><span class="toc-number">1.18.4.</span> <span class="toc-text">4. FTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-dhcp"><span class="toc-number">1.18.5.</span> <span class="toc-text">5. DHCP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81-%E8%80%83%E8%AF%95%E9%AB%98%E9%A2%91%E9%85%8D%E7%BD%AE%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.19.</span> <span class="toc-text">二十、考试高频配置模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF-1%EF%BC%9A%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%88%92-vlan-%E9%85%8D%E7%BD%91%E5%85%B3"><span class="toc-number">1.19.1.</span> <span class="toc-text">模板 1：交换机划 VLAN + 配网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF-2%EF%BC%9A%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8E%A5%E5%8F%A3-%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1"><span class="toc-number">1.19.2.</span> <span class="toc-text">模板 2：路由器接口 + 静态路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF-3%EF%BC%9Aospf-%E5%8D%95%E5%8C%BA%E5%9F%9F"><span class="toc-number">1.19.3.</span> <span class="toc-text">模板 3：OSPF 单区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF-4%EF%BC%9Anat-%E4%B8%8A%E7%BD%91"><span class="toc-number">1.19.4.</span> <span class="toc-text">模板 4：NAT 上网</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8D%81-%E8%80%83%E8%AF%95%E6%9C%80%E5%90%8E%E5%BF%85%E9%A1%BB%E5%81%9A%E7%9A%84%E4%BA%8B"><span class="toc-number">1.20.</span> <span class="toc-text">二十、考试最后必须做的事</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/18/(ST)%E5%A5%87%E5%A6%99%E6%95%85%E4%BA%8B15/" title="无题">无题</a><time datetime="2026-06-18T15:45:22.952Z" title="发表于 2026-06-18 23:45:22">2026-06-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/06/08/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E4%B8%8A%E6%9C%BA%E6%80%BB%E7%BB%93/" title="计网上机总结"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A277.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网上机总结"/></a><div class="content"><a class="title" href="/2026/06/08/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E4%B8%8A%E6%9C%BA%E6%80%BB%E7%BB%93/" title="计网上机总结">计网上机总结</a><time datetime="2026-06-08T00:39:41.655Z" title="发表于 2026-06-08 08:39:41">2026-06-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/29/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%AE%9E%E9%AA%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/" title="实验指令总结"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A270.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="实验指令总结"/></a><div class="content"><a class="title" href="/2026/05/29/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E5%AE%9E%E9%AA%8C%E6%8C%87%E4%BB%A4%E6%80%BB%E7%BB%93/" title="实验指令总结">实验指令总结</a><time datetime="2026-05-29T00:56:38.938Z" title="发表于 2026-05-29 08:56:38">2026-05-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/27/%E4%BD%93%E9%87%8D-%E5%8E%8B%E5%8A%9B%E5%9B%9E%E5%BD%92%E9%A2%84%E6%B5%8B/" title="无题">无题</a><time datetime="2026-05-27T11:19:27.130Z" title="发表于 2026-05-27 19:19:27">2026-05-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/05/26/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E6%A0%B7%E9%A2%98/" title="计网实验模拟题题解"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A250.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计网实验模拟题题解"/></a><div class="content"><a class="title" href="/2026/05/26/%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%E8%AE%A1%E7%BD%91%E5%AE%9E%E9%AA%8C%E6%A0%B7%E9%A2%98/" title="计网实验模拟题题解">计网实验模拟题题解</a><time datetime="2026-05-26T14:26:30.533Z" title="发表于 2026-05-26 22:26:30">2026-05-26</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">153</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">5</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>6</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>51</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>51</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://www.bilibili.com/video/BV1Ji4y1N7tK?spm_id_from=333.788.videopod.episodes&amp;vd_source=3ceb705961537c0a458a0c7955359e9b&amp;p=12&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
