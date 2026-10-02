@@ -1,0 +1,580 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>(VLN)概论 | Destiny Blog</title><meta name="keywords" content="科研"><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="(VLN)概论"><meta name="application-name" content="(VLN)概论"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="(VLN)概论"><meta property="og:url" content="https://agilawood4.github.io/2026/07/13/(VLN)%E6%A6%82%E8%AE%BA/index.html"><meta property="og:site_name" content="Destiny Blog"><meta property="og:description" content="导论 基础概念 具身智能 具身智能（Embodied AI）是指能够通过感知，推理和行动与物理世界交互的智能体，通过身体与环境的交互来学习和理解  不同于传统 AI，具身智能不仅仅是符号推理或数据模式的识别，更强调物理存在和与现实世界的交互  案例：智能机器人，自动驾驶汽车，虚拟智能体 VLN VL"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2210.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://agilawood4.github.io/images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2210.jpg"><meta name="description" content="导论 基础概念 具身智能 具身智能（Embodied AI）是指能够通过感知，推理和行动与物理世界交互的智能体，通过身体与环境的交互来学习和理解  不同于传统 AI，具身智能不仅仅是符号推理或数据模式的识别，更强调物理存在和与现实世界的交互  案例：智能机器人，自动驾驶汽车，虚拟智能体 VLN VL"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://agilawood4.github.io/2026/07/13/(VLN)%E6%A6%82%E8%AE%BA/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: Destiny Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Destiny Blog',
+  title: '(VLN)概论',
+  postAI: '',
+  pageFillDescription: '导论, 基础概念, 具身智能, VLN, 基础概念, VLN 架构 - 早期方法, Seq2Seq 模型, Speqker-Follower 模型, 结合强化学习, VLN 架构 - 高级方法, 基于 Transformer 的 VLN 模型, 预训练策略, VLN-BERT, CLIP-based VLN Approaches, 分层导航, 记忆机制, 多智能体协作, 数据集和评估指标, VLN 数据集, VLN 任务评估指标, 评估设置, 未来挑战导论基础概念具身智能具身智能是指能够通过感知推理和行动与物理世界交互的智能体通过身体与环境的交互来学习和理解不同于传统具身智能不仅仅是符号推理或数据模式的识别更强调物理存在和与现实世界的交互案例智能机器人自动驾驶汽车虚拟智能体是具身智能第一个子领域目标是训练一个智能体使其能够根据自然语言融合视觉和语言信息进行决策在环境中进行导航输入视觉感知和自然语言指令例如输出路径点离散动作例如包括线速度和角速度使得智能体到达目标位置目前的关键挑战感知模糊性视觉信息可能不完整或模糊语言模糊性自然语言指令可能不精确有歧义或包含隐含信息泛化能力在未见过的环境中导航的能力长程规划规划跨过多个房间或复杂路径的行动序列指令遵循准确理解和执行指令的每个部分记忆与推理记住已探索的区域和指令进度基础概念中的指的是即计算机视觉其核心任务包括图像识别目标检测语义分割图像识别用于对视场进行宏观归类例如厨房卧室提供全局语境帮助智能体判断是否到达了指令中的目标区域目标检测用于识别并定位场景中的物体实例例如桌子椅子微波炉作为大部分指令执行的基础比如指令去打开微波炉首先要求能够检测到微波炉的存在语义分割用于识别场景的像素级布局即对视场中的每一个像素进行语义分类当前像素点是属于地板还是墙壁通过识别出所有属于地板的像素从而确定可通行区域实现有效的路径规划和避障综上所述中的视觉概念是一个集成了分类检测与分割能力能够处理时序性第一人称视角输入并最终服务于语言接地的复杂感知系统这个系统是智能体的前端它提供的场景理解质量直接决定了后续语言理解和动作规划模块的性能上限中的指的是即自然语言处理其核心任务包括词嵌入序列模型构建注意力机制词嵌入即将离散的词语符号映射为连续的能表达语义的低维稠密向量向量间的数学关系对应词语的逻辑关系在中词嵌入作为语言理解的起点为后续编码完整的富含上下文的导航指令提供输入循环神经网络通过循环传递的记忆单元隐状态来处理序列化信息从而有效捕获上下文关联按顺序读取指令中的词嵌入将其逐步压缩为一个能带代表完整意图的指令向量可以整合整个过去的动作与观测序列形成动态的状态认知为当前决策提供依据模型可以动态计算输入信息的重要性权重让模型集中处理最相关的部分忽略无关噪音以自注意力机制为核心融合语言视觉历史等多模态信息在中模型可以精准建立语言指令中特定词语与视觉画面中特定像素区域之间的对应关系架构早期方法模型直接将语言指令和视觉图像序列映射到行动序列大多采用结构编码语言指令其中通常使用或编码指令而用于提取当前视角的特征可以使用等根据编码后的指令和视觉观测生成行动通常由另一个或生成行动结合注意力机制在中的应用视觉注意力有助于模型聚焦环境中的相关地标根据指令或当前导航目标动态地加权是视觉特征图的不同区域通常在视觉特征提取后通过一个注意力网络生成注意力权重语言注意力有助于模型处理长指令和多步骤任务在解码时模型可以回顾指令的不同部分以确保指令的完整遵循在解码器中通过一个注意力机制对语言编码器的输出进行加权跨模态注意力促进更深层次的跨模态理解允许视觉和语言模态之间相互影响共同决定导航策略视觉特征可以影响语言注意力反之亦然结合注意力机制即得到早期经典的模型模型模型包括一个指令解释模块将指令映射到动作序列同时包含一个指令生成模块将操作序列映射到指令二者都使用标准的架构实现学习为视觉路线提供文本指令用于给出更高质量的指令学习为文本指令提供视觉路线用于给出更准确的导航路线预测结合强化学习本质上是一个序列决策问题智能体需要根据指令和视觉观察观察到周围的环境信息可以认为是环境的反馈一步一步做出决策即每一步该怎么走直到完成任务该过程可以很自然地被建模为马尔科夫决策过程而强化学习正是解决这类问题的经典框架在强化学习的视角下我们的目标即学习一个最优策略让智能体直到在任何状态下该采取什么动作中的奖励稀疏问题如果只有当智能体到达目标时才获得奖励这会导致学习效率低下也导致了信誉分配问题一条路径通常由几十个步骤组成如果最终成功我们很难判断这几十步中哪些才是关键的正确决策哪些是无效甚至错误的决策如果最终失败也很难判断是哪几步错误导致了失败这种模糊的反馈信号让模型学习变得非常困难这就是所谓的奖励稀疏问题解决该问题的核心思想即重构奖励函数模型同时设置外部奖励和内部奖励外部奖励与任务目标相关的奖励比如某一步之后智能体是否距离终点更近内部奖励与指令匹配度相关的奖励比如当智能体执行的动作与当前指令子句高度匹配时就给予一个奖励这实现了指令和视觉的跨模态对齐引入三维地图信息利用地图上关键地标作为显式约束架构高级方法基于的模型把架构应用与利用其强大的序列建模和注意力机制处理长指令和长视觉序列捕获复杂的跨模态交互其中可以认为是把架构嵌入到中去工作预训练策略在引入以后可以利用大规模多模态数据进行预训练学习通用的视觉语言表示可以先以基本的掩码语言建模等任务进行预训练以提高模型在下游任务上的性能和泛化能力即将的预训练范式扩展到邻域以学习到强大的跨模态表示这类模型利用学习到的通用的视觉语言表示把特征集成到模型中用于实现视觉语言的对齐分层导航分层导航用于将复杂导航任务分解为多个层次的子任务尤其适用于连续环境的导航高层规划粗粒度路径点当前观测下可行进的路径点底层执行细粒度行动以达到最终目标例如前进转弯等动作整体上可以提高模型的长程规划能力降低任务的复杂性该模块用于接收彩色深度全景输入使用一个多层来建模空间关系并预测智能体临近区域中路径点的位置这些位置被认为在当前环境下智能体可以安全有效地移动到的候选路径点例如门口的中心走廊的拐角处空旷区域的中心点等低层执行器根据当前中间目标和局部视觉预测执行具体行动的主要工作是为每一个候选路径点打分分数的高低代表这个点有多符合指令这个过程通常由一个跨模态或类似的融合模块来完成它能够同时处理视觉和语言信息并推理它们之间的关系从而执行细粒度行动以达到最终目标相当于一个候选采样的过程上层模型先粗选出候选点下层模型逐个评分最终选择得分最高的候选记忆机制智能体需要记住自己已经探索过的区域当前指令完成进度和历史行动以避免重复探索提高效率以更好地遵循长指令常见的记忆方法如下循环记忆网络图像记忆地图记忆循环记忆网络使用或来维护一个内部记忆状态编码历史信息图像记忆将探索过的环境构建成一系列图像组并存储节点和边的特征能够显式表示历史信息便于检索和推理地图记忆将探索过的环境构建成隐式显式的地图例如拓扑地图地图等并储存节点和边的特征可以显式地表示历史信息便于检索和推理同时避免过量的历史信息比如大量的历史帧图像图结构建模中通常把环境建模为图结构用节点表示位置或对象边表示连接能够更好地捕获环境的拓扑结构和空间关系一张导航图的元素通常如下节点采样环境中的可导航点边连接直接可到达的相邻节点节点特征视觉特征语义信息边特征距离相对方向单向可往返允许通过次数在基于图结构的导航策略中通过将环境动态构建为拓扑图融合视觉语言和图信息在该图上进行全局路径规划与跨模态推理从而实现对长指令和复杂空间结构的精确理解与执行多智能体协作多个智能体在共享环境中通过通信协调来完成导航任务例如通过模拟一个由多个大语言模型专家组成的讨论组共同解读人类指令并协作引导机器人移动从而解决了导航训练数据稀疏的问题数据集和评估指标数据集领域的常见数据集如下最早也是最广泛使用的数据集之一使用环境建模包含个不同场景的全景约条路径每条路径上有条人工标注的指令的扩展包含多种语言的指令用于实现跨语言导航多语言理解等任务基于街景图像的数据集指令包含细粒度地表使用环境包含导航路径和地标识别任务包含对话式导航包含目标定位和导航专用于语义导航包含复杂的多步骤任务任务评估指标成功率成功率智能体成功到达目标区域的路径百分比所谓成功到达指的是智能体最终位置与目标位置的距离小于阈值不考虑路径效率即可以绕路到达目标即可成功完成的任务数量任务总数量成功完成的任务数量任务总数量任务总数量成功完成的任务数量导航误差导航误差智能体最终位置与目标位置之间的最短路径距离越小说明导航越精确的最终停止位置指令的目标位置的最终停止位置指令的目标位置的最终停止位置指令的目标位置成功加权路径长度成功加权路径长度结合了成功率和路径效率的指标在成功完成任务的基础上对路径效率进行打分智能体走的路径越接近理论上的最短路径得分相应越高单个任务的计算公式为其中表示任务是否成功表示起点到终点的最短路径长度表示智能体实际行走的路径长度最终的指标是所有任务得分的平均值轨迹长度轨迹长度智能体在执行一次导航任务时实际走过的总路程即公式中的现在通常不会单独作为一个核心的性能指标因为我们一般不追求路径越短越好而是希望路径尽可能和指令准确贴合其中分别表示智能体在时间步和时刻的位置计算两点之间的欧几里得距离先知成功率先知成功率我们检查智能体走过的一条路径上是否存在任何一个点这个点与真实目标点的距离在成功半径之内例如如果存在这样的点那么这次任务的就判定为成功如果整条路径上没有一个点曾进入过成功半径那么就判定为失败其中为任务总量是一个指示函数如果括号内的条件为真即则函数值为如果括号内的条件为假则函数值为评估设置在领域通常按照和进行评估设置用于训练和验证的场景模型在训练中从未见过的场景用于评估泛化能力对于测试环境而言通常都使用即模型从未见过的环境作为最终的最权威的评测标准为了保证公平测试集的正确答案路径通常是不公开的研究者需要把训练好的模型提交到官方的评测服务器上由服务器计算并返回评测成绩未来挑战泛化到未见环境挑战智能体在训练中未见过的环境中表现不佳策略领域适应拟真数据无监督自监督学习鲁棒性与模糊性处理挑战指令模糊感知噪声环境动态变化策略不确定性建模鲁棒性训练主动学习长程规划与记忆挑战规划长距离路径记住大量历史信息策略更好的记忆架构分层规划符号推理与神经网络结合人机交互与可解释性挑战如何让人类用户更好地理解和信任智能体策略可解释交互式导航自然语言反馈真实世界部署挑战模拟器与真实世界之间的域间隙硬件限制安全性问题策略真实世界数据收集多模态大模型物理仿真与现实世界桥接多模态融合挑战除了视觉和语言模态如何整合其他模态陀螺仪等策略多传感器融合更全面的具身感知视觉语言导航是具身智能领域重要的研究方向旨在让智能体能够理解自然语言指令并利用视觉感知能力自主完成导航和交互任务后续我们将系统介绍的核心概念关键技术与最新研究进展从基础的视觉语言导航模型数据集与任务到更高级的学习方法如模仿学习强化学习和预训练模型同时我们也会聚焦与前沿技术如和机器人的结合探讨其在无人机和地面机器人等现实世界的应用为相关领域的研究和系统开发提供坚实的理论基础和方法指导',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-10-02 01:23:28',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Destiny Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>6</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>49</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>47</sup></a><a href="/tags/%E7%A7%91%E7%A0%94/" style="font-size: 1.05rem;">科研<sup>18</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/09/"><span class="card-archive-list-date">九月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">26</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/08/"><span class="card-archive-list-date">八月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">30</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/07/"><span class="card-archive-list-date">七月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">25</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">六月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/04/"><span class="card-archive-list-date">四月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">29</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">9</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url">科研</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E7%A7%91%E7%A0%94/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>科研</span></a></span></div></div><h1 class="post-title" itemprop="name headline">(VLN)概论</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-07-13T08:30:41.985Z" title="发表于 2026-07-13 16:30:41">2026-07-13</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-10-01T17:23:28.996Z" title="更新于 2026-10-02 01:23:28">2026-10-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2210.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://agilawood4.github.io/2026/07/13/(VLN)%E6%A6%82%E8%AE%BA/"><header><a class="post-meta-categories" href="/categories/%E7%A7%91%E7%A0%94/" itemprop="url">科研</a><a href="/tags/%E7%A7%91%E7%A0%94/" tabindex="-1" itemprop="url">科研</a><h1 id="CrawlerTitle" itemprop="name headline">(VLN)概论</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2026-07-13T08:30:41.985Z" title="发表于 2026-07-13 16:30:41">2026-07-13</time><time itemprop="dateCreated datePublished" datetime="2026-10-01T17:23:28.996Z" title="更新于 2026-10-02 01:23:28">2026-10-02</time></header><h1><strong>导论</strong></h1>
+<h2 id="基础概念"><strong>基础概念</strong></h2>
+<h3 id="具身智能"><strong>具身智能</strong></h3>
+<p>具身智能（<em>Embodied AI</em>）是指能够通过感知，推理和行动与物理世界交互的智能体，通过身体与环境的交互来学习和理解</p>
+<blockquote>
+<p>不同于传统 AI，具身智能不仅仅是符号推理或数据模式的识别，更强调物理存在和与现实世界的交互</p>
+</blockquote>
+<p>案例：智能机器人，自动驾驶汽车，虚拟智能体</p>
+<h3 id="vln"><strong>VLN</strong></h3>
+<p>VLN 是具身智能第一个子领域，目标是训练一个智能体，使其能够根据自然语言，融合视觉和语言信息进行决策，在 3D 环境中进行导航</p>
+<blockquote>
+<p>输入：视觉感知和自然语言指令，例如：turn right，walk through the hallway</p>
+<p>输出：路径点，离散动作，例如：go forward ''x&quot; m, turn right “x” degree, stop，包括线速度和角速度，使得智能体到达目标位置</p>
+</blockquote>
+<p>目前 VLN 的关键挑战：</p>
+<ul>
+<li>感知模糊性：视觉信息可能不完整或模糊</li>
+<li>语言模糊性：自然语言指令可能不精确，有歧义或包含隐含信息</li>
+<li>泛化能力：在未见过的环境中导航的能力</li>
+<li>长程规划：规划跨过多个房间或复杂路径的行动序列</li>
+<li>指令遵循：准确理解和执行指令的每个部分</li>
+<li>记忆与推理：记住已探索的区域和指令进度</li>
+</ul>
+<h3 id="基础概念"><strong>基础概念</strong></h3>
+<p>VLN 中的 <em>V</em> 指的是 <em>Visual</em>，即计算机视觉，其核心任务包括：</p>
+<ul>
+<li>图像识别</li>
+<li>目标检测</li>
+<li>语义分割</li>
+</ul>
+<p><strong>图像识别</strong>用于对视场（<em>view</em>）进行宏观归类，例如 “厨房”，“卧室”，提供全局语境，帮助智能体判断是否到达了指令中的目标区域</p>
+<p><strong>目标检测</strong>用于识别并定位场景中的物体实例，例如 “桌子”，“椅子”，“微波炉”，作为大部分指令执行的基础（比如指令 “去打开微波炉” 首先要求 Agent 能够检测到 “微波炉” 的存在）</p>
+<p><strong>语义分割</strong>用于识别场景的像素级布局，即对视场中的每一个像素进行语义分类（当前像素点是属于 “地板” 还是 “墙壁”），通过识别出所有属于 “地板” 的像素，从而确定可通行区域，实现有效的路径规划和避障</p>
+<p>综上所述，VLN 中的视觉概念，是一个集成了分类，检测与分割能力，能够处理时序性，第一人称视角输入，并最终服务于<strong>语言接地</strong>的复杂感知系统，这个系统是 VLN 智能体的前端，它提供的场景<strong>理解质量</strong>，直接决定了后续语言理解和动作规划模块的性能上限</p>
+<p>VLN 中的 <em>L</em> 指的是 <em>Language</em>，即自然语言处理，其核心任务包括：</p>
+<ul>
+<li>词嵌入</li>
+<li>序列模型构建</li>
+<li>注意力机制</li>
+</ul>
+<p><strong>词嵌入</strong>即 <em>Word Embeddings</em>，将离散的词语符号，映射为连续的、能表达语义的低维稠密向量，向量间的数学关系对应词语的逻辑关系，在 VLN 中，词嵌入作为语言理解的起点，为后续编码完整的，富含上下文的导航指令提供输入</p>
+<p><strong>循环神经网络</strong>通过循环传递的记忆单元（隐状态）来处理序列化信息，从而有效捕获上下文关联，按顺序读取指令中的词嵌入，将其逐步压缩为一个能带代表完整意图的指令向量</p>
+<blockquote>
+<p>RNN 可以整合整个 Agent 过去的动作与观测序列 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>a</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a_1,a_2,\dots,a_{t-1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，形成动态的状态认知，为当前决策提供依据</p>
+</blockquote>
+<p><strong>Transformer</strong> 模型可以动态计算输入信息的重要性权重，让模型集中处理最相关的部分，忽略无关噪音，以自注意力机制为核心，融合语言，视觉，历史等多模态信息，在 VLN 中，Transformer 模型可以精准建立语言指令中特定<strong>词语</strong>与视觉画面中特定<strong>像素区域</strong>之间的对应关系</p>
+<h2 id="vln-架构-早期方法"><strong>VLN 架构 - 早期方法</strong></h2>
+<h3 id="seq2seq-模型"><strong>Seq2Seq 模型</strong></h3>
+<p>直接将语言指令和视觉图像序列映射到行动序列，大多采用 Encoder-Decoder 结构</p>
+<ul>
+<li>Encoder：编码语言指令，其中 Language Encoder 通常使用 LSTM 或 GRU 编码指令，而 Vision Encoder 用于提取当前视角的特征，可以使用 CNN，ResNet 等</li>
+<li>Decoder：根据编码后的指令和视觉观测生成行动，通常由另一个 LSTM 或 GRU 生成行动</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://circlecoder05.oss-cn-beijing.aliyuncs.com/knowledge-images/20260714/5-8a0b6e8273e7.png" alt="image-20260714101625257"></p>
+<p>结合注意力机制在 VLN 中的应用</p>
+<ul>
+<li>视觉注意力：有助于模型聚焦环境中的相关地标
+<ol>
+<li>根据指令或当前导航目标，动态地加权是视觉特征图的不同区域</li>
+<li>通常在视觉特征提取后，通过一个注意力网络生成注意力权重</li>
+</ol>
+</li>
+<li>语言注意力：有助于模型处理长指令和多步骤任务
+<ol>
+<li>在解码时，模型可以回顾指令的不同部分，以确保指令的完整遵循</li>
+<li>在解码器中，通过一个注意力机制对语言编码器的输出进行加权</li>
+</ol>
+</li>
+<li>跨模态注意力：促进更深层次的跨模态理解
+<ol>
+<li>允许视觉和语言模态之间相互影响，共同决定导航策略</li>
+<li>视觉特征可以影响语言注意力，反之亦然</li>
+</ol>
+</li>
+</ul>
+<p>Seq2Seq 结合注意力机制，即得到早期经典的 CMA VLN 模型</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://circlecoder05.oss-cn-beijing.aliyuncs.com/knowledge-images/20260714/5-b86d9e18f967.png" alt="image-20260714102010930"></p>
+<h3 id="speqker-follower-模型"><strong>Speqker-Follower 模型</strong></h3>
+<p>模型包括一个指令解释（<em>Follower</em>）模块，将指令映射到动作序列，同时包含一个指令生成（<em>Speaker</em>）模块，将操作序列映射到指令，二者都使用标准的 Seq2Seq 架构实现，Speaker 学习为视觉路线提供文本指令，用于给出更高质量的指令，Follower 学习为文本指令提供视觉路线，用于给出更准确的导航路线预测</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://circlecoder05.oss-cn-beijing.aliyuncs.com/knowledge-images/20260714/5-8b1626303fb6.png" alt="image-20260714102339467"></p>
+<h3 id="结合强化学习"><strong>结合强化学习</strong></h3>
+<p>VLN 本质上是一个<strong>序列决策</strong>问题，智能体需要根据指令和视觉观察（观察到周围的环境信息可以认为是环境的反馈），一步一步做出决策（即每一步该怎么走），直到完成任务，该过程可以很自然地被建模为马尔科夫决策过程（<em>MDP</em>），而强化学习正是解决这类问题的经典框架</p>
+<p>在强化学习的视角下，我们的目标即：学习一个最优策略（<em>Policy</em>），让智能体直到在任何状态下该采取什么动作</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://circlecoder05.oss-cn-beijing.aliyuncs.com/knowledge-images/20260714/5-997c0be81316.png" alt="image-20260714102610319"></p>
+<p><strong>VLN 中的奖励稀疏问题</strong></p>
+<p>如果只有当智能体到达目标时才获得奖励，这会导致学习效率低下，也导致了信誉分配问题（<em>Credit Assignment Problem</em>）：一条路径通常由几十个步骤组成，如果最终成功，我们很难判断，这几十步中哪些才是关键的正确决策，哪些是无效甚至错误的决策；如果最终失败，也很难判断是哪几步错误导致了失败，这种模糊的反馈信号让模型学习变得非常困难，这就是所谓的<strong>奖励稀疏</strong>问题</p>
+<p>解决该问题的核心思想即重构奖励函数：</p>
+<ul>
+<li>RCM 模型：同时设置外部奖励和内部奖励
+<ol>
+<li>外部奖励（<em>Extrinsic Reward</em>）：与任务目标相关的奖励，比如某一步之后，智能体是否距离终点更近</li>
+<li>内部奖励（<em>Intrinsic Reward</em>）：与指令匹配度相关的奖励，比如，当智能体执行的动作与当前指令子句高度匹配时，就给予一个奖励，这实现了指令和视觉的跨模态对齐（<em>cross-modal Grounding</em>）</li>
+</ol>
+</li>
+<li>引入三维地图信息，利用地图上关键地标作为显式约束</li>
+</ul>
+<h2 id="vln-架构-高级方法"><strong>VLN 架构 - 高级方法</strong></h2>
+<h3 id="基于-transformer-的-vln-模型"><strong>基于 Transformer 的 VLN 模型</strong></h3>
+<p>把 Transformer 架构应用与 VLN，利用其强大的序列建模和注意力机制，处理长指令和长视觉序列，捕获复杂的跨模态交互</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://circlecoder05.oss-cn-beijing.aliyuncs.com/knowledge-images/20260714/5-bf0fb82d5d1c.png" alt="image-20260714103606435"></p>
+<p>其中 <em>Cross-Modal Encoder</em> 可以认为是把 Transformer 架构嵌入到 Seq2Seq 中去工作</p>
+<h3 id="预训练策略"><strong>预训练策略</strong></h3>
+<p>在引入 Transformer 以后，可以利用大规模多模态数据进行预训练，学习通用的<strong>视觉 - 语言表示</strong>（可以先以基本的 <em>Image Text Pair</em>，掩码语言建模等任务进行预训练），以提高模型在下游 VLN 任务上的性能和泛化能力</p>
+<h3 id="vln-bert"><strong>VLN-BERT</strong></h3>
+<p>VLN-BERT 即 <em>Vision and Language Navigation BERT</em>，将 <em>BERT</em> 的预训练范式扩展到 VLN 邻域，以学习到强大的跨模态表示</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://circlecoder05.oss-cn-beijing.aliyuncs.com/knowledge-images/20260714/5-61eecbf4d260.png" alt="image-20260714103958832"></p>
+<h3 id="clip-based-vln-approaches"><strong>CLIP-based VLN Approaches</strong></h3>
+<p>这类模型利用 CLIP 学习到的通用的<strong>视觉 - 语言表示</strong>，把 CLIP 特征集成到 VLN 模型中，用于实现视觉 - 语言的对齐</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://circlecoder05.oss-cn-beijing.aliyuncs.com/knowledge-images/20260714/5-0e4feb6e366a.png" alt="image-20260714104210901"></p>
+<h3 id="分层导航"><strong>分层导航</strong></h3>
+<p>分层导航（<em>Hierarchical Navigation</em>）用于将复杂导航任务分解为多个层次的子任务，尤其适用于连续环境的导航</p>
+<ul>
+<li>高层（<em>Waypoint Predictor</em>）：规划粗粒度路径点（当前观测下可行进的路径点）</li>
+<li>底层（<em>Navigator</em>）：执行细粒度行动以达到最终目标，例如前进，转弯等动作</li>
+</ul>
+<p>整体上可以提高模型的长程规划能力，降低任务的复杂性</p>
+<p><strong>Waypoint Predictor</strong></p>
+<p>该模块用于接收 RGBD（彩色+深度）全景输入，使用一个多层 Transformer 来建模空间关系，并预测智能体临近区域中路径点的位置，这些位置被认为在当前环境下，智能体可以安全、有效地移动到的候选路径点，例如门口的中心，走廊的拐角处，空旷区域的中心点等</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://circlecoder05.oss-cn-beijing.aliyuncs.com/knowledge-images/20260714/5-551bc437694a.png" alt="image-20260714104453793"></p>
+<p><strong>低层执行器</strong></p>
+<p>根据当前中间目标和局部视觉预测，执行具体行动，<em>Navigator</em> 的主要工作是为每一个候选路径点打分，分数的高低代表这个点有多符合指令，这个过程通常由一个跨模态 Transformer 或类似的融合模块来完成，它能够同时处理视觉和语言信息，并推理它们之间的关系，从而执行细粒度行动以达到最终目标</p>
+<p>相当于一个候选 + 采样的过程，上层模型先粗选出候选点，下层模型逐个评分，最终选择得分最高的候选</p>
+<h3 id="记忆机制"><strong>记忆机制</strong></h3>
+<p>智能体需要记住自己已经探索过的区域、当前指令完成进度和历史行动，以避免重复探索，提高效率，以更好地遵循长指令，常见的记忆方法如下：</p>
+<ul>
+<li>循环记忆网络</li>
+<li>图像记忆</li>
+<li>地图记忆</li>
+</ul>
+<p><strong>循环记忆网络</strong>（<em>Recurrent Memory Networks</em>）使用 RNN 或 LSTM 来维护一个内部记忆状态，编码历史信息</p>
+<p><strong>图像记忆</strong>将探索过的环境构建成一系列图像组，并存储节点和边的特征，能够显式表示历史信息，便于检索和推理</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://circlecoder05.oss-cn-beijing.aliyuncs.com/knowledge-images/20260714/5-c76f388ed8aa.png" alt="image-20260714110350748"></p>
+<p><strong>地图记忆</strong>将探索过的环境构建成隐式 / 显式的地图，例如拓扑地图，Grid 地图等，并储存节点和边的特征，可以显式地表示历史信息，便于检索和推理，同时避免过量的历史信息（比如大量的历史帧图像）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://circlecoder05.oss-cn-beijing.aliyuncs.com/knowledge-images/20260714/5-8f2a07d0af9b.png" alt="image-20260714110458150"></p>
+<p><strong>图结构建模</strong></p>
+<p>VLN 中通常把环境建模为图结构，用节点表示位置或对象，边表示连接，能够更好地捕获环境的拓扑结构和空间关系，一张导航图的元素通常如下：</p>
+<ul>
+<li>节点：采样环境中的可导航点</li>
+<li>边：连接直接可到达的相邻节点</li>
+<li>节点特征：视觉特征，语义信息</li>
+<li>边特征：距离，相对方向（单向 or 可往返，允许通过次数）</li>
+</ul>
+<p>在基于图结构的导航策略中，通过将环境动态构建为拓扑图，融合视觉、语言和图信息，在该图上进行全局路径规划与跨模态推理，从而实现对长指令和复杂空间结构的精确理解与执行</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://circlecoder05.oss-cn-beijing.aliyuncs.com/knowledge-images/20260714/5-b206e6d31919.png" alt="image-20260714110859380"></p>
+<h3 id="多智能体协作"><strong>多智能体协作</strong></h3>
+<p>多个智能体在共享环境中通过通信、协调来完成导航任务，例如 DiscussNav，通过模拟一个由多个大语言模型专家组成的<strong>讨论组</strong>，共同解读人类指令并协作引导机器人移动，从而解决了导航训练数据稀疏的问题</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://circlecoder05.oss-cn-beijing.aliyuncs.com/knowledge-images/20260714/5-cacffc0fc850.png" alt="image-20260714111029461"></p>
+<h2 id="数据集和评估指标"><strong>数据集和评估指标</strong></h2>
+<h3 id="vln-数据集"><strong>VLN 数据集</strong></h3>
+<p>VLN 领域的常见数据集如下：</p>
+<ul>
+<li>R2R（<em>Room2Room</em>）：最早也是最广泛使用的 VLN 数据集之一，使用 Matterport3D 环境建模，包含 90 个不同场景的全景，约 21500 条路径，每条路径上有 3 条人工标注的指令</li>
+<li>RxR（<em>Room across Room</em>）：R2R 的扩展，包含多种语言的指令，用于实现跨语言导航，多语言理解等任务</li>
+<li>Touchdown：基于街景图像的 VLN 数据集，指令包含细粒度地表，使用 Google Street View 环境，包含导航路径和地标识别任务</li>
+<li>CVDN（<em>Cooperative Vision-and-Dialogue Navigation</em>）：包含对话式导航</li>
+<li>REVRIE（<em>Realistic Virtual Environment for Embodied AI</em>）：包含目标定位和导航</li>
+<li>SOON（<em>Semantic Object-Oriented Navigation</em>）：专用于语义导航</li>
+<li>ALFRED（<em>Action Learning From Embodied Demonstrations</em>）：包含复杂的多步骤任务</li>
+</ul>
+<h3 id="vln-任务评估指标"><strong>VLN 任务评估指标</strong></h3>
+<p><strong>成功率</strong></p>
+<p>成功率（<em>Success Rate，SR</em>）：智能体成功到达目标区域的路径百分比，所谓成功到达指的是智能体最终位置与目标位置的距离小于阈值，不考虑路径效率（即可以绕路，到达目标即可）</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>SR</mtext><mo>=</mo><mfrac><mtext>成功完成的任务数量</mtext><mtext>任务总数量</mtext></mfrac></mrow><annotation encoding="application/x-tex">\text{SR} = \frac{\text{成功完成的任务数量}}{\text{任务总数量}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">SR</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">任务总数量</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord cjk_fallback">成功完成的任务数量</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><strong>导航误差</strong></p>
+<p>导航误差（<em>Navigation Error，NE</em>）：智能体最终位置与目标位置之间的最短路径距离，NE 越小，说明导航越精确</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>NE</mtext><mo>=</mo><mtext>distance</mtext><mo stretchy="false">(</mo><mtext>Agent的最终停止位置</mtext><mo separator="true">,</mo><mtext>指令的目标位置</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{NE} = \text{distance}(\text{Agent的最终停止位置},\text{指令的目标位置})
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">NE</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">distance</span></span><span class="mopen">(</span><span class="mord text"><span class="mord">Agent</span><span class="mord cjk_fallback">的最终停止位置</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord text"><span class="mord cjk_fallback">指令的目标位置</span></span><span class="mclose">)</span></span></span></span></span></p>
+<p><strong>成功加权路径长度</strong></p>
+<p>成功加权路径长度（<em>Success weighted by Path Length，SPL</em>）：结合了成功率和路径效率的指标，在成功完成任务的基础上，对路径效率进行打分，智能体走的路径越接近理论上的最短路径，得分相应越高</p>
+<p>单个任务的 SPL 计算公式为：</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>SPL</mtext><mi>i</mi></msub><mo>=</mo><msub><mi>S</mi><mi>i</mi></msub><mo>⋅</mo><mfrac><msub><mi>L</mi><mi>i</mi></msub><mrow><mi>max</mi><mo>⁡</mo><mrow><msub><mi>P</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>L</mi><mi>i</mi></msub></mrow></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{SPL}_i = S_i\cdot\frac{L_i}{\max{P_i,L_i}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord text"><span class="mord">SPL</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.2407700000000004em;vertical-align:-0.8804400000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop">max</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">S_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 表示任务 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 是否成功，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">L_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 表示起点到终点的最短路径长度，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">P_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 表示智能体实际行走的路径长度，最终的 SPL 指标是所有任务得分的平均值</p>
+<p><strong>轨迹长度</strong></p>
+<p>轨迹长度（<em>Trajectory Length，TL</em>）：智能体在执行一次导航任务时，实际走过的总路程，即 SPL 公式中的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">P_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，现在通常不会单独作为一个核心的性能指标，因为我们一般不追求路径越短越好，而是希望路径尽可能和指令准确贴合</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>TL</mtext><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>T</mi></munderover><mtext>distance</mtext><mo stretchy="false">(</mo><msub><mi>p</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>p</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{TL} = \sum_{i=1}^T\text{distance}(p_i,p_{i-1})
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">TL</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.106005em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283360000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord text"><span class="mord">distance</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>p</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">p_i,p_{i-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.638891em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span> 分别表示智能体在时间步 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69841em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 时刻的位置，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>distance</mtext><mo stretchy="false">(</mo><mo>⋅</mo><mo separator="true">;</mo><mo>⋅</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{distance}(\cdot;\cdot)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">distance</span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">⋅</span><span class="mclose">)</span></span></span></span> 计算两点之间的欧几里得距离</p>
+<p><strong>先知成功率</strong></p>
+<p>先知成功率（<em>Oracle Success Rate，OS</em>）：我们检查智能体走过的一条路径上，是否存在任何一个点，这个点与真实目标点的距离在成功半径之内（例如 3m），如果存在这样的点，那么这次任务的 OS 就判定为成功，如果整条路径上没有一个点曾进入过成功半径，那么 OS 就判定为失败</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>OS</mtext><mo>=</mo><mfrac><mn>1</mn><mi>N</mi></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><mi mathvariant="double-struck">I</mi><mo stretchy="false">(</mo><msub><mi>d</mi><msub><mtext>min</mtext><mi>i</mi></msub></msub><mo>≤</mo><msub><mi>d</mi><mrow><mi>t</mi><mi>h</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>h</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{OS} = \frac{1}{N}\sum_{i=1}^N\mathbb{I}(d_{\text{min}_i}\le d_{thresh})
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">OS</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.106005em;vertical-align:-1.277669em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283360000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathbb">I</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31750199999999995em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">min</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">h</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span> 为任务总量，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">I</mi><mo stretchy="false">(</mo><mo>⋅</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathbb{I}(\cdot)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathbb">I</span></span><span class="mopen">(</span><span class="mord">⋅</span><span class="mclose">)</span></span></span></span> 是一个指示函数（<em>Indicator Function</em>），如果括号内的条件为真，即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><msub><mtext>min</mtext><mi>i</mi></msub></msub><mo>≤</mo><msub><mi>d</mi><mrow><mi>t</mi><mi>h</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>h</mi></mrow></msub></mrow><annotation encoding="application/x-tex">d_{\text{min}_i}\le d_{thresh}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9445399999999999em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31750199999999995em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">min</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">h</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，则函数值为 1；如果括号内的条件为假，则函数值为 0</p>
+<h3 id="评估设置"><strong>评估设置</strong></h3>
+<p>在 VLN 领域，通常按照 Seen Environments 和 Unseen Environments 进行评估设置</p>
+<ul>
+<li>Seen：用于训练（<em>train</em>）和验证（<em>valid</em>）的场景</li>
+<li>Unseen：模型在训练中从未见过的场景，用于评估泛化能力（<em>test</em>）</li>
+</ul>
+<p>对于测试环境 Test Environments 而言，通常都使用 Unseen Environments，即模型从未见过的环境，作为最终的、最权威的评测标准，为了保证公平，测试集的正确答案（路径）通常是不公开的，研究者需要把训练好的模型提交到官方的评测服务器上，由服务器计算并返回评测成绩</p>
+<h2 id="未来挑战"><strong>未来挑战</strong></h2>
+<p>（1）泛化到未见环境</p>
+<blockquote>
+<p>挑战：智能体在训练中未见过的环境中表现不佳</p>
+<p>策略：领域适应，拟真数据，无监督 / 自监督学习</p>
+</blockquote>
+<p>（2）鲁棒性与模糊性处理</p>
+<blockquote>
+<p>挑战：指令模糊，感知噪声，环境动态变化</p>
+<p>策略：不确定性建模，鲁棒性训练，主动学习</p>
+</blockquote>
+<p>（3）长程规划与记忆</p>
+<blockquote>
+<p>挑战：规划长距离路径，记住大量历史信息</p>
+<p>策略：更好的记忆架构、分层规划、符号推理与神经网络结合</p>
+</blockquote>
+<p>（4）人机交互与可解释性</p>
+<blockquote>
+<p>挑战：如何让人类用户更好地理解和信任 VLN 智能体</p>
+<p>策略：可解释 AI，交互式导航，自然语言反馈</p>
+</blockquote>
+<p>（5）真实世界部署</p>
+<blockquote>
+<p>挑战：模拟器与真实世界之间的域间隙，硬件限制，安全性问题</p>
+<p>策略：真实世界数据收集，多模态大模型，物理仿真与现实世界桥接</p>
+</blockquote>
+<p>（6）多模态融合 beyond VLN</p>
+<blockquote>
+<p>挑战：除了视觉和语言模态，如何整合其他模态（IMU，GNSS，陀螺仪等）</p>
+<p>策略：多传感器融合，更全面的具身感知</p>
+</blockquote>
+<p>视觉语言导航（<em>Vision-and-Language Navigation，VLN</em>）是具身智能领域重要的研究方向，旨在让 AI 智能体能够理解自然语言指令，并利用视觉感知能力自主完成导航和交互任务，后续我们将系统介绍 VLN 的核心概念、关键技术与最新研究进展，从基础的视觉 - 语言导航模型，数据集与任务，到更高级的学习方法（如模仿学习，强化学习）和预训练模型</p>
+<p>同时，我们也会聚焦 VLN 与前沿技术（如 LLM 和机器人）的结合，探讨其在无人机和地面机器人等现实世界的应用，为相关领域的研究和系统开发提供坚实的理论基础和方法指导</p>
+<hr>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://agilawood4.github.io/2026/07/13/(VLN)%E6%A6%82%E8%AE%BA/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://agilawood4.github.io/2026/07/13/(VLN)%E6%A6%82%E8%AE%BA/')">(VLN)概论</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://agilawood4.github.io/2026/07/13/(VLN)%E6%A6%82%E8%AE%BA/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=(VLN)概论&amp;url=https://agilawood4.github.io/2026/07/13/(VLN)%E6%A6%82%E8%AE%BA/&amp;pic=/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2210.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://agilawood4.github.io" target="_blank">Destiny Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E7%A7%91%E7%A0%94/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>科研<span class="tagsPageCount">18</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2169.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/07/13/(ST)%E5%A5%87%E5%A6%99%E6%95%85%E4%BA%8B13/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A294.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">(ST)桃师</div></div></a></div><div class="next-post pull-right"><a href="/2026/07/14/(%E7%A7%91%E7%A0%94)Transformer1/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2209.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Transformer(上)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2026/07/28/(VLN)%E5%BA%8F%E5%88%97%E4%B8%8E%E8%9E%8D%E5%90%88%E6%A8%A1%E5%9E%8B/" title="(VLN)序列与融合模型"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2210.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-07-28</div><div class="title">(VLN)序列与融合模型</div></div></a></div><div><a href="/2026/07/27/(VLN)%E6%95%B0%E6%8D%AE%E4%B8%8E%E4%BB%BB%E5%8A%A1/" title="(VLN)数据与任务"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A210.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-07-27</div><div class="title">(VLN)数据与任务</div></div></a></div><div><a href="/2026/07/16/(%E7%A7%91%E7%A0%94)CLIP/" title="CLIP"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2209.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-07-16</div><div class="title">CLIP</div></div></a></div><div><a href="/2026/07/20/(%E7%A7%91%E7%A0%94)MoE/" title="U-Net"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2123.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-07-20</div><div class="title">U-Net</div></div></a></div><div><a href="/2026/07/28/(%E7%A7%91%E7%A0%94)LSTM/" title="LSTM"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A223.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-07-28</div><div class="title">LSTM</div></div></a></div><div><a href="/2026/07/29/(%E7%A7%91%E7%A0%94)BERT/" title="BERT"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A253.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2026-07-29</div><div class="title">BERT</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">导论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD"><span class="toc-number">1.1.1.</span> <span class="toc-text">具身智能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vln"><span class="toc-number">1.1.2.</span> <span class="toc-text">VLN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.3.</span> <span class="toc-text">基础概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vln-%E6%9E%B6%E6%9E%84-%E6%97%A9%E6%9C%9F%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">VLN 架构 - 早期方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#seq2seq-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">Seq2Seq 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#speqker-follower-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">Speqker-Follower 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E5%90%88%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.2.3.</span> <span class="toc-text">结合强化学习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vln-%E6%9E%B6%E6%9E%84-%E9%AB%98%E7%BA%A7%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">VLN 架构 - 高级方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-transformer-%E7%9A%84-vln-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.3.1.</span> <span class="toc-text">基于 Transformer 的 VLN 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83%E7%AD%96%E7%95%A5"><span class="toc-number">1.3.2.</span> <span class="toc-text">预训练策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vln-bert"><span class="toc-number">1.3.3.</span> <span class="toc-text">VLN-BERT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clip-based-vln-approaches"><span class="toc-number">1.3.4.</span> <span class="toc-text">CLIP-based VLN Approaches</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B1%82%E5%AF%BC%E8%88%AA"><span class="toc-number">1.3.5.</span> <span class="toc-text">分层导航</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%B0%E5%BF%86%E6%9C%BA%E5%88%B6"><span class="toc-number">1.3.6.</span> <span class="toc-text">记忆机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C"><span class="toc-number">1.3.7.</span> <span class="toc-text">多智能体协作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E5%92%8C%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-number">1.4.</span> <span class="toc-text">数据集和评估指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vln-%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">1.4.1.</span> <span class="toc-text">VLN 数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vln-%E4%BB%BB%E5%8A%A1%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-number">1.4.2.</span> <span class="toc-text">VLN 任务评估指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.4.3.</span> <span class="toc-text">评估设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AA%E6%9D%A5%E6%8C%91%E6%88%98"><span class="toc-number">1.5.</span> <span class="toc-text">未来挑战</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/27/(TF)7/" title="无题">无题</a><time datetime="2026-09-27T01:48:26.551Z" title="发表于 2026-09-27 09:48:26">2026-09-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/19/(%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA0.5)/" title="无题">无题</a><time datetime="2026-09-19T14:27:29.282Z" title="发表于 2026-09-19 22:27:29">2026-09-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/19/(%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA)0/" title="无题">无题</a><time datetime="2026-09-19T13:20:22.104Z" title="发表于 2026-09-19 21:20:22">2026-09-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/19/Untitled%202/" title="无题">无题</a><time datetime="2026-09-19T02:42:12.369Z" title="发表于 2026-09-19 10:42:12">2026-09-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/19/(TF)6/" title="HuggingFace Datasets 与 Data Collator">HuggingFace Datasets 与 Data Collator</a><time datetime="2026-09-19T02:42:02.867Z" title="发表于 2026-09-19 10:42:02">2026-09-19</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">228</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>6</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>49</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>47</sup></a><a href="/tags/%E7%A7%91%E7%A0%94/" style="font-size: 0.88rem;">科研<sup>18</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://www.bilibili.com/video/BV1Ji4y1N7tK?spm_id_from=333.788.videopod.episodes&amp;vd_source=3ceb705961537c0a458a0c7955359e9b&amp;p=12&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

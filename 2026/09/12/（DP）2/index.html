@@ -1,0 +1,617 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Destiny Blog | Destiny Blog</title><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Destiny Blog"><meta name="application-name" content="Destiny Blog"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Destiny Blog"><meta property="og:url" content="https://agilawood4.github.io/2026/09/12/%EF%BC%88DP%EF%BC%892/index.html"><meta property="og:site_name" content="Destiny Blog"><meta property="og:description" content="数据读取与初步检查 本章我们介绍，当拿到一份 CSV 格式的数据，怎么将其读进 Python，并在正式处理之前快速了解数据的结构和质量 目前我们处理的大部分数据都是二维表格的形式，其中每一行表示一条观测样本，而每一列表示一个字段 &amp;#x2F; 变量 &amp;#x2F; 特征 CSV 读取 我们直接用 pandas 读取 CS"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://agilawood4.github.io/images/picture.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://agilawood4.github.io/images/picture.jpg"><meta name="description" content="数据读取与初步检查 本章我们介绍，当拿到一份 CSV 格式的数据，怎么将其读进 Python，并在正式处理之前快速了解数据的结构和质量 目前我们处理的大部分数据都是二维表格的形式，其中每一行表示一条观测样本，而每一列表示一个字段 &amp;#x2F; 变量 &amp;#x2F; 特征 CSV 读取 我们直接用 pandas 读取 CS"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://agilawood4.github.io/2026/09/12/%EF%BC%88DP%EF%BC%892/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: Destiny Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Destiny Blog',
+  title: 'Destiny Blog',
+  postAI: '',
+  pageFillDescription: '数据读取与初步检查, CSV 读取, 文件查看, shape, head, tail, sample, 初步检查, columns 检查, info, unique, value_counts, isna, duplicate, JSON 读取, TXT 读取, 文件导出与保存, DataFrame → CSV, index=False 作用, 中文 CSV 编码, 保存部分列, 控制小数位数, 保存路径, Series → CSV, DataFrame → TXT, DataFrame → JSON, Python dict → JSON, ndarray → NPY, ndarray → CSV / TXT数据读取与初步检查本章我们介绍当拿到一份格式的数据怎么将其读进并在正式处理之前快速了解数据的结构和质量目前我们处理的大部分数据都是二维表格的形式其中每一行表示一条观测样本而每一列表示一个字段变量特征读取我们直接用读取我们检查对应的类型为也就是说文件读入以后会以的格式存在其中对于我们需要了解如下几个参数分隔符缺省时默认为有时候某些可能会用空格或者分隔数据此时可以显式指定文件编码如果表格中有中文则需要显式指定当报错时首先应该考虑文件编码问题文件查看在把文件读入以后我们可以先大致查看它的一些基本情况而不是立刻就上手开始分析字段能反映表格的行数和列数其中对应样本条数记录条数对应特征数字段数大致浏览文件前几行可以写默认展示前条数据也可以显式指定比如展示前条数据可以帮助我们快速确认文件是否按照我们希望的结构被读取进来检查文件最后几行数据可以写默认展示最后条数据如果想随机抽取文件中的条数据检查可以写通常最好是一起检查可以快速确定文件是否被正确读入初步检查检查检查所有字段或者最好转成列表检查因为原始数据的各个列名未必规范可能存在多空格大小写不一致等情况所以上来有必要先浏览各个列名它会输出总行数总列数每列名称每列非空数量每列内存占用对于字段有时候我们可能遇到某一列的为类型的情况这通常表示这一例包含字符串或混合对象比如字符串类型或者混合类型一些本应该是数值类型的列却显示为时此时需要引起我们的警惕方法用于输出每一列中不同的元素组成的列表例如如果我们的列共包含中不同的设备则输出结果为如果我们只想看不同元素的数量而不关心它们具体是什么可以使用方法需要注意的是和在统计的时候会区分大小写比如有的在数据中被存成或者时二者都会当做不同的元素进行统计通常比更有信息后者只能告诉我们某一列有哪些元素前者则可以同时告诉我们某一列有哪些元素以及每个元素在这一列出现的次数会产生一个和原形状相同的布尔矩阵其中每个位置为为即代表这个位置是缺失值我们通常先不关注具体在什么位置只想看每一列有多少缺失值所以通常即可输出每一列的列名以及这一列对应缺失值的个数有时候比起缺失值我们更关心缺失率条数据缺条和条数据缺条显然不是一个量级因此可以如果想显示成百分数的形式可以直接统计可以知道数据中有多少条完全重复的记录读取如果是普通我们可以直接以字典的形式读取其中的类型通常为字典如果本身已经是非常规整的表格记录比如此时我们可以直接以形式读取读取最直接的读取方式此时整个文件的内容都以一整个长字符串的形式读入到中对于需要逐行分析的日志我们也可以按行读取此时得到一个列表中的每个元素就是文件中的一行可以通过等依次访问如果文件本身也是表格则也可以用加载成例如我们仍然可以用读取的方式读取只需要设置即可所以对于而言它能否读取目标文件不是取决于其扩展名关键是要看文件内部结构是否支持式读取总结数据形式推荐工具规整二维表表格形式配置普通文本按行日志分隔符表格文件导出与保存方法总览对象最常用保存格式核心函数把保存成是我们后续最常用的方式其中参数表示在保存成时忽略掉最左侧默认的索引列作用假设结构为如果直接而不控制丢弃默认索引则得到的也形如如果下次再通过加载时索引列又会被当成额外的一列加载中就会莫名其妙多出这种没有意义的列中文编码如果数据中存在中文则保存的时候可以指定编码为这里通常用代替因为前者对中文的适应比后者更好保存部分列不一定每次都要保存完整的比如我们最终科研绘图只需要四列则可以控制小数位数可以通过控制保存到中的浮点数位数提高可读性这会影响保存到文件中的数值的精度如果是中间数据结果尽量保留原始精度如果是最终报告表格以供人阅读为主则可以控制小数点位数保存路径我们可以通过库中的模块创建待保存文件的路径如果该路径对应的目录不存在则递归创建目录这里传入两个参数如果上级文件夹也不存在则递归创建父目录如果文件夹已经存在不重新创建也不要报错然后根据创建好的目录保存文件使用模块创建路径比手动拼接路径更加稳健它可以自动帮我们处理形如转义字符等问题可以直接用保存如果是从中按列名取出的某一列保存后的列名就是中原本的列名得到单列形如第一行为列名如果是我们自己创建的最好先给它起一个名字再保存这样不至于保存得到的中列名缺失也可以把先转换成再保存首先需要理解并不是一种特殊的数据结构它只是文本文件因此完全可以保存为只要指定好分隔符即可常见的分隔符可以为空格其中以为分隔符保存本质上生成的就是可以直接保存由于文件有多种组织格式我们常用的一种是确保中文不会被保存成码缩进宽度方便阅读其中表示把中的一行变成文件中的一个假设得到的为简单而言目标是一个字典列表列表中的每个元素是一个字典就对应中的一行如果数据本身就是字典的格式可以直接用模块保存是对应的原生数据格式读取和保存都很方便保存读取数组也支持保存成等格式其中各个参数分别表示分隔符如果保存成则设置为逗号如果保存成也可以设置为空格或浮点数保留的位数等价于的参数指定表头以字符串整体传入设置为空时默认保存为标准',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-10-02 01:23:29',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Destiny Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>6</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>49</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>47</sup></a><a href="/tags/%E7%A7%91%E7%A0%94/" style="font-size: 1.05rem;">科研<sup>18</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/09/"><span class="card-archive-list-date">九月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">26</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/08/"><span class="card-archive-list-date">八月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">30</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/07/"><span class="card-archive-list-date">七月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">25</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">六月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/04/"><span class="card-archive-list-date">四月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">29</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">9</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"></span></div></div><h1 class="post-title" itemprop="name headline">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-09-12T09:24:03.063Z" title="发表于 2026-09-12 17:24:03">2026-09-12</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-10-01T17:23:29.068Z" title="更新于 2026-10-02 01:23:29">2026-10-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://agilawood4.github.io/2026/09/12/%EF%BC%88DP%EF%BC%892/"><header><h1 id="CrawlerTitle" itemprop="name headline">无题</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2026-09-12T09:24:03.063Z" title="发表于 2026-09-12 17:24:03">2026-09-12</time><time itemprop="dateCreated datePublished" datetime="2026-10-01T17:23:29.068Z" title="更新于 2026-10-02 01:23:29">2026-10-02</time></header><h1><strong>数据读取与初步检查</strong></h1>
+<p>本章我们介绍，当拿到一份 CSV 格式的数据，怎么将其读进 Python，并在正式处理之前快速了解数据的结构和质量</p>
+<p>目前我们处理的大部分数据都是二维表格的形式，其中每一行表示一条观测样本，而每一列表示一个字段 / 变量 / 特征</p>
+<h2 id="csv-读取"><strong>CSV 读取</strong></h2>
+<p>我们直接用 pandas 读取 CSV：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.read_csv(<span class="string">&#x27;data.csv&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>我们检查 <code>type(df)</code> 对应的类型为 <code>pandas.core.frame.DataFrame</code>，也就是说 CSV 文件读入 Python 以后会以 DataFrame 的格式存在</p>
+<p>其中，对于 <code>read_csv</code>，我们需要了解如下几个参数</p>
+<ol>
+<li><code>sep</code>：分隔符，缺省时默认为 <code>sep=','</code>，有时候某些 CSV 可能会用空格或者 Tab 分隔数据，此时可以显式指定 <code>sep='\t'</code></li>
+<li><code>encoding</code>：文件编码，如果 CSV 表格中有中文，则需要显式指定 <code>encoding=utf-8</code>，当报错 UnicodeDecoderError 时，首先应该考虑文件编码问题</li>
+</ol>
+<h3 id="文件查看"><strong>文件查看</strong></h3>
+<p>在把 CSV 文件读入 DataFrame 以后，我们可以先大致查看它的一些<strong>基本情况</strong>，而不是立刻就上手开始分析</p>
+<h4 id="shape"><strong>shape</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&#x27;data.csv&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(df.shape)</span><br></pre></td></tr></table></figure>
+<p>shape 字段能反映表格的行数和列数，其中 <code>df.shape[0]</code> 对应样本条数 / 记录条数，<code>df.shape[1]</code> 对应特征数 / 字段数</p>
+<h4 id="head"><strong>head</strong></h4>
+<p>大致浏览文件前几行，可以写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+<p>默认展示前 5 条数据，也可以显式指定，比如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>展示前 10 条数据</p>
+<p><code>head()</code> 可以帮助我们快速确认文件是否按照我们希望的结构被读取进来</p>
+<h4 id="tail"><strong>tail</strong></h4>
+<p>检查文件最后几行数据，可以写：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.tail()</span><br></pre></td></tr></table></figure>
+<p>默认展示最后 5 条数据</p>
+<h4 id="sample"><strong>sample</strong></h4>
+<p>如果想随机抽取文件中的 5 条数据检查，可以写：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sample(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<p>通常最好是 <code>head() + sample() + tail()</code> 一起检查，可以快速确定文件是否被正确读入</p>
+<h3 id="初步检查"><strong>初步检查</strong></h3>
+<h4 id="columns-检查"><strong>columns 检查</strong></h4>
+<p>检查所有字段：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.columns</span><br></pre></td></tr></table></figure>
+<p>或者最好转成列表检查：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.columns.tolist()</span><br></pre></td></tr></table></figure>
+<p>因为原始数据的各个列名未必规范，可能存在多空格、大小写不一致等情况，所以上来有必要先浏览各个列名</p>
+<h4 id="info"><strong>info</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.info()</span><br></pre></td></tr></table></figure>
+<p>它会输出 DataFrame：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">总行数</span><br><span class="line">总列数</span><br><span class="line">每列名称</span><br><span class="line">每列非空数量</span><br><span class="line">每列 dtype</span><br><span class="line">内存占用</span><br></pre></td></tr></table></figure>
+<p>对于 <code>dtype</code> 字段，有时候我们可能遇到某一列的 <code>dtype</code> 为 object 类型的情况，这通常表示这一例包含字符串或混合 Python 对象</p>
+<p>比如字符串类型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.Series([<span class="string">&quot;Pixel6&quot;</span>, <span class="string">&quot;HuaweiP50&quot;</span>, <span class="string">&quot;Xiaomi13&quot;</span>])</span><br></pre></td></tr></table></figure>
+<p>或者混合类型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.Series([<span class="number">0.52</span>, <span class="number">0.73</span>, <span class="string">&quot;error&quot;</span>])</span><br></pre></td></tr></table></figure>
+<p>一些本应该是数值类型的列，却显示 <code>dtype</code> 为 object 时，此时需要引起我们的警惕</p>
+<h4 id="unique"><strong>unique</strong></h4>
+<p><code>unique()</code> 方法用于输出每一列中，不同的元素组成的列表，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;device&#x27;</span>].unique()</span><br></pre></td></tr></table></figure>
+<p>如果我们的 <code>device</code> 列共包含 3 中不同的设备，则输出结果为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Array([<span class="string">&#x27;Pixel6&#x27;</span>, <span class="string">&#x27;HuaweiP50&#x27;</span>, <span class="string">&#x27;Xiaomi13&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p>如果我们只想看不同元素的数量，而不关心它们具体是什么，可以使用 <code>nunique()</code> 方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;device&#x27;</span>].nunique()</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，<code>unique()</code> 和 <code>nunique()</code> 在统计的时候会区分大小写，比如有的 <code>Pixel6</code> 在数据中被存成 <code>pixel6</code> 或者 <code>PIXEL6</code> 时，二者都会当做不同的元素进行统计</p>
+<h4 id="value-counts"><strong>value_counts</strong></h4>
+<p>通常 <code>value_count()</code> 比 <code>unique()</code> 更有信息，后者只能告诉我们某一列有哪些元素，前者则可以同时告诉我们某一列有哪些元素，以及每个元素在这一列出现的次数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;device&#x27;</span>].value_counts()</span><br></pre></td></tr></table></figure>
+<h4 id="isna"><strong>isna</strong></h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isna()</span><br></pre></td></tr></table></figure>
+<p><code>isna()</code> 会产生一个和原 DataFrame 形状相同的布尔矩阵，其中每个位置为 <code>True / False</code>，为 <code>True</code> 即代表这个位置是缺失值 <code>NaN</code></p>
+<p>我们通常先不关注 <code>NaN</code> 具体在什么位置，只想看每一列有多少缺失值，所以通常：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isna().<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
+<p>即可输出每一列的列名以及这一列对应缺失值的个数</p>
+<p>有时候，比起缺失值，我们更关心缺失率（10000 条数据缺 10 条，和 100 条数据缺 10 条显然不是一个量级），因此可以：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isna().<span class="built_in">sum</span>().mean()</span><br></pre></td></tr></table></figure>
+<p>如果想显示成百分数的形式，可以：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isna().<span class="built_in">sum</span>().mean() * <span class="number">100</span></span><br></pre></td></tr></table></figure>
+<h4 id="duplicate"><strong>duplicate</strong></h4>
+<p>直接统计：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.duplicate().<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
+<p>可以知道数据中有多少条完全重复的记录</p>
+<h2 id="json-读取"><strong>JSON 读取</strong></h2>
+<p>如果是普通 json，我们可以直接以 Python 字典的形式读取：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> oprn(<span class="string">&quot;data.json&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    meta = json.load(f)</span><br></pre></td></tr></table></figure>
+<p>其中，<code>type(meta)</code> 的类型通常为字典（<em>dict</em>）</p>
+<p>如果 json 本身已经是非常规整的表格记录，比如：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span><span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span> <span class="attr">&quot;cn0&quot;</span><span class="punctuation">:</span> <span class="number">35.2</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span><span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;cn0&quot;</span><span class="punctuation">:</span> <span class="number">37.8</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span><span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span> <span class="attr">&quot;cn0&quot;</span><span class="punctuation">:</span> <span class="number">31.5</span><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<p>此时我们可以直接以 DataFrame 形式读取：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_json(<span class="string">&#x27;data.json&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="txt-读取"><strong>TXT 读取</strong></h2>
+<p>最直接的读取方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;data.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    text = f.read()</span><br></pre></td></tr></table></figure>
+<p>此时，整个 txt 文件的内容都以一整个长字符串的形式读入到 <code>text</code> 中</p>
+<p>对于需要逐行分析的日志，我们也可以按行读取：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;data.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    lines = f.readlines()</span><br></pre></td></tr></table></figure>
+<p>此时得到一个列表（<em>list</em>），<code>lines</code> 中的每个元素就是 txt 文件中的一行，可以通过 <code>lines[0], lies[1]</code> 等依次访问</p>
+<p>如果 txt 文件本身也是表格，则也可以用 Pandas 加载成 DataFrame</p>
+<p>例如：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">time|level|message</span><br><span class="line"><span class="number">19</span><span class="punctuation">:</span><span class="number">25</span><span class="punctuation">:</span><span class="number">00</span>|INFO|start</span><br><span class="line"><span class="number">19</span><span class="punctuation">:</span><span class="number">25</span><span class="punctuation">:</span><span class="number">45</span>|WARN|interference</span><br></pre></td></tr></table></figure>
+<p>我们仍然可以用读取 CSV 的方式读取 txt，只需要设置 <code>sep='|'</code> 即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&#x27;data.txt&#x27;</span>, sep=<span class="string">&#x27;|&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>所以对于 <code>read_csv</code> 而言，它能否读取目标文件，不是取决于其扩展名，关键是要看文件内部结构是否支持 CSV 式读取</p>
+<p>总结：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据形式</th>
+<th style="text-align:center">推荐工具</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">规整二维表 CSV</td>
+<td style="text-align:center"><code>pd.read_csv()</code></td>
+</tr>
+<tr>
+<td style="text-align:center">表格形式 JSON</td>
+<td style="text-align:center"><code>pd.read_json()</code></td>
+</tr>
+<tr>
+<td style="text-align:center">配置/metadata JSON</td>
+<td style="text-align:center"><code>json.load()</code></td>
+</tr>
+<tr>
+<td style="text-align:center">普通文本</td>
+<td style="text-align:center"><code>open()</code></td>
+</tr>
+<tr>
+<td style="text-align:center">按行日志 TXT</td>
+<td style="text-align:center"><code>open()</code> / <code>readlines()</code></td>
+</tr>
+<tr>
+<td style="text-align:center">分隔符表格 TXT</td>
+<td style="text-align:center"><code>pd.read_csv(..., sep=...)</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件导出与保存"><strong>文件导出与保存</strong></h2>
+<p>方法总览：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Python 对象</th>
+<th style="text-align:center">最常用保存格式</th>
+<th style="text-align:center">核心函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>DataFrame</code></td>
+<td style="text-align:center">CSV</td>
+<td style="text-align:center"><code>df.to_csv()</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>DataFrame</code></td>
+<td style="text-align:center">JSON</td>
+<td style="text-align:center"><code>df.to_json()</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>DataFrame</code></td>
+<td style="text-align:center">TXT</td>
+<td style="text-align:center"><code>df.to_csv(..., sep=...)</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Series</code></td>
+<td style="text-align:center">CSV</td>
+<td style="text-align:center"><code>series.to_csv()</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Series</code></td>
+<td style="text-align:center">TXT</td>
+<td style="text-align:center"><code>series.to_csv()</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ndarray</code></td>
+<td style="text-align:center">NPY</td>
+<td style="text-align:center"><code>np.save()</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>ndarray</code></td>
+<td style="text-align:center">CSV/TXT</td>
+<td style="text-align:center"><code>np.savetxt()</code></td>
+</tr>
+<tr>
+<td style="text-align:center">Python <code>dict/list</code></td>
+<td style="text-align:center">JSON</td>
+<td style="text-align:center"><code>json.dump()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dataframe-csv"><strong>DataFrame → CSV</strong></h3>
+<p>把 DataFrame 保存成 CSV 是我们后续最常用的方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.to_csv(<span class="string">&#x27;result.csv&#x27;</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>其中，参数 <code>index=False</code> 表示在保存成 CSV 时，忽略掉 DataFrame 最左侧默认的索引列 <code>0,1,2,...</code></p>
+<h4 id="index-false-作用"><strong>index=False 作用</strong></h4>
+<p>假设 DataFrame 结构为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   device    cn0   hpe</span><br><span class="line">0  Pixel6   38.2   1.2</span><br><span class="line">1  Huawei   35.7   1.8</span><br></pre></td></tr></table></figure>
+<p>如果直接 <code>df.to_csv('result.csv')</code> 而不控制丢弃默认索引，则得到的 CSV 也形如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">,device,cn0,hpe</span><br><span class="line">0,Pixel6,38.2,1.2</span><br><span class="line">1,Huawei,35.7,1.8</span><br></pre></td></tr></table></figure>
+<p>如果下次再通过 <code>pd.read_csv('result.csv')</code> 加载时，索引列又会被当成额外的一列加载，DataFrame 中就会莫名其妙多出 <code>Unnamed: 0</code> 这种没有意义的列</p>
+<h4 id="中文-csv-编码"><strong>中文 CSV 编码</strong></h4>
+<p>如果数据中存在中文，则保存的时候可以指定编码为 <code>utf-8-sig</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df.to_csv(</span><br><span class="line">    <span class="string">&quot;result.csv&quot;</span>,</span><br><span class="line">	index=<span class="literal">False</span>,</span><br><span class="line">    encoding=<span class="string">&quot;utf-8-sig&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这里通常用 <code>utf-8-sig</code> 代替 <code>utf-8</code>，因为前者对中文的适应比后者更好</p>
+<h4 id="保存部分列"><strong>保存部分列</strong></h4>
+<p>不一定每次都要保存完整的 DataFrame，比如我们最终科研绘图只需要 <code>A, B, C, D</code> 四列，则可以：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[[<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;D&#x27;</span>]].to_csv(<span class="string">&#x27;result.csv&#x27;</span>, index=<span class="literal">False</span>, encoding=<span class="string">&#x27;utf-8-sig&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="控制小数位数"><strong>控制小数位数</strong></h4>
+<p>可以通过 <code>float_format</code> 控制保存到 CSV 中的浮点数位数，提高可读性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.to_csv(<span class="string">&#x27;result.csv&#x27;</span>, index=<span class="literal">False</span>, float_format=<span class="string">&#x27;%.3f&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>这会影响保存到文件中的数值的精度，如果是中间数据结果，尽量保留原始精度，如果是最终报告表格（以供人阅读为主），则可以控制小数点位数</p>
+<h4 id="保存路径"><strong>保存路径</strong></h4>
+<p>我们可以通过 <code>pathlib</code> 库中的 <code>Path</code> 模块，创建待保存文件的路径：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line">output_dir = Path(<span class="string">&quot;data/processed&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>如果该路径对应的目录不存在，则递归创建目录：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">output_dir.mkdir(parents=<span class="literal">True</span>, exist_ok=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>这里传入两个参数</p>
+<ol>
+<li><code>parents=True</code>：如果上级文件夹也不存在，则递归创建父目录</li>
+<li><code>exist_ok=True</code>：如果文件夹已经存在，不重新创建也不要报错</li>
+</ol>
+<p>然后根据创建好的目录，保存文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">output_path = output_dir / <span class="string">&quot;result.csv&quot;</span></span><br><span class="line"></span><br><span class="line">df.to_csv(output_csv, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>使用 <code>Path</code> 模块创建路径，比手动拼接路径更加稳健，它可以自动帮我们处理形如转义字符等问题</p>
+<h3 id="series-csv"><strong>Series → CSV</strong></h3>
+<p>Series 可以直接用 <code>to_csv</code> 保存</p>
+<p>如果是从 DataFrame 中按列名取出的某一列，保存后的列名就是 DataFrame 中原本的列名：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cn0 = df[<span class="string">&#x27;cn0_dbhz&#x27;</span>]</span><br><span class="line"></span><br><span class="line">cn0.to_csv(<span class="string">&#x27;cn0.csv&#x27;</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>得到单列 CSV 形如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cn0_dbhz → 第一行为列名</span><br><span class="line"><span class="number">35.7</span></span><br><span class="line"><span class="number">28.6</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>如果是我们自己创建的 Series：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error = pd.Series([<span class="number">1.2</span>, <span class="number">1.5</span>, <span class="number">2.1</span>, <span class="number">0.9</span>])</span><br></pre></td></tr></table></figure>
+<p>最好先给它起一个名字再保存，这样不至于保存得到的 CSV 中列名缺失：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">error.name = <span class="string">&quot;hpe_m&quot;</span></span><br><span class="line"></span><br><span class="line">error.to_csv(<span class="string">&quot;hpe.csv&quot;</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>也可以把 Series 先转换成 DataFrame 再保存：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">error_df = error.to_frame(name=<span class="string">&#x27;hpe_m&#x27;</span>)</span><br><span class="line"></span><br><span class="line">error_df.to_csv(<span class="string">&#x27;hpe.csv&#x27;</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="dataframe-txt"><strong>DataFrame → TXT</strong></h3>
+<p>首先需要理解，txt 并不是一种特殊的数据结构，它只是文本文件，因此 DataFrame 完全可以保存为 txt，只要指定好分隔符即可</p>
+<p>常见的分隔符可以为 Tab，空格，|：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df.to_csv(<span class="string">&#x27;result.txt&#x27;</span>, sep=<span class="string">&#x27;\t&#x27;</span>, index=<span class="literal">False</span>)</span><br><span class="line">df.to_csv(<span class="string">&#x27;result.txt&#x27;</span>, sep=<span class="string">&#x27;|&#x27;</span>, index=<span class="literal">False</span>)</span><br><span class="line">df.to_csv(<span class="string">&#x27;result.txt&#x27;</span>, sep=<span class="string">&#x27; &#x27;</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>其中以 Tab 为分隔符保存，本质上生成的就是 TSV（<em>Tab-Separated Values</em>）</p>
+<h3 id="dataframe-json"><strong>DataFrame → JSON</strong></h3>
+<p>可以直接保存：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.to_json(<span class="string">&#x27;result.json&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>由于 json 文件有多种组织格式，我们常用的一种是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df.to_json(</span><br><span class="line">    <span class="string">&#x27;result.json&#x27;</span>,</span><br><span class="line">    orient=<span class="string">&#x27;records&#x27;</span>,</span><br><span class="line">    force_ascii=<span class="literal">False</span>, <span class="comment"># 确保中文不会被保存成 ascii 码</span></span><br><span class="line">    indent=<span class="number">2</span> <span class="comment"># 缩进宽度，方便阅读</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>其中，<code>orient='records'</code> 表示把 DataFrame 中的一行变成 json 文件中的一个 JSON object</p>
+<p>假设：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">device   cn0</span><br><span class="line">Pixel6   38.2</span><br><span class="line">Huawei   35.7</span><br></pre></td></tr></table></figure>
+<p>得到的 JSON 为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;device&quot;</span>: <span class="string">&quot;Pixel6&quot;</span>,</span><br><span class="line">    <span class="string">&quot;cn0&quot;</span>: 38.2</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;device&quot;</span>: <span class="string">&quot;Huawei&quot;</span>,</span><br><span class="line">    <span class="string">&quot;cn0&quot;</span>: 35.7</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>简单而言，目标 json 是一个字典列表，列表中的每个元素是一个字典，就对应 DataFrame 中的一行</p>
+<h3 id="python-dict-json"><strong>Python dict → JSON</strong></h3>
+<p>如果数据本身就是 Python 字典的格式，可以直接用 <code>json</code> 模块保存：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">result = &#123;</span><br><span class="line">    <span class="string">&quot;mean_hpe&quot;</span>: <span class="number">1.82</span>,</span><br><span class="line">    <span class="string">&quot;p95_hpe&quot;</span>: <span class="number">4.73</span>,</span><br><span class="line">    <span class="string">&quot;device&quot;</span>: <span class="string">&quot;Pixel6&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;result.json&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8-sig&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    json.dump(result, f, ensure_ascii=<span class="literal">False</span>, indent=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="ndarray-npy"><strong>ndarray → NPY</strong></h3>
+<p>NPY 是 NumPy ndarray 对应的原生数据格式，读取和保存都很方便：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">X = np.array([</span><br><span class="line">    [<span class="number">1.2</span>, <span class="number">3.4</span>],</span><br><span class="line">    [<span class="number">2.3</span>, <span class="number">4.5</span>],</span><br><span class="line">    [<span class="number">3.1</span>, <span class="number">5.2</span>]</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">np.save(<span class="string">&#x27;X.npy&#x27;</span>, X) <span class="comment"># 保存</span></span><br><span class="line"></span><br><span class="line">X = np.load(<span class="string">&#x27;X.npy&#x27;</span>) <span class="comment"># 读取</span></span><br></pre></td></tr></table></figure>
+<h3 id="ndarray-csv-txt"><strong>ndarray → CSV / TXT</strong></h3>
+<p>NumPy 数组也支持保存成 CSV、txt 等格式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">X = np.array([</span><br><span class="line">    [<span class="number">1.2</span>, <span class="number">3.4</span>],</span><br><span class="line">    [<span class="number">2.3</span>, <span class="number">4.5</span>],</span><br><span class="line">    [<span class="number">3.1</span>, <span class="number">5.2</span>]</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">np.savetxt(</span><br><span class="line">    <span class="string">&quot;X.csv&quot;</span>,</span><br><span class="line">    X,</span><br><span class="line">    delimiter=<span class="string">&#x27;,&#x27;</span></span><br><span class="line">    fmt=<span class="string">&quot;%.4f&quot;</span>,</span><br><span class="line">    header=<span class="string">&quot;cn0,hpe&quot;</span>,</span><br><span class="line">    comments=<span class="string">&quot;&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>其中，各个参数分别表示</p>
+<ol>
+<li><code>delimiter</code>：分隔符，如果保存成 CSV 则设置为逗号，如果保存成 txt 也可以设置为 Tab、空格或 |</li>
+<li><code>fmt</code>：浮点数保留的位数，等价于 <code>df.to_csv()</code> 的 <code>float_format</code> 参数</li>
+<li><code>header</code>：指定 CSV 表头，以字符串整体传入</li>
+<li><code>comments</code>：设置为空时，默认保存为标准 CSV</li>
+</ol>
+<hr>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://agilawood4.github.io/2026/09/12/%EF%BC%88DP%EF%BC%892/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://agilawood4.github.io/2026/09/12/%EF%BC%88DP%EF%BC%892/')">Destiny Blog</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://agilawood4.github.io/2026/09/12/%EF%BC%88DP%EF%BC%892/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Destiny Blog&amp;url=https://agilawood4.github.io/2026/09/12/%EF%BC%88DP%EF%BC%892/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://agilawood4.github.io" target="_blank">Destiny Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"></div></div></div><div class="post_share"><div class="social-share" data-image="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2169.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/09/12/%EF%BC%88DP%EF%BC%891/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2026/09/12/%EF%BC%88DP%EF%BC%893/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数据清洗</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">数据读取与初步检查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#csv-%E8%AF%BB%E5%8F%96"><span class="toc-number">1.1.</span> <span class="toc-text">CSV 读取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9F%A5%E7%9C%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">文件查看</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#shape"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">shape</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#head"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">head</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tail"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">tail</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sample"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">sample</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E6%A3%80%E6%9F%A5"><span class="toc-number">1.1.2.</span> <span class="toc-text">初步检查</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#columns-%E6%A3%80%E6%9F%A5"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">columns 检查</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#info"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">info</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#unique"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">unique</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#value-counts"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">value_counts</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#isna"><span class="toc-number">1.1.2.5.</span> <span class="toc-text">isna</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#duplicate"><span class="toc-number">1.1.2.6.</span> <span class="toc-text">duplicate</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#json-%E8%AF%BB%E5%8F%96"><span class="toc-number">1.2.</span> <span class="toc-text">JSON 读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#txt-%E8%AF%BB%E5%8F%96"><span class="toc-number">1.3.</span> <span class="toc-text">TXT 读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AF%BC%E5%87%BA%E4%B8%8E%E4%BF%9D%E5%AD%98"><span class="toc-number">1.4.</span> <span class="toc-text">文件导出与保存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dataframe-csv"><span class="toc-number">1.4.1.</span> <span class="toc-text">DataFrame → CSV</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#index-false-%E4%BD%9C%E7%94%A8"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">index&#x3D;False 作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%87-csv-%E7%BC%96%E7%A0%81"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">中文 CSV 编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E9%83%A8%E5%88%86%E5%88%97"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">保存部分列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%B0%8F%E6%95%B0%E4%BD%8D%E6%95%B0"><span class="toc-number">1.4.1.4.</span> <span class="toc-text">控制小数位数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E8%B7%AF%E5%BE%84"><span class="toc-number">1.4.1.5.</span> <span class="toc-text">保存路径</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#series-csv"><span class="toc-number">1.4.2.</span> <span class="toc-text">Series → CSV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dataframe-txt"><span class="toc-number">1.4.3.</span> <span class="toc-text">DataFrame → TXT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dataframe-json"><span class="toc-number">1.4.4.</span> <span class="toc-text">DataFrame → JSON</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#python-dict-json"><span class="toc-number">1.4.5.</span> <span class="toc-text">Python dict → JSON</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ndarray-npy"><span class="toc-number">1.4.6.</span> <span class="toc-text">ndarray → NPY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ndarray-csv-txt"><span class="toc-number">1.4.7.</span> <span class="toc-text">ndarray → CSV &#x2F; TXT</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/27/(TF)7/" title="无题">无题</a><time datetime="2026-09-27T01:48:26.551Z" title="发表于 2026-09-27 09:48:26">2026-09-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/19/(%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA0.5)/" title="无题">无题</a><time datetime="2026-09-19T14:27:29.282Z" title="发表于 2026-09-19 22:27:29">2026-09-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/19/(%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA)0/" title="无题">无题</a><time datetime="2026-09-19T13:20:22.104Z" title="发表于 2026-09-19 21:20:22">2026-09-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/19/Untitled%202/" title="无题">无题</a><time datetime="2026-09-19T02:42:12.369Z" title="发表于 2026-09-19 10:42:12">2026-09-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/19/(TF)6/" title="HuggingFace Datasets 与 Data Collator">HuggingFace Datasets 与 Data Collator</a><time datetime="2026-09-19T02:42:02.867Z" title="发表于 2026-09-19 10:42:02">2026-09-19</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">228</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>6</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>49</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>47</sup></a><a href="/tags/%E7%A7%91%E7%A0%94/" style="font-size: 0.88rem;">科研<sup>18</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://www.bilibili.com/video/BV1Ji4y1N7tK?spm_id_from=333.788.videopod.episodes&amp;vd_source=3ceb705961537c0a458a0c7955359e9b&amp;p=12&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

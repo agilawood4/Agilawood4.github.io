@@ -1,0 +1,887 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Destiny Blog | Destiny Blog</title><meta name="author" content="Destiny"><meta name="copyright" content="Destiny"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Destiny Blog"><meta name="application-name" content="Destiny Blog"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Destiny Blog"><meta property="og:url" content="https://agilawood4.github.io/2026/07/17/temp/index.html"><meta property="og:site_name" content="Destiny Blog"><meta property="og:description" content="第六部分：瓶颈层为什么存在 瓶颈层不只是“U 的最下面”。 需要解释：  它位于最大压缩尺度； 具有最大的感受野； 负责整合上下文； 不直接拥有精确边界； 是编码器和解码器之间的语义桥梁。  例如目标局部纹理可能相似，但利用更大范围上下文才能判断：  这是器官内部区域； 这是道路而不是屋顶； 这是肿"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://agilawood4.github.io/images/picture.jpg"><meta property="article:author" content="Destiny"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://agilawood4.github.io/images/picture.jpg"><meta name="description" content="第六部分：瓶颈层为什么存在 瓶颈层不只是“U 的最下面”。 需要解释：  它位于最大压缩尺度； 具有最大的感受野； 负责整合上下文； 不直接拥有精确边界； 是编码器和解码器之间的语义桥梁。  例如目标局部纹理可能相似，但利用更大范围上下文才能判断：  这是器官内部区域； 这是道路而不是屋顶； 这是肿"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://agilawood4.github.io/2026/07/17/temp/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"/images/文章封面48.jpg"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: undefined,
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Destiny","link":"链接: ","source":"来源: Destiny Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Destiny Blog',
+  title: 'Destiny Blog',
+  postAI: '',
+  pageFillDescription: '第六部分：瓶颈层为什么存在, 第八部分：跳跃连接是 U-Net 的核心, 8.1 跳跃连接解决什么问题, 8.2 Concatenation 与 Addition 的区别, 8.3 Skip connection 的局限, 第九部分：完整 U-Net 前向传播与张量尺寸推导, 第十部分：输出层、激活函数和任务类型, 10.1 为什么使用 1×11\times11×1 卷积, 10.2 二分类输出, 10.3 多分类输出, 10.4 多标签分割, 第十一部分：损失函数的原理而不是只背名称, 11.1 Binary Cross-Entropy, 11.2 Cross-Entropy, 11.3 Dice Loss, 11.4 混合损失, 11.5 其他常见损失, 第十二部分：训练流程与反向传播, 12.1 一个训练 step 中发生什么, 12.2 梯度如何经过跳跃连接, 12.3 优化器与学习率, 第十三部分：数据集、增强和工程细节, 13.1 图像与 Mask 必须同步变换, 13.2 Mask 插值方式, 13.3 标签值检查, 13.4 数据划分, 第十四部分：评价指标、错误分析和实验设计, 14.1 Pixel Accuracy 为什么可能误导, 14.2 IoU, 14.3 Dice 与 IoU 的关系, 14.4 混淆矩阵, 14.5 可视化错误类型, 第十五部分：从零实现一个可训练的 U-Net, 第十六部分：常见错误与系统排查, 尺寸不匹配, 通道数错误, 损失函数形状错误, 模型只预测背景, loss 下降但 Dice 不提升, 第十七部分：通过实验理解 U-Net而不是只看结果, 实验 1：去掉跳跃连接, 实验 2：转置卷积与双线性插值, 实验 3：BCE 与 BCE + Dice, 实验 4：不同输入尺寸, 实验 5：不同网络宽度, 第十八部分：U-Net 的局限与后续网络, 18.1 ResUNet, 18.2 Attention U-Net, 18.3 UNet++, 18.4 3D U-Net, 18.5 nnU-Net, 18.6 TransUNet, 18.7 Swin-Unet第六部分瓶颈层为什么存在瓶颈层不只是的最下面需要解释它位于最大压缩尺度具有最大的感受野负责整合上下文不直接拥有精确边界是编码器和解码器之间的语义桥梁例如目标局部纹理可能相似但利用更大范围上下文才能判断这是器官内部区域这是道路而不是屋顶这是肿瘤而不是普通组织同时讨论瓶颈层过深可能导致信息压缩过度小目标丢失参数量快速上升训练困难第八部分跳跃连接是的核心这一部分会作为重点章节跳跃连接解决什么问题深层特征回答这里大概是什么对象浅层特征回答边缘和位置具体在哪里解码器需要同时获得高层语义低层空间细节因此其中编码器第层特征更深层解码器特征上采样通道维拼接与的区别使用拼接例如和和和拼接得到而逐元素相加要求通道数相同输出仍为需要比较拼接保留两组特征相加直接融合特征拼接参数量更大常用相加常用拼接的局限跳跃连接并非没有问题浅层特征中包含大量无关背景编码器和解码器存在语义差距简单拼接可能引入噪声高分辨率特征增加显存开销这些问题正是等模型的出发点第九部分完整前向传播与张量尺寸推导这一部分会以一个具体输入逐层推导假设输入现代的一个典型流程阶段张量尺寸输入输出这一部分会训练你独立检查网络结构而不是依赖别人画的架构图第十部分输出层激活函数和任务类型为什么使用卷积最终一层它在每个像素位置上对通道特征进行线性组合本质上相当于对每个像素位置的特征向量做一次分类二分类输出常用概率训练时通常用注意它已经内部包含因此模型前向输出不应先手动多分类输出输出标签形状使用它内部包含因此模型也应直接输出多标签分割一个像素可以同时属于多个属性时输出个独立通道每个通道使用使用类型损失不使用互斥约束第十一部分损失函数的原理而不是只背名称讲清楚为什么错误且自信的预测惩罚大为什么是逐像素损失类别不平衡时的问题的作用讲清楚与类别互斥系数重点解释为什么它适合小目标为什么它关注区域重叠为什么要加入与计算差异二值和多类别混合损失例如解释提供稳定的逐像素梯度直接优化区域重叠二者互补其他常见损失后续再讲第十二部分训练流程与反向传播这一部分会把放入完整深度学习训练系统中一个训练中发生什么逐行解释梯度为什么需要清零前向传播产生什么损失函数如何连接预测和标签自动微分如何计算梯度优化器如何更新参数梯度如何经过跳跃连接由于同时进入后续网络它会收到来自解码器路径的梯度这意味着跳跃连接不仅传递前向特征也改变反向传播路径有助于浅层特征直接服务于分割梯度更容易传回编码器浅层保持边缘与位置特征优化器与学习率讲清楚学习率重点分析它们如何影响分割训练而不是仅给推荐参数第十三部分数据集增强和工程细节很多项目失败并不是模型错误而是数据处理错误图像与必须同步变换几何增强必须同时作用于输入图像标签例如随机裁剪水平翻转旋转缩放颜色增强通常只作用于图像亮度对比度饱和度噪声插值方式图像缩放可用双线性插值但类别必须使用最近邻插值否则类别值可能从被插值成这会破坏标签标签值检查需要检查二分类标签应是而不是多分类标签则应是数据划分讲清楚训练集验证集测试集数据泄漏同一患者或同一场景不能跨集合按图像随机划分为何可能造成虚高性能第十四部分评价指标错误分析和实验设计为什么可能误导如果背景占模型全部预测背景也可获得准确率所以分割任务通常更关注与的关系二者相关但数值不同不能直接混用混淆矩阵对于二分类分割定义进而推导可视化错误类型不能只看一个平均指标还要观察漏分割过分割边界偏移小目标消失相邻目标粘连背景误检类别混淆第十五部分从零实现一个可训练的代码会按照模块递进而不是一次贴出完整代码学习顺序是完整每写完一个模块都做形状测试还会通过或打印形状检查中间层重点不是把代码跑通而是让你能自己回答为什么这里输入通道是为什么拼接后是为什么输出通道是类别数为什么这里需要插值为什么标签不能带通道维为什么训练时不能先第十六部分常见错误与系统排查这部分会专门讲实践中最常见的问题尺寸不匹配典型报错原因可能是输入尺寸不能被整除设置不一致转置卷积输出差原始需要数据预处理尺寸不同通道数错误典型报错通常发生在后没有正确修改后续卷积的输入通道损失函数形状错误二分类常见组合多分类常见组合模型只预测背景可能原因类别严重不平衡读取错误标签值为学习率不合适损失函数选择错误输出与标签维度不匹配数据增强破坏标签阈值不合理下降但不提升可能原因指标实现错误类别不平衡模型学会了背景训练集和验证集分布不同指标使用而不是概率多分类时维度计算错误第十七部分通过实验理解而不是只看结果完成基础实现后会做一组小型消融实验实验去掉跳跃连接观察是否下降边界是否变模糊小目标是否更容易消失实验转置卷积与双线性插值比较精度训练稳定性棋盘格伪影参数量推理速度实验与比较小目标召回率训练曲线区域重叠阈值敏感性实验不同输入尺寸分析显存占用边界精度小目标表现训练速度实验不同网络宽度例如基础通道数比较参数量过拟合推理速度分割精度第十八部分的局限与后续网络在完全掌握标准后再讲改进网络顺序如下把普通卷积块替换为残差块改善深层网络优化在上加入注意力门抑制无关背景特征通过嵌套和密集跳跃连接缩小编码器与解码器之间的语义差距将二维卷积扩展到三维用于体数据重点不在新网络模块而在自动配置预处理网络深度训练策略后处理用建模长距离依赖同时保留解码结构使用分层窗口替代传统卷积编码器通过这些模型反过来理解标准的不足全局建模能力有限过于直接多尺度融合较简单固定结构适应性有限大图像计算成本较高',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-10-02 01:23:29',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">Destiny Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)" rel="external nofollow noreferrer">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="微信" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" alt="支付宝" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">LLM与强化学习<sup>6</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">Python与机器学习<sup>49</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 1.05rem;">专业课<sup>47</sup></a><a href="/tags/%E7%A7%91%E7%A0%94/" style="font-size: 1.05rem;">科研<sup>18</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/09/"><span class="card-archive-list-date">九月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">26</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/08/"><span class="card-archive-list-date">八月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">30</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/07/"><span class="card-archive-list-date">七月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">25</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/06/"><span class="card-archive-list-date">六月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/05/"><span class="card-archive-list-date">五月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/04/"><span class="card-archive-list-date">四月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/03/"><span class="card-archive-list-date">三月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">29</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/02/"><span class="card-archive-list-date">二月 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">9</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);" rel="external nofollow noreferrer"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"></span></div></div><h1 class="post-title" itemprop="name headline">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-07-17T01:22:22.818Z" title="发表于 2026-07-17 09:22:22">2026-07-17</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-10-01T17:23:29.053Z" title="更新于 2026-10-02 01:23:29">2026-10-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为香波地群岛"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>香波地群岛</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://agilawood4.github.io/2026/07/17/temp/"><header><h1 id="CrawlerTitle" itemprop="name headline">无题</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Destiny</span><time itemprop="dateCreated datePublished" datetime="2026-07-17T01:22:22.818Z" title="发表于 2026-07-17 09:22:22">2026-07-17</time><time itemprop="dateCreated datePublished" datetime="2026-10-01T17:23:29.053Z" title="更新于 2026-10-02 01:23:29">2026-10-02</time></header><h1>第六部分：瓶颈层为什么存在</h1>
+<p>瓶颈层不只是“U 的最下面”。</p>
+<p>需要解释：</p>
+<ul>
+<li>它位于最大压缩尺度；</li>
+<li>具有最大的感受野；</li>
+<li>负责整合上下文；</li>
+<li>不直接拥有精确边界；</li>
+<li>是编码器和解码器之间的语义桥梁。</li>
+</ul>
+<p>例如目标局部纹理可能相似，但利用更大范围上下文才能判断：</p>
+<ul>
+<li>这是器官内部区域；</li>
+<li>这是道路而不是屋顶；</li>
+<li>这是肿瘤而不是普通组织。</li>
+</ul>
+<p>同时讨论瓶颈层过深可能导致：</p>
+<ul>
+<li>信息压缩过度；</li>
+<li>小目标丢失；</li>
+<li>参数量快速上升；</li>
+<li>训练困难。</li>
+</ul>
+<hr>
+<ul>
+<li></li>
+</ul>
+<hr>
+<h1>第八部分：跳跃连接是 U-Net 的核心</h1>
+<p>这一部分会作为重点章节。</p>
+<h2 id="8-1-跳跃连接解决什么问题">8.1 跳跃连接解决什么问题</h2>
+<p>深层特征回答：</p>
+<blockquote>
+<p>这里大概是什么对象？</p>
+</blockquote>
+<p>浅层特征回答：</p>
+<blockquote>
+<p>边缘和位置具体在哪里？</p>
+</blockquote>
+<p>解码器需要同时获得：</p>
+<ul>
+<li>高层语义；</li>
+<li>低层空间细节。</li>
+</ul>
+<p>因此：</p>
+<p>Dl=Conv⁡(Concat⁡(Up⁡(Dl+1),El))D_l = \operatorname{Conv} \left( \operatorname{Concat} \left( \operatorname{Up}(D_{l+1}), E_l \right) \right)Dl=Conv(Concat(Up(Dl+1),El))</p>
+<p>其中：</p>
+<ul>
+<li>ElE_lEl：编码器第 lll 层特征；</li>
+<li>Dl+1D_{l+1}Dl+1：更深层解码器特征；</li>
+<li>Up⁡\operatorname{Up}Up：上采样；</li>
+<li>Concat⁡\operatorname{Concat}Concat：通道维拼接。</li>
+</ul>
+<h2 id="8-2-concatenation-与-addition-的区别">8.2 Concatenation 与 Addition 的区别</h2>
+<p>U-Net 使用拼接：</p>
+<p>Cout=C1+C2C_{\text{out}}=C_1+C_2Cout=C1+C2</p>
+<p>例如：</p>
+<p>[B,256,64,64]和[B,256,64,64][B,256,64,64] \quad\text{和}\quad [B,256,64,64][B,256,64,64]和[B,256,64,64]</p>
+<p>拼接得到：</p>
+<p>[B,512,64,64][B,512,64,64][B,512,64,64]</p>
+<p>而逐元素相加要求通道数相同，输出仍为：</p>
+<p>[B,256,64,64][B,256,64,64][B,256,64,64]</p>
+<p>需要比较：</p>
+<ul>
+<li>拼接保留两组特征；</li>
+<li>相加直接融合特征；</li>
+<li>拼接参数量更大；</li>
+<li>ResNet 常用相加；</li>
+<li>U-Net 常用拼接。</li>
+</ul>
+<h2 id="8-3-skip-connection-的局限">8.3 Skip connection 的局限</h2>
+<p>跳跃连接并非没有问题：</p>
+<ul>
+<li>浅层特征中包含大量无关背景；</li>
+<li>编码器和解码器存在语义差距；</li>
+<li>简单拼接可能引入噪声；</li>
+<li>高分辨率特征增加显存开销。</li>
+</ul>
+<p>这些问题正是 Attention U-Net、UNet++ 等模型的出发点。</p>
+<hr>
+<h1>第九部分：完整 U-Net 前向传播与张量尺寸推导</h1>
+<p>这一部分会以一个具体输入逐层推导。</p>
+<p>假设输入：</p>
+<p>X∈RB×3×256×256X\in\mathbb{R}^{B\times3\times256\times256}X∈RB×3×256×256</p>
+<p>现代 same-padding U-Net 的一个典型流程：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>张量尺寸</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入</td>
+<td>B×3×256×256B\times3\times256\times256B×3×256×256</td>
+</tr>
+<tr>
+<td>Encoder 1</td>
+<td>B×64×256×256B\times64\times256\times256B×64×256×256</td>
+</tr>
+<tr>
+<td>Pool 1</td>
+<td>B×64×128×128B\times64\times128\times128B×64×128×128</td>
+</tr>
+<tr>
+<td>Encoder 2</td>
+<td>B×128×128×128B\times128\times128\times128B×128×128×128</td>
+</tr>
+<tr>
+<td>Pool 2</td>
+<td>B×128×64×64B\times128\times64\times64B×128×64×64</td>
+</tr>
+<tr>
+<td>Encoder 3</td>
+<td>B×256×64×64B\times256\times64\times64B×256×64×64</td>
+</tr>
+<tr>
+<td>Pool 3</td>
+<td>B×256×32×32B\times256\times32\times32B×256×32×32</td>
+</tr>
+<tr>
+<td>Encoder 4</td>
+<td>B×512×32×32B\times512\times32\times32B×512×32×32</td>
+</tr>
+<tr>
+<td>Pool 4</td>
+<td>B×512×16×16B\times512\times16\times16B×512×16×16</td>
+</tr>
+<tr>
+<td>Bottleneck</td>
+<td>B×1024×16×16B\times1024\times16\times16B×1024×16×16</td>
+</tr>
+<tr>
+<td>Up 1</td>
+<td>B×512×32×32B\times512\times32\times32B×512×32×32</td>
+</tr>
+<tr>
+<td>Concat 1</td>
+<td>B×1024×32×32B\times1024\times32\times32B×1024×32×32</td>
+</tr>
+<tr>
+<td>Decoder 1</td>
+<td>B×512×32×32B\times512\times32\times32B×512×32×32</td>
+</tr>
+<tr>
+<td>Up 2</td>
+<td>B×256×64×64B\times256\times64\times64B×256×64×64</td>
+</tr>
+<tr>
+<td>Concat 2</td>
+<td>B×512×64×64B\times512\times64\times64B×512×64×64</td>
+</tr>
+<tr>
+<td>Decoder 2</td>
+<td>B×256×64×64B\times256\times64\times64B×256×64×64</td>
+</tr>
+<tr>
+<td>Up 3</td>
+<td>B×128×128×128B\times128\times128\times128B×128×128×128</td>
+</tr>
+<tr>
+<td>Concat 3</td>
+<td>B×256×128×128B\times256\times128\times128B×256×128×128</td>
+</tr>
+<tr>
+<td>Decoder 3</td>
+<td>B×128×128×128B\times128\times128\times128B×128×128×128</td>
+</tr>
+<tr>
+<td>Up 4</td>
+<td>B×64×256×256B\times64\times256\times256B×64×256×256</td>
+</tr>
+<tr>
+<td>Concat 4</td>
+<td>B×128×256×256B\times128\times256\times256B×128×256×256</td>
+</tr>
+<tr>
+<td>Decoder 4</td>
+<td>B×64×256×256B\times64\times256\times256B×64×256×256</td>
+</tr>
+<tr>
+<td>输出</td>
+<td>B×K×256×256B\times K\times256\times256B×K×256×256</td>
+</tr>
+</tbody>
+</table>
+<p>这一部分会训练你独立检查网络结构，而不是依赖别人画的架构图。</p>
+<hr>
+<h1>第十部分：输出层、激活函数和任务类型</h1>
+<h2 id="10-1-为什么使用-1-11-times11-1-卷积">10.1 为什么使用 1×11\times11×1 卷积</h2>
+<p>最终一层：</p>
+<p>Conv⁡1×1:R64×H×W→RK×H×W\operatorname{Conv}_{1\times1}: \mathbb{R}^{64\times H\times W} \rightarrow \mathbb{R}^{K\times H\times W}Conv1×1:R64×H×W→RK×H×W</p>
+<p>它在每个像素位置上对通道特征进行线性组合。</p>
+<p>本质上相当于：</p>
+<blockquote>
+<p>对每个像素位置的特征向量做一次分类。</p>
+</blockquote>
+<h2 id="10-2-二分类输出">10.2 二分类输出</h2>
+<p>常用：</p>
+<p>Z∈RB×1×H×WZ\in\mathbb{R}^{B\times1\times H\times W}Z∈RB×1×H×W</p>
+<p>概率：</p>
+<p>P=σ(Z)P=\sigma(Z)P=σ(Z)</p>
+<p>训练时通常用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nn.BCEWithLogitsLoss()</span><br></pre></td></tr></table></figure>
+<p>注意它已经内部包含 Sigmoid，因此模型前向输出不应先手动 Sigmoid。</p>
+<h2 id="10-3-多分类输出">10.3 多分类输出</h2>
+<p>输出：</p>
+<p>Z∈RB×K×H×WZ\in\mathbb{R}^{B\times K\times H\times W}Z∈RB×K×H×W</p>
+<p>标签形状：</p>
+<p>Y∈RB×H×WY\in\mathbb{R}^{B\times H\times W}Y∈RB×H×W</p>
+<p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nn.CrossEntropyLoss()</span><br></pre></td></tr></table></figure>
+<p>它内部包含 LogSoftmax，因此模型也应直接输出 logits。</p>
+<h2 id="10-4-多标签分割">10.4 多标签分割</h2>
+<p>一个像素可以同时属于多个属性时：</p>
+<ul>
+<li>输出 KKK 个独立通道；</li>
+<li>每个通道使用 Sigmoid；</li>
+<li>使用 BCE 类型损失；</li>
+<li>不使用 Softmax 互斥约束。</li>
+</ul>
+<hr>
+<h1>第十一部分：损失函数的原理，而不是只背名称</h1>
+<h2 id="11-1-binary-cross-entropy">11.1 Binary Cross-Entropy</h2>
+<p>LBCE=−1N∑i[yilog⁡pi+(1−yi)log⁡(1−pi)]\mathcal L_{\mathrm{BCE}} = -\frac{1}{N} \sum_i \left[ y_i\log p_i + (1-y_i)\log(1-p_i) \right]LBCE=−N1i∑[yilogpi+(1−yi)log(1−pi)]</p>
+<p>讲清楚：</p>
+<ul>
+<li>为什么错误且自信的预测惩罚大；</li>
+<li>为什么 BCE 是逐像素损失；</li>
+<li>类别不平衡时的问题；</li>
+<li><code>pos_weight</code> 的作用。</li>
+</ul>
+<h2 id="11-2-cross-entropy">11.2 Cross-Entropy</h2>
+<p>LCE=−1N∑ilog⁡pi,yi\mathcal L_{\mathrm{CE}} = -\frac{1}{N} \sum_i \log p_{i,y_i}LCE=−N1i∑logpi,yi</p>
+<p>讲清楚 Softmax 与类别互斥。</p>
+<h2 id="11-3-dice-loss">11.3 Dice Loss</h2>
+<p>Dice 系数：</p>
+<p>Dice=2∑ipiyi+ϵ∑ipi+∑iyi+ϵ\mathrm{Dice} = \frac{2\sum_i p_i y_i+\epsilon} {\sum_i p_i+\sum_i y_i+\epsilon}Dice=∑ipi+∑iyi+ϵ2∑ipiyi+ϵ</p>
+<p>Dice Loss：</p>
+<p>LDice=1−Dice\mathcal L_{\mathrm{Dice}} = 1-\mathrm{Dice}LDice=1−Dice</p>
+<p>重点解释：</p>
+<ul>
+<li>为什么它适合小目标；</li>
+<li>为什么它关注区域重叠；</li>
+<li>为什么要加入 ϵ\epsilonϵ；</li>
+<li>batch-wise 与 sample-wise 计算差异；</li>
+<li>二值 Dice 和多类别 Dice。</li>
+</ul>
+<h2 id="11-4-混合损失">11.4 混合损失</h2>
+<p>例如：</p>
+<p>L=λ1LCE+λ2LDice\mathcal L = \lambda_1\mathcal L_{\mathrm{CE}} + \lambda_2\mathcal L_{\mathrm{Dice}}L=λ1LCE+λ2LDice</p>
+<p>解释：</p>
+<ul>
+<li>CE 提供稳定的逐像素梯度；</li>
+<li>Dice 直接优化区域重叠；</li>
+<li>二者互补。</li>
+</ul>
+<h2 id="11-5-其他常见损失">11.5 其他常见损失</h2>
+<p>后续再讲：</p>
+<ul>
+<li>Focal Loss；</li>
+<li>Tversky Loss；</li>
+<li>Focal Tversky Loss；</li>
+<li>Boundary Loss；</li>
+<li>Lovász Loss。</li>
+</ul>
+<hr>
+<h1>第十二部分：训练流程与反向传播</h1>
+<p>这一部分会把 U-Net 放入完整深度学习训练系统中。</p>
+<h2 id="12-1-一个训练-step-中发生什么">12.1 一个训练 step 中发生什么</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">optimizer.zero_grad()</span><br><span class="line"></span><br><span class="line">logits = model(images)</span><br><span class="line"></span><br><span class="line">loss = criterion(logits, masks)</span><br><span class="line"></span><br><span class="line">loss.backward()</span><br><span class="line"></span><br><span class="line">optimizer.step()</span><br></pre></td></tr></table></figure>
+<p>逐行解释：</p>
+<ul>
+<li>梯度为什么需要清零；</li>
+<li>前向传播产生什么；</li>
+<li>损失函数如何连接预测和标签；</li>
+<li>自动微分如何计算梯度；</li>
+<li>优化器如何更新参数。</li>
+</ul>
+<h2 id="12-2-梯度如何经过跳跃连接">12.2 梯度如何经过跳跃连接</h2>
+<p>由于 skip feature 同时进入后续网络，它会收到来自解码器路径的梯度。</p>
+<p>这意味着跳跃连接不仅传递前向特征，也改变反向传播路径，有助于：</p>
+<ul>
+<li>浅层特征直接服务于分割；</li>
+<li>梯度更容易传回编码器浅层；</li>
+<li>保持边缘与位置特征。</li>
+</ul>
+<h2 id="12-3-优化器与学习率">12.3 优化器与学习率</h2>
+<p>讲清楚：</p>
+<ul>
+<li>SGD；</li>
+<li>Momentum；</li>
+<li>Adam；</li>
+<li>AdamW；</li>
+<li>weight decay；</li>
+<li>学习率；</li>
+<li>scheduler；</li>
+<li>warmup；</li>
+<li>early stopping。</li>
+</ul>
+<p>重点分析它们如何影响分割训练，而不是仅给推荐参数。</p>
+<hr>
+<h1>第十三部分：数据集、增强和工程细节</h1>
+<p>很多 U-Net 项目失败并不是模型错误，而是数据处理错误。</p>
+<h2 id="13-1-图像与-mask-必须同步变换">13.1 图像与 Mask 必须同步变换</h2>
+<p>几何增强必须同时作用于：</p>
+<ul>
+<li>输入图像；</li>
+<li>标签 Mask。</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li>随机裁剪；</li>
+<li>水平翻转；</li>
+<li>旋转；</li>
+<li>缩放。</li>
+</ul>
+<p>颜色增强通常只作用于图像：</p>
+<ul>
+<li>亮度；</li>
+<li>对比度；</li>
+<li>饱和度；</li>
+<li>噪声。</li>
+</ul>
+<h2 id="13-2-mask-插值方式">13.2 Mask 插值方式</h2>
+<p>图像缩放可用双线性插值，但类别 Mask 必须使用最近邻插值。</p>
+<p>否则类别值可能从：</p>
+<p>0, 10,\ 10, 1</p>
+<p>被插值成：</p>
+<p>0.27, 0.640.27,\ 0.640.27, 0.64</p>
+<p>这会破坏标签。</p>
+<h2 id="13-3-标签值检查">13.3 标签值检查</h2>
+<p>需要检查：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.unique(mask)</span><br></pre></td></tr></table></figure>
+<p>二分类标签应是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0, 1</span><br></pre></td></tr></table></figure>
+<p>而不是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0, 255</span><br></pre></td></tr></table></figure>
+<p>多分类标签则应是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0, 1, 2, ..., K-1</span><br></pre></td></tr></table></figure>
+<h2 id="13-4-数据划分">13.4 数据划分</h2>
+<p>讲清楚：</p>
+<ul>
+<li>训练集；</li>
+<li>验证集；</li>
+<li>测试集；</li>
+<li>数据泄漏；</li>
+<li>同一患者或同一场景不能跨集合；</li>
+<li>按图像随机划分为何可能造成虚高性能。</li>
+</ul>
+<hr>
+<h1>第十四部分：评价指标、错误分析和实验设计</h1>
+<h2 id="14-1-pixel-accuracy-为什么可能误导">14.1 Pixel Accuracy 为什么可能误导</h2>
+<p>如果背景占 99%，模型全部预测背景，也可获得 99% 准确率。</p>
+<p>所以分割任务通常更关注：</p>
+<ul>
+<li>IoU；</li>
+<li>Dice；</li>
+<li>Precision；</li>
+<li>Recall；</li>
+<li>Specificity；</li>
+<li>Hausdorff Distance；</li>
+<li>Boundary F-score。</li>
+</ul>
+<h2 id="14-2-iou">14.2 IoU</h2>
+<p>IoU=∣P∩G∣∣P∪G∣\mathrm{IoU} = \frac{|P\cap G|} {|P\cup G|}IoU=∣P∪G∣∣P∩G∣</p>
+<h2 id="14-3-dice-与-iou-的关系">14.3 Dice 与 IoU 的关系</h2>
+<p>Dice=2IoU1+IoU\mathrm{Dice} = \frac{2\mathrm{IoU}} {1+\mathrm{IoU}}Dice=1+IoU2IoU</p>
+<p>二者相关但数值不同，不能直接混用。</p>
+<h2 id="14-4-混淆矩阵">14.4 混淆矩阵</h2>
+<p>对于二分类分割，定义：</p>
+<ul>
+<li>TP；</li>
+<li>FP；</li>
+<li>FN；</li>
+<li>TN。</li>
+</ul>
+<p>进而推导：</p>
+<p>Precision=TPTP+FP\mathrm{Precision} = \frac{TP}{TP+FP}Precision=TP+FPTPRecall=TPTP+FN\mathrm{Recall} = \frac{TP}{TP+FN}Recall=TP+FNTPIoU=TPTP+FP+FN\mathrm{IoU} = \frac{TP}{TP+FP+FN}IoU=TP+FP+FNTP</p>
+<h2 id="14-5-可视化错误类型">14.5 可视化错误类型</h2>
+<p>不能只看一个平均指标，还要观察：</p>
+<ul>
+<li>漏分割；</li>
+<li>过分割；</li>
+<li>边界偏移；</li>
+<li>小目标消失；</li>
+<li>相邻目标粘连；</li>
+<li>背景误检；</li>
+<li>类别混淆。</li>
+</ul>
+<hr>
+<h1>第十五部分：从零实现一个可训练的 U-Net</h1>
+<p>代码会按照模块递进，而不是一次贴出完整代码。</p>
+<p>学习顺序是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">DoubleConv</span><br><span class="line">    ↓</span><br><span class="line">Down Block</span><br><span class="line">    ↓</span><br><span class="line">Up Block</span><br><span class="line">    ↓</span><br><span class="line">Output Head</span><br><span class="line">    ↓</span><br><span class="line">完整 U-Net</span><br><span class="line">    ↓</span><br><span class="line">Dataset</span><br><span class="line">    ↓</span><br><span class="line">Loss</span><br><span class="line">    ↓</span><br><span class="line">Train Loop</span><br><span class="line">    ↓</span><br><span class="line">Validation</span><br><span class="line">    ↓</span><br><span class="line">Inference</span><br></pre></td></tr></table></figure>
+<p>每写完一个模块，都做形状测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = torch.randn(2, 3, 256, 256)</span><br><span class="line">y = model(x)</span><br><span class="line">print(y.shape)</span><br></pre></td></tr></table></figure>
+<p>还会通过 forward hook 或打印形状检查中间层：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(x1.shape)</span><br><span class="line">print(x2.shape)</span><br><span class="line">print(x3.shape)</span><br></pre></td></tr></table></figure>
+<p>重点不是把代码跑通，而是让你能自己回答：</p>
+<ul>
+<li>为什么这里输入通道是 1024；</li>
+<li>为什么拼接后是 512；</li>
+<li>为什么输出通道是类别数；</li>
+<li>为什么这里需要插值；</li>
+<li>为什么标签不能带通道维；</li>
+<li>为什么训练时不能先 argmax。</li>
+</ul>
+<hr>
+<h1>第十六部分：常见错误与系统排查</h1>
+<p>这部分会专门讲实践中最常见的问题。</p>
+<h2 id="尺寸不匹配">尺寸不匹配</h2>
+<p>典型报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sizes of tensors must match except in dimension 1</span><br></pre></td></tr></table></figure>
+<p>原因可能是：</p>
+<ul>
+<li>输入尺寸不能被 2n2^n2n 整除；</li>
+<li>padding 设置不一致；</li>
+<li>转置卷积输出差 1；</li>
+<li>原始 U-Net 需要 crop；</li>
+<li>数据预处理尺寸不同。</li>
+</ul>
+<h2 id="通道数错误">通道数错误</h2>
+<p>典型报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expected input to have 256 channels, but got 512 channels</span><br></pre></td></tr></table></figure>
+<p>通常发生在 concat 后没有正确修改后续卷积的输入通道。</p>
+<h2 id="损失函数形状错误">损失函数形状错误</h2>
+<p>二分类常见组合：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logits: [B, 1, H, W]</span><br><span class="line">mask:   [B, 1, H, W]</span><br></pre></td></tr></table></figure>
+<p>多分类常见组合：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">logits: [B, K, H, W]</span><br><span class="line">mask:   [B, H, W]</span><br></pre></td></tr></table></figure>
+<h2 id="模型只预测背景">模型只预测背景</h2>
+<p>可能原因：</p>
+<ul>
+<li>类别严重不平衡；</li>
+<li>Mask 读取错误；</li>
+<li>标签值为 255；</li>
+<li>学习率不合适；</li>
+<li>损失函数选择错误；</li>
+<li>输出与标签维度不匹配；</li>
+<li>数据增强破坏标签；</li>
+<li>阈值不合理。</li>
+</ul>
+<h2 id="loss-下降但-dice-不提升">loss 下降但 Dice 不提升</h2>
+<p>可能原因：</p>
+<ul>
+<li>指标实现错误；</li>
+<li>类别不平衡；</li>
+<li>模型学会了背景；</li>
+<li>训练集和验证集分布不同；</li>
+<li>指标使用 logits 而不是概率；</li>
+<li>多分类时维度计算错误。</li>
+</ul>
+<hr>
+<h1>第十七部分：通过实验理解 U-Net，而不是只看结果</h1>
+<p>完成基础实现后，会做一组小型消融实验。</p>
+<h2 id="实验-1：去掉跳跃连接">实验 1：去掉跳跃连接</h2>
+<p>观察：</p>
+<ul>
+<li>Dice 是否下降；</li>
+<li>边界是否变模糊；</li>
+<li>小目标是否更容易消失。</li>
+</ul>
+<h2 id="实验-2：转置卷积与双线性插值">实验 2：转置卷积与双线性插值</h2>
+<p>比较：</p>
+<ul>
+<li>精度；</li>
+<li>训练稳定性；</li>
+<li>棋盘格伪影；</li>
+<li>参数量；</li>
+<li>推理速度。</li>
+</ul>
+<h2 id="实验-3：bce-与-bce-dice">实验 3：BCE 与 BCE + Dice</h2>
+<p>比较：</p>
+<ul>
+<li>小目标召回率；</li>
+<li>训练曲线；</li>
+<li>区域重叠；</li>
+<li>阈值敏感性。</li>
+</ul>
+<h2 id="实验-4：不同输入尺寸">实验 4：不同输入尺寸</h2>
+<p>分析：</p>
+<ul>
+<li>显存占用；</li>
+<li>边界精度；</li>
+<li>小目标表现；</li>
+<li>训练速度。</li>
+</ul>
+<h2 id="实验-5：不同网络宽度">实验 5：不同网络宽度</h2>
+<p>例如基础通道数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">32、64、96</span><br></pre></td></tr></table></figure>
+<p>比较：</p>
+<ul>
+<li>参数量；</li>
+<li>过拟合；</li>
+<li>推理速度；</li>
+<li>分割精度。</li>
+</ul>
+<hr>
+<h1>第十八部分：U-Net 的局限与后续网络</h1>
+<p>在完全掌握标准 U-Net 后，再讲改进网络。顺序如下：</p>
+<h2 id="18-1-resunet">18.1 ResUNet</h2>
+<p>把普通卷积块替换为残差块，改善深层网络优化。</p>
+<h2 id="18-2-attention-u-net">18.2 Attention U-Net</h2>
+<p>在 skip connection 上加入注意力门，抑制无关背景特征。</p>
+<h2 id="18-3-unet">18.3 UNet++</h2>
+<p>通过嵌套和密集跳跃连接，缩小编码器与解码器之间的语义差距。</p>
+<h2 id="18-4-3d-u-net">18.4 3D U-Net</h2>
+<p>将二维卷积扩展到三维，用于 CT、MRI 体数据。</p>
+<h2 id="18-5-nnu-net">18.5 nnU-Net</h2>
+<p>重点不在新网络模块，而在自动配置：</p>
+<ul>
+<li>预处理；</li>
+<li>patch size；</li>
+<li>网络深度；</li>
+<li>batch size；</li>
+<li>训练策略；</li>
+<li>后处理。</li>
+</ul>
+<h2 id="18-6-transunet">18.6 TransUNet</h2>
+<p>用 Transformer 建模长距离依赖，同时保留 U-Net 解码结构。</p>
+<h2 id="18-7-swin-unet">18.7 Swin-Unet</h2>
+<p>使用分层窗口 Transformer 替代传统卷积编码器。</p>
+<p>通过这些模型反过来理解标准 U-Net 的不足：</p>
+<ul>
+<li>全局建模能力有限；</li>
+<li>skip connection 过于直接；</li>
+<li>多尺度融合较简单；</li>
+<li>固定结构适应性有限；</li>
+<li>大图像计算成本较高。</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Destiny</div><div class="post-copyright__author_desc">跋涉浮尘烛光灭</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://agilawood4.github.io/2026/07/17/temp/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://agilawood4.github.io/2026/07/17/temp/')">Destiny Blog</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://agilawood4.github.io/2026/07/17/temp/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Destiny Blog&amp;url=https://agilawood4.github.io/2026/07/17/temp/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://agilawood4.github.io" target="_blank">Destiny Blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"></div></div></div><div class="post_share"><div class="social-share" data-image="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2169.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2026/07/16/(%E7%A7%91%E7%A0%94)%E5%9B%BE%E5%83%8F%E4%BB%BB%E5%8A%A1/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A229.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">图像识别</div></div></a></div><div class="next-post pull-right"><a href="/2026/07/17/(%E7%A7%91%E7%A0%94)U-Net/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../images/%E6%96%87%E7%AB%A0%E5%B0%81%E9%9D%A2143.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">U-Net</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/images/picture.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">第六部分：瓶颈层为什么存在</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">第八部分：跳跃连接是 U-Net 的核心</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E8%B7%B3%E8%B7%83%E8%BF%9E%E6%8E%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">8.1 跳跃连接解决什么问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-concatenation-%E4%B8%8E-addition-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.2.</span> <span class="toc-text">8.2 Concatenation 与 Addition 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-skip-connection-%E7%9A%84%E5%B1%80%E9%99%90"><span class="toc-number">2.3.</span> <span class="toc-text">8.3 Skip connection 的局限</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">第九部分：完整 U-Net 前向传播与张量尺寸推导</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">第十部分：输出层、激活函数和任务类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-1-11-times11-1-%E5%8D%B7%E7%A7%AF"><span class="toc-number">4.1.</span> <span class="toc-text">10.1 为什么使用 1×11\times11×1 卷积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-%E4%BA%8C%E5%88%86%E7%B1%BB%E8%BE%93%E5%87%BA"><span class="toc-number">4.2.</span> <span class="toc-text">10.2 二分类输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-%E5%A4%9A%E5%88%86%E7%B1%BB%E8%BE%93%E5%87%BA"><span class="toc-number">4.3.</span> <span class="toc-text">10.3 多分类输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-4-%E5%A4%9A%E6%A0%87%E7%AD%BE%E5%88%86%E5%89%B2"><span class="toc-number">4.4.</span> <span class="toc-text">10.4 多标签分割</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">第十一部分：损失函数的原理，而不是只背名称</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1-binary-cross-entropy"><span class="toc-number">5.1.</span> <span class="toc-text">11.1 Binary Cross-Entropy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-2-cross-entropy"><span class="toc-number">5.2.</span> <span class="toc-text">11.2 Cross-Entropy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-3-dice-loss"><span class="toc-number">5.3.</span> <span class="toc-text">11.3 Dice Loss</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-4-%E6%B7%B7%E5%90%88%E6%8D%9F%E5%A4%B1"><span class="toc-number">5.4.</span> <span class="toc-text">11.4 混合损失</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-5-%E5%85%B6%E4%BB%96%E5%B8%B8%E8%A7%81%E6%8D%9F%E5%A4%B1"><span class="toc-number">5.5.</span> <span class="toc-text">11.5 其他常见损失</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">第十二部分：训练流程与反向传播</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-%E4%B8%80%E4%B8%AA%E8%AE%AD%E7%BB%83-step-%E4%B8%AD%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88"><span class="toc-number">6.1.</span> <span class="toc-text">12.1 一个训练 step 中发生什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-%E6%A2%AF%E5%BA%A6%E5%A6%82%E4%BD%95%E7%BB%8F%E8%BF%87%E8%B7%B3%E8%B7%83%E8%BF%9E%E6%8E%A5"><span class="toc-number">6.2.</span> <span class="toc-text">12.2 梯度如何经过跳跃连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3-%E4%BC%98%E5%8C%96%E5%99%A8%E4%B8%8E%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="toc-number">6.3.</span> <span class="toc-text">12.3 优化器与学习率</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">7.</span> <span class="toc-text">第十三部分：数据集、增强和工程细节</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#13-1-%E5%9B%BE%E5%83%8F%E4%B8%8E-mask-%E5%BF%85%E9%A1%BB%E5%90%8C%E6%AD%A5%E5%8F%98%E6%8D%A2"><span class="toc-number">7.1.</span> <span class="toc-text">13.1 图像与 Mask 必须同步变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-2-mask-%E6%8F%92%E5%80%BC%E6%96%B9%E5%BC%8F"><span class="toc-number">7.2.</span> <span class="toc-text">13.2 Mask 插值方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-3-%E6%A0%87%E7%AD%BE%E5%80%BC%E6%A3%80%E6%9F%A5"><span class="toc-number">7.3.</span> <span class="toc-text">13.3 标签值检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-4-%E6%95%B0%E6%8D%AE%E5%88%92%E5%88%86"><span class="toc-number">7.4.</span> <span class="toc-text">13.4 数据划分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">8.</span> <span class="toc-text">第十四部分：评价指标、错误分析和实验设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#14-1-pixel-accuracy-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E8%83%BD%E8%AF%AF%E5%AF%BC"><span class="toc-number">8.1.</span> <span class="toc-text">14.1 Pixel Accuracy 为什么可能误导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-2-iou"><span class="toc-number">8.2.</span> <span class="toc-text">14.2 IoU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-3-dice-%E4%B8%8E-iou-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">8.3.</span> <span class="toc-text">14.3 Dice 与 IoU 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-4-%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5"><span class="toc-number">8.4.</span> <span class="toc-text">14.4 混淆矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-5-%E5%8F%AF%E8%A7%86%E5%8C%96%E9%94%99%E8%AF%AF%E7%B1%BB%E5%9E%8B"><span class="toc-number">8.5.</span> <span class="toc-text">14.5 可视化错误类型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">9.</span> <span class="toc-text">第十五部分：从零实现一个可训练的 U-Net</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">10.</span> <span class="toc-text">第十六部分：常见错误与系统排查</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%BA%E5%AF%B8%E4%B8%8D%E5%8C%B9%E9%85%8D"><span class="toc-number">10.1.</span> <span class="toc-text">尺寸不匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E9%81%93%E6%95%B0%E9%94%99%E8%AF%AF"><span class="toc-number">10.2.</span> <span class="toc-text">通道数错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E5%BD%A2%E7%8A%B6%E9%94%99%E8%AF%AF"><span class="toc-number">10.3.</span> <span class="toc-text">损失函数形状错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%8F%AA%E9%A2%84%E6%B5%8B%E8%83%8C%E6%99%AF"><span class="toc-number">10.4.</span> <span class="toc-text">模型只预测背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#loss-%E4%B8%8B%E9%99%8D%E4%BD%86-dice-%E4%B8%8D%E6%8F%90%E5%8D%87"><span class="toc-number">10.5.</span> <span class="toc-text">loss 下降但 Dice 不提升</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">11.</span> <span class="toc-text">第十七部分：通过实验理解 U-Net，而不是只看结果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-1%EF%BC%9A%E5%8E%BB%E6%8E%89%E8%B7%B3%E8%B7%83%E8%BF%9E%E6%8E%A5"><span class="toc-number">11.1.</span> <span class="toc-text">实验 1：去掉跳跃连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-2%EF%BC%9A%E8%BD%AC%E7%BD%AE%E5%8D%B7%E7%A7%AF%E4%B8%8E%E5%8F%8C%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC"><span class="toc-number">11.2.</span> <span class="toc-text">实验 2：转置卷积与双线性插值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-3%EF%BC%9Abce-%E4%B8%8E-bce-dice"><span class="toc-number">11.3.</span> <span class="toc-text">实验 3：BCE 与 BCE + Dice</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-4%EF%BC%9A%E4%B8%8D%E5%90%8C%E8%BE%93%E5%85%A5%E5%B0%BA%E5%AF%B8"><span class="toc-number">11.4.</span> <span class="toc-text">实验 4：不同输入尺寸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-5%EF%BC%9A%E4%B8%8D%E5%90%8C%E7%BD%91%E7%BB%9C%E5%AE%BD%E5%BA%A6"><span class="toc-number">11.5.</span> <span class="toc-text">实验 5：不同网络宽度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">12.</span> <span class="toc-text">第十八部分：U-Net 的局限与后续网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#18-1-resunet"><span class="toc-number">12.1.</span> <span class="toc-text">18.1 ResUNet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-2-attention-u-net"><span class="toc-number">12.2.</span> <span class="toc-text">18.2 Attention U-Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-3-unet"><span class="toc-number">12.3.</span> <span class="toc-text">18.3 UNet++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-4-3d-u-net"><span class="toc-number">12.4.</span> <span class="toc-text">18.4 3D U-Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-5-nnu-net"><span class="toc-number">12.5.</span> <span class="toc-text">18.5 nnU-Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-6-transunet"><span class="toc-number">12.6.</span> <span class="toc-text">18.6 TransUNet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-7-swin-unet"><span class="toc-number">12.7.</span> <span class="toc-text">18.7 Swin-Unet</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/27/(TF)7/" title="无题">无题</a><time datetime="2026-09-27T01:48:26.551Z" title="发表于 2026-09-27 09:48:26">2026-09-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/19/(%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA0.5)/" title="无题">无题</a><time datetime="2026-09-19T14:27:29.282Z" title="发表于 2026-09-19 22:27:29">2026-09-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/19/(%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA)0/" title="无题">无题</a><time datetime="2026-09-19T13:20:22.104Z" title="发表于 2026-09-19 21:20:22">2026-09-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/19/Untitled%202/" title="无题">无题</a><time datetime="2026-09-19T02:42:12.369Z" title="发表于 2026-09-19 10:42:12">2026-09-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/09/19/(TF)6/" title="HuggingFace Datasets 与 Data Collator">HuggingFace Datasets 与 Data Collator</a><time datetime="2026-09-19T02:42:02.867Z" title="发表于 2026-09-19 10:42:02">2026-09-19</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2026 By <a class="footer-bar-link" href="/" title="Destiny" target="_blank">Destiny</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">228</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">6</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" rel="external nofollow noreferrer" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener external nofollow noreferrer" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><span> 标签</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/LLM%E4%B8%8E%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">LLM与强化学习<sup>6</sup></a><a href="/tags/Python%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">Python与机器学习<sup>49</sup></a><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" style="font-size: 0.88rem;">专业课<sup>47</sup></a><a href="/tags/%E7%A7%91%E7%A0%94/" style="font-size: 0.88rem;">科研<sup>18</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>27</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://www.bilibili.com/video/BV1Ji4y1N7tK?spm_id_from=333.788.videopod.episodes&amp;vd_source=3ceb705961537c0a458a0c7955359e9b&amp;p=12&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Destiny 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
